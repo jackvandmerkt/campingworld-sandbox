@@ -15,7 +15,8 @@ module.exports = {
         cwGray: '#474342',
         cwLightGray: '#757272',
         cwBg: "#E5E5E5",
-        formBlack: '#212B36'
+        formBlack: '#212B36',
+        navGray: '#F8F9FA'
       },
       spacing: {
         '6.5': '26px',
@@ -25,6 +26,7 @@ module.exports = {
         '34': '136px',
         '110': '110px',
         '116': '116.41px',
+        '222': '222px',
         '584': '584px',
         '636': '636px',
         '454': '454px',
