@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ListingsComponent } from './home/cards/listing.component';
 import { OrdersComponent } from './home/cards/orders.component';
 import { CombinedCardComponent } from './home/combined-cards.component';
 import { NavComponent } from './nav/nav.component';
+import { NewListingsComponent } from './new-listing/new-listing.component';
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
@@ -13,9 +16,13 @@ import { NavComponent } from './nav/nav.component';
     NavComponent,
     OrdersComponent,
     ListingsComponent,
-    CombinedCardComponent
+    CombinedCardComponent,
+    NewListingsComponent
   ],
-  imports: [BrowserModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes)
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
