@@ -16,7 +16,8 @@ module.exports = {
         cwLightGray: '#757272',
         cwBg: "#E5E5E5",
         formBlack: '#212B36',
-        navGray: '#F8F9FA'
+        navGray: '#F8F9FA',
+        cwBadgeGray: '#BFC5CE'
       },
       spacing: {
         '6.5': '26px',
@@ -38,7 +39,8 @@ module.exports = {
         'nav': ['12px', '16px'],
         'newListing': ['32px', '38px'],
         'floatLabel': ['12px', '18px'],
-        'evaluationLabel': ['16px', '26px']
+        'evaluationLabel': ['16px', '26px'],
+        'createListingSubMenu': ['14px', '24px']
       }
     },
   },
