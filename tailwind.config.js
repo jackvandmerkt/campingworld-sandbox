@@ -41,7 +41,9 @@ module.exports = {
         'newListing': ['32px', '38px'],
         'floatLabel': ['12px', '18px'],
         'evaluationLabel': ['16px', '26px'],
-        'createListingSubMenu': ['14px', '24px']
+        '18px24px': ['18px', '24px'],
+        'createListingSubMenu': ['14px', '24px'],
+        '32px38px': ['32px', '38px']
       }
     },
   },

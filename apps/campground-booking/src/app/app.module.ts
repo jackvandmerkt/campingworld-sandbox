@@ -7,6 +7,7 @@ import { CreateListingNavComponent } from './create-listing/create-listing-nav/c
 import { ListingsComponent } from './home/cards/listing.component';
 import { OrdersComponent } from './home/cards/orders.component';
 import { CombinedCardComponent } from './home/combined-cards.component';
+import { RecentlyViewedComponent } from './home/recently-viewed/recently-viewed.component';
 import { NavComponent } from './nav/nav.component';
 import { NewListingsComponent } from './new-listing/new-listing.component';
 import { routes } from './routes';
@@ -19,7 +20,8 @@ import { routes } from './routes';
     ListingsComponent,
     CombinedCardComponent,
     NewListingsComponent,
-    CreateListingNavComponent
+    CreateListingNavComponent,
+    RecentlyViewedComponent
   ],
   imports: [
     BrowserModule,
