@@ -17,7 +17,8 @@ module.exports = {
         cwBg: "#E5E5E5",
         formBlack: '#212B36',
         navGray: '#F8F9FA',
-        cwBadgeGray: '#BFC5CE'
+        cwBadgeGray: '#BFC5CE',
+        lightOrange: '#FF974580'
       },
       spacing: {
         '6.5': '26px',

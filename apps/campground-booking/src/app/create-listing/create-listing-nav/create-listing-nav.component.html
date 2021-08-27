@@ -1,7 +1,7 @@
 <div class="grid justify-center ">
     <div class="flex space-x-4 ">
         <p>Status:</p>
-        <span class="bg-cwBadgeGray font-cw text-createListingSubMenu text-cwGray rounded p-0.5">INCOMPLETE</span>
+        <span class="bg-lightOrange bg-opacity-50 font-lato text-createListingSubMenu text-cwGray rounded px-1">OPEN</span>
     </div>
     <div class="w-222 h-14 pt-8">
         <div class="pb-3">
@@ -9,12 +9,14 @@
         </div>
         <div class="grid grid-cols-1 justify-items-start gap-3 border-t-2">
             <!-- First dropdown section -->
-            <div class="flex flex-row justify-center items-center space-x-2.5 ">
+            <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
-                <button (click)='locationInfoToggle()' class="font-cw text-cwGray font-bold">
-                    <div class="grid grid-cols-2">
-                        <p class="">Location Info</p>
-                        <img class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                <button (click)='locationInfoToggle()' class="font-cw text-cwGray w-222">
+                    <div class="grid grid-cols-6">
+                        <p *ngIf="!unHideLocationInfo" class="col-span-5 justify-self-start">Location Info</p>
+                        <p *ngIf="unHideLocationInfo" class="col-span-5 justify-self-start font-bold">Location Info</p>
+                        <img *ngIf="!unHideLocationInfo" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideLocationInfo" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
@@ -41,12 +43,14 @@
                 </div>
             </div> 
             <!-- Second dropdown section -->
-            <div class="flex flex-row justify-center w-222 items-center space-x-2.5 ">
+            <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
-                <button (click)='locationDetailsToggle()' class="font-cw text-cwGray">
-                    <div class="grid grid-cols-2">
-                        <p class="">Location Details</p>
-                        <img class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                <button (click)='locationDetailsToggle()' class="font-cw text-cwGray w-222">
+                    <div class="grid grid-cols-6">
+                        <p *ngIf="!unHideLocationDetails" class="col-span-5 justify-self-start">Location Details</p>
+                        <p *ngIf="unHideLocationDetails" class="col-span-5 justify-self-start font-bold">Location Details</p>
+                        <img *ngIf="!unHideLocationDetails" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideLocationDetails" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
@@ -65,12 +69,14 @@
                 </div>
             </div> 
             <!-- Third dropdown section -->
-            <div class="flex flex-row justify-center items-center space-x-2.5 ">
+            <div class="flex flex-row justify-left items-center w-222 space-x-2.5">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
-                <button (click)='amenitiesToggle()' class="font-cw text-cwGray">
-                    <div class="grid grid-cols-2">
-                        <p class="">Amenities</p>
-                        <img class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                <button (click)='amenitiesToggle()' class="font-cw text-cwGray w-222">
+                    <div class="grid grid-cols-6">
+                        <p *ngIf="!unHideAmenities" class="col-span-5 justify-self-start">Amenities</p>
+                        <p *ngIf="unHideAmenities" class="col-span-5 justify-self-start font-bold">Amenities</p>
+                        <img *ngIf="!unHideAmenities" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideAmenities" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
@@ -93,12 +99,14 @@
                 </div>
             </div> 
             <!-- Fourth dropdown section -->
-            <div class="flex flex-row justify-center items-center space-x-2.5 ">
+            <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
-                <button (click)='rentBuyToggle()' class="font-cw text-cwGray">
-                    <div class="grid grid-cols-2">
-                        <p class="">Rent & Buy</p>
-                        <img class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                <button (click)='rentBuyToggle()' class="font-cw text-cwGray w-222">
+                    <div class="grid grid-cols-6">
+                        <p *ngIf="!unHideRentBuy" class="col-span-5 justify-self-start">Rent & Buy</p>
+                        <p *ngIf="unHideRentBuy" class="col-span-5 justify-self-start font-bold">Rent & Buy</p>
+                        <img *ngIf="!unHideRentBuy" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideRentBuy" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
@@ -113,12 +121,14 @@
                 </div>
             </div>
             <!-- Fifth dropdown section -->
-            <div class="flex flex-row justify-center items-center space-x-2.5 ">
+            <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
-                <button (click)='ratesRatingsToggle()' class="font-cw text-cwGray">
-                    <div class="grid grid-cols-2">
-                        <p class="">Rates & Ratings</p>
-                        <img class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                <button (click)='ratesRatingsToggle()' class="font-cw text-cwGray w-222">
+                    <div class="grid grid-cols-6">
+                        <p *ngIf="!unHideRatesRatings" class="col-span-5 justify-self-start">Rates & Ratings</p>
+                        <p *ngIf="unHideRatesRatings" class="col-span-5 justify-self-start font-bold">Rates & Ratings</p>
+                        <img *ngIf="!unHideRatesRatings" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideRatesRatings" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
