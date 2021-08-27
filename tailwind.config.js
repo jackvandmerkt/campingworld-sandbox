@@ -15,7 +15,9 @@ module.exports = {
         cwGray: '#474342',
         cwLightGray: '#757272',
         cwBg: "#E5E5E5",
-        formBlack: '#212B36'
+        formBlack: '#212B36',
+        navGray: '#F8F9FA',
+        cwBadgeGray: '#BFC5CE'
       },
       spacing: {
         '6.5': '26px',
@@ -25,6 +27,7 @@ module.exports = {
         '34': '136px',
         '110': '110px',
         '116': '116.41px',
+        '222': '222px',
         '584': '584px',
         '636': '636px',
         '454': '454px',
@@ -36,7 +39,8 @@ module.exports = {
         'nav': ['12px', '16px'],
         'newListing': ['32px', '38px'],
         'floatLabel': ['12px', '18px'],
-        'evaluationLabel': ['16px', '26px']
+        'evaluationLabel': ['16px', '26px'],
+        'createListingSubMenu': ['14px', '24px']
       }
     },
   },

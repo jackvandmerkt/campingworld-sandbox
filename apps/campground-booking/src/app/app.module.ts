@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { CreateListingNavComponent } from './create-listing/create-listing-nav/create-listing-nav.component';
 import { ListingsComponent } from './home/cards/listing.component';
 import { OrdersComponent } from './home/cards/orders.component';
 import { CombinedCardComponent } from './home/combined-cards.component';
@@ -17,7 +18,8 @@ import { routes } from './routes';
     OrdersComponent,
     ListingsComponent,
     CombinedCardComponent,
-    NewListingsComponent
+    NewListingsComponent,
+    CreateListingNavComponent
   ],
   imports: [
     BrowserModule,
