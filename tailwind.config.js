@@ -6,6 +6,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      width: {
+        'listing-w': '28.8889%',
+        'orders-w': '59.4444%'
+      },
       fontFamily: {
         cw: ['Montserrat'],
         lato: ['Lato']
