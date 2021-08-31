@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { NeedSupportComponent } from './create-listing/create-listing-cards/need-support.component';
 import { CreateListingNavComponent } from './create-listing/create-listing-nav/create-listing-nav.component';
 import { CreateListingComponent } from './create-listing/create-listing.component';
 import { GoodSamRecordFormComponent } from './create-listing/location-info/good-sam-record.component';
@@ -27,7 +28,8 @@ import { routes } from './routes';
     RecentlyViewedComponent,
     ProposalsComponent,
     CreateListingComponent,
-    GoodSamRecordFormComponent
+    GoodSamRecordFormComponent,
+    NeedSupportComponent
   ],
   imports: [
     BrowserModule,
