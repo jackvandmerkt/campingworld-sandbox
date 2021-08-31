@@ -29,14 +29,14 @@ export class CreateListingNavComponent {
         if(this.unHideRatesRatings == false) {
             this.unHideRatesRatings = !this.unHideRatesRatings;
         }
-        // if((this.unHideLocationInfo == true) && (this.unHideLocationDetails == true) && (this.unHideAmenities == true) 
-        //     && (this.unHideRentBuy == true) && (this.unHideRatesRatings == true)) {
-        //         this.unHideLocationInfo = false;
-        //         this.unHideLocationDetails = !this.unHideLocationDetails;
-        //         this.unHideAmenities = !this.unHideAmenities;
-        //         this.unHideRentBuy = !this.unHideRentBuy;
-        //         this.unHideRatesRatings = !this.unHideRatesRatings;
-        // }
+        else if((this.unHideLocationInfo == true) && (this.unHideLocationDetails == true) && (this.unHideAmenities == true) 
+            && (this.unHideRentBuy == true) && (this.unHideRatesRatings == true)) {
+                this.unHideLocationInfo = false;
+                this.unHideLocationDetails = false;
+                this.unHideAmenities = false;
+                this.unHideRentBuy = false;
+                this.unHideRatesRatings = false;
+        }
     }
 
     locationInfoToggle() {

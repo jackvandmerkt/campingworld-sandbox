@@ -1,0 +1,20 @@
+<div class="p-16">
+    <p class="font-cw font-bold text-cwGray text-32px38px pb-8">Recently Viewed Listings</p>
+    <div class="grid grid-cols-6">
+        <div *ngFor="let item of data" class="w-48 h-52 border rounded-xl shadow-2xl ">
+            <div class="grid grid-cols-1 ">
+                <p class="text-left px-4 font-bold font-cw text-18px24px text-cwGray pt-7">{{item.parkName}}</p>
+                <p class="pl-4 text-cwGray text-14px24px font-cw">{{item.city}}, {{item.st}}</p>
+                <p class="pl-4 pb-2.5 text-cwGray text-14px24px font-cw">File #: {{item.id}}</p>
+                <div class="grid grid-cols-5 pl-4">
+                    <img src="assets/images/listing.png" alt="listing">
+                    <img src="assets/images/proposals-ad summary.png" alt="ad">
+                    <img src="assets/images/comments.png" alt="comments">
+                </div>
+                
+            </div>
+            
+        </div>
+    
+    </div>
+</div>

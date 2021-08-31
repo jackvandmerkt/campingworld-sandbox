@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { CreateListingNavComponent } from './create-listing/create-listing-nav/create-listing-nav.component';
 import { ListingsComponent } from './home/cards/listing.component';
 import { OrdersComponent } from './home/cards/orders.component';
-import { CombinedCardComponent } from './home/combined-cards.component';
+import { HomeComponent } from './home/home.component';
+import { ProposalsComponent } from './home/proposals/proposals.component';
+import { RecentlyViewedComponent } from './home/recently-viewed/recently-viewed.component';
 import { NavComponent } from './nav/nav.component';
 import { NewListingsComponent } from './new-listing/new-listing.component';
 import { routes } from './routes';
@@ -17,9 +19,11 @@ import { routes } from './routes';
     NavComponent,
     OrdersComponent,
     ListingsComponent,
-    CombinedCardComponent,
+    HomeComponent,
     NewListingsComponent,
-    CreateListingNavComponent
+    CreateListingNavComponent,
+    RecentlyViewedComponent,
+    ProposalsComponent
   ],
   imports: [
     BrowserModule,
