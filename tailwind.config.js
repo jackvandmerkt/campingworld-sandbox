@@ -17,13 +17,19 @@ module.exports = {
       colors: {
         cwRed: '#C30B24',
         cwGray: '#474342',
+        cwGray2: '#2D2A29',
         cwLightGray: '#757272',
-        cwBg: "#E5E5E5",
-        formBlack: '#212B36',
         navGray: '#F8F9FA',
         cwBadgeGray: '#BFC5CE',
+        proposalsGray: '#EAECEF',
+        cwBg: "#E5E5E5",
+        formBlack: '#212B36',
         lightOrange: '#FF974580',
-        proposalsGray: '#EAECEF'
+        lightPurple: '#9B6CFC66',
+        lightGreen: '#50B83C80'
+      },
+      opacity: {
+        '35': '.35'
       },
       spacing: {
         '6.5': '26px',

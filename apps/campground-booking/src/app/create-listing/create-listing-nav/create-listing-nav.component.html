@@ -1,33 +1,42 @@
 <div class="grid justify-center ">
     <div class="flex space-x-4 ">
         <p>Status:</p>
-        <span class="bg-lightOrange bg-opacity-50 font-lato text-14px24px text-cwGray rounded px-1">OPEN</span>
+        <span *ngIf="listingStatus==='open'" class="px-1 bg-opacity-50 rounded bg-lightOrange font-lato text-14px24px text-cwGray2">OPEN</span>
+        <span *ngIf="listingStatus==='reopened'" class="px-1 bg-opacity-50 rounded bg-lightOrange font-lato text-14px24px text-cwGray2">REOPENED</span>
+        <span *ngIf="listingStatus==='submitted'" class="px-1 rounded bg-opacity-40 bg-lightPurple font-lato text-14px24px text-cwGray2">SUBMITTED</span>
+        <span *ngIf="listingStatus==='approved'" class="px-1 bg-opacity-50 rounded bg-lightGreen font-lato text-14px24px text-cwGray2">APPROVED</span>
+        <span *ngIf="listingStatus==='rejected'" class="px-1 rounded bg-opacity-35 bg-cwRed font-lato text-14px24px text-cwGray2">REJECTED</span>
+        
     </div>
-    <div class="w-222 h-14 pt-8">
+    <div class="pt-8 w-222 h-14">
         <div class="pb-3">
             <button (click)="expandAll()" class="text-cwRed">Expand all</button>
         </div>
-        <div class="grid grid-cols-1 justify-items-start gap-3 border-t-2">
+        <div class="grid grid-cols-1 gap-4 border-t-2 justify-items-start">
             <!-- First dropdown section -->
             <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
                 <button (click)='locationInfoToggle()' class="font-cw text-cwGray w-222">
                     <div class="grid grid-cols-6">
                         <p *ngIf="!unHideLocationInfo" class="col-span-5 justify-self-start">Location Info</p>
-                        <p *ngIf="unHideLocationInfo" class="col-span-5 justify-self-start font-bold">Location Info</p>
+                        <p *ngIf="unHideLocationInfo" class="col-span-5 font-bold justify-self-start">Location Info</p>
                         <img *ngIf="!unHideLocationInfo" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                         <img *ngIf="unHideLocationInfo" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
-            <div *ngIf="unHideLocationInfo" class="bg-navGray w-222 grid grid-cols-1 pl-5 gap-3">
-                <div class="flex flex-row items-center space-x-4 ">
+            <div *ngIf="unHideLocationInfo" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+                <div class="flex flex-row items-center pt-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Contact Info</p>
+                </div>
+                <div class="flex flex-row items-center space-x-4 ">
+                    <img src="/assets/images/grey-check.png" alt="grey-check">
+                    <p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
@@ -41,6 +50,9 @@
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Good Sam Park</p>
                 </div>
+                <div class="items-center pb-4 pl-9">
+                    <p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p>
+                </div>
             </div> 
             <!-- Second dropdown section -->
             <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
@@ -48,14 +60,14 @@
                 <button (click)='locationDetailsToggle()' class="font-cw text-cwGray w-222">
                     <div class="grid grid-cols-6">
                         <p *ngIf="!unHideLocationDetails" class="col-span-5 justify-self-start">Location Details</p>
-                        <p *ngIf="unHideLocationDetails" class="col-span-5 justify-self-start font-bold">Location Details</p>
+                        <p *ngIf="unHideLocationDetails" class="col-span-5 font-bold justify-self-start">Location Details</p>
                         <img *ngIf="!unHideLocationDetails" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                         <img *ngIf="unHideLocationDetails" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
-            <div *ngIf="unHideLocationDetails" class="bg-navGray grid grid-cols-1 pl-5 gap-3">
-                <div class="flex flex-row items-center space-x-4 ">
+            <div *ngIf="unHideLocationDetails" class="grid grid-cols-1 gap-4 pl-5 bg-navGray">
+                <div class="flex flex-row items-center pt-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Interior Roads & Site Info</p>
                 </div>
@@ -64,6 +76,10 @@
                     <p class="font-cw text-cwGray text-14px24px">Policies</p>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
+                    <img src="/assets/images/grey-check.png" alt="grey-check">
+                    <p class="font-cw text-cwGray text-14px24px">Rates & Reservations</p>
+                </div>
+                <div class="flex flex-row items-center pb-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Eco Friendly</p>
                 </div>
@@ -74,14 +90,14 @@
                 <button (click)='amenitiesToggle()' class="font-cw text-cwGray w-222">
                     <div class="grid grid-cols-6">
                         <p *ngIf="!unHideAmenities" class="col-span-5 justify-self-start">Amenities</p>
-                        <p *ngIf="unHideAmenities" class="col-span-5 justify-self-start font-bold">Amenities</p>
+                        <p *ngIf="unHideAmenities" class="col-span-5 font-bold justify-self-start">Amenities</p>
                         <img *ngIf="!unHideAmenities" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                         <img *ngIf="unHideAmenities" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
-            <div *ngIf="unHideAmenities" class="bg-navGray w-222 grid grid-cols-1 pl-5 gap-3">
-                <div class="flex flex-row items-center space-x-4 ">
+            <div *ngIf="unHideAmenities" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+                <div class="flex flex-row items-center pt-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Restrooms</p>
                 </div>
@@ -93,7 +109,7 @@
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Recreation</p>
                 </div>
-                <div class="flex flex-row items-center space-x-4 ">
+                <div class="flex flex-row items-center pb-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Water Recreation</p>
                 </div>
@@ -104,18 +120,18 @@
                 <button (click)='rentBuyToggle()' class="font-cw text-cwGray w-222">
                     <div class="grid grid-cols-6">
                         <p *ngIf="!unHideRentBuy" class="col-span-5 justify-self-start">Rent & Buy</p>
-                        <p *ngIf="unHideRentBuy" class="col-span-5 justify-self-start font-bold">Rent & Buy</p>
+                        <p *ngIf="unHideRentBuy" class="col-span-5 font-bold justify-self-start">Rent & Buy</p>
                         <img *ngIf="!unHideRentBuy" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                         <img *ngIf="unHideRentBuy" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
-            <div *ngIf="unHideRentBuy" class="bg-navGray w-222 grid grid-cols-1 pl-5 gap-3">
-                <div class="flex flex-row items-center space-x-4 ">
+            <div *ngIf="unHideRentBuy" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+                <div class="flex flex-row items-center pt-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Tenting & Rentals</p>
                 </div>
-                <div class="flex flex-row items-center space-x-4 ">
+                <div class="flex flex-row items-center pb-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">RV Homes / Park Models / Lots for Sale</p>
                 </div>
@@ -123,39 +139,26 @@
             <!-- Fifth dropdown section -->
             <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
-                <button (click)='ratesRatingsToggle()' class="font-cw text-cwGray w-222">
+                <button (click)='ratingsToggle()' class="font-cw text-cwGray w-222">
                     <div class="grid grid-cols-6">
-                        <p *ngIf="!unHideRatesRatings" class="col-span-5 justify-self-start">Rates & Ratings</p>
-                        <p *ngIf="unHideRatesRatings" class="col-span-5 justify-self-start font-bold">Rates & Ratings</p>
-                        <img *ngIf="!unHideRatesRatings" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
-                        <img *ngIf="unHideRatesRatings" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
+                        <p *ngIf="!unHideRatings" class="col-span-5 justify-self-start">Ratings</p>
+                        <p *ngIf="unHideRatings" class="col-span-5 font-bold justify-self-start">Ratings</p>
+                        <img *ngIf="!unHideRatings" class="self-center justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideRatings" class="self-center justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                     </div>
                 </button>
             </div>
-            <div *ngIf="unHideRatesRatings" class="bg-navGray w-222 grid grid-cols-1 pl-5 gap-3">
-                <div class="flex flex-row items-center space-x-4 ">
-                    <img src="/assets/images/grey-check.png" alt="grey-check">
-                    <p class="font-cw text-cwGray text-14px24px">Rates & Reservations</p>
-                </div>
-                <div class="flex flex-row items-center space-x-4 ">
+            <div *ngIf="unHideRatings" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+                <div class="flex flex-row items-center pt-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Ratings</p>
                 </div>
-                <div class="flex flex-row items-center space-x-4 ">
+                <div class="flex flex-row items-center pb-4 space-x-4 ">
                     <img src="/assets/images/grey-check.png" alt="grey-check">
                     <p class="font-cw text-cwGray text-14px24px">Published Ratings</p>
                 </div>
-                <div class="flex flex-row items-center space-x-4 ">
-                    <img src="/assets/images/grey-check.png" alt="grey-check">
-                    <p class="font-cw text-cwGray text-14px24px">Water Recreation</p>
-                </div>
             </div>
             <!-- Sixth section -->
-            <div class="flex flex-row justify-center items-center space-x-2.5 ">
-                <img src="/assets/images/grey-check.png" alt="grey-check">
-            <p class="font-cw text-cwGray">Advertising Codes (Office Use Only)</p>
-            </div>
-            <!-- Seventh section-->
             <div class="flex flex-row justify-center items-center space-x-2.5 ">
                 <img src="/assets/images/grey-check.png" alt="grey-check">
             <p class="font-cw text-cwGray">Listing Update Details</p>
