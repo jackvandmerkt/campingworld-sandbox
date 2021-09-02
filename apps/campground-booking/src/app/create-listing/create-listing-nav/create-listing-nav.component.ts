@@ -5,11 +5,12 @@ import { Component } from "@angular/core";
     templateUrl: './create-listing-nav.component.html'
 })
 export class CreateListingNavComponent {
+    listingStatus: string = 'open';
     unHideLocationInfo: boolean = false;
     unHideLocationDetails: boolean = false;
     unHideAmenities: boolean = false;
     unHideRentBuy: boolean = false;
-    unHideRatesRatings: boolean = false;
+    unHideRatings: boolean = false;
     constructor() {
 
     }
@@ -26,16 +27,16 @@ export class CreateListingNavComponent {
         if(this.unHideRentBuy == false) {
             this.unHideRentBuy = !this.unHideRentBuy;
         }
-        if(this.unHideRatesRatings == false) {
-            this.unHideRatesRatings = !this.unHideRatesRatings;
+        if(this.unHideRatings == false) {
+            this.unHideRatings = !this.unHideRatings;
         }
         else if((this.unHideLocationInfo == true) && (this.unHideLocationDetails == true) && (this.unHideAmenities == true) 
-            && (this.unHideRentBuy == true) && (this.unHideRatesRatings == true)) {
+            && (this.unHideRentBuy == true) && (this.unHideRatings == true)) {
                 this.unHideLocationInfo = false;
                 this.unHideLocationDetails = false;
                 this.unHideAmenities = false;
                 this.unHideRentBuy = false;
-                this.unHideRatesRatings = false;
+                this.unHideRatings = false;
         }
     }
 
@@ -51,7 +52,7 @@ export class CreateListingNavComponent {
     rentBuyToggle() {
         this.unHideRentBuy = !this.unHideRentBuy;
     }
-    ratesRatingsToggle() {
-        this.unHideRatesRatings = !this.unHideRatesRatings;
+    ratingsToggle() {
+        this.unHideRatings = !this.unHideRatings;
     }
 }

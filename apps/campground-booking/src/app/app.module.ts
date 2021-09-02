@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NeedSupportComponent } from './create-listing/create-listing-cards/need-support.component';
+import { ProTipsComponent } from './create-listing/create-listing-cards/protips.component';
+import { CreateListingHeaderComponent } from './create-listing/create-listing-header/create-listing-header.component';
 import { CreateListingNavComponent } from './create-listing/create-listing-nav/create-listing-nav.component';
 import { CreateListingComponent } from './create-listing/create-listing.component';
 import { GoodSamRecordFormComponent } from './create-listing/location-info/good-sam-record.component';
@@ -29,7 +31,9 @@ import { routes } from './routes';
     ProposalsComponent,
     CreateListingComponent,
     GoodSamRecordFormComponent,
-    NeedSupportComponent
+    NeedSupportComponent,
+    ProTipsComponent,
+    CreateListingHeaderComponent
   ],
   imports: [
     BrowserModule,

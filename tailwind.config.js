@@ -17,15 +17,26 @@ module.exports = {
       colors: {
         cwRed: '#C30B24',
         cwGray: '#474342',
+        cwGray2: '#2D2A29',
         cwLightGray: '#757272',
-        cwBg: "#E5E5E5",
-        formBlack: '#212B36',
         navGray: '#F8F9FA',
         cwBadgeGray: '#BFC5CE',
+        proposalsGray: '#EAECEF',
+        cwBg: "#E5E5E5",
+        formBlack: '#212B36',
         lightOrange: '#FF974580',
-        proposalsGray: '#EAECEF'
+        lightPurple: '#9B6CFC66',
+        lightGreen: '#50B83C80'
+      },
+      opacity: {
+        '35': '.35'
       },
       spacing: {
+        '.75': '3px',
+        '5.49': '5.49px',
+        '9.31': '9.31px',
+        '4.5': '18px',
+        '5.5': '22px',
         '6.5': '26px',
         '7.5': '30px',
         '13': '52px',
@@ -63,9 +74,23 @@ module.exports = {
         '20px30px': ['20px', '30px']
       }
     },
+    boxShadow: {
+        sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+       '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+        inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        none: 'none'
+    }
   },
   variants: {
-    extend: {},
+    extend: {
+      width: ["hover"],
+      height: ["hover"]
+    },
   },
   plugins: [
     require('@tailwindcss/forms')
