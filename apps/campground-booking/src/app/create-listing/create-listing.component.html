@@ -1,14 +1,14 @@
-<div class="px-18 py-15">
+<div class="xl:px-18 xl:py-15 lg:px-8 lg:py-15">
     <create-listing-header></create-listing-header>
 </div>
-<div class="grid grid-cols-4 pb-36">
-    <div class="col-span-1">
+<div class="grid grid-cols-4 xl:gap-0 pb-36">
+    <div class="col-span-1 lg:justify-self-start lg:pl-8 xl:justify-self-center xl:pl-0">
         <create-listing-nav></create-listing-nav>
     </div>
-    <div class="col-span-2">
+    <div class="xl:col-span-2 lg:col-span-3 lg:ml-14 xl:ml-0">
         <good-sam-record></good-sam-record>
     </div>
-    <div class="flex flex-col col-span-1 space-y-6">
+    <div class="flex xl:col-span-1 xl:space-y-6 lg:space-y-0 xl:flex-col lg:flex-row lg:place-self-end xl:place-self-start lg:col-span-4 lg:pr-18 lg:space-x-5 xl:space-x-0">
         <div class="">
             <protips></protips>
         </div>
@@ -17,6 +17,6 @@
         </div>
     </div>
 </div>
-<div class="flex flex-row items-center justify-end w-full h-24 pr-18 shadow-8px32px">
-    <button class="w-48 bg-validate h-13">Validate & Submit</button>
+<div class="flex flex-row items-center justify-end w-full h-24 lg:hidden pr-18 shadow-8px32px">
+    <button class="w-48 hover:opacity-80 bg-validate h-13">Validate & Submit</button>
 </div>
