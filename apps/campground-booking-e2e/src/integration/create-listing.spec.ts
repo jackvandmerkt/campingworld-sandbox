@@ -6,6 +6,7 @@ describe('campground-booking', () => {
         getText().contains('Need Support?');
         getText().contains('Pro Tips');
         getText().contains('Good Sam Rating');
+        cy.get("button[data-validate='Submit']");
     });
 
     it('Should expand all divs once expand all button is clicked', () => {

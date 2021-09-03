@@ -1,30 +1,27 @@
-.-z-1 {
-    z-index: -1;
-  }
+/*Toggle Radio Button*/
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
 
-  .origin-0 {
-    transform-origin: 0%;
-  }
+input:checked ~ .block {
+  background-color: #C30B24;
+  opacity: 50%;
+}
 
-  input:focus ~ label,
-  input:not(:placeholder-shown) ~ label,
-  textarea:focus ~ label,
-  textarea:not(:placeholder-shown) ~ label,
-  select:focus ~ label,
-  select:not([value='']):valid ~ label {
-    --tw-translate-x: 0;
-    --tw-translate-y: 0;
-    --tw-rotate: 0;
-    --tw-skew-x: 0;
-    --tw-skew-y: 0;
-    transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate))
-      skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    --tw-scale-x: 0.75;
-    --tw-scale-y: 0.75;
-    --tw-translate-y: -1.5rem;
-  } 
+/*Text Input Fields Floating Form Label*/
+.f-outline input:focus-within ~ label,
+.f-outline input:not(:placeholder-shown) ~ label {
+  transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
+}
 
-  input:focus ~ label,
-  select:focus ~ label {
+/*Dropdown Select Fields Floating Form Label*/
+select:focus ~ label,
+select:not([value='']):valid ~ label {
+  transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
+} 
 
-  }
+/*List/State Province Field Floating Form Label*/
+.longer-label:focus ~ label,
+.longer-label:not([value='']):valid ~ label {
+  transform: translateY(-1rem) translatex(-.9rem) scaleX(0.75) scaleY(0.75);
+} 
