@@ -31,6 +31,6 @@ export class NewListingsComponent implements OnInit{
         return this.newListingForm.get('parkName');
       } 
       getParkType (){
-        return this.newListingForm.get('parkTyoe');
+        return this.newListingForm.get('parkType');
       } 
 }

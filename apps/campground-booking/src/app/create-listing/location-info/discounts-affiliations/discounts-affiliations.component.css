@@ -8,20 +8,26 @@ input:checked ~ .block {
     opacity: 50%;
 }
 
-/*Text Input Fields Floating Form Label*/
-.f-outline input:focus-within ~ label,
-.f-outline input:not(:placeholder-shown) ~ label {
-    transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
-}
-
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
 select:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
+    transform: translateY(-1rem) translatex(-.4rem) scaleX(0.75) scaleY(0.75);
 } 
 
-/*List/State Province Field Floating Form Label*/
-.longer-label:focus ~ label,
-.longer-label:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-.9rem) scaleX(0.75) scaleY(0.75);
+/*State Province Field Floating Form Label*/
+.State-Prov:focus ~ label,
+.State-Prov:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-1rem) scaleX(0.75) scaleY(0.75);
+} 
+
+/*Good Neighbor Field Floating Form Label*/
+.Good-Neighbor:focus ~ label,
+.Good-Neighbor:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-1.45rem) scaleX(0.75) scaleY(0.75);
+} 
+
+/*Coast to Coast Field Floating Form Label*/
+.Coast-Coast:focus ~ label,
+.Coast-Coast:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-1.9rem) scaleX(0.75) scaleY(0.75);
 } 
