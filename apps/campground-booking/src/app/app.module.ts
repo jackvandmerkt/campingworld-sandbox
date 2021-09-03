@@ -18,7 +18,6 @@ import { NavComponent } from './nav/nav.component';
 import { NewListingsComponent } from './new-listing/new-listing.component';
 import { routes } from './routes';
 import { ContactInfoComponent } from './create-listing/location-info/contact-info/contact-info.component';
-import { DiscountsAndAffiliationComponent } from './create-listing/location-info/discounts-and-affiliation/discounts-and-affiliation.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { DiscountsAndAffiliationComponent } from './create-listing/location-info
     NeedSupportComponent,
     ProTipsComponent,
     CreateListingHeaderComponent,
-    ContactInfoComponent,
-    DiscountsAndAffiliationComponent
+    ContactInfoComponent
   ],
   imports: [
     BrowserModule,
