@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
 })
 export class CreateListingComponent {
 
-  locationInfoStep = 'Contact Info';
+  locationInfoStep = 'Discounts and Affiliation';
 
   constructor() {
 
