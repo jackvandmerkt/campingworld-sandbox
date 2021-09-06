@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -18,6 +18,7 @@ import { NavComponent } from './nav/nav.component';
 import { NewListingsComponent } from './new-listing/new-listing.component';
 import { routes } from './routes';
 import { ContactInfoComponent } from './create-listing/location-info/contact-info/contact-info.component';
+import { OwnerAndB2bInfoComponent } from './create-listing/location-info/owner-and-b2b-info/owner-and-b2b-info.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +36,16 @@ import { ContactInfoComponent } from './create-listing/location-info/contact-inf
     NeedSupportComponent,
     ProTipsComponent,
     CreateListingHeaderComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    OwnerAndB2bInfoComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
+
 })
 export class AppModule { }
