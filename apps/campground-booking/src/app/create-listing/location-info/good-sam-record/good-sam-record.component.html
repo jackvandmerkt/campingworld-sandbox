@@ -91,12 +91,13 @@
       </div>
 
       <div class="flex items-center justify-end w-full pr-2 mb-12">
-        <p class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="!isGuestsChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="isGuestsChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
         <label for="toggleGuests" class="flex items-center cursor-pointer">
           <!-- toggle -->
           <div class="relative">
             <!-- input -->
-            <input type="checkbox" id="toggleGuests" class="sr-only">
+            <input type="checkbox" (click)="checkBoxGuestsChange(this);" id="toggleGuests" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -110,12 +111,13 @@
     </div>
 
     <div class="flex items-center justify-end w-full pr-2 mb-12">
-        <p class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="!isDeleteChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="isDeleteChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
         <label for="toggleDelete" class="flex items-center cursor-pointer">
           <!-- toggle -->
           <div class="relative">
             <!-- input -->
-            <input type="checkbox" id="toggleDelete" class="sr-only">
+            <input type="checkbox" (click)="checkBoxDeleteChange(this);" id="toggleDelete" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->

@@ -7,12 +7,13 @@
                 <p class="font-cw">AAA discount?</p>
             </div>
             <div class="flex items-center justify-end w-full pr-2 mb-10">
-            <p class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="!isAAAChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="isAAAChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
             <label for="toggleAAA" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input type="checkbox" id="toggleAAA" class="sr-only">
+                <input type="checkbox" (click)="checkBoxAAAChange(this);" id="toggleAAA" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -27,12 +28,13 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="!isMilitaryChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="isMilitaryChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
         <label for="toggleMilitary" class="flex items-center cursor-pointer">
             <!-- toggle -->
             <div class="relative">
             <!-- input -->
-            <input type="checkbox" id="toggleMilitary" class="sr-only">
+            <input type="checkbox" (click)="checkBoxMilitaryChange(this);" id="toggleMilitary" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -58,12 +60,13 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="!isARVCChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="isARVCChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
         <label for="toggleARVC" class="flex items-center cursor-pointer">
             <!-- toggle -->
             <div class="relative">
             <!-- input -->
-            <input type="checkbox" id="toggleARVC" class="sr-only">
+            <input type="checkbox" (click)="checkBoxARVCChange(this);" id="toggleARVC" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -89,12 +92,13 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="!isNeighborChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="isNeighborChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
         <label for="toggleGoodNeighbor" class="flex items-center cursor-pointer">
             <!-- toggle -->
             <div class="relative">
             <!-- input -->
-            <input type="checkbox" id="toggleGoodNeighbor" class="sr-only">
+            <input type="checkbox" (click)="checkBoxNeighborChange(this);" id="toggleGoodNeighbor" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -120,13 +124,13 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-        <!-- <p *ngIf="isCoastChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p> -->
+        <p *ngIf="!isCoastChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="isCoastChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
             <label for="toggleCoast" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" id="toggleCoast" class="sr-only">
+                <input  type="checkbox" (click)="checkBoxCoastChange(this);" id="toggleCoast" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
