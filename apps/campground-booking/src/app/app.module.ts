@@ -20,6 +20,7 @@ import { routes } from './routes';
 import { ContactInfoComponent } from './create-listing/location-info/contact-info/contact-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiscountsAffiliationsComponent } from './create-listing/location-info/discounts-affiliations/discounts-affiliations.component';
+import { DirectionsComponent } from './create-listing/location-info/directions/directions.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DiscountsAffiliationsComponent } from './create-listing/location-info/d
     ProTipsComponent,
     CreateListingHeaderComponent,
     ContactInfoComponent,
-    DiscountsAffiliationsComponent
+    DiscountsAffiliationsComponent,
+    DirectionsComponent
   ],
   imports: [
     BrowserModule,

@@ -19,14 +19,14 @@ export class DiscountsAffiliationsComponent implements OnInit{
 
     ngOnInit() {
         this.discountsAffiliations = new FormGroup({
-            aaaDiscount: new FormControl(''),
-            militaryDiscount: new FormControl(''),
+            toggleAAA: new FormControl(''),
+            toggleMilitary: new FormControl(''),
             affiliation: new FormControl(''),
-            membersOfARVC: new FormControl(''),
+            toggleARVC: new FormControl(''),
             stateProvAffiliation: new FormControl(''),
-            goodNeighborPark: new FormControl(''),
+            toggleGoodNeighbor: new FormControl(''),
             goodNeighborParkNum: new FormControl(''),
-            coastToCoastPark: new FormControl(''),
+            toggleCoast: new FormControl(''),
             coastToCoastParkMembershipNum: new FormControl('')       
         });
     };
