@@ -1,0 +1,76 @@
+<form [formGroup]="directions">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2">
+            <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Directions</p>
+        </div>
+        <div class="relative pb-10 f-outline ">
+            <input type="text" name="directions" placeholder=" "
+                class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
+            <label for="directions"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Directions</label>
+        </div>
+        <div class="relative col-span-2 pb-10 f-outline">
+            <select name="directionsFromTown" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 longer-label border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">010 - Private Park</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="directionsFromTown" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Directions from Town</label>
+        </div>
+        <div class="pb-10">
+            <p class="font-cw">Near a NASCAR track?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!isNascarChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="isNascarChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleNascar" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxNascarChange(this);" id="toggleNascar" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="isNascarChecked" class="relative pb-10 miles-km">
+            <input type="text" name="milesOrKM" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+            <label for="milesOrKM"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">How many miles or km?</label>
+        </div>
+    
+        <div *ngIf="isNascarChecked" class="relative pb-10 f-outline">
+            <select name="unitOfMeasurement" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-306 h-13 border-cwBadgeGray focus:outline-none">
+              <option value=""></option>
+              <option value="1">miles</option>
+              <option value="2">kilometers</option>
+            </select>
+            <label for="unitOfMeasurement" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Unit of measurement</label>
+          </div>
+          
+          <div *ngIf="isNascarChecked" class="relative pb-10 name-track">
+            <input type="text" name="nameOfTrack" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
+            <label for="nameOfTrack"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Name of track</label>
+        </div>
+        
+
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</form>

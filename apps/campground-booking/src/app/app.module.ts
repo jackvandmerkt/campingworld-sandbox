@@ -18,6 +18,9 @@ import { NavComponent } from './nav/nav.component';
 import { NewListingsComponent } from './new-listing/new-listing.component';
 import { routes } from './routes';
 import { ContactInfoComponent } from './create-listing/location-info/contact-info/contact-info.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DiscountsAffiliationsComponent } from './create-listing/location-info/discounts-affiliations/discounts-affiliations.component';
+import { DirectionsComponent } from './create-listing/location-info/directions/directions.component';
 
 @NgModule({
   declarations: [
@@ -35,11 +38,15 @@ import { ContactInfoComponent } from './create-listing/location-info/contact-inf
     NeedSupportComponent,
     ProTipsComponent,
     CreateListingHeaderComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    DiscountsAffiliationsComponent,
+    DirectionsComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
