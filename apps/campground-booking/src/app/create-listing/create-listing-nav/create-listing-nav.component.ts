@@ -55,4 +55,6 @@ export class CreateListingNavComponent {
     ratingsToggle() {
         this.unHideRatings = !this.unHideRatings;
     }
+
+    
 }

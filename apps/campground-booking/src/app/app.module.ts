@@ -41,7 +41,7 @@ import { DirectionsComponent } from './create-listing/location-info/directions/d
     ProTipsComponent,
     CreateListingHeaderComponent,
     ContactInfoComponent,
-    OwnerAndB2bInfoComponent
+    OwnerAndB2bInfoComponent,
     DiscountsAffiliationsComponent,
     DirectionsComponent
   ],
