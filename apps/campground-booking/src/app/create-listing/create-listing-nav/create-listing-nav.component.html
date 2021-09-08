@@ -1,4 +1,4 @@
-<div class="grid justify-center ">
+<div class="grid justify-center">
     <div class="flex space-x-4 ">
         <p>Status:</p>
         <span *ngIf="listingStatus==='open'" class="px-1 bg-opacity-50 rounded bg-lightOrange font-lato text-14px24px text-cwGray2">OPEN</span>
@@ -6,7 +6,6 @@
         <span *ngIf="listingStatus==='submitted'" class="px-1 rounded bg-opacity-40 bg-lightPurple font-lato text-14px24px text-cwGray2">SUBMITTED</span>
         <span *ngIf="listingStatus==='approved'" class="px-1 bg-opacity-50 rounded bg-lightGreen font-lato text-14px24px text-cwGray2">APPROVED</span>
         <span *ngIf="listingStatus==='rejected'" class="px-1 rounded bg-opacity-35 bg-cwRed font-lato text-14px24px text-cwGray2">REJECTED</span>
-        
     </div>
     <div class="pt-8 w-222 h-14">
         <div class="pb-3">
@@ -48,7 +47,7 @@
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                    <a ><p class="font-cw text-cwGray text-14px24px">Good Sam Park</p></a>
+                    <a routerLink="./good-sam-park"><p class="font-cw text-cwGray text-14px24px">Good Sam Park</p></a>
                 </div>
                 <div class="items-center pb-4 pl-9">
                     <a ><p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p></a>
