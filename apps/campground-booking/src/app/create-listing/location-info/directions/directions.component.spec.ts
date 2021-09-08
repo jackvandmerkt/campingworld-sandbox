@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DirectionsComponent } from './directions.component';
 
-describe('ContactInfoComponent', () => {
+describe('DirectionsComponent', () => {
   let component: DirectionsComponent;
   let fixture: ComponentFixture<DirectionsComponent>;
 

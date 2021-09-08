@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoodSamRecordFormComponent } from './good-sam-record.component';
 
-describe('ContactInfoComponent', () => {
+describe('GoodSamRecordFormComponent', () => {
   let component: GoodSamRecordFormComponent;
   let fixture: ComponentFixture<GoodSamRecordFormComponent>;
 
