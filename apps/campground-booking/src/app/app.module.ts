@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -18,9 +18,11 @@ import { NavComponent } from './nav/nav.component';
 import { NewListingsComponent } from './new-listing/new-listing.component';
 import { routes } from './routes';
 import { ContactInfoComponent } from './create-listing/location-info/contact-info/contact-info.component';
+import { OwnerAndB2bInfoComponent } from './create-listing/location-info/owner-and-b2b-info/owner-and-b2b-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiscountsAffiliationsComponent } from './create-listing/location-info/discounts-affiliations/discounts-affiliations.component';
 import { DirectionsComponent } from './create-listing/location-info/directions/directions.component';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { DirectionsComponent } from './create-listing/location-info/directions/d
     ProTipsComponent,
     CreateListingHeaderComponent,
     ContactInfoComponent,
+    OwnerAndB2bInfoComponent
     DiscountsAffiliationsComponent,
     DirectionsComponent
   ],
@@ -48,7 +51,9 @@ import { DirectionsComponent } from './create-listing/location-info/directions/d
     ReactiveFormsModule,
     FormsModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
+
 })
 export class AppModule { }

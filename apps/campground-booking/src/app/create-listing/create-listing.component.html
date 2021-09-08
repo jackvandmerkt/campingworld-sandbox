@@ -3,21 +3,23 @@
 </div>
 <div class="grid grid-cols-4 xl:gap-0 pb-36">
   <div class="col-span-1 lg:justify-self-start lg:pl-8 xl:justify-self-center xl:pl-0">
-      <create-listing-nav></create-listing-nav>
+    <create-listing-nav></create-listing-nav>
   </div>
   <div class="xl:col-span-2 lg:col-span-3 lg:ml-14 xl:ml-0">
-    <good-sam-record *ngIf="locationInfoStep === 'goodSamRecordId'"></good-sam-record>
-    <contact-info *ngIf="locationInfoStep === 'contactInfo'"></contact-info>
-    <discounts-affiliations *ngIf="locationInfoStep === 'discountsAndAffiliations'"></discounts-affiliations>
-    <directions *ngIf="locationInfoStep === 'directions'"></directions>
+    <good-sam-record *ngIf="locationInfoStep === 'Good Sam Record ID'"></good-sam-record>
+    <contact-info *ngIf="locationInfoStep === 'Contact Info'"></contact-info>
+    <owner-and-b2b-info *ngIf="locationInfoStep === 'Owner and b2b info'"></owner-and-b2b-info>
+    <discounts-affiliations *ngIf="locationInfoStep === 'Discounts and Affiliations'"></discounts-affiliations>
+    <directions *ngIf="locationInfoStep === 'Directions'"></directions>
   </div>
-  <div class="flex xl:col-span-1 xl:space-y-6 lg:space-y-0 xl:flex-col lg:flex-row lg:place-self-end xl:place-self-start lg:col-span-4 lg:pr-18 lg:space-x-5 xl:space-x-0">
-      <div class="">
-          <protips></protips>
-      </div>
-      <div class="">
-          <need-support></need-support>
-      </div>
+  <div
+    class="flex xl:col-span-1 xl:space-y-6 lg:space-y-0 xl:flex-col lg:flex-row lg:place-self-end xl:place-self-start lg:col-span-4 lg:pr-18 lg:space-x-5 xl:space-x-0">
+    <div class="">
+      <protips></protips>
+    </div>
+    <div class="">
+      <need-support></need-support>
+    </div>
   </div>
 </div>
 <div class="flex flex-row items-center justify-end w-full h-24 lg:invisible xl:visible pr-18 shadow-8px32px">

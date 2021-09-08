@@ -5,7 +5,6 @@ import { Component } from "@angular/core";
   templateUrl: './create-listing.component.html'
 })
 export class CreateListingComponent {
-
   locationInfoStep = 'directions';
 
   constructor() {

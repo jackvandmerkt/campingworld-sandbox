@@ -1,0 +1,219 @@
+<h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Owner & BSB Info</h1>
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="pb-10">
+    <p class="font-cw text-gray-400">New owner</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-12">
+    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
+    <label for="toggleGuests" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" id="toggleUTM" class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+      </div>
+    </label>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 gap-6">
+  <div class="pb-10">
+    <p class="font-cw text-gray-400">Park for sale?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-12">
+    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
+    <label for="toggleGuests" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" id="toggleUTM" class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+      </div>
+    </label>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="fileNum" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
+      Owner's name
+    </label>
+  </div>
+
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-gray-100 border-none rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Owner
+      Group</label>
+  </div>
+</div>
+<h2 class="font-bold font-cw text-cwGray text-18px24px pb-7 mt-10">Owner's Address</h2>
+<div class="grid grid-cols-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline ">
+    <input type="text" name="parkName" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Address</label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="fileNum" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">City</label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">State
+      Province</label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="fileNum" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
+      Zip / Postal Code
+    </label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Country</label>
+  </div>
+</div>
+<h2 class="font-bold font-cw text-cwGray text-18px24px pb-7 mt-10">Owner's Contact Info</h2>
+<div class="grid grid-cols-1 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="fileNum" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
+    <label for="ownersEmail" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
+      Owner's email
+    </label>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="fileNum" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="ownersPhone" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
+      Owner's phone
+    </label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="fileNum" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="AdDecisionMaker" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
+      Ad decision maker
+    </label>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">B2B Comm Email
+      Source</label>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 w-636 mt-6 gap-6">
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">B2B Comm Mail
+      Source</label>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 mt-6 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Objections to
+      advertising</label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Reason for
+      dropping Good Sam affiliation</label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <select name="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-gray-100 border-none rounded appearance-none w-636 h-13 border-cwGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Unique
+      Account</label>
+  </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="flex flex-row col-span-2 pb-10 mt-5">
+  <div class="">
+    <button class="font-medium border rounded font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+  </div>
+  <div class="pl-6">
+    <button class="text-white rounded bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+  </div>
+
+</div>
