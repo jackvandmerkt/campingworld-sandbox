@@ -11,6 +11,8 @@ export class CreateListingNavComponent {
     unHideAmenities: boolean = false;
     unHideRentBuy: boolean = false;
     unHideRatings: boolean = false;
+
+    currentForm = "goodSamRecordId";
     constructor() {
 
     }
@@ -54,5 +56,24 @@ export class CreateListingNavComponent {
     }
     ratingsToggle() {
         this.unHideRatings = !this.unHideRatings;
+    }
+
+    formChange(selectedForm:any) {
+        if (selectedForm == "goodSamRecordId") {
+          this.currentForm = "goodSamRecordId";
+        }
+        if (selectedForm == "contactInfo") {
+            this.currentForm = "contactInfo";
+        }
+        if (selectedForm == "discountsAndAffiliations") {
+            this.currentForm = "discountsAndAffiliations";
+        }
+        if (selectedForm == "ownerB2BInfo") {
+            this.currentForm = "ownerB2BInfo";
+        }
+        if (selectedForm == "directions") {
+            this.currentForm = "directions";
+        }
+        
     }
 }

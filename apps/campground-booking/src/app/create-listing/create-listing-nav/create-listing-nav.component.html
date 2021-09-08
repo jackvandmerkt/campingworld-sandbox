@@ -28,30 +28,30 @@
             <div *ngIf="unHideLocationInfo" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
                 <div class="flex flex-row items-center pt-4 space-x-4 ">
                     <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                    <p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p>
+                    <button (click)="formChange('goodSamRecordId')"><p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p></button>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                    <p class="font-cw text-cwGray text-14px24px">Contact Info</p>
+                    <button (click)="formChange('contactInfo')"><p class="font-cw text-cwGray text-14px24px">Contact Info</p></button>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                    <p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p>
+                    <button (click)="formChange('discountsAffiliations')"><p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p></button>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                    <p class="font-cw text-cwGray text-14px24px">Owner & B2B Info</p>
+                    <button (click)="formChange('ownerB2BInfo')"><p class="font-cw text-cwGray text-14px24px">Owner & B2B Info</p></button>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                    <p class="font-cw text-cwGray text-14px24px">Directions</p>
+                    <button (click)="formChange('directions')"><p class="font-cw text-cwGray text-14px24px">Directions</p></button>
                 </div>
                 <div class="flex flex-row items-center space-x-4 ">
                     <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                    <p class="font-cw text-cwGray text-14px24px">Good Sam Park</p>
+                    <button (click)="formChange('goodSamPark')"><p class="font-cw text-cwGray text-14px24px">Good Sam Park</p></button>
                 </div>
                 <div class="items-center pb-4 pl-9">
-                    <p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p>
+                    <button (click)="formChange('advertisingCodes')"><p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p></button>
                 </div>
             </div> 
             <!-- Second dropdown section -->
