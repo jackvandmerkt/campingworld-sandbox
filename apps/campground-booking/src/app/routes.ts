@@ -9,6 +9,7 @@ import { OwnerAndB2bInfoComponent } from "./create-listing/location-info/owner-a
 import { AdvertisingCodesComponent } from "./create-listing/location-info/advertising-codes/advertising-codes.component";
 import { HomeComponent } from "./home/home.component";
 import { NewListingsComponent } from "./new-listing/new-listing.component";
+import { InteriorRoadsSiteInformationComponent } from "./create-listing/location-details/interior-roads-site-info.component";
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,7 +23,8 @@ export const routes: Routes = [
       { path: 'owner-b2b-info', component: OwnerAndB2bInfoComponent },
       { path: 'directions', component: DirectionsComponent },
       { path: 'advertising-codes', component: AdvertisingCodesComponent },
-      { path: 'good-sam-park', component: GoodSamParkComponent }
+      { path: 'good-sam-park', component: GoodSamParkComponent },
+      { path: 'interior-roads', component: InteriorRoadsSiteInformationComponent }
     ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
