@@ -24,6 +24,7 @@ import { DiscountsAffiliationsComponent } from './create-listing/location-info/d
 import { DirectionsComponent } from './create-listing/location-info/directions/directions.component';
 import { AdvertisingCodesComponent } from './create-listing/location-info/advertising-codes/advertising-codes.component';
 import { GoodSamParkComponent } from './create-listing/location-info/good-sam-park/good-sam-park.component';
+import { PoliciesComponent } from './create-listing/location-details/policies/policies.component';
 
 
 
@@ -48,7 +49,8 @@ import { GoodSamParkComponent } from './create-listing/location-info/good-sam-pa
     DiscountsAffiliationsComponent,
     DirectionsComponent,
     AdvertisingCodesComponent,
-    GoodSamParkComponent
+    GoodSamParkComponent,
+    PoliciesComponent
   ],
   imports: [
     BrowserModule,
