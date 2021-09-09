@@ -28,16 +28,43 @@ export class InteriorRoadsSiteInformationComponent {
 
     ngOnInit() {
         this.interiorRoadsSitesInfo = new FormGroup({
-            // goodSamParkHistory: new FormControl('')
+            roadConditionRadio: new FormControl(''),
+            interiorRoadType: new FormControl(''),
+            totalSpaces: new FormControl(''),
+            numAvailable: new FormControl(''),
+            numSeasonal: new FormControl(''),
+            numPermanet: new FormControl(''),
+            toggleSeasonal: new FormControl(''),
+            numPaved: new FormControl(''),
+            numAllWeather: new FormControl(''),
+            numGravel: new FormControl(''),
+            numGrass: new FormControl(''),
+            numDirt: new FormControl(''),
+            numFullHookups: new FormControl(''),
+            numWater: new FormControl(''),
+            numSewer: new FormControl(''),
+            numElectric: new FormControl(''),
+            numNoHookups: new FormControl(''),
+            sideHookupsRadio: new FormControl(''),
+            toggleBigRig: new FormControl(''),
+            toggleFullHookup: new FormControl(''),
+            toggleSelfContained: new FormControl(''),
+            pullThruW: new FormControl(''),
+            pullThruL: new FormControl(''),
+            numOfPullThrus: new FormControl(''),
+            backInW: new FormControl(''),
+            backInL: new FormControl(''),
+            toggleSlideOuts: new FormControl(''),
+            shadedSitesRadio: new FormControl('')
         });
     };
 
     checkBoxSeasonalChange(cb:any) {
-        this.separateSeasonalSection = !this.selfContainedUnits;
+        this.separateSeasonalSection = !this.separateSeasonalSection;
     }
 
     checkBoxSelfContainedChange(cb:any) {
-        this.selfContainedUnits = !this.separateSeasonalSection;
+        this.selfContainedUnits = !this.selfContainedUnits;
     }
 
     checkBoxFullHookupChange(cb:any) {
