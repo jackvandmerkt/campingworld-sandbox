@@ -1,6 +1,6 @@
 import { CreateListingNavComponent } from './create-listing-nav.component'
 
-describe('CreateListingComponent', () => {
+describe('CreateListingNavComponent', () => {
     let fixture: CreateListingNavComponent;
 
     beforeEach( () => {

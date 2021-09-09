@@ -22,6 +22,7 @@ import { OwnerAndB2bInfoComponent } from './create-listing/location-info/owner-a
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiscountsAffiliationsComponent } from './create-listing/location-info/discounts-affiliations/discounts-affiliations.component';
 import { DirectionsComponent } from './create-listing/location-info/directions/directions.component';
+import { GoodSamParkComponent } from './create-listing/location-info/good-sam-park/good-sam-park.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DirectionsComponent } from './create-listing/location-info/directions/d
     ContactInfoComponent,
     OwnerAndB2bInfoComponent,
     DiscountsAffiliationsComponent,
-    DirectionsComponent
+    DirectionsComponent,
+    GoodSamParkComponent
   ],
   imports: [
     BrowserModule,
