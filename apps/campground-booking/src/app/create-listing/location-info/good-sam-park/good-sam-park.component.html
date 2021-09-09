@@ -1,0 +1,121 @@
+<form [formGroup]="goodSamPark">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2">
+            <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Good Sam Park</p>
+        </div>
+        <div class="grid col-span-2">
+            <p class="font-bold font-cw text-cwGray text-18px24px pb-9">When park confirms affiliation, send these supplies:</p>
+        </div>
+        <div class="relative col-span-1 pb-10 f-outline">
+            <select name="numbersOfSigns" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">010 - Private Park</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="numbersOfSigns" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Number of signs to send</label>
+        </div>
+        <div class="relative col-span-1 pb-15 f-outline">
+            <select name="numbersOfFlags" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">010 - Private Park</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="numbersOfFlags" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Number of flags to send</label>
+        </div>
+
+        <div class="grid col-span-2 opacity-50">
+            <p class="font-bold font-cw text-cwGray text-18px24px pb-9">Office Use Only</p>
+        </div>
+
+
+        <div class="pb-10 opacity-50">
+            <p class="font-cw">Good Sam Park in 2021?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-10 opacity-50">
+            <p *ngIf="!is2021Checked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="is2021Checked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggle2021" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBox2021Change(this);" id="toggle2021" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="pb-10 opacity-50">
+            <p class="font-cw">Good Sam Park renew?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-10 opacity-50">
+            <p *ngIf="!isRenewChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="isRenewChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleRenew" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxRenewChange(this);" id="toggleRenew" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+    
+        <div class="pb-10 opacity-50">
+            <p class="font-cw">Good Sam Park new?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-10 opacity-50">
+            <p *ngIf="!isNewChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="isNewChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleNew" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxNewChange(this);" id="toggleNew" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="relative pb-10 f-outline">
+            <input type="goodSamAgisNumber" name="email" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray bg-navGray focus:outline-none" />
+            <label for="repCode"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good Sam Agis Number</label>
+        </div>
+
+        <div class="relative pb-10 f-outline">
+            <input type="goodSamParkHistory" name="email" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray bg-navGray focus:outline-none" />
+            <label for="repCode"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good Sam Park History</label>
+        </div>
+        
+
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -23,6 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiscountsAffiliationsComponent } from './create-listing/location-info/discounts-affiliations/discounts-affiliations.component';
 import { DirectionsComponent } from './create-listing/location-info/directions/directions.component';
 import { AdvertisingCodesComponent } from './create-listing/location-info/advertising-codes/advertising-codes.component';
+import { GoodSamParkComponent } from './create-listing/location-info/good-sam-park/good-sam-park.component';
+
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { AdvertisingCodesComponent } from './create-listing/location-info/advert
     OwnerAndB2bInfoComponent,
     DiscountsAffiliationsComponent,
     DirectionsComponent,
-    AdvertisingCodesComponent
+    AdvertisingCodesComponent,
+    GoodSamParkComponent
   ],
   imports: [
     BrowserModule,
