@@ -10,7 +10,8 @@ import { AdvertisingCodesComponent } from "./create-listing/location-info/advert
 import { HomeComponent } from "./home/home.component";
 import { NewListingsComponent } from "./new-listing/new-listing.component";
 import { PoliciesComponent } from "./create-listing/location-details/policies/policies.component";
-import { InteriorRoadsSiteInformationComponent } from "./create-listing/location-details/interior-roads-site-info.component";
+import { InteriorRoadsSiteInformationComponent } from "./create-listing/location-details/interior-roads/interior-roads-site-info.component";
+import { RatesReservationsComponent } from "./create-listing/location-details/rates-reservations/rates-reservations.component";
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,7 +27,8 @@ export const routes: Routes = [
       { path: 'advertising-codes', component: AdvertisingCodesComponent },
       { path: 'good-sam-park', component: GoodSamParkComponent },
       { path: 'policies', component: PoliciesComponent },
-      { path: 'interior-roads', component: InteriorRoadsSiteInformationComponent }
+      { path: 'interior-roads', component: InteriorRoadsSiteInformationComponent },
+      { path: 'rates-reservations', component: RatesReservationsComponent }
     ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

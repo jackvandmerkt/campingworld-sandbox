@@ -1,0 +1,84 @@
+<form [formGroup]="ratesReservations">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-9">
+            <p class="font-bold font-cw text-cwGray text-28px34px">Rates & Reservations</p>
+        </div>
+        <div class="flex flex-col col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">2021 Overnight Rates</p>
+            <p class=" font-cw text-cwGray text-14px24px">  
+                (Rate range includes: W, S, E. A/C, 50 amp elect heat, CATV & SATV) 
+            </p>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="overnightRatesFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="overnightRatesFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="overnightRatesTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="overnightRatesTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+        </div>
+
+        <div class="flex col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Tent rates</p>
+            <p class="pl-4 font-cw text-cwGray text-14px24px">(If different than above)</p>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-5 longer-label">
+                <input type="text" name="tentRatesFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tentRatesFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+            <div class="relative pb-5 longer-label">
+                <input type="text" name="tentRatesTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tentRatesTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+        </div>
+
+        <div class="flex col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Seasonal Rates</p>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-5 longer-label">
+                <input type="text" name="seasonalRatesFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="seasonalRatesFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+            <div class="relative pb-5 longer-label">
+                <input type="text" name="seasonalRatesTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="seasonalRatesTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+        </div>
+        <div class="relative col-span-2 pb-10 ">
+            <select name="byWeekMonth" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none amps w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">010 - Private Park</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="byWeekMonth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">By week/month</label>
+        </div>
+    </div>
+</form>
