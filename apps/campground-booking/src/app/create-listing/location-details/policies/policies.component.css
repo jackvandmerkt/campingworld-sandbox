@@ -1,0 +1,16 @@
+/*Toggle Radio Button*/
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
+
+input:checked ~ .block {
+  background-color: #C30B24;
+  opacity: 50%;
+}
+
+input:checked + label {
+border-color: #C30B24;
+  border-width: 3px;
+  height: 152px;
+  width: 147x;
+}
