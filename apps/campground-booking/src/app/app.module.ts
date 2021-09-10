@@ -25,8 +25,7 @@ import { DirectionsComponent } from './create-listing/location-info/directions/d
 import { AdvertisingCodesComponent } from './create-listing/location-info/advertising-codes/advertising-codes.component';
 import { GoodSamParkComponent } from './create-listing/location-info/good-sam-park/good-sam-park.component';
 import { PoliciesComponent } from './create-listing/location-details/policies/policies.component';
-
-
+import { InteriorRoadsSiteInformationComponent } from './create-listing/location-details/interior-roads-site-info.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +49,8 @@ import { PoliciesComponent } from './create-listing/location-details/policies/po
     DirectionsComponent,
     AdvertisingCodesComponent,
     GoodSamParkComponent,
-    PoliciesComponent
+    PoliciesComponent,
+    InteriorRoadsSiteInformationComponent
   ],
   imports: [
     BrowserModule,
