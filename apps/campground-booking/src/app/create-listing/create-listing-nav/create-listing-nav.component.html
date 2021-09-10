@@ -1,167 +1,200 @@
 <div class="grid justify-center">
   <div class="flex space-x-4 ">
-      <p>Status:</p>
-      <span *ngIf="listingStatus==='open'" class="px-1 bg-opacity-50 rounded bg-lightOrange font-lato text-14px24px text-cwGray2">OPEN</span>
-      <span *ngIf="listingStatus==='reopened'" class="px-1 bg-opacity-50 rounded bg-lightOrange font-lato text-14px24px text-cwGray2">REOPENED</span>
-      <span *ngIf="listingStatus==='submitted'" class="px-1 rounded bg-opacity-40 bg-lightPurple font-lato text-14px24px text-cwGray2">SUBMITTED</span>
-      <span *ngIf="listingStatus==='approved'" class="px-1 bg-opacity-50 rounded bg-lightGreen font-lato text-14px24px text-cwGray2">APPROVED</span>
-      <span *ngIf="listingStatus==='rejected'" class="px-1 rounded bg-opacity-35 bg-cwRed font-lato text-14px24px text-cwGray2">REJECTED</span>
+    <p>Status:</p>
+    <span *ngIf="listingStatus==='open'"
+      class="px-1 bg-opacity-50 rounded bg-lightOrange font-lato text-14px24px text-cwGray2">OPEN</span>
+    <span *ngIf="listingStatus==='reopened'"
+      class="px-1 bg-opacity-50 rounded bg-lightOrange font-lato text-14px24px text-cwGray2">REOPENED</span>
+    <span *ngIf="listingStatus==='submitted'"
+      class="px-1 rounded bg-opacity-40 bg-lightPurple font-lato text-14px24px text-cwGray2">SUBMITTED</span>
+    <span *ngIf="listingStatus==='approved'"
+      class="px-1 bg-opacity-50 rounded bg-lightGreen font-lato text-14px24px text-cwGray2">APPROVED</span>
+    <span *ngIf="listingStatus==='rejected'"
+      class="px-1 rounded bg-opacity-35 bg-cwRed font-lato text-14px24px text-cwGray2">REJECTED</span>
   </div>
   <div class="pt-8 w-222 h-14">
-      <div class="pb-3">
-          <button data-expandAll=Submit (click)="expandAll()" class="text-cwRed">Expand all</button>
+    <div class="pb-3">
+      <button data-expandAll=Submit (click)="expandAll()" class="text-cwRed">Expand all</button>
+    </div>
+    <div class="grid grid-cols-1 gap-4 border-t-2 justify-items-start">
+      <!-- First dropdown section -->
+      <div class="flex flex-row justify-left items-center w-222 pt-4 space-x-2.5 ">
+        <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+        <button (click)='locationInfoToggle()' class="font-cw text-cwGray w-222">
+          <div class="grid grid-cols-6">
+            <p *ngIf="!unHideLocationInfo" class="col-span-5 justify-self-start">Location Info</p>
+            <p *ngIf="unHideLocationInfo" class="col-span-5 font-bold justify-self-start">Location Info</p>
+            <img *ngIf="!unHideLocationInfo" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/down-arrow.png" alt="down-arrow">
+            <img *ngIf="unHideLocationInfo" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/up-arrow.png" alt="up-arrow">
+          </div>
+        </button>
       </div>
-      <div class="grid grid-cols-1 gap-4 border-t-2 justify-items-start">
-          <!-- First dropdown section -->
-          <div class="flex flex-row justify-left items-center w-222 pt-4 space-x-2.5 ">
-              <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-              <button (click)='locationInfoToggle()' class="font-cw text-cwGray w-222">
-                  <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideLocationInfo" class="col-span-5 justify-self-start">Location Info</p>
-                      <p *ngIf="unHideLocationInfo" class="col-span-5 font-bold justify-self-start">Location Info</p>
-                      <img *ngIf="!unHideLocationInfo" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
-                      <img *ngIf="unHideLocationInfo" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
-                  </div>
-              </button>
-          </div>
-          <div *ngIf="unHideLocationInfo" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
-              <div class="flex flex-row items-center pt-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./good-sam-record"><p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p></a>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./contact-info"><p class="font-cw text-cwGray text-14px24px">Contact Info</p></a>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./discounts-affiliations"><p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p></a>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./owner-b2b-info"><p class="font-cw text-cwGray text-14px24px">Owner & B2B Info</p></a>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./directions"><p class="font-cw text-cwGray text-14px24px">Directions</p></a>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./good-sam-park"><p class="font-cw text-cwGray text-14px24px">Good Sam Park</p></a>
-              </div>
-              <div class="items-center pb-4 pl-9">
-                  <a routerLink="./advertising-codes"><p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p></a>
-              </div>
-          </div> 
-          <!-- Second dropdown section -->
-          <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
-              <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-              <button (click)='locationDetailsToggle()' class="font-cw text-cwGray w-222">
-                  <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideLocationDetails" class="col-span-5 justify-self-start">Location Details</p>
-                      <p *ngIf="unHideLocationDetails" class="col-span-5 font-bold justify-self-start">Location Details</p>
-                      <img *ngIf="!unHideLocationDetails" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
-                      <img *ngIf="unHideLocationDetails" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
-                  </div>
-              </button>
-          </div>
-          <div *ngIf="unHideLocationDetails" class="grid grid-cols-1 gap-4 pl-5 bg-navGray">
-              <div class="flex flex-row items-center pt-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./interior-roads"><p class="font-cw text-cwGray text-14px24px">Interior Roads & Site Info</p></a>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Policies</p>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Rates & Reservations</p>
-              </div>
-              <div class="flex flex-row items-center pb-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Eco Friendly</p>
-              </div>
-          </div> 
-          <!-- Third dropdown section -->
-          <div class="flex flex-row justify-left items-center w-222 space-x-2.5">
-              <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-              <button (click)='amenitiesToggle()' class="font-cw text-cwGray w-222">
-                  <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideAmenities" class="col-span-5 justify-self-start">Amenities</p>
-                      <p *ngIf="unHideAmenities" class="col-span-5 font-bold justify-self-start">Amenities</p>
-                      <img *ngIf="!unHideAmenities" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
-                      <img *ngIf="unHideAmenities" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
-                  </div>
-              </button>
-          </div>
-          <div *ngIf="unHideAmenities" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
-              <div class="flex flex-row items-center pt-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Restrooms</p>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">On Site Services</p>
-              </div>
-              <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Recreation</p>
-              </div>
-              <div class="flex flex-row items-center pb-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Water Recreation</p>
-              </div>
-          </div> 
-          <!-- Fourth dropdown section -->
-          <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
-              <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-              <button (click)='rentBuyToggle()' class="font-cw text-cwGray w-222">
-                  <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideRentBuy" class="col-span-5 justify-self-start">Rent & Buy</p>
-                      <p *ngIf="unHideRentBuy" class="col-span-5 font-bold justify-self-start">Rent & Buy</p>
-                      <img *ngIf="!unHideRentBuy" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
-                      <img *ngIf="unHideRentBuy" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
-                  </div>
-              </button>
-          </div>
-          <div *ngIf="unHideRentBuy" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
-              <div class="flex flex-row items-center pt-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Tenting & Rentals</p>
-              </div>
-              <div class="flex flex-row items-center pb-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">RV Homes / Park Models / Lots for Sale</p>
-              </div>
-          </div>
-          <!-- Fifth dropdown section -->
-          <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
-              <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-              <button (click)='ratingsToggle()' class="font-cw text-cwGray w-222">
-                  <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideRatings" class="col-span-5 justify-self-start">Ratings</p>
-                      <p *ngIf="unHideRatings" class="col-span-5 font-bold justify-self-start">Ratings</p>
-                      <img *ngIf="!unHideRatings" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
-                      <img *ngIf="unHideRatings" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
-                  </div>
-              </button>
-          </div>
-          <div *ngIf="unHideRatings" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
-              <div class="flex flex-row items-center pt-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Ratings</p>
-              </div>
-              <div class="flex flex-row items-center pb-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <p class="font-cw text-cwGray text-14px24px">Published Ratings</p>
-              </div>
-          </div>
-          <!-- Sixth section -->
-          <div class="flex flex-row justify-center items-center space-x-2.5 ">
-              <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-          <p class="font-cw text-cwGray">Listing Update Details</p>
-          </div>
+      <div *ngIf="unHideLocationInfo" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+        <div class="flex flex-row items-center pt-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./good-sam-record">
+            <p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p>
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./contact-info">
+            <p class="font-cw text-cwGray text-14px24px">Contact Info</p>
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./discounts-affiliations">
+            <p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p>
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./owner-b2b-info">
+            <p class="font-cw text-cwGray text-14px24px">Owner & B2B Info</p>
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./directions">
+            <p class="font-cw text-cwGray text-14px24px">Directions</p>
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./good-sam-park">
+            <p class="font-cw text-cwGray text-14px24px">Good Sam Park</p>
+          </a>
+        </div>
+        <div class="items-center pb-4 pl-9">
+          <a routerLink="./advertising-codes">
+            <p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p>
+          </a>
+        </div>
       </div>
+      <!-- Second dropdown section -->
+      <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
+        <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+        <button (click)='locationDetailsToggle()' class="font-cw text-cwGray w-222">
+          <div class="grid grid-cols-6">
+            <p *ngIf="!unHideLocationDetails" class="col-span-5 justify-self-start">Location Details</p>
+            <p *ngIf="unHideLocationDetails" class="col-span-5 font-bold justify-self-start">Location Details</p>
+            <img *ngIf="!unHideLocationDetails" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/down-arrow.png" alt="down-arrow">
+            <img *ngIf="unHideLocationDetails" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/up-arrow.png" alt="up-arrow">
+          </div>
+        </button>
+      </div>
+      <div *ngIf="unHideLocationDetails" class="grid grid-cols-1 gap-4 pl-5 bg-navGray">
+        <div class="flex flex-row items-center pt-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./interior-roads">
+            <p class="font-cw text-cwGray text-14px24px">Interior Roads & Site Info</p>
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <a routerLink="./policies">
+            <p class="font-cw text-cwGray text-14px24px">Policies</p>
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Rates & Reservations</p>
+        </div>
+        <div class="flex flex-row items-center pb-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Eco Friendly</p>
+        </div>
+      </div>
+      <!-- Third dropdown section -->
+      <div class="flex flex-row justify-left items-center w-222 space-x-2.5">
+        <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+        <button (click)='amenitiesToggle()' class="font-cw text-cwGray w-222">
+          <div class="grid grid-cols-6">
+            <p *ngIf="!unHideAmenities" class="col-span-5 justify-self-start">Amenities</p>
+            <p *ngIf="unHideAmenities" class="col-span-5 font-bold justify-self-start">Amenities</p>
+            <img *ngIf="!unHideAmenities" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/down-arrow.png" alt="down-arrow">
+            <img *ngIf="unHideAmenities" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/up-arrow.png" alt="up-arrow">
+          </div>
+        </button>
+      </div>
+      <div *ngIf="unHideAmenities" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+        <div class="flex flex-row items-center pt-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Restrooms</p>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">On Site Services</p>
+        </div>
+        <div class="flex flex-row items-center space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Recreation</p>
+        </div>
+        <div class="flex flex-row items-center pb-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Water Recreation</p>
+        </div>
+      </div>
+      <!-- Fourth dropdown section -->
+      <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
+        <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+        <button (click)='rentBuyToggle()' class="font-cw text-cwGray w-222">
+          <div class="grid grid-cols-6">
+            <p *ngIf="!unHideRentBuy" class="col-span-5 justify-self-start">Rent & Buy</p>
+            <p *ngIf="unHideRentBuy" class="col-span-5 font-bold justify-self-start">Rent & Buy</p>
+            <img *ngIf="!unHideRentBuy" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/down-arrow.png" alt="down-arrow">
+            <img *ngIf="unHideRentBuy" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/up-arrow.png" alt="up-arrow">
+          </div>
+        </button>
+      </div>
+      <div *ngIf="unHideRentBuy" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+        <div class="flex flex-row items-center pt-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Tenting & Rentals</p>
+        </div>
+        <div class="flex flex-row items-center pb-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">RV Homes / Park Models / Lots for Sale</p>
+        </div>
+      </div>
+      <!-- Fifth dropdown section -->
+      <div class="flex flex-row justify-left items-center w-222 space-x-2.5 ">
+        <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+        <button (click)='ratingsToggle()' class="font-cw text-cwGray w-222">
+          <div class="grid grid-cols-6">
+            <p *ngIf="!unHideRatings" class="col-span-5 justify-self-start">Ratings</p>
+            <p *ngIf="unHideRatings" class="col-span-5 font-bold justify-self-start">Ratings</p>
+            <img *ngIf="!unHideRatings" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/down-arrow.png" alt="down-arrow">
+            <img *ngIf="unHideRatings" class="self-center w-9.31 h-5.49 justify-self-end"
+              src="/assets/images/up-arrow.png" alt="up-arrow">
+          </div>
+        </button>
+      </div>
+      <div *ngIf="unHideRatings" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
+        <div class="flex flex-row items-center pt-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Ratings</p>
+        </div>
+        <div class="flex flex-row items-center pb-4 space-x-4 ">
+          <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+          <p class="font-cw text-cwGray text-14px24px">Published Ratings</p>
+        </div>
+      </div>
+      <!-- Sixth section -->
+      <div class="flex flex-row justify-center items-center space-x-2.5 ">
+        <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+        <p class="font-cw text-cwGray">Listing Update Details</p>
+      </div>
+    </div>
   </div>
 </div>
