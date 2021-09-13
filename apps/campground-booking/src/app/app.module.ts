@@ -27,6 +27,7 @@ import { GoodSamParkComponent } from './create-listing/location-info/good-sam-pa
 import { PoliciesComponent } from './create-listing/location-details/policies/policies.component';
 import { InteriorRoadsSiteInformationComponent } from './create-listing/location-details/interior-roads/interior-roads-site-info.component';
 import { RatesReservationsComponent } from './create-listing/location-details/rates-reservations/rates-reservations.component';
+import { RestroomsComponent } from './create-listing/amenities/restrooms/restrooms.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { RatesReservationsComponent } from './create-listing/location-details/ra
     GoodSamParkComponent,
     PoliciesComponent,
     InteriorRoadsSiteInformationComponent,
-    RatesReservationsComponent
+    RatesReservationsComponent,
+    RestroomsComponent
   ],
   imports: [
     BrowserModule,
