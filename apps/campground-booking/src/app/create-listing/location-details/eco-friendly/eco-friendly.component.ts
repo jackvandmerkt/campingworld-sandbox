@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EcoFriendlyComponent implements OnInit {
 
-  option = ''
+  option: string[] = [];
   isGreenParkChecked = false;
 
   constructor() { }
@@ -16,7 +16,12 @@ export class EcoFriendlyComponent implements OnInit {
   }
 
   optionChecked(radio: string) {
-    this.option = radio
+    if (!this.option.includes(radio)) {
+      this.option.push(radio)
+    } else {
+      this.option = this.option.filter(option => option !== radio)
+    }
+
   }
 
   checkBoxGreenParkChange(cb: any) {
