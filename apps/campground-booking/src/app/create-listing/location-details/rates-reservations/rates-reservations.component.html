@@ -1,0 +1,227 @@
+<form [formGroup]="ratesReservations">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-9">
+            <p class="font-bold font-cw text-cwGray text-28px34px">Rates & Reservations</p>
+        </div>
+        <div class="flex flex-col col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">2021 Overnight Rates</p>
+            <p class=" font-cw text-cwGray text-14px24px">  
+                (Rate range includes: W, S, E. A/C, 50 amp elect heat, CATV & SATV) 
+            </p>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 from-label">
+                <input type="text" name="overnightRatesFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="overnightRatesFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+            <div class="relative pb-10 to-label">
+                <input type="text" name="overnightRatesTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="overnightRatesTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+        </div>
+
+        <div class="flex col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Tent rates</p>
+            <p class="pl-4 font-cw text-cwGray text-14px24px">(If different than above)</p>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-5 from-label">
+                <input type="text" name="tentRatesFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tentRatesFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+            <div class="relative pb-5 to-label">
+                <input type="text" name="tentRatesTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tentRatesTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+        </div>
+
+        <div class="flex col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Seasonal Rates</p>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-5 from-label">
+                <input type="text" name="seasonalRatesFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="seasonalRatesFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+            <div class="relative pb-5 to-label">
+                <input type="text" name="seasonalRatesTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="seasonalRatesTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            </div>
+        </div>
+        <div class="relative col-span-2 pb-10 ">
+            <select name="byWeekMonth" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">010 - Private Park</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="byWeekMonth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">By week/month</label>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-11 short-label">
+                <input type="text" name="rateStartDate" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="rateStartDate"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rate start date</label>
+            </div>
+            <div class="relative pb-11 short-label">
+                <input type="text" name="rateEndDate" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="rateEndDate"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rate end date</label>
+            </div>
+        </div>
+
+        <div class="pb-11">
+            <p class="font-cw">Credit cards accepted?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-11">
+            <p *ngIf="!creditCardsAccepted" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="creditCardsAccepted" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="togglecreditCards" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxCreditCardsAcceptChange(this);" id="togglecreditCards" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+
+        <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
+            <div class="relative">
+                <input (click)="creditCardChecked('debit')" class="hidden" id="debitCB" type="checkbox" name="creditCardCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="debitCB">
+                    <img *ngIf="debitSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Debit</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="creditCardChecked('discover')" class="hidden" id="discoverRadio" type="checkbox" name="creditCardCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="discoverRadio">
+                    <img *ngIf="discoverSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Discover</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="creditCardChecked('visa')" class="hidden" id="visaCB" type="checkbox" name="creditCardCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="visaCB">
+                    <img *ngIf="visaSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Visa</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="creditCardChecked('mastercard')" class="hidden" id="mastercardCB" type="checkbox" name="creditCardCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="mastercardCB">
+                    <img *ngIf="mastercardSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Mastercard</p>
+                </label>
+            </div>
+        </div>
+        <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
+            <div class="relative">
+                <input (click)="creditCardChecked('amex')" class="hidden" id="amexCB" type="checkbox" name="creditCardCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="amexCB">
+                    <img *ngIf="amexSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center place-self-center top-13.5 font-cw">American Express</p>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="flex col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Reservations</p>
+        </div>
+
+        <div class="pb-11">
+            <p class="font-cw">Are reservations accepted?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-11">
+            <p *ngIf="!reservationsAccepted" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="reservationsAccepted" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleReservations" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxReservationsAcceptChange(this);" id="toggleReservations" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="flex col-span-2">
+            <div class="w-3/4 pb-11">
+                <p class="font-cw">Does park use an online reservation system?</p>
+            </div>
+    
+            <div class="flex items-center justify-end w-1/4 pr-2 mb-11">
+                <p *ngIf="!onlineReservation" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+                <p *ngIf="onlineReservation" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+                <label for="toggleOnlineReservation" class="flex items-center cursor-pointer">
+                    <!-- toggle -->
+                    <div class="relative">
+                    <!-- input -->
+                    <input  type="checkbox" (click)="checkBoxOnlineReservationChange(this);" id="toggleOnlineReservation" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div *ngIf="onlineReservation" class="relative col-span-2 pb-10 ">
+            <select (change)="onChange($event)" name="onlineReservationSystem" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="other">Other</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="onlineReservationSystem" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Online Reservation System</label>
+        </div>
+
+        <div *ngIf="onlineReservationOther" class="relative pb-10 f-outline">
+            <input type="text" name="overnightRatesTo" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
+            <label for="overnightRatesTo"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Other online reservation system</label>
+        </div>
+
+    </div>
+</form>

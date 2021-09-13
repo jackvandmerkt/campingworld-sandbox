@@ -1,0 +1,110 @@
+<form [formGroup]="restrooms">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-10">
+            <p class="font-bold font-cw text-cwGray text-28px34px">Restrooms</p>
+        </div>
+
+        <div class="pb-11">
+            <p class="font-cw">Pit toliets only?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-11">
+            <p *ngIf="!pitTolietsOnly" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="pitTolietsOnly" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="togglePitToliets" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxPitTolietsChange(this);" id="togglePitToliets" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="relative col-span-2 f-outline">
+            <select (change)="onChange($event)" name="interiorRoadType" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">Restrooms & showers</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="interiorRoadType" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms/showers</label>
+        </div>
+
+        <div *ngIf="restroomsAndShowers" class="flex flex-row col-span-2 pt-10 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="numTolietsMen" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numTolietsMen"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - men</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="numTolietsWomen" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numTolietsWomen"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - women</label>
+            </div>
+            <div class="relative pb-10 long-label">
+                <input type="text" name="numToiletsUni" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numToiletsUni"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - unisex</label>
+            </div>
+        </div>
+
+        <div *ngIf="restroomsAndShowers" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative long-label">
+                <input type="text" name="numShowersMen" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numShowersMen"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - men</label>
+            </div>
+            <div class="relative longest-label">
+                <input type="text" name="numShowersWomen" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numShowersWomen"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - women</label>
+            </div>
+            <div class="relative longest-label">
+                <input type="text" name="numShowersUni" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numShowersUni"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - unisex</label>
+            </div>
+        </div>
+
+        <div class="py-11">
+            <p class="font-cw">RR & showers paid?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 my-11">
+            <p *ngIf="!restroomsShowersPaid" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="restroomsShowersPaid" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="togglePaid" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxPaidChange(this);" id="togglePaid" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</form>

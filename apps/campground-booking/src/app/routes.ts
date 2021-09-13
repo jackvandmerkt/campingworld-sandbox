@@ -10,8 +10,10 @@ import { AdvertisingCodesComponent } from "./create-listing/location-info/advert
 import { HomeComponent } from "./home/home.component";
 import { NewListingsComponent } from "./new-listing/new-listing.component";
 import { PoliciesComponent } from "./create-listing/location-details/policies/policies.component";
-import { InteriorRoadsSiteInformationComponent } from "./create-listing/location-details/interior-roads-site-info.component";
-import { EcoFriendlyComponent } from './create-listing/location-details/eco-friendly/eco-friendly.component';
+import { InteriorRoadsSiteInformationComponent } from "./create-listing/location-details/interior-roads/interior-roads-site-info.component";
+import { EcoFriendlyComponent } from "./create-listing/location-details/eco-friendly/eco-friendly.component";
+import { RatesReservationsComponent } from "./create-listing/location-details/rates-reservations/rates-reservations.component";
+import { RestroomsComponent } from "./create-listing/amenities/restrooms/restrooms.component";
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -29,6 +31,8 @@ export const routes: Routes = [
       { path: 'policies', component: PoliciesComponent },
       { path: 'interior-roads', component: InteriorRoadsSiteInformationComponent },
       { path: 'eco-friendly', component: EcoFriendlyComponent },
+      { path: 'rates-reservations', component: RatesReservationsComponent },
+      { path: 'restrooms', component: RestroomsComponent }
     ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
