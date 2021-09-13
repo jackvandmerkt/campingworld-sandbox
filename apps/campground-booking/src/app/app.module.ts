@@ -29,6 +29,7 @@ import { InteriorRoadsSiteInformationComponent } from './create-listing/location
 import { EcoFriendlyComponent } from './create-listing/location-details/eco-friendly/eco-friendly.component';
 import { RatesReservationsComponent } from './create-listing/location-details/rates-reservations/rates-reservations.component';
 import { RestroomsComponent } from './create-listing/amenities/restrooms/restrooms.component';
+import { RecreationComponent } from './create-listing/location-details/recreation/recreation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { RestroomsComponent } from './create-listing/amenities/restrooms/restroo
     InteriorRoadsSiteInformationComponent,
     EcoFriendlyComponent,
     RatesReservationsComponent,
-    RestroomsComponent
+    RestroomsComponent,
+    RecreationComponent
   ],
   imports: [
     BrowserModule,
