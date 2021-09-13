@@ -1,0 +1,345 @@
+<form [formGroup]="onSiteServices">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-10">
+            <p class="font-bold font-cw text-cwGray text-28px34px">On Site Services</p>
+        </div>
+
+        <div class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Basic Facilities</p>
+        </div>
+        <div class="flex flex-row col-span-2 pb-10 space-x-4">
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('1')" class="hidden" id="basicOption1" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption1">
+                    <img *ngIf="basicFacilitiesOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Dump station</p>
+                </label>
+                </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('2')" class="hidden" id="basicOption2" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption2">
+                    <img *ngIf="basicFacilitiesOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Mobile sewer station</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('3')" class="hidden" id="basicOption3" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption3">
+                    <img *ngIf="basicFacilitiesOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Laundry</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('4')" class="hidden" id="basicOption4" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption4">
+                    <img *ngIf="basicFacilitiesOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Handicap access</p>
+                </label>
+            </div>
+        </div>
+
+        <div class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Security</p>
+        </div>
+        <div class="flex flex-row col-span-2 pb-10 space-x-4">
+            <div class="relative">
+                <input (click)="securityChecked('1')" class="hidden" id="securityOption1" type="checkbox" name="securityOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="securityOption1">
+                    <img *ngIf="securityOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Controlled access gate</p>
+                </label>
+                </div>
+            <div class="relative">
+                <input (click)="securityChecked('2')" class="hidden" id="securityOption2" type="checkbox" name="securityOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="securityOption2">
+                    <img *ngIf="securityOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Emergency phone</p>
+                </label>
+            </div>
+        </div>
+
+        <div class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Internet Options - Park</p>
+        </div>
+
+        <div class="pb-8">
+            <p class="font-cw">Does the park have central internet hookups?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-8">
+            <p *ngIf="!centralInternet" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="centralInternet" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleCentralInternet" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxCentralInternetChange(this);" id="toggleCentralInternet" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+        <div class="pb-8">
+            <p class="font-cw">Does the park have Wi-Fi Hotspots?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-8">
+            <p *ngIf="!wifiHotspots" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="wifiHotspots" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleWiFiHotspots" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxWiFiHotspotsChange(this);" id="toggleWiFiHotspots" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+        <div class="pb-8">
+            <p class="font-cw">Does the park have Wi-Fi?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-8">
+            <p *ngIf="!wifi" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="wifi" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleWiFi" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxWiFiChange(this);" id="toggleWiFi" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Internet Options - Overnight</p>
+        </div>
+
+        <div class="pb-8">
+            <p class="font-cw">Does the park have central internet hookups?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-8">
+            <p *ngIf="!overnightCentralInternet" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="overnightCentralInternet" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleOvernightCentralInternet" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxOvernightCentralInternetChange(this);" id="toggleOvernightCentralInternet" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="flex col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Other Services</p>
+            <p class="pl-4 font-cw text-cwGray text-14px24px">(Select all that apply)</p>
+        </div>
+        <div class="flex flex-row col-span-2 pb-4 space-x-4">
+            <div class="relative">
+                <input (click)="otherServicesChecked('1')" class="hidden" id="otherOption1" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption1">
+                    <img *ngIf="otherServicesOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">ATM machine</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('2')" class="hidden" id="otherOption2" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption2">
+                    <img *ngIf="otherServicesOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boat storage</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('3')" class="hidden" id="otherOption3" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption3">
+                    <img *ngIf="otherServicesOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">BBQ at site</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('4')" class="hidden" id="otherOption4" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption4">
+                    <img *ngIf="otherServicesOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cable (major)</p>
+                </label>
+            </div>
+        </div>
+        <div class="flex flex-row col-span-2 pb-4 space-x-4">
+            <div class="relative">
+                <input (click)="otherServicesChecked('5')" class="hidden" id="otherOption5" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption5">
+                    <img *ngIf="otherServicesOptions.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cable (minor)</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('6')" class="hidden" id="otherOption6" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption6">
+                    <img *ngIf="otherServicesOptions.includes('6')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Car rentals</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('7')" class="hidden" id="otherOption7" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption7">
+                    <img *ngIf="otherServicesOptions.includes('7')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Church services</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('8')" class="hidden" id="otherOption8" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption8">
+                    <img *ngIf="otherServicesOptions.includes('8')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cocktail lounge</p>
+                </label>
+            </div>
+        </div>
+        <div class="flex flex-row col-span-2 pb-4 space-x-4">
+            <div class="relative">
+                <input (click)="otherServicesChecked('9')" class="hidden" id="otherOption9" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption9">
+                    <img *ngIf="otherServicesOptions.includes('9')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Comp breakfast (Daily)</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('10')" class="hidden" id="otherOption10" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption10">
+                    <img *ngIf="otherServicesOptions.includes('10')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">DVD rentals</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('11')" class="hidden" id="otherOption11" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption11">
+                    <img *ngIf="otherServicesOptions.includes('11')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Electric vehicle charging station</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('12')" class="hidden" id="otherOption12" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption12">
+                    <img *ngIf="otherServicesOptions.includes('12')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-11 font-cw">Electric vehicle charging station planned</p>
+                </label>
+            </div>
+        </div>
+        <div class="flex flex-row col-span-2 pb-4 space-x-4">
+            <div class="relative">
+                <input (click)="otherServicesChecked('13')" class="hidden" id="otherOption13" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption13">
+                    <img *ngIf="otherServicesOptions.includes('13')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Entertainment</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('14')" class="hidden" id="otherOption14" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption14">
+                    <img *ngIf="otherServicesOptions.includes('14')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Fax / copy service</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('15')" class="hidden" id="otherOption15" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption15">
+                    <img *ngIf="otherServicesOptions.includes('15')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Firewood</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherServicesChecked('16')" class="hidden" id="otherOption16" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption16">
+                    <img *ngIf="otherServicesOptions.includes('16')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fire rings</p>
+                </label>
+            </div>
+        </div>
+
+        <div class="flex col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Pets</p>
+        </div>
+        <div class="flex flex-row col-span-2 pb-10 space-x-4">
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('1')" class="hidden" id="basicOption1" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption1">
+                    <img *ngIf="basicFacilitiesOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Dump station</p>
+                </label>
+                </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('2')" class="hidden" id="basicOption2" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption2">
+                    <img *ngIf="basicFacilitiesOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Mobile sewer station</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('3')" class="hidden" id="basicOption3" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption3">
+                    <img *ngIf="basicFacilitiesOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Laundry</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('4')" class="hidden" id="basicOption4" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption4">
+                    <img *ngIf="basicFacilitiesOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Handicap access</p>
+                </label>
+            </div>
+        </div>
+        <div class="flex flex-row col-span-2 pb-10 space-x-4">
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('1')" class="hidden" id="basicOption1" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption1">
+                    <img *ngIf="basicFacilitiesOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Dump station</p>
+                </label>
+                </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('2')" class="hidden" id="basicOption2" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption2">
+                    <img *ngIf="basicFacilitiesOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Mobile sewer station</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('3')" class="hidden" id="basicOption3" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption3">
+                    <img *ngIf="basicFacilitiesOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Laundry</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="basicFacilitiesChecked('4')" class="hidden" id="basicOption4" type="checkbox" name="basicOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption4">
+                    <img *ngIf="basicFacilitiesOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Handicap access</p>
+                </label>
+            </div>
+        </div>
+
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</form>
