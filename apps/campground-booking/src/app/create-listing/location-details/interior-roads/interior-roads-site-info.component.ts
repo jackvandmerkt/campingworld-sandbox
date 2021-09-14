@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl, FormGroup } from "@angular/forms";
     templateUrl: './interior-roads-site-info.component.html',
     styleUrls: ['./interior-roads-site-info.component.css']
 })
-export class InteriorRoadsSiteInformationComponent {
+export class InteriorRoadsSiteInformationComponent implements OnInit{
     interiorRoadsSitesInfo!: FormGroup;
     separateSeasonalSection: boolean = false;
     selfContainedUnits: boolean = false;

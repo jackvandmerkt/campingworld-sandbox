@@ -29,8 +29,12 @@ import { InteriorRoadsSiteInformationComponent } from './create-listing/location
 import { EcoFriendlyComponent } from './create-listing/location-details/eco-friendly/eco-friendly.component';
 import { RatesReservationsComponent } from './create-listing/location-details/rates-reservations/rates-reservations.component';
 import { RestroomsComponent } from './create-listing/amenities/restrooms/restrooms.component';
+import { OnSiteServicesComponent } from './create-listing/amenities/on-site-services/on-site-services.component';
 import { RecreationComponent } from './create-listing/location-details/recreation/recreation.component';
 import { WaterRecreationComponent } from './create-listing/location-details/water-recreation/water-recreation.component';
+import {LoginComponent} from "./user/login.component";
+import {HttpClientModule} from '@angular/common/http';
+import { AuthService } from './user/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,16 +63,20 @@ import { WaterRecreationComponent } from './create-listing/location-details/wate
     RatesReservationsComponent,
     RestroomsComponent,
     RecreationComponent,
-    WaterRecreationComponent
+    WaterRecreationComponent,
+    OnSiteServicesComponent,
+    RecreationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 
 })
