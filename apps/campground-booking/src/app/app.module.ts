@@ -31,6 +31,9 @@ import { RatesReservationsComponent } from './create-listing/location-details/ra
 import { RestroomsComponent } from './create-listing/amenities/restrooms/restrooms.component';
 import { OnSiteServicesComponent } from './create-listing/amenities/on-site-services/on-site-services.component';
 import { RecreationComponent } from './create-listing/location-details/recreation/recreation.component';
+import {LoginComponent} from "./user/login.component"
+import {HttpClientModule} from '@angular/common/http'
+import { AuthService } from './user/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,16 +62,19 @@ import { RecreationComponent } from './create-listing/location-details/recreatio
     RatesReservationsComponent,
     RestroomsComponent,
     OnSiteServicesComponent,
-    RecreationComponent
+    RecreationComponent,
+    LoginComponent
+
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 
 })
