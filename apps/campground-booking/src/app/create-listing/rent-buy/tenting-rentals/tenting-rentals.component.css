@@ -30,9 +30,9 @@ input:checked + label {
     transform: translateY(-1rem) translatex(-1.9rem) scaleX(0.75) scaleY(0.75);
 }
 
-.other-services input:focus-within ~ label,
-.other-services input:not(:placeholder-shown) ~ label {
-    transform: translateY(-.5rem) translatex(-1.35rem) scaleX(0.75) scaleY(0.75);
+.rental-description input:focus-within ~ label,
+.rental-description input:not(:placeholder-shown) ~ label {
+    transform: translateY(-.5rem) translatex(-.95rem) scaleX(0.75) scaleY(0.75);
 }
 
 /*Dropdown Select Fields Floating Form Label*/

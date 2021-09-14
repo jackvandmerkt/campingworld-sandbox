@@ -117,17 +117,79 @@
             </label>
         </div>
 
-        <!-- <div class="relative col-span-2 pb-10 other-services">
+        <div class="relative col-span-2 pb-10 rental-description">
             <input type="text" name="rentalDescription" placeholder=" "
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="rentalDescription"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rental desciption</label>
-        </div> -->
+        </div>
+        
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="numTentRentals" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numTentRentals"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># tent rentals</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="numTeepeeYurts" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numTeepeeYurts"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># teepee / yurts</label>
+            </div>
+            <div class="relative pb-10 long-label">
+                <input type="text" name="numRVParkModels" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numRVParkModels"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># RV / Park models</label>
+            </div>
+        </div>
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="numCabinsCottagesTinyHouses" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numCabinsCottagesTinyHouses"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># cabins / cottages / tiny houses</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="numLodgeRooms" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numLodgeRooms"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># lodge rooms</label>
+            </div>
+        </div>
 
-        <!-- <label for="rental" class="">
-            Textarea
-            <textarea class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" rows="3" placeholder=" "></textarea>
-        </label> -->
+        <div class="grid col-span-2 pb-8">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Rentals</p>
+        </div>
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="sleepUpTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="sleepUpTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="minStayNumOfDays" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="minStayNumOfDays"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+            </div>
+        </div>
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="dailyRateFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="dailyRateFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="dailyRateTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="dailyRateTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+            </div>
+        </div>
 
         <div class="flex flex-row col-span-2 pb-10">
             <div class="">
@@ -137,5 +199,7 @@
                 <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
             </div>
         </div>
+
+        
     </div>
 </form>
