@@ -1,0 +1,16 @@
+/*Toggle Radio Button*/
+input:checked ~ .dot {
+    transform: translateX(100%);
+  }
+  
+  input:checked ~ .block {
+    background-color: #C30B24;
+    opacity: 50%;
+  }
+  
+  /*Text Input Fields Floating Form Label*/
+  .f-outline input:focus-within ~ label,
+  .f-outline input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
+  }
+  

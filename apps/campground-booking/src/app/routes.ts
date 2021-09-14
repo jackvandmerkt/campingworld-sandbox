@@ -16,8 +16,10 @@ import { RatesReservationsComponent } from "./create-listing/location-details/ra
 import { RestroomsComponent } from "./create-listing/amenities/restrooms/restrooms.component";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/location-details/recreation/recreation.component";
+import {LoginComponent} from "./user/login.component"
 
 export const routes: Routes = [
+  { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent },
   { path: 'new-listing', component: NewListingsComponent },
   {
