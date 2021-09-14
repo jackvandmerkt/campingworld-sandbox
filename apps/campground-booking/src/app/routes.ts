@@ -15,6 +15,7 @@ import { EcoFriendlyComponent } from "./create-listing/location-details/eco-frie
 import { RatesReservationsComponent } from "./create-listing/location-details/rates-reservations/rates-reservations.component";
 import { RestroomsComponent } from "./create-listing/amenities/restrooms/restrooms.component";
 import { RecreationComponent } from "./create-listing/location-details/recreation/recreation.component";
+import { WaterRecreationComponent } from './create-listing/location-details/water-recreation/water-recreation.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,7 +35,8 @@ export const routes: Routes = [
       { path: 'eco-friendly', component: EcoFriendlyComponent },
       { path: 'rates-reservations', component: RatesReservationsComponent },
       { path: 'restrooms', component: RestroomsComponent },
-      { path: 'recreation', component: RecreationComponent }
+      { path: 'recreation', component: RecreationComponent },
+      { path: 'water-recreation', component: WaterRecreationComponent }
     ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
