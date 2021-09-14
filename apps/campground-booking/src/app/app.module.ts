@@ -32,6 +32,10 @@ import { RestroomsComponent } from './create-listing/amenities/restrooms/restroo
 import { OnSiteServicesComponent } from './create-listing/amenities/on-site-services/on-site-services.component';
 import { RecreationComponent } from './create-listing/location-details/recreation/recreation.component';
 import { TentingRentalsComponent } from './create-listing/rent-buy/tenting-rentals/tenting-rentals.component';
+import { WaterRecreationComponent } from './create-listing/location-details/water-recreation/water-recreation.component';
+import {LoginComponent} from "./user/login.component";
+import {HttpClientModule} from '@angular/common/http';
+import { AuthService } from './user/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,18 +63,22 @@ import { TentingRentalsComponent } from './create-listing/rent-buy/tenting-renta
     EcoFriendlyComponent,
     RatesReservationsComponent,
     RestroomsComponent,
+    RecreationComponent,
+    WaterRecreationComponent,
     OnSiteServicesComponent,
     RecreationComponent,
-    TentingRentalsComponent
+    TentingRentalsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 
 })

@@ -17,8 +17,11 @@ import { RestroomsComponent } from "./create-listing/amenities/restrooms/restroo
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/location-details/recreation/recreation.component";
 import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-rentals/tenting-rentals.component";
+import { WaterRecreationComponent } from './create-listing/location-details/water-recreation/water-recreation.component';
+import {LoginComponent} from "./user/login.component";
 
 export const routes: Routes = [
+  { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent },
   { path: 'new-listing', component: NewListingsComponent },
   {
@@ -38,6 +41,7 @@ export const routes: Routes = [
       { path: 'restrooms', component: RestroomsComponent },
       { path: 'on-site-services', component: OnSiteServicesComponent },
       { path: 'recreation', component: RecreationComponent },
+      { path: 'water-recreation', component: WaterRecreationComponent },
       { path: 'tenting-rentals', component: TentingRentalsComponent }
     ]
   },
