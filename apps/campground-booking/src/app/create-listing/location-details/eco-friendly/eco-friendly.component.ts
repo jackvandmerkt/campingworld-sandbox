@@ -28,4 +28,5 @@ export class EcoFriendlyComponent implements OnInit {
     this.isGreenParkChecked = !this.isGreenParkChecked;
   }
 
+
 }

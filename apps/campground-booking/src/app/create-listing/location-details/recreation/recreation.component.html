@@ -20,6 +20,27 @@
     </label>
   </div>
 </div>
+<div *ngIf="isRecreationChecked" class="grid grid-cols-2 w-636 gap-6">
+  <div class="pb-10">
+    <p class="font-cw ">Is it open to the public?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isOpenChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isOpenChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleOpen" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxOpenChange(this);" id="toggleOpen" class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
 
 <div class="grid grid-cols-4 w-636 gap-4 mt-2">
   <div class="relative">
@@ -284,9 +305,218 @@
     </label>
   </div>
 </div>
+<h2 class="font-bold font-cw text-cwGray text-18px24px pb-3 mt-12">Casino</h2>
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="pb-10">
+    <p class="font-cw ">Casino on-site?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isCasinoChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isCasinoChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleCasino" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxCasinoChange(this);" id="toggleCasino" class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+<div *ngIf="isCasinoChecked" class="grid grid-cols-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="fileNumber" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="fileNumber" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      File Number
+    </label>
+  </div>
+
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="displayName" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="displayName" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Display Name
+    </label>
+  </div>
+</div>
+<h2 class="font-bold font-cw text-cwGray text-18px24px pb-3 mt-7">Nearby</h2>
+<div class="grid grid-cols-4 w-636 gap-4 mt-2">
+  <div class="relative">
+    <input (click)="nearbyChecked('1')" class="hidden" id="nearby1" type="checkbox" name="nearby1">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby1">
+      <img *ngIf="nearby.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Archery Range</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('2')" class="hidden" id="nearby2" type="checkbox" name="nearby2">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby2">
+      <img *ngIf="nearby.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Badminton</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('3')" class="hidden" id="nearby3" type="checkbox" name="nearby3">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby3">
+      <img *ngIf="nearby.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Basketball</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('4')" class="hidden" id="nearby4" type="checkbox" name="nearby4">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby4">
+      <img *ngIf="nearby.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Bike rentals </p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('5')" class="hidden" id="nearby5" type="checkbox" name="nearby5">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby5">
+      <img *ngIf="nearby.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Billiard room </p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('6')" class="hidden" id="nearby6" type="checkbox" name="nearby6">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby6">
+      <img *ngIf="nearby.includes('6')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-10 p-3 font-cw">Billiard room (1 table only) </p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('7')" class="hidden" id="nearby7" type="checkbox" name="nearby7">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby7">
+      <img *ngIf="nearby.includes('7')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Boucce ball </p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('8')" class="hidden" id="nearby8" type="checkbox" name="nearby8">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby8">
+      <img *ngIf="nearby.includes('8')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Bounce Pillow</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="nearbyChecked('9')" class="hidden" id="nearby9" type="checkbox" name="nearby9">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby9">
+      <img *ngIf="nearby.includes('9')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Voleyball </p>
+    </label>
+  </div>
+</div>
+
+<h2 class="font-bold font-cw text-cwGray text-18px24px pb-3 mt-16">Hunting</h2>
+<div class="grid grid-cols-4 w-636 gap-4 mt-5">
+  <div class="relative">
+    <input (click)="huntingChecked('1')" class="hidden" id="hunting1" type="checkbox" name="hunting1">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="hunting1">
+      <img *ngIf="hunting.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-11 font-cw">Hunting nearby (within 20 mile radius)
+      </p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="huntingChecked('2')" class="hidden" id="hunting2" type="checkbox" name="hunting2">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="hunting2">
+      <img *ngIf="hunting.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-14 font-cw">On-site cleaning facilites
+      </p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="huntingChecked('3')" class="hidden" id="hunting3" type="checkbox" name="hunting3">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="hunting3">
+      <img *ngIf="hunting.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-14 font-cw">On-site meat storage facilites</p>
+    </label>
+  </div>
+
+  <div class="relative">
+    <input (click)="huntingChecked('4')" class="hidden" id="hunting4" type="checkbox" name="hunting4">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="hunting4">
+      <img *ngIf="hunting.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Sells hunting licenses</p>
+    </label>
+  </div>
+
+  <div class="relative">
+    <input (click)="huntingChecked('5')" class="hidden" id="hunting5" type="checkbox" name="hunting5">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="hunting5">
+      <img *ngIf="hunting.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Hunting guide services</p>
+    </label>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 w-636 mt-14 gap-6">
+  <div class="pb-10">
+    <p class="font-cw ">Hunting season year-round?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isHuntingSeasonChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isHuntingSeasonChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleHuntingSeason" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxHuntingSeasonChange(this);" id="toggleHuntingSeason" class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 w-636 mt-2 gap-6">
+  <div class="relative pb-4 f-outline">
+    <textarea type="text" name="otherMajor" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-636 h-24 border-cwBadgeGray focus:outline-none"></textarea>
+    <label for="otherMajor" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Other rec - major
+    </label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <textarea type="text" name="otherMinor" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-636 h-24 border-cwBadgeGray focus:outline-none"></textarea>
+    <label for="otherMinor" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Other rec - minor
+    </label>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="calendarURL" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
+    <label for="calendarURL" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Event calender's URL
+    </label>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="relative pb-10 f-outline">
+    <select name="plannedActivities" value="" onclick="this.setAttribute('value', this.value);"
+      class="block bg-transparent border rounded appearance-none w-306 h-13 longer-label border-cwBadgeGray focus:outline-none">
+      <option value=""></option>
+      <option value="1">010 - Private Park</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+    <label for="plannedActivities" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Planned
+      family activities</label>
+  </div>
+</div>
 
 <!-- Action Buttons -->
-<div class="flex flex-row col-span-2 pb-10 mt-10">
+<div class="flex flex-row col-span-2 pb-10 mt-2">
   <div class="">
     <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
       Changes</button>

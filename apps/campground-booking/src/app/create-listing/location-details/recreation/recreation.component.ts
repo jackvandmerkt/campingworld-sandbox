@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class RecreationComponent implements OnInit {
 
   option: string[] = [];
+  nearby: string[] = [];
+  hunting: string[] = [];
   isRecreationChecked = false;
+  isOpenChecked = false;
+  isCasinoChecked = false;
+  isHuntingSeasonChecked = false;
 
   constructor() { }
 
@@ -24,7 +29,37 @@ export class RecreationComponent implements OnInit {
 
   }
 
+  nearbyChecked(radio: string) {
+    if (!this.nearby.includes(radio)) {
+      this.nearby.push(radio)
+    } else {
+      this.nearby = this.nearby.filter(nearby => nearby !== radio)
+    }
+
+  }
+
+  huntingChecked(radio: string) {
+    if (!this.hunting.includes(radio)) {
+      this.hunting.push(radio)
+    } else {
+      this.hunting = this.hunting.filter(hunting => hunting !== radio)
+    }
+
+  }
+
   checkBoxRecreationChange(cb: any) {
     this.isRecreationChecked = !this.isRecreationChecked;
+  }
+
+  checkBoxOpenChange(cb: any) {
+    this.isOpenChecked = !this.isOpenChecked;
+  }
+
+  checkBoxCasinoChange(cb: any) {
+    this.isCasinoChecked = !this.isCasinoChecked;
+  }
+
+  checkBoxHuntingSeasonChange(cb: any) {
+    this.isHuntingSeasonChecked = !this.isHuntingSeasonChecked;
   }
 }
