@@ -1,0 +1,141 @@
+<form [formGroup]="tentingRentals">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-9">
+            <p class="font-bold font-cw text-cwGray text-28px34px">Tenting & Rentals</p>
+        </div>
+
+        <div class="grid col-span-2 pb-8">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Tenting</p>
+        </div>
+
+        <div class="pb-11">
+            <p class="font-cw">Are there tent sites?</p>
+        </div>
+        <div class="flex items-center justify-end w-full pr-2 mb-11">
+            <p *ngIf="!tentSites" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="tentSites" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleTentSites" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxTentSitesChange(this);" id="toggleTentSites" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="tentSites" class="pb-11">
+            <p class="font-cw">Dedicated tenting area?</p>
+        </div>
+        <div *ngIf="tentSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!tentingArea" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="tentingArea" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleTentingArea" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxTentingAreaChange(this);" id="toggleTentingArea" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="tentSites" class="relative pb-10 long-label">
+            <input type="text" name="numTentSites" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+            <label for="numTentSites"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># of tent sites</label>
+        </div>
+        <div *ngIf="tentSites" class="relative pb-10 longer-label">
+            <input type="text" name="numTentOnlySites" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+            <label for="numTentOnlySites"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># of tent ONLY sites</label>
+        </div>
+
+        <div class="flex col-span-2 pb-10">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Other</p>
+            <p class="pl-4 font-cw text-cwGray text-14px24px">Select all that apply</p>
+        </div>
+        <div class="flex flex-row col-span-2 space-x-4 pb-15">
+            <div class="relative">
+                <input (click)="otherChecked('1')" class="hidden" id="otherOption1" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption1">
+                    <img *ngIf="otherOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Overflow</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherChecked('2')" class="hidden" id="otherOption2" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption2">
+                    <img *ngIf="otherOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cooking counter</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherChecked('3')" class="hidden" id="otherOption3" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption3">
+                    <img *ngIf="otherOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Privacy barrier</p>
+                </label>
+            </div>
+            <div class="relative">
+                <input (click)="otherChecked('4')" class="hidden" id="otherOption4" type="checkbox" name="otherOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption4">
+                    <img *ngIf="otherOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Covered area with picnic table</p>
+                </label>
+            </div>
+        </div>
+
+        <div class="grid col-span-2 pb-8">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Rentals</p>
+        </div>
+
+        <div class="pb-11">
+            <p class="font-cw">Are there rental sites?</p>
+        </div>
+        <div class="flex items-center justify-end w-full pr-2 mb-11">
+            <p *ngIf="!rentalSites" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="rentalSites" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleRentalSites" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxRentalsSitesChange(this);" id="toggleRentalSites" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <!-- <div class="relative col-span-2 pb-10 other-services">
+            <input type="text" name="rentalDescription" placeholder=" "
+                class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
+            <label for="rentalDescription"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rental desciption</label>
+        </div> -->
+
+        <!-- <label for="rental" class="">
+            Textarea
+            <textarea class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" rows="3" placeholder=" "></textarea>
+        </label> -->
+
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</form>

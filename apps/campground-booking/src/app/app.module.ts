@@ -31,6 +31,7 @@ import { RatesReservationsComponent } from './create-listing/location-details/ra
 import { RestroomsComponent } from './create-listing/amenities/restrooms/restrooms.component';
 import { OnSiteServicesComponent } from './create-listing/amenities/on-site-services/on-site-services.component';
 import { RecreationComponent } from './create-listing/location-details/recreation/recreation.component';
+import { TentingRentalsComponent } from './create-listing/rent-buy/tenting-rentals/tenting-rentals.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { RecreationComponent } from './create-listing/location-details/recreatio
     RatesReservationsComponent,
     RestroomsComponent,
     OnSiteServicesComponent,
-    RecreationComponent
+    RecreationComponent,
+    TentingRentalsComponent
   ],
   imports: [
     BrowserModule,
