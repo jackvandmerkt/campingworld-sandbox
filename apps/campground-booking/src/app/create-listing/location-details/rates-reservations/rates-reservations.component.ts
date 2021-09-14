@@ -11,13 +11,7 @@ export class RatesReservationsComponent implements OnInit{
     creditCardsAccepted: boolean = false;
     reservationsAccepted: boolean = false;
     onlineReservation: boolean = false;
-    // credit cards checkbox booleans
-    debitSelected: boolean = false;
-    discoverSelected: boolean = false;
-    visaSelected: boolean = false;
-    mastercardSelected: boolean = false;
-    amexSelected: boolean = false;
-    // used for input box to only appear if user selects other in online reservation system dropdown
+    creditCardOptions: string[] = [];
     onlineReservationOther: boolean = false;
 
     constructor() {
@@ -32,6 +26,7 @@ export class RatesReservationsComponent implements OnInit{
 
     checkBoxCreditCardsAcceptChange(cb:any) {
         this.creditCardsAccepted = !this.creditCardsAccepted;
+        this.creditCardOptions = [];
     }
     checkBoxReservationsAcceptChange(cb:any) {
         this.reservationsAccepted = !this.reservationsAccepted;
@@ -41,21 +36,11 @@ export class RatesReservationsComponent implements OnInit{
     }
 
     creditCardChecked(radio: any) {
-        if(radio === "debit") {
-            this.debitSelected = !this.debitSelected;
-        }
-        if(radio === "discover") {
-            this.discoverSelected = !this.discoverSelected;
-        }
-        if(radio === "visa") {
-            this.visaSelected = !this.visaSelected;
-        }
-        if(radio === "mastercard") {
-            this.mastercardSelected = !this.mastercardSelected;
-        }
-        if(radio === "amex") {
-            this.amexSelected = !this.amexSelected;
-        }
+        if (!this.creditCardOptions.includes(radio)) {
+            this.creditCardOptions.push(radio)
+          } else {
+            this.creditCardOptions = this.creditCardOptions.filter(option => option !== radio)
+          }
     }
 
     onChange(event:any): void {
