@@ -119,40 +119,40 @@
 
         <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
             <div class="relative">
-                <input (click)="creditCardChecked('debit')" class="hidden" id="debitCB" type="checkbox" name="creditCardCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="debitCB">
-                    <img *ngIf="debitSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Debit</p>
+                <input (click)="creditCardChecked('1')" class="hidden" id="creditCardOption1" type="checkbox" name="creditCardOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption1">
+                    <img *ngIf="creditCardOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Debit</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="creditCardChecked('discover')" class="hidden" id="discoverRadio" type="checkbox" name="creditCardCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="discoverRadio">
-                    <img *ngIf="discoverSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Discover</p>
+                <input (click)="creditCardChecked('2')" class="hidden" id="creditCardOption2" type="checkbox" name="creditCardOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption2">
+                    <img *ngIf="creditCardOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Discover</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="creditCardChecked('visa')" class="hidden" id="visaCB" type="checkbox" name="creditCardCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="visaCB">
-                    <img *ngIf="visaSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Visa</p>
+                <input (click)="creditCardChecked('3')" class="hidden" id="creditCardOption3" type="checkbox" name="creditCardOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption3">
+                    <img *ngIf="creditCardOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Visa</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="creditCardChecked('mastercard')" class="hidden" id="mastercardCB" type="checkbox" name="creditCardCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="mastercardCB">
-                    <img *ngIf="mastercardSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center place-self-center top-16 font-cw">Mastercard</p>
+                <input (click)="creditCardChecked('4')" class="hidden" id="creditCardOption4" type="checkbox" name="creditCardOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption4">
+                    <img *ngIf="creditCardOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Mastercard</p>
                 </label>
             </div>
         </div>
         <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
             <div class="relative">
-                <input (click)="creditCardChecked('amex')" class="hidden" id="amexCB" type="checkbox" name="creditCardCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 shadow-cw rounded-xl bg-navGray" for="amexCB">
-                    <img *ngIf="amexSelected" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center place-self-center top-13.5 font-cw">American Express</p>
+                <input (click)="creditCardChecked('5')" class="hidden" id="creditCardOption5" type="checkbox" name="creditCardOptionsCB">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption5">
+                    <img *ngIf="creditCardOptions.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                    <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">American Express</p>
                 </label>
             </div>
         </div>
