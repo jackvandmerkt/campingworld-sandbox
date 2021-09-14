@@ -14,6 +14,7 @@ import { InteriorRoadsSiteInformationComponent } from "./create-listing/location
 import { EcoFriendlyComponent } from "./create-listing/location-details/eco-friendly/eco-friendly.component";
 import { RatesReservationsComponent } from "./create-listing/location-details/rates-reservations/rates-reservations.component";
 import { RestroomsComponent } from "./create-listing/amenities/restrooms/restrooms.component";
+import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/location-details/recreation/recreation.component";
 
 export const routes: Routes = [
@@ -34,6 +35,7 @@ export const routes: Routes = [
       { path: 'eco-friendly', component: EcoFriendlyComponent },
       { path: 'rates-reservations', component: RatesReservationsComponent },
       { path: 'restrooms', component: RestroomsComponent },
+      { path: 'on-site-services', component: OnSiteServicesComponent },
       { path: 'recreation', component: RecreationComponent }
     ]
   },
