@@ -36,6 +36,7 @@ import { WaterRecreationComponent } from './create-listing/location-details/wate
 import {LoginComponent} from "./user/login.component";
 import {HttpClientModule} from '@angular/common/http';
 import { AuthService } from './user/auth.service';
+import { PublishedRatingsComponent } from './create-listing/ratings/published-ratings/published-ratings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,8 @@ import { AuthService } from './user/auth.service';
     OnSiteServicesComponent,
     RecreationComponent,
     TentingRentalsComponent,
-    LoginComponent
+    LoginComponent,
+    PublishedRatingsComponent
   ],
   imports: [
     BrowserModule,
