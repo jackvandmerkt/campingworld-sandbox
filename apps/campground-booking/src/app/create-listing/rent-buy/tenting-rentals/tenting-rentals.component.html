@@ -46,7 +46,7 @@
             </label>
         </div>
 
-        <div *ngIf="tentSites" class="relative pb-10 long-label">
+        <div *ngIf="tentSites" class="relative pb-10 short-label">
             <input type="text" name="numTentSites" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="numTentSites"
@@ -131,13 +131,13 @@
                 <label for="numTentRentals"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># tent rentals</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 long-label">
                 <input type="text" name="numTeepeeYurts" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTeepeeYurts"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># teepee / yurts</label>
             </div>
-            <div class="relative pb-10 long-label">
+            <div class="relative pb-10 longer-label">
                 <input type="text" name="numRVParkModels" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numRVParkModels"
@@ -145,13 +145,13 @@
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-15 short-label">
+            <div class="relative pb-15 sleep-up-to">
                 <input type="text" name="numCabinsCottagesTinyHouses" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numCabinsCottagesTinyHouses"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># cabins / cottages / tiny houses</label>
             </div>
-            <div class="relative pb-15 longer-label">
+            <div class="relative pb-15 short-label">
                 <input type="text" name="numLodgeRooms" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numLodgeRooms"
@@ -163,13 +163,13 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">Tent Rentals</p>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 sleep-up-to">
                 <input type="text" name="tentSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 min-stay">
                 <input type="text" name="tentMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentMinStayNumOfDays"
@@ -177,13 +177,13 @@
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 daily-rate-from">
                 <input type="text" name="tentDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
-            <div class="relative pb-11 longer-label">
+            <div class="relative pb-11 daily-rate-to">
                 <input type="text" name="tentDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentDailyRateTo"
@@ -232,13 +232,13 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">Teepee / Yurt Rentals</p>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 sleep-up-to">
                 <input type="text" name="tySleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tySleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
-            <div class="relative pb-11 longer-label">
+            <div class="relative pb-11 min-stay">
                 <input type="text" name="tyMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyMinStayNumOfDays"
@@ -246,13 +246,13 @@
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 daily-rate-from">
                 <input type="text" name="tyDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
-            <div class="relative pb-11 longer-label">
+            <div class="relative pb-11 daily-rate-to">
                 <input type="text" name="tyDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyDailyRateTo"
@@ -302,13 +302,13 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">RV / Park Model Rentals</p>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 sleep-up-to">
                 <input type="text" name="rvSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 min-stay">
                 <input type="text" name="rvMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvMinStayNumOfDays"
@@ -316,13 +316,13 @@
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 daily-rate-from">
                 <input type="text" name="rvDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 daily-rate-to">
                 <input type="text" name="rvDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvDailyRateTo"
@@ -434,13 +434,13 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">Cabin / Cottage / Tiny House Rentals</p>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 sleep-up-to">
                 <input type="text" name="ccthSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 min-stay">
                 <input type="text" name="ccthMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthMinStayNumOfDays"
@@ -448,13 +448,13 @@
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 daily-rate-from">
                 <input type="text" name="ccthDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 daily-rate-to">
                 <input type="text" name="ccthDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthDailyRateTo"
@@ -566,13 +566,13 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">Lodge Rentals</p>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 sleep-up-to">
                 <input type="text" name="lrSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 min-stay">
                 <input type="text" name="lrMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrMinStayNumOfDays"
@@ -580,13 +580,13 @@
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+            <div class="relative pb-10 daily-rate-from">
                 <input type="text" name="lrDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-10 daily-rate-to">
                 <input type="text" name="lrDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrDailyRateTo"
