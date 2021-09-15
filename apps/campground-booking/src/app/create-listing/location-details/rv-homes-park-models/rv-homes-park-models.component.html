@@ -287,3 +287,70 @@
     </label>
   </div>
 </div>
+
+<h2 class="font-bold font-cw text-cwGray text-18px24px mt-14 pb-7">Community Info</h2>
+<div class="grid grid-cols-4 w-636 gap-4 mt-3">
+  <div class="relative">
+    <input (click)="communityInfoChecked('1')" class="hidden" id="communityInfo1" type="checkbox" name="communityInfo1">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="communityInfo1">
+      <img *ngIf="communityInfo.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-11 font-cw">Age qualifications: 55+</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="communityInfoChecked('2')" class="hidden" id="communityInfo2" type="checkbox" name="communityInfo2">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="communityInfo2">
+      <img *ngIf="communityInfo.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Gated & fenced</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="communityInfoChecked('3')" class="hidden" id="communityInfo3" type="checkbox" name="communityInfo3">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="communityInfo3">
+      <img *ngIf="communityInfo.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">HOA fees</p>
+    </label>
+  </div>
+</div>
+
+<h2 class="font-bold font-cw text-cwGray text-18px24px mt-14 pb-7">Recreation</h2>
+<div class="grid grid-cols-4 w-636 gap-4 mt-3">
+  <div class="relative">
+    <input (click)="recreationChecked('1')" class="hidden" id="recreation1" type="checkbox" name="recreation1">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation1">
+      <img *ngIf="recreation.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Hobbies</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="recreationChecked('2')" class="hidden" id="recreation2" type="checkbox" name="recreation2">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation2">
+      <img *ngIf="recreation.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Golf</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="recreationChecked('3')" class="hidden" id="recreation3" type="checkbox" name="recreation3">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation3">
+      <img *ngIf="recreation.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Planned activities</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="recreationChecked('3')" class="hidden" id="recreation3" type="checkbox" name="recreation3">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation3">
+      <img *ngIf="recreation.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Swimming</p>
+    </label>
+  </div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-row col-span-2 pb-10 mt-10">
+  <div class="">
+    <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+      Changes</button>
+  </div>
+  <div class="pl-6">
+    <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+  </div>
+</div>

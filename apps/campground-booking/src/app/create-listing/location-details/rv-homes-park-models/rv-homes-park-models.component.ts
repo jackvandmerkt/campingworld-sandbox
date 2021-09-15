@@ -13,6 +13,8 @@ export class RvHomesParkModelsComponent implements OnInit {
   isNewSiteConstructionChecked = false;
   isFloridaRoomChecked = false;
   isStorageRoomChecked = false;
+  communityInfo: string[] = [];
+  recreation: string[] = [];
 
   constructor() { }
 
@@ -40,6 +42,24 @@ export class RvHomesParkModelsComponent implements OnInit {
   }
   checkBoxStorageRoomChange(cb: any) {
     this.isStorageRoomChecked = !this.isStorageRoomChecked;
+  }
+
+  communityInfoChecked(checkbox: string) {
+    if (!this.communityInfo.includes(checkbox)) {
+      this.communityInfo.push(checkbox)
+    } else {
+      this.communityInfo = this.communityInfo.filter(option => option !== checkbox)
+    }
+
+  }
+
+  recreationChecked(checkbox: string) {
+    if (!this.recreation.includes(checkbox)) {
+      this.recreation.push(checkbox)
+    } else {
+      this.recreation = this.recreation.filter(option => option !== checkbox)
+    }
+
   }
 
 }
