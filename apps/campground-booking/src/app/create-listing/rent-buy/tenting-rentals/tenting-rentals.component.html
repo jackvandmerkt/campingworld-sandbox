@@ -1,6 +1,6 @@
 <form [formGroup]="tentingRentals">
     <div class="grid grid-cols-2 w-636">
-        <div class="grid col-span-2 pb-9">
+        <div class="grid col-span-2 pb-14">
             <p class="font-bold font-cw text-cwGray text-28px34px">Tenting & Rentals</p>
         </div>
 
@@ -11,7 +11,7 @@
         <div class="pb-11">
             <p class="font-cw">Are there tent sites?</p>
         </div>
-        <div class="flex items-center justify-end w-full pr-2 mb-11">
+        <div class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!tentSites" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="tentSites" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
             <label for="toggleTentSites" class="flex items-center cursor-pointer">
@@ -101,7 +101,7 @@
         <div class="pb-11">
             <p class="font-cw">Are there rental sites?</p>
         </div>
-        <div class="flex items-center justify-end w-full pr-2 mb-11">
+        <div class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!rentalSites" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="rentalSites" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
             <label for="toggleRentalSites" class="flex items-center cursor-pointer">
@@ -117,14 +117,14 @@
             </label>
         </div>
 
-        <div class="relative col-span-2 pb-10 rental-description">
+       <div *ngIf="rentalSites" class="relative col-span-2 pb-10 rental-description">
             <input type="text" name="rentalDescription" placeholder=" "
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="rentalDescription"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rental desciption</label>
         </div>
         
-        <div class="flex flex-row col-span-2 space-x-6">
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 short-label">
                 <input type="text" name="numTentRentals" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
@@ -144,14 +144,14 @@
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># RV / Park models</label>
             </div>
         </div>
-        <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 short-label">
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-15 short-label">
                 <input type="text" name="numCabinsCottagesTinyHouses" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numCabinsCottagesTinyHouses"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># cabins / cottages / tiny houses</label>
             </div>
-            <div class="relative pb-10 longer-label">
+            <div class="relative pb-15 longer-label">
                 <input type="text" name="numLodgeRooms" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numLodgeRooms"
@@ -159,36 +159,539 @@
             </div>
         </div>
 
-        <div class="grid col-span-2 pb-8">
-            <p class="font-bold font-cw text-cwGray text-18px24px">Rentals</p>
+        <div *ngIf="rentalSites" class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Tent Rentals</p>
         </div>
-        <div class="flex flex-row col-span-2 space-x-6">
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 short-label">
-                <input type="text" name="sleepUpTo" placeholder=" "
+                <input type="text" name="tentSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="sleepUpTo"
+                <label for="tentSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
             <div class="relative pb-10 longer-label">
-                <input type="text" name="minStayNumOfDays" placeholder=" "
+                <input type="text" name="tentMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="minStayNumOfDays"
+                <label for="tentMinStayNumOfDays"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
             </div>
         </div>
-        <div class="flex flex-row col-span-2 space-x-6">
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 short-label">
-                <input type="text" name="dailyRateFrom" placeholder=" "
+                <input type="text" name="tentDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="dailyRateFrom"
+                <label for="tentDailyRateFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+            </div>
+            <div class="relative pb-11 longer-label">
+                <input type="text" name="tentDailyRateTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tentDailyRateTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+            </div>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!tentPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="tentPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleTentPetsAllowed" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxTentPetsAllowedChange(this);" id="toggleTentPetsAllowed" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-16">
+            <p class="font-cw">Pets allowed ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-15">
+            <p *ngIf="!tentPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="tentPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleTentPetsAllowedCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxTentPetsAllowedCostChange(this);" id="toggleTentPetsAllowedCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+        <div *ngIf="rentalSites" class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Teepee / Yurt Rentals</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="tySleepUpTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tySleepUpTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+            </div>
+            <div class="relative pb-11 longer-label">
+                <input type="text" name="tyMinStayNumOfDays" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tyMinStayNumOfDays"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+            </div>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="tyDailyRateFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tyDailyRateFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+            </div>
+            <div class="relative pb-11 longer-label">
+                <input type="text" name="tyDailyRateTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tyDailyRateTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+            </div>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!tyPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="tyPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleTYPetsAllowed" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxTYPetsAllowedChange(this);" id="toggleTYPetsAllowed" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-16">
+            <p class="font-cw">Pets allowed ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-15">
+            <p *ngIf="!tyPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="tyPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleTYPetsAllowedCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxTYPetsAllowedCostChange(this);" id="toggleTYPetsAllowedCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">RV / Park Model Rentals</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="rvSleepUpTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="rvSleepUpTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="rvMinStayNumOfDays" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="rvMinStayNumOfDays"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+            </div>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="rvDailyRateFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="rvDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
             <div class="relative pb-10 longer-label">
-                <input type="text" name="dailyRateTo" placeholder=" "
+                <input type="text" name="rvDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="dailyRateTo"
+                <label for="rvDailyRateTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
             </div>
+        </div>
+        <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
+            <div class="relative f-outline">
+                <select name="rvBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+                </select>
+                <label for="rvBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
+            </div>
+            <div class="relative f-outline">
+                <select name="rvKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+                </select>
+                <label for="rvKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Kitchen</label>
+            </div>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!rvPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="rvPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleRVPetsAllowed" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxRVPetsAllowedChange(this);" id="toggleRVPetsAllowed" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!rvPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="rvPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleRVPetsAllowedCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxRVPetsAllowedCostChange(this);" id="toggleRVPetsAllowedCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Linens available?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!rvLinensAvail" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="rvLinensAvail" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleRVLinensAvail" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxRVLinensAvailChange(this);" id="toggleRVLinensAvail" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-16">
+            <p class="font-cw">Linens Available ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-15">
+            <p *ngIf="!rvLinensAvailCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="rvLinensAvailCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleRVLinensAvailCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxRVLinensAvailCostChange(this);" id="toggleRVLinensAvailCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Cabin / Cottage / Tiny House Rentals</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="ccthSleepUpTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="ccthSleepUpTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="ccthMinStayNumOfDays" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="ccthMinStayNumOfDays"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+            </div>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="ccthDailyRateFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="ccthDailyRateFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="ccthDailyRateTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="ccthDailyRateTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+            </div>
+        </div>
+        <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
+            <div class="relative f-outline">
+                <select name="ccthBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+                </select>
+                <label for="ccthBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
+            </div>
+            <div class="relative f-outline">
+                <select name="ccthKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+                </select>
+                <label for="ccthKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Kitchen</label>
+            </div>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!ccthPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="ccthPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleCCTHPetsAllowed" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxCCTHPetsAllowedChange(this);" id="toggleCCTHPetsAllowed" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!ccthPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="ccthPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleCCTHPetsAllowedCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxCCTHPetsAllowedCostChange(this);" id="toggleCCTHPetsAllowedCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Linens available?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!ccthLinensAvail" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="ccthLinensAvail" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleCCTHLinensAvail" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxCCTHLinensAvailChange(this);" id="toggleCCTHLinensAvail" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-16">
+            <p class="font-cw">Linens Available ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-15">
+            <p *ngIf="!ccthLinensAvailCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="ccthLinensAvailCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleCCTHLinensAvailCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxCCTHLinensAvailCostChange(this);" id="toggleCCTHLinensAvailCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Lodge Rentals</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="lrSleepUpTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="lrSleepUpTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="lrMinStayNumOfDays" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="lrMinStayNumOfDays"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+            </div>
+        </div>
+        <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 short-label">
+                <input type="text" name="lrDailyRateFrom" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="lrDailyRateFrom"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+            </div>
+            <div class="relative pb-10 longer-label">
+                <input type="text" name="lrDailyRateTo" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="lrDailyRateTo"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+            </div>
+        </div>
+        <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
+            <div class="relative f-outline">
+                <select name="lrBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+                </select>
+                <label for="lrBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
+            </div>
+            <div class="relative f-outline">
+                <select name="lrKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+                </select>
+                <label for="lrKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Kitchen</label>
+            </div>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!lrPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="lrPetsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleLRPetsAllowed" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxLRPetsAllowedChange(this);" id="toggleLRPetsAllowed" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Pets allowed ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!lrPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="lrPetsAllowedCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleLRPetsAllowedCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxLRPetsAllowedCostChange(this);" id="toggleLRPetsAllowedCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Linens available?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!lrLinensAvail" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="lrLinensAvail" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleLRLinensAvail" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxLRLinensAvailChange(this);" id="toggleLRLinensAvail" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div *ngIf="rentalSites" class="pb-11">
+            <p class="font-cw">Linens Available ($)?</p>
+        </div>
+        <div *ngIf="rentalSites" class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!lrLinensAvailCost" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="lrLinensAvailCost" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleLRLinensAvailCost" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" (click)="checkBoxLRLinensAvailCostChange(this);" id="toggleLRLinensAvailCost" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
         </div>
 
         <div class="flex flex-row col-span-2 pb-10">
@@ -198,8 +701,6 @@
             <div class="pl-6">
                 <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
             </div>
-        </div>
-
-        
+        </div>    
     </div>
 </form>
