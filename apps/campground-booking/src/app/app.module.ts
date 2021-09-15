@@ -32,9 +32,10 @@ import { RestroomsComponent } from './create-listing/amenities/restrooms/restroo
 import { OnSiteServicesComponent } from './create-listing/amenities/on-site-services/on-site-services.component';
 import { RecreationComponent } from './create-listing/location-details/recreation/recreation.component';
 import { WaterRecreationComponent } from './create-listing/location-details/water-recreation/water-recreation.component';
-import {LoginComponent} from "./user/login.component";
-import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from "./user/login.component";
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './user/auth.service';
+import { RvHomesParkModelsComponent } from './create-listing/location-details/rv-homes-park-models/rv-homes-park-models.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,8 @@ import { AuthService } from './user/auth.service';
     WaterRecreationComponent,
     OnSiteServicesComponent,
     RecreationComponent,
-    LoginComponent
+    LoginComponent,
+    RvHomesParkModelsComponent
   ],
   imports: [
     BrowserModule,

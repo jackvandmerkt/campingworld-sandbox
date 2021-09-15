@@ -1,0 +1,83 @@
+<h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">RV Homes / Park Models / Lots for Sale</h1>
+<div class="flex flex-row">
+  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">RV Homes / Park Models</h2>
+  <img src="assets/images/info.png" style="width: 16.67px; height: 16.67px" class="mt-1 ml-2" alt="info" />
+</div>
+
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+  <div></div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="homeSizeFrom" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="homeSizeFrom" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Home size from
+    </label>
+    <span class="text-gray-400 ml-3">In square feet</span>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="homeSizeTo" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="homeSizeTo" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Home size to
+    </label>
+    <span class="text-gray-400 ml-3">In square feet</span>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="pb-10">
+    <p class="font-cw">New construction?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isNewConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isNewConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleNewConstruction" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxNewConstructionChange(this);" id="toggleNewConstruction"
+          class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<div class="flex flex-row mt-2">
+  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">RV Port Site</h2>
+  <img src="assets/images/info.png" style="width: 16.67px; height: 16.67px" class="mt-1 ml-2" alt="info" />
+</div>
+
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingPortPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingPortPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+</div>
+<div class="flex flex-row mt-2">
+  <h3 class="font-bold font-cw text-cwGray text-18px24px pb-7">Lot sizes</h3>
+  <span class="ml-2">(starting dimensions)</span>
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingPortPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingPortPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+</div>
