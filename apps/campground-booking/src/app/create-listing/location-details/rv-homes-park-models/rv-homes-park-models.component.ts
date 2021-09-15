@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class RvHomesParkModelsComponent implements OnInit {
 
   isNewConstructionChecked = false;
+  isNewPortConstructionChecked = false;
+  isNewCasitaConstructionChecked = false;
+  isNewSiteConstructionChecked = false;
+  isFloridaRoomChecked = false;
+  isStorageRoomChecked = false;
 
   constructor() { }
 
@@ -17,6 +22,24 @@ export class RvHomesParkModelsComponent implements OnInit {
 
   checkBoxNewConstructionChange(cb: any) {
     this.isNewConstructionChecked = !this.isNewConstructionChecked;
+  }
+
+  checkBoxNewPortConstructionChange(cb: any) {
+    this.isNewPortConstructionChecked = !this.isNewPortConstructionChecked;
+  }
+
+  checkBoxNewCasitaConstructionChange(cb: any) {
+    this.isNewCasitaConstructionChecked = !this.isNewCasitaConstructionChecked;
+  }
+
+  checkBoxNewSiteConstructionChange(cb: any) {
+    this.isNewSiteConstructionChecked = !this.isNewSiteConstructionChecked;
+  }
+  checkBoxFloridaRoomChange(cb: any) {
+    this.isFloridaRoomChecked = !this.isFloridaRoomChecked;
+  }
+  checkBoxStorageRoomChange(cb: any) {
+    this.isStorageRoomChecked = !this.isStorageRoomChecked;
   }
 
 }
