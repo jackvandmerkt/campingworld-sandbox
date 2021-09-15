@@ -1,16 +1,16 @@
-<form [formGroup]="directions">
+<form [formGroup]="directionsForm" (ngSubmit)="onSubmit()">
     <div class="grid grid-cols-2 w-636">
         <div class="grid col-span-2">
             <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Directions</p>
         </div>
         <div class="relative pb-10 f-outline ">
-            <input type="text" name="directions" placeholder=" "
+            <input type="text" name="directions" formControlName="directions" placeholder=" "
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="directions"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Directions</label>
         </div>
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="directionsFromTown" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 longer-label border-cwBadgeGray focus:outline-none">
+            <select name="directionsFromTown" formControlName="directionsFromTown" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 longer-label border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -31,7 +31,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxNascarChange(this);" id="toggleNascar" class="sr-only">
+                <input  type="checkbox" formControlName="toggleNascar" (click)="checkBoxNascarChange(this);" id="toggleNascar" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -41,14 +41,14 @@
         </div>
 
         <div *ngIf="isNascarChecked" class="relative pb-10 miles-km">
-            <input type="text" name="milesOrKM" placeholder=" "
+            <input type="text" name="milesOrKM" formControlName="milesOrKM" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="milesOrKM"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">How many miles or km?</label>
         </div>
     
         <div *ngIf="isNascarChecked" class="relative pb-10 f-outline">
-            <select name="unitOfMeasurement" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="unitOfMeasurement" formControlName="unitOfMeasurement" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-306 h-13 border-cwBadgeGray focus:outline-none">
               <option value=""></option>
               <option value="1">miles</option>
               <option value="2">kilometers</option>
@@ -57,7 +57,7 @@
           </div>
           
           <div *ngIf="isNascarChecked" class="relative pb-10 name-track">
-            <input type="text" name="nameOfTrack" placeholder=" "
+            <input type="text" name="nameOfTrack" formControlName="nameOfTrack" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="nameOfTrack"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Name of track</label>

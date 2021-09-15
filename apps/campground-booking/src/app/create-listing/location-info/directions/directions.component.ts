@@ -1,25 +1,30 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { Component } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'directions',
     templateUrl: '/directions.component.html',
     styleUrls: ['./directions.component.css']
 })
-export class DirectionsComponent implements OnInit {
-    directions!: FormGroup;
+export class DirectionsComponent {
     isNascarChecked:boolean = false;
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.directions = new FormGroup({
-            directionsFromTown: new FormControl(''),
-            toggleNascar: new FormControl('')       
-        });
-    };
+    directionsForm = this.formBuilder.group({
+        directions: '',
+        directionsFromTown: '',
+        toggleNascar: false,
+        milesOrKM: '',
+        unitOfMeasurement: '',
+        nameOfTrack: ''
+      });
+    
+    onSubmit(): void {
+        console.log(this.directionsForm.value);
+    }
 
     checkBoxNascarChange(cb:any) {
         this.isNascarChecked = !this.isNascarChecked;
