@@ -1,0 +1,109 @@
+<form [formGroup]="publishedRatings">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-9">
+            <p class="font-bold font-cw text-cwGray text-28px34px">Published Ratings</p>
+        </div>
+
+        <div class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">Last Year's Ratings</p>
+        </div>
+        <div class="relative col-span-2 pb-10 f-outline">
+            <select name="lyNonRatedCode" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="lyNonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Non-rated code</label>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 f-outline">
+                <input type="text" name="lyFacilitiesTotal" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="lyFacilitiesTotal"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Facilities total</label>
+            </div>
+            <div class="relative pb-10 restrooms">
+                <input type="text" name="lyRestroomsTotal" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="lyRestroomsTotal"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms total</label>
+            </div>
+            <div class="relative pb-10 visual">
+                <input type="text" name="lyVisualTotal" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="lyVisualTotal"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Visual total</label>
+            </div>
+        </div>
+
+        <div class="relative col-span-2 pb-15 explanation">
+            <input type="text" name="lyRatingChange" placeholder=" "
+                class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
+            <label for="lyRatingChange"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Explanation of rating change</label>
+        </div>
+
+        <div class="grid col-span-2 pb-7.5">
+            <p class="font-bold font-cw text-cwGray text-18px24px">This Year's Ratings</p>
+        </div>
+        <div class="relative col-span-2 pb-10 f-outline">
+            <select name="tyNonRatedCode" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="tyNonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Non-rated code</label>
+        </div>
+
+        <div class="flex flex-row col-span-2 space-x-6">
+            <div class="relative pb-10 f-outline">
+                <input type="text" name="tyFacilitiesTotal" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tyFacilitiesTotal"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Facilities total</label>
+            </div>
+            <div class="relative pb-10 restrooms">
+                <input type="text" name="tyRestroomsTotal" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tyRestroomsTotal"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms total</label>
+            </div>
+            <div class="relative pb-10 visual">
+                <input type="text" name="tyVisualTotal" placeholder=" "
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="tyVisualTotal"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Visual total</label>
+            </div>
+        </div>
+
+        <div class="relative col-span-2 pb-10 explanation">
+            <input type="text" name="tyRatingChange" placeholder=" "
+                class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
+            <label for="tyRatingChange"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Explanation of rating change</label>
+        </div>
+
+        <div class="flex col-span-2 pb-8">
+            <label class="flex items-center">
+              <input type="checkbox" class="border-2 rounded-sm text-cwRed form-checkbox border-cwGray">
+              <span class="ml-3 font-cw text-cwGray text-14px26px">Confirm this year's ratings</span>
+            </label>
+        </div>
+
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div> 
+    </div>
+</form>

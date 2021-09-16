@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
     selector: 'good-sam-record',
@@ -9,8 +10,26 @@ import { Component } from "@angular/core";
 export class GoodSamRecordFormComponent {
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
 
+    }
+
+    goodSamRecordForm = this.formBuilder.group({
+        parkName: '',
+        fileNum: '',
+        sectionCode: '',
+        repCode: '',
+        listCity: '',
+        listState: '',
+        territory: '',
+        listType: '',
+        parkType: '',
+        toggleGuests: false,
+        toggleDelete: false
+      });
+    
+    onSubmit(): void {
+        console.log(this.goodSamRecordForm.value);
     }
 
     checkBoxGuestsChange(cb:any) {

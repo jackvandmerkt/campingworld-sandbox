@@ -1,4 +1,4 @@
-<form [formGroup]="discountsAffiliations">
+<form [formGroup]="discountsAffiliations" (ngSubmit)="onSubmit()">
     <div class="grid grid-cols-2 w-636">
         <div class="grid col-span-2">
             <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Discounts & Affiliations</p>
@@ -13,7 +13,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input type="checkbox" (click)="checkBoxAAAChange(this);" id="toggleAAA" class="sr-only">
+                <input type="checkbox" formControlName="toggleAAA" (click)="checkBoxAAAChange(this);" id="toggleAAA" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -34,7 +34,7 @@
             <!-- toggle -->
             <div class="relative">
             <!-- input -->
-            <input type="checkbox" (click)="checkBoxMilitaryChange(this);" id="toggleMilitary" class="sr-only">
+            <input type="checkbox" formControlName="toggleMilitary" (click)="checkBoxMilitaryChange(this);" id="toggleMilitary" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -44,7 +44,7 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="affiliation" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="affiliation" formControlName="affiliation" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -66,7 +66,7 @@
             <!-- toggle -->
             <div class="relative">
             <!-- input -->
-            <input type="checkbox" (click)="checkBoxARVCChange(this);" id="toggleARVC" class="sr-only">
+            <input type="checkbox" formControlName="toggleARVC" (click)="checkBoxARVCChange(this);" id="toggleARVC" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -76,7 +76,7 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="stateProvAffiliation" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none State-Prov w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="stateProvAffiliation" formControlName="stateProvAffiliation" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none State-Prov w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -98,7 +98,7 @@
             <!-- toggle -->
             <div class="relative">
             <!-- input -->
-            <input type="checkbox" (click)="checkBoxNeighborChange(this);" id="toggleGoodNeighbor" class="sr-only">
+            <input type="checkbox" formControlName="toggleGoodNeighbor" (click)="checkBoxNeighborChange(this);" id="toggleGoodNeighbor" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -108,7 +108,7 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="goodNeighborParkNum" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray Good-Neighbor focus:outline-none">
+            <select name="goodNeighborParkNum" formControlName="goodNeighborParkNum" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray Good-Neighbor focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -130,7 +130,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxCoastChange(this);" id="toggleCoast" class="sr-only">
+                <input  type="checkbox" formControlName="toggleCoast" (click)="checkBoxCoastChange(this);" id="toggleCoast" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -140,7 +140,7 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="coastToCoastMembershipNum" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 Coast-Coast border-cwBadgeGray focus:outline-none">
+            <select name="coastToCoastMembershipNum" formControlName="coastToCoastMembershipNum" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 Coast-Coast border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>

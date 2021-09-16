@@ -36,6 +36,7 @@ import { WaterRecreationComponent } from './create-listing/location-details/wate
 import { LoginComponent } from "./user/login.component";
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './user/auth.service';
+import { PublishedRatingsComponent } from './create-listing/ratings/published-ratings/published-ratings.component';
 import { RvHomesParkModelsComponent } from './create-listing/location-details/rv-homes-park-models/rv-homes-park-models.component';
 @NgModule({
   declarations: [
@@ -68,9 +69,10 @@ import { RvHomesParkModelsComponent } from './create-listing/location-details/rv
     WaterRecreationComponent,
     OnSiteServicesComponent,
     RecreationComponent,
+    TentingRentalsComponent,
     LoginComponent,
-    RvHomesParkModelsComponent,
-    TentingRentalsComponent
+    PublishedRatingsComponent,
+    RvHomesParkModelsComponent
   ],
   imports: [
     BrowserModule,
