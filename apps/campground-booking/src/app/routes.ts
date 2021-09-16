@@ -21,6 +21,7 @@ import { WaterRecreationComponent } from './create-listing/location-details/wate
 import {LoginComponent} from "./user/login.component";
 import { PublishedRatingsComponent } from "./create-listing/ratings/published-ratings/published-ratings.component";
 import { RvHomesParkModelsComponent } from './create-listing/location-details/rv-homes-park-models/rv-homes-park-models.component';
+import { ListingUpdateDetailsComponent } from "./create-listing/listing-update-details/listing-update-details.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -46,7 +47,8 @@ export const routes: Routes = [
       { path: 'water-recreation', component: WaterRecreationComponent },
       { path: 'tenting-rentals', component: TentingRentalsComponent },
       { path: 'published-ratings', component: PublishedRatingsComponent },
-      { path: 'rv-homes-park-models', component: RvHomesParkModelsComponent }
+      { path: 'rv-homes-park-models', component: RvHomesParkModelsComponent },
+      { path: 'listing-update-details', component: ListingUpdateDetailsComponent }
     ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

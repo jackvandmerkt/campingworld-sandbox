@@ -38,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './user/auth.service';
 import { PublishedRatingsComponent } from './create-listing/ratings/published-ratings/published-ratings.component';
 import { RvHomesParkModelsComponent } from './create-listing/location-details/rv-homes-park-models/rv-homes-park-models.component';
+import { ListingUpdateDetailsComponent } from './create-listing/listing-update-details/listing-update-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,8 @@ import { RvHomesParkModelsComponent } from './create-listing/location-details/rv
     TentingRentalsComponent,
     LoginComponent,
     PublishedRatingsComponent,
-    RvHomesParkModelsComponent
+    RvHomesParkModelsComponent,
+    ListingUpdateDetailsComponent
   ],
   imports: [
     BrowserModule,
