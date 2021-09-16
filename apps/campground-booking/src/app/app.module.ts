@@ -31,10 +31,13 @@ import { RatesReservationsComponent } from './create-listing/location-details/ra
 import { RestroomsComponent } from './create-listing/amenities/restrooms/restrooms.component';
 import { OnSiteServicesComponent } from './create-listing/amenities/on-site-services/on-site-services.component';
 import { RecreationComponent } from './create-listing/location-details/recreation/recreation.component';
+import { TentingRentalsComponent } from './create-listing/rent-buy/tenting-rentals/tenting-rentals.component';
 import { WaterRecreationComponent } from './create-listing/location-details/water-recreation/water-recreation.component';
-import {LoginComponent} from "./user/login.component";
-import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from "./user/login.component";
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './user/auth.service';
+import { PublishedRatingsComponent } from './create-listing/ratings/published-ratings/published-ratings.component';
+import { RvHomesParkModelsComponent } from './create-listing/location-details/rv-homes-park-models/rv-homes-park-models.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +69,10 @@ import { AuthService } from './user/auth.service';
     WaterRecreationComponent,
     OnSiteServicesComponent,
     RecreationComponent,
-    LoginComponent
+    TentingRentalsComponent,
+    LoginComponent,
+    PublishedRatingsComponent,
+    RvHomesParkModelsComponent
   ],
   imports: [
     BrowserModule,

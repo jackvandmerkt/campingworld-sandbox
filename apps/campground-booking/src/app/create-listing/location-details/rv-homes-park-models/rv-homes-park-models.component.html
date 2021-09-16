@@ -1,0 +1,356 @@
+<h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">RV Homes / Park Models / Lots for Sale</h1>
+<div class="flex flex-row mt-4">
+  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">RV Homes / Park Models</h2>
+  <img src="assets/images/info.png" style="width: 16.67px; height: 16.67px" class="mt-1 ml-2" alt="info" />
+</div>
+
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+  <div></div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="homeSizeFrom" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="homeSizeFrom" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Home size from
+    </label>
+    <span class="text-gray-400 ml-3">In square feet</span>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="homeSizeTo" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="homeSizeTo" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Home size to
+    </label>
+    <span class="text-gray-400 ml-3">In square feet</span>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="pb-10">
+    <p class="font-cw">New construction?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isNewConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isNewConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleNewConstruction" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxNewConstructionChange(this);" id="toggleNewConstruction"
+          class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<div class="flex flex-row mt-8">
+  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">RV Port Site</h2>
+  <img src="assets/images/info.png" style="width: 16.67px; height: 16.67px" class="mt-1 ml-2" alt="info" />
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingPortPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingPortPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+</div>
+<div class="flex flex-row mt-4">
+  <h3 class="font-bold font-cw text-cwGray text-18px24px pb-7">Lot sizes</h3>
+  <span class="ml-2 font-cw">(starting dimensions)</span>
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingPortPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingPortPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="width" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="width" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Width
+    </label>
+    <span class="text-gray-400 ml-3">In feet</span>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="homeSizeTo" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="homeSizeTo" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Height
+    </label>
+    <span class="text-gray-400 ml-3">In feet</span>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="pb-10">
+    <p class="font-cw">New construction?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isNewPortConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isNewPortConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleNewPortConstruction" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxNewPortConstructionChange(this);" id="toggleNewPortConstruction"
+          class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<div class="flex flex-row mt-8">
+  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">RV Casita / Executive Suite Site</h2>
+  <img src="assets/images/info.png" style="width: 16.67px; height: 16.67px" class="mt-1 ml-2" alt="info" />
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingPortPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingPortPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+</div>
+<div class="flex flex-row mt-4">
+  <h3 class="font-bold font-cw text-cwGray text-18px24px pb-7">Lot sizes</h3>
+  <span class="ml-2 font-cw">(starting dimensions)</span>
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="casitaWidth" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="casitaWidth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Width
+    </label>
+    <span class="text-gray-400 ml-3">In feet</span>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="casitaHeight" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="casitaHeight" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Height
+    </label>
+    <span class="text-gray-400 ml-3">In feet</span>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="pb-10">
+    <p class="font-cw">New construction?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isNewCasitaConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isNewCasitaConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleNewCasitaConstruction" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxNewCasitaConstructionChange(this);" id="toggleNewCasitaConstruction"
+          class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<div class="flex flex-row mt-8">
+  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">RV Site</h2>
+  <img src="assets/images/info.png" style="width: 16.67px; height: 16.67px" class="mt-1 ml-2" alt="info" />
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="startingSitePrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="startingSitePrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Starting at price
+    </label>
+  </div>
+</div>
+<div class="flex flex-row mt-4">
+  <h3 class="font-bold font-cw text-cwGray text-18px24px pb-7">Lot sizes</h3>
+  <span class="ml-2 font-cw">(starting dimensions)</span>
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="siteWidth" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="siteWidth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Width
+    </label>
+    <span class="text-gray-400 ml-3">In feet</span>
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input type="text" name="siteHeight" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+    <label for="siteHeight" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Height
+    </label>
+    <span class="text-gray-400 ml-3">In feet</span>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="pb-10">
+    <p class="font-cw">New construction?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isNewSiteConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isNewSiteConstructionChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleNewSiteConstruction" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxNewSiteConstructionChange(this);" id="toggleNewSiteConstruction"
+          class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 mt-4 gap-6">
+  <div class="pb-10">
+    <p class="font-cw">Florida Room?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isFloridaRoomChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isFloridaRoomChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleFloridaRoom" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxFloridaRoomChange(this);" id="toggleFloridaRoom" class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-636 mt-2 gap-6">
+  <div class="pb-10">
+    <p class="font-cw">Storage Room?</p>
+  </div>
+  <div class="flex items-center justify-end w-full pr-2 mb-10">
+    <p *ngIf="!isStorageRoomChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+    <p *ngIf="isStorageRoomChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+    <label for="toggleStorageRoom" class="flex items-center cursor-pointer">
+      <!-- toggle -->
+      <div class="relative">
+        <!-- input -->
+        <input type="checkbox" (click)="checkBoxStorageRoomChange(this);" id="toggleStorageRoom" class="sr-only">
+        <!-- line -->
+        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+        <!-- dot -->
+        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+<div class="grid grid-cols-2 mt-2 w-636 gap-6">
+  <div class="relative pb-4 f-outline">
+    <textarea type="text" name="startingPrice" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-636 h-24 border-cwGray focus:outline-none"></textarea>
+    <label for="startingPrice" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Description
+    </label>
+  </div>
+</div>
+
+<h2 class="font-bold font-cw text-cwGray text-18px24px mt-14 pb-7">Community Info</h2>
+<div class="grid grid-cols-4 w-636 gap-4 mt-3">
+  <div class="relative">
+    <input (click)="communityInfoChecked('1')" class="hidden" id="communityInfo1" type="checkbox" name="communityInfo1">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="communityInfo1">
+      <img *ngIf="communityInfo.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-11 font-cw">Age qualifications: 55+</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="communityInfoChecked('2')" class="hidden" id="communityInfo2" type="checkbox" name="communityInfo2">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="communityInfo2">
+      <img *ngIf="communityInfo.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Gated & fenced</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="communityInfoChecked('3')" class="hidden" id="communityInfo3" type="checkbox" name="communityInfo3">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="communityInfo3">
+      <img *ngIf="communityInfo.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">HOA fees</p>
+    </label>
+  </div>
+</div>
+
+<h2 class="font-bold font-cw text-cwGray text-18px24px mt-16 pb-7">Recreation</h2>
+<div class="grid grid-cols-4 w-636 gap-4 mt-3">
+  <div class="relative">
+    <input (click)="recreationChecked('1')" class="hidden" id="recreation1" type="checkbox" name="recreation1">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation1">
+      <img *ngIf="recreation.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Hobbies</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="recreationChecked('2')" class="hidden" id="recreation2" type="checkbox" name="recreation2">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation2">
+      <img *ngIf="recreation.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Golf</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="recreationChecked('3')" class="hidden" id="recreation3" type="checkbox" name="recreation3">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation3">
+      <img *ngIf="recreation.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Planned activities</p>
+    </label>
+  </div>
+  <div class="relative">
+    <input (click)="recreationChecked('4')" class="hidden" id="recreation4" type="checkbox" name="recreation4">
+    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="recreation4">
+      <img *ngIf="recreation.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Swimming</p>
+    </label>
+  </div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-row col-span-2 pb-10 mt-10">
+  <div class="">
+    <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+      Changes</button>
+  </div>
+  <div class="pl-6">
+    <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+  </div>
+</div>
