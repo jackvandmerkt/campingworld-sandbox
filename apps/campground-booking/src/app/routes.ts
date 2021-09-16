@@ -20,9 +20,10 @@ import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-renta
 import { WaterRecreationComponent } from './create-listing/location-details/water-recreation/water-recreation.component';
 import {LoginComponent} from "./user/login.component";
 import { PublishedRatingsComponent } from "./create-listing/ratings/published-ratings/published-ratings.component";
+import { RvHomesParkModelsComponent } from './create-listing/location-details/rv-homes-park-models/rv-homes-park-models.component';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'new-listing', component: NewListingsComponent },
   {
@@ -45,6 +46,7 @@ export const routes: Routes = [
       { path: 'water-recreation', component: WaterRecreationComponent },
       { path: 'tenting-rentals', component: TentingRentalsComponent },
       { path: 'published-ratings', component: PublishedRatingsComponent }
+      { path: 'rv-homes-park-models', component: RvHomesParkModelsComponent }
     ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
