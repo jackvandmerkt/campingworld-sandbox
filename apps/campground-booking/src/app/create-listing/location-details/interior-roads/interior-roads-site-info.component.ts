@@ -1,18 +1,19 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'interior-roads',
     templateUrl: './interior-roads-site-info.component.html',
     styleUrls: ['./interior-roads-site-info.component.css']
 })
-export class InteriorRoadsSiteInformationComponent implements OnInit{
-    interiorRoadsSitesInfo!: FormGroup;
+export class InteriorRoadsSiteInformationComponent {
+    // yes no toggle booleans
     separateSeasonalSection: boolean = false;
     selfContainedUnits: boolean = false;
     fullHookupUnits: boolean = false;
     bigRigSite: boolean = false;
     slideOuts: boolean = false;
+    // boolean variables used to switch checkmark image to toggled radio button
     roadConditionRadioGood: boolean = false;
     roadConditionRadioFair: boolean = false;
     roadConditionRadioPoor: boolean = false;
@@ -22,42 +23,46 @@ export class InteriorRoadsSiteInformationComponent implements OnInit{
     shadedSitesRadioMost: boolean = false;
     shadedSitesRadioSome: boolean = false;
     shadedSitesRadioNone: boolean = false;
-    constructor() {
+
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.interiorRoadsSitesInfo = new FormGroup({
-            roadConditionRadio: new FormControl(''),
-            interiorRoadType: new FormControl(''),
-            totalSpaces: new FormControl(''),
-            numAvailable: new FormControl(''),
-            numSeasonal: new FormControl(''),
-            numPermanet: new FormControl(''),
-            toggleSeasonal: new FormControl(''),
-            numPaved: new FormControl(''),
-            numAllWeather: new FormControl(''),
-            numGravel: new FormControl(''),
-            numGrass: new FormControl(''),
-            numDirt: new FormControl(''),
-            numFullHookups: new FormControl(''),
-            numWater: new FormControl(''),
-            numSewer: new FormControl(''),
-            numElectric: new FormControl(''),
-            numNoHookups: new FormControl(''),
-            sideHookupsRadio: new FormControl(''),
-            toggleBigRig: new FormControl(''),
-            toggleFullHookup: new FormControl(''),
-            toggleSelfContained: new FormControl(''),
-            pullThruW: new FormControl(''),
-            pullThruL: new FormControl(''),
-            numOfPullThrus: new FormControl(''),
-            backInW: new FormControl(''),
-            backInL: new FormControl(''),
-            toggleSlideOuts: new FormControl(''),
-            shadedSitesRadio: new FormControl('')
-        });
-    };
+    interiorRoadsSitesInfo = this.formBuilder.group({
+        roadConditionRadio: '',
+        interiorRoadType: '',
+        totalSpaces: '',
+        numAvailable: '',
+        numSeasonal: '',
+        numPermanent: '',
+        toggleSeasonal: false,
+        numPaved: '',
+        numAllWeather: '',
+        numGravel: '',
+        numGrass: '',
+        numDirt: '',
+        numFullHookups: '',
+        numWater: '',
+        numSewer: '',
+        numElectric: '',
+        numNoHookups: '',
+        amps: '',
+        sideHookupsRadio: '',
+        toggleBigRig: false,
+        toggleFullHookup: false,
+        toggleSelfContained: false,
+        pullThruW: '',
+        pullThruL: '',
+        numOfPullThrus: '',
+        backInW: '',
+        backInL: '',
+        toggleSlideOuts: false,
+        shadedSitesRadio: ''
+    });
+
+    onSubmit(): void {
+        console.log(this.interiorRoadsSitesInfo.value);
+    }
 
     checkBoxSeasonalChange(cb:any) {
         this.separateSeasonalSection = !this.separateSeasonalSection;
