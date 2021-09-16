@@ -45,7 +45,7 @@ export const routes: Routes = [
       { path: 'recreation', component: RecreationComponent },
       { path: 'water-recreation', component: WaterRecreationComponent },
       { path: 'tenting-rentals', component: TentingRentalsComponent },
-      { path: 'published-ratings', component: PublishedRatingsComponent }
+      { path: 'published-ratings', component: PublishedRatingsComponent },
       { path: 'rv-homes-park-models', component: RvHomesParkModelsComponent }
     ]
   },
