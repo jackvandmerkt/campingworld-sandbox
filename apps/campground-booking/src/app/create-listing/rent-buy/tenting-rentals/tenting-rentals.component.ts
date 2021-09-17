@@ -1,15 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'tenting-rentals',
     templateUrl: './tenting-rentals.component.html',
     styleUrls: ['./tenting-rentals.component.css']
 })
-export class TentingRentalsComponent implements OnInit{
-    tentingRentals!: FormGroup;
+export class TentingRentalsComponent {
     otherOptions: string[] = [];
-
     //toggle variables
     tentSites: boolean = false;
     tentingArea: boolean = false;
@@ -31,14 +29,72 @@ export class TentingRentalsComponent implements OnInit{
     lrLinensAvail: boolean = false;
     lrLinensAvailCost: boolean = false;
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.tentingRentals = new FormGroup({
+    // form object
+    tentingRentalsForm = this.formBuilder.group({
+        toggleTentSites: false,
+        toggleTentingArea: false,
+        numTentSites: '',
+        numTentOnlySites: '',
+        otherOptions: this.formBuilder.group({
+            otherOption1: false, otherOption2: false, otherOption3: false, otherOption4: false
+        }),
+        toggleRentalSites: false,
+        rentalDescription: '',
+        numTentRentals: '',
+        numTeepeeYurts: '',
+        numRVParkModels: '',
+        numCabinsCottagesTinyHouses: '',
+        numLodgeRooms: '',
+        tentSleepUpTo: '',
+        tentMinStayNumOfDays: '',
+        tentDailyRateFrom: '',
+        tentDailyRateTo: '',
+        toggleTentPetsAllowed: false,
+        toggleTentPetsAllowedCost: false,
+        tySleepUpTo: '',
+        tyMinStayNumOfDays: '',
+        tyDailyRateFrom: '',
+        tyDailyRateTo: '',
+        toggleTYPetsAllowed: false,
+        toggleTYPetsAllowedCost: false,
+        rvSleepUpTo: '',
+        rvMinStayNumOfDays: '',
+        rvDailyRateFrom: '',
+        rvDailyRateTo: '',
+        rvBath: '',
+        rvKitchen: '',
+        toggleRVPetsAllowed: false,
+        toggleRVPetsAllowedCost: false,
+        toggleRVLinensAvail: false,
+        toggleRVLinensAvailCost: false,
+        ccthSleepUpTo: '',
+        ccthMinStayNumOfDays: '',
+        ccthDailyRateFrom: '',
+        ccthDailyRateTo: '',
+        ccthBath: '',
+        ccthKitchen: '',
+        toggleCCTHPetsAllowed: false,
+        toggleCCTHPetsAllowedCost: false,
+        toggleCCTHLinensAvail: false,
+        toggleCCTHLinensAvailCost: false,
+        lrSleepUpTo: '',
+        lrMinStayNumOfDays: '',
+        lrDailyRateFrom: '',
+        lrDailyRateTo: '',
+        lrBath: '',
+        lrKitchen: '',
+        toggleLRPetsAllowed: false,
+        toggleLRPetsAllowedCost: false,
+        toggleLRLinensAvail: false,
+        toggleLRLinensAvailCost: false
+    });
 
-        });
+    onSubmit(): void {
+        console.log(this.tentingRentalsForm.value);
     }
 
     // Other Multi check radios

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'good-sam-park',
@@ -7,26 +7,28 @@ import { FormControl, FormGroup } from "@angular/forms";
     styleUrls: ['./good-sam-park.component.css']
 })
 export class GoodSamParkComponent {
-    goodSamPark!: FormGroup;
     is2021Checked:boolean = false;
     isRenewChecked:boolean = false;
     isNewChecked:boolean = false;
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.goodSamPark = new FormGroup({
-            numbersOfSigns: new FormControl(''),
-            numbersOfFlags: new FormControl(''),
-            toggle2021: new FormControl(''),
-            toggleRenew: new FormControl(''),
-            toggleNew: new FormControl(''),
-            goodSamAgisNumber: new FormControl(''),
-            goodSamParkHistory: new FormControl('')
-        });
-    };
+   // form object
+    goodSamPark = this.formBuilder.group({
+        numbersOfSigns: '',
+        numbersOfFlags: '',
+        toggle2021: false,
+        toggleRenew: false,
+        toggleNew: false,
+        goodSamAgisNumber: '',
+        goodSamParkHistory: ''
+    });
+
+    onSubmit(): void {
+        console.log(this.goodSamPark.value);
+    }
 
     checkBox2021Change(cb:any) {
         this.is2021Checked = !this.is2021Checked;

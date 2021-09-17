@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'published-ratings',
@@ -7,15 +7,26 @@ import { FormGroup } from "@angular/forms";
     styleUrls: ['./published-ratings.component.css']
 })
 
-export class PublishedRatingsComponent implements OnInit {
-    publishedRatings!: FormGroup
-    constructor() {
+export class PublishedRatingsComponent {
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.publishedRatings = new FormGroup({
+    publishedRatings = this.formBuilder.group({
+        lyNonRatedCode: '',
+        lyFacilitiesTotal: '',
+        lyRestroomsTotal: '',
+        lyVisualTotal: '',
+        lyRatingChange: '',
+        tyNonRatedCode: '',
+        tyFacilitiesTotal: '',
+        tyRestroomsTotal: '',
+        tyVisualTotal: '',
+        tyRatingChange: '',
+        confirmCheck: false
+    });
 
-        });
+    onSubmit(): void {
+        console.log(this.publishedRatings.value);
     }
 }

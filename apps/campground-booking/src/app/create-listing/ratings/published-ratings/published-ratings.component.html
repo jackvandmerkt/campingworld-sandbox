@@ -1,4 +1,4 @@
-<form [formGroup]="publishedRatings">
+<form [formGroup]="publishedRatings" (ngSubmit)="onSubmit()">
     <div class="grid grid-cols-2 w-636">
         <div class="grid col-span-2 pb-9">
             <p class="font-bold font-cw text-cwGray text-28px34px">Published Ratings</p>
@@ -8,7 +8,7 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">Last Year's Ratings</p>
         </div>
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="lyNonRatedCode" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="lyNonRatedCode" formControlName="lyNonRatedCode" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -21,19 +21,19 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 f-outline">
-                <input type="text" name="lyFacilitiesTotal" placeholder=" "
+                <input type="text" formControlName="lyFacilitiesTotal" name="lyFacilitiesTotal" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lyFacilitiesTotal"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Facilities total</label>
             </div>
             <div class="relative pb-10 restrooms">
-                <input type="text" name="lyRestroomsTotal" placeholder=" "
+                <input type="text" formControlName="lyRestroomsTotal" name="lyRestroomsTotal" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lyRestroomsTotal"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms total</label>
             </div>
             <div class="relative pb-10 visual">
-                <input type="text" name="lyVisualTotal" placeholder=" "
+                <input type="text" formControlName="lyVisualTotal" name="lyVisualTotal" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lyVisualTotal"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Visual total</label>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="relative col-span-2 pb-15 explanation">
-            <input type="text" name="lyRatingChange" placeholder=" "
+            <input type="text" formControlName="lyRatingChange" name="lyRatingChange" placeholder=" "
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="lyRatingChange"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Explanation of rating change</label>
@@ -51,7 +51,7 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">This Year's Ratings</p>
         </div>
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="tyNonRatedCode" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="tyNonRatedCode" formControlName="tyNonRatedCode" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -64,19 +64,19 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 f-outline">
-                <input type="text" name="tyFacilitiesTotal" placeholder=" "
+                <input type="text" formControlName="tyFacilitiesTotal" name="tyFacilitiesTotal" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyFacilitiesTotal"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Facilities total</label>
             </div>
             <div class="relative pb-10 restrooms">
-                <input type="text" name="tyRestroomsTotal" placeholder=" "
+                <input type="text" formControlName="tyRestroomsTotal" name="tyRestroomsTotal" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyRestroomsTotal"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms total</label>
             </div>
             <div class="relative pb-10 visual">
-                <input type="text" name="tyVisualTotal" placeholder=" "
+                <input type="text" formControlName="tyVisualTotal" name="tyVisualTotal" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyVisualTotal"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Visual total</label>
@@ -84,7 +84,7 @@
         </div>
 
         <div class="relative col-span-2 pb-10 explanation">
-            <input type="text" name="tyRatingChange" placeholder=" "
+            <input type="text" formControlName="tyRatingChange" name="tyRatingChange" placeholder=" "
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="tyRatingChange"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Explanation of rating change</label>
@@ -92,7 +92,7 @@
 
         <div class="flex col-span-2 pb-8">
             <label class="flex items-center">
-              <input type="checkbox" class="border-2 rounded-sm text-cwRed form-checkbox border-cwGray">
+              <input type="checkbox" formControlName="confirmCheck" id="confirmCheck" class="border-2 rounded-sm text-cwRed form-checkbox border-cwGray">
               <span class="ml-3 font-cw text-cwGray text-14px26px">Confirm this year's ratings</span>
             </label>
         </div>

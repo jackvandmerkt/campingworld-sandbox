@@ -1,4 +1,4 @@
-<form [formGroup]="tentingRentals">
+<form [formGroup]="tentingRentalsForm" (ngSubmit)="onSubmit()">
     <div class="grid grid-cols-2 w-636">
         <div class="grid col-span-2 pb-14">
             <p class="font-bold font-cw text-cwGray text-28px34px">Tenting & Rentals</p>
@@ -18,7 +18,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxTentSitesChange(this);" id="toggleTentSites" class="sr-only">
+                <input  type="checkbox" formControlName="toggleTentSites" (click)="checkBoxTentSitesChange(this);" id="toggleTentSites" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -37,7 +37,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxTentingAreaChange(this);" id="toggleTentingArea" class="sr-only">
+                <input  type="checkbox" formControlName="toggleTentingArea" (click)="checkBoxTentingAreaChange(this);" id="toggleTentingArea" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -47,13 +47,13 @@
         </div>
 
         <div *ngIf="tentSites" class="relative pb-10 short-label">
-            <input type="text" name="numTentSites" placeholder=" "
+            <input type="text" formControlName="numTentSites" name="numTentSites" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="numTentSites"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># of tent sites</label>
         </div>
         <div *ngIf="tentSites" class="relative pb-10 longer-label">
-            <input type="text" name="numTentOnlySites" placeholder=" "
+            <input type="text" formControlName="numTentOnlySites" name="numTentOnlySites" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="numTentOnlySites"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># of tent ONLY sites</label>
@@ -63,30 +63,30 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">Other</p>
             <p class="pl-4 font-cw text-cwGray text-14px24px">Select all that apply</p>
         </div>
-        <div class="flex flex-row col-span-2 space-x-4 pb-15">
+        <div formGroupName="otherOptions" class="flex flex-row col-span-2 space-x-4 pb-15">
             <div class="relative">
-                <input (click)="otherChecked('1')" class="hidden" id="otherOption1" type="checkbox" name="otherOptionsCB">
+                <input (click)="otherChecked('1')" formControlName="otherOption1" class="hidden" id="otherOption1" type="checkbox" name="otherOption1">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption1">
                     <img *ngIf="otherOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Overflow</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="otherChecked('2')" class="hidden" id="otherOption2" type="checkbox" name="otherOptionsCB">
+                <input (click)="otherChecked('2')" formControlName="otherOption2" class="hidden" id="otherOption2" type="checkbox" name="otherOption2">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption2">
                     <img *ngIf="otherOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cooking counter</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="otherChecked('3')" class="hidden" id="otherOption3" type="checkbox" name="otherOptionsCB">
+                <input (click)="otherChecked('3')" formControlName="otherOption3" class="hidden" id="otherOption3" type="checkbox" name="otherOption3">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption3">
                     <img *ngIf="otherOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Privacy barrier</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="otherChecked('4')" class="hidden" id="otherOption4" type="checkbox" name="otherOptionsCB">
+                <input (click)="otherChecked('4')" formControlName="otherOption4" class="hidden" id="otherOption4" type="checkbox" name="otherOption4">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption4">
                     <img *ngIf="otherOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Covered area with picnic table</p>
@@ -108,7 +108,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxRentalsSitesChange(this);" id="toggleRentalSites" class="sr-only">
+                <input  type="checkbox" formControlName="toggleRentalSites" (click)="checkBoxRentalsSitesChange(this);" id="toggleRentalSites" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -118,7 +118,7 @@
         </div>
 
        <div *ngIf="rentalSites" class="relative col-span-2 pb-10 rental-description">
-            <input type="text" name="rentalDescription" placeholder=" "
+            <input type="text" formControlName="rentalDescription" name="rentalDescription" placeholder=" "
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="rentalDescription"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rental desciption</label>
@@ -126,19 +126,19 @@
         
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 short-label">
-                <input type="text" name="numTentRentals" placeholder=" "
+                <input type="text" formControlName="numTentRentals" name="numTentRentals" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTentRentals"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># tent rentals</label>
             </div>
             <div class="relative pb-10 long-label">
-                <input type="text" name="numTeepeeYurts" placeholder=" "
+                <input type="text" formControlName="numTeepeeYurts" name="numTeepeeYurts" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTeepeeYurts"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># teepee / yurts</label>
             </div>
             <div class="relative pb-10 longer-label">
-                <input type="text" name="numRVParkModels" placeholder=" "
+                <input type="text" formControlName="numRVParkModels" name="numRVParkModels" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numRVParkModels"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># RV / Park models</label>
@@ -146,13 +146,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-15 sleep-up-to">
-                <input type="text" name="numCabinsCottagesTinyHouses" placeholder=" "
+                <input type="text" formControlName="numCabinsCottagesTinyHouses" name="numCabinsCottagesTinyHouses" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numCabinsCottagesTinyHouses"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># cabins / cottages / tiny houses</label>
             </div>
             <div class="relative pb-15 short-label">
-                <input type="text" name="numLodgeRooms" placeholder=" "
+                <input type="text" formControlName="numLodgeRooms" name="numLodgeRooms" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numLodgeRooms"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># lodge rooms</label>
@@ -164,13 +164,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" name="tentSleepUpTo" placeholder=" "
+                <input type="text" formControlName="tentSleepUpTo" name="tentSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" name="tentMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="tentMinStayNumOfDays" name="tentMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentMinStayNumOfDays"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
@@ -178,13 +178,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" name="tentDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="tentDailyRateFrom" name="tentDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
             <div class="relative pb-11 daily-rate-to">
-                <input type="text" name="tentDailyRateTo" placeholder=" "
+                <input type="text" formControlName="tentDailyRateTo" name="tentDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentDailyRateTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
@@ -201,7 +201,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxTentPetsAllowedChange(this);" id="toggleTentPetsAllowed" class="sr-only">
+                <input  type="checkbox" formControlName="toggleTentPetsAllowed" (click)="checkBoxTentPetsAllowedChange(this);" id="toggleTentPetsAllowed" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -220,7 +220,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxTentPetsAllowedCostChange(this);" id="toggleTentPetsAllowedCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleTentPetsAllowedCost" (click)="checkBoxTentPetsAllowedCostChange(this);" id="toggleTentPetsAllowedCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -233,13 +233,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" name="tySleepUpTo" placeholder=" "
+                <input type="text" formControlName="tySleepUpTo" name="tySleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tySleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
             <div class="relative pb-11 min-stay">
-                <input type="text" name="tyMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="tyMinStayNumOfDays" name="tyMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyMinStayNumOfDays"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
@@ -247,13 +247,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" name="tyDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="tyDailyRateFrom" name="tyDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
             <div class="relative pb-11 daily-rate-to">
-                <input type="text" name="tyDailyRateTo" placeholder=" "
+                <input type="text" formControlName="tyDailyRateTo" name="tyDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyDailyRateTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
@@ -270,7 +270,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxTYPetsAllowedChange(this);" id="toggleTYPetsAllowed" class="sr-only">
+                <input  type="checkbox" formControlName="toggleTYPetsAllowed" (click)="checkBoxTYPetsAllowedChange(this);" id="toggleTYPetsAllowed" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -289,7 +289,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxTYPetsAllowedCostChange(this);" id="toggleTYPetsAllowedCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleTYPetsAllowedCost" (click)="checkBoxTYPetsAllowedCostChange(this);" id="toggleTYPetsAllowedCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -303,13 +303,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" name="rvSleepUpTo" placeholder=" "
+                <input type="text" formControlName="rvSleepUpTo" name="rvSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" name="rvMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="rvMinStayNumOfDays" name="rvMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvMinStayNumOfDays"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
@@ -317,13 +317,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" name="rvDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="rvDailyRateFrom" name="rvDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
             <div class="relative pb-10 daily-rate-to">
-                <input type="text" name="rvDailyRateTo" placeholder=" "
+                <input type="text" formControlName="rvDailyRateTo" name="rvDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvDailyRateTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
@@ -331,7 +331,7 @@
         </div>
         <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
             <div class="relative f-outline">
-                <select name="rvBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="rvBath" formControlName="rvBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -342,7 +342,7 @@
                 <label for="rvBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
             </div>
             <div class="relative f-outline">
-                <select name="rvKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="rvKitchen" formControlName="rvKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -364,7 +364,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxRVPetsAllowedChange(this);" id="toggleRVPetsAllowed" class="sr-only">
+                <input  type="checkbox" formControlName="toggleRVPetsAllowed" (click)="checkBoxRVPetsAllowedChange(this);" id="toggleRVPetsAllowed" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -383,7 +383,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxRVPetsAllowedCostChange(this);" id="toggleRVPetsAllowedCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleRVPetsAllowedCost" (click)="checkBoxRVPetsAllowedCostChange(this);" id="toggleRVPetsAllowedCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -402,7 +402,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxRVLinensAvailChange(this);" id="toggleRVLinensAvail" class="sr-only">
+                <input  type="checkbox" formControlName="toggleRVLinensAvail" (click)="checkBoxRVLinensAvailChange(this);" id="toggleRVLinensAvail" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -421,7 +421,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxRVLinensAvailCostChange(this);" id="toggleRVLinensAvailCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleRVLinensAvailCost" (click)="checkBoxRVLinensAvailCostChange(this);" id="toggleRVLinensAvailCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -435,13 +435,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" name="ccthSleepUpTo" placeholder=" "
+                <input type="text" formControlName="ccthSleepUpTo" name="ccthSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" name="ccthMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="ccthMinStayNumOfDays" name="ccthMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthMinStayNumOfDays"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
@@ -449,13 +449,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" name="ccthDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="ccthDailyRateFrom" name="ccthDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
             <div class="relative pb-10 daily-rate-to">
-                <input type="text" name="ccthDailyRateTo" placeholder=" "
+                <input type="text" formControlName="ccthDailyRateTo" name="ccthDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthDailyRateTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
@@ -463,7 +463,7 @@
         </div>
         <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
             <div class="relative f-outline">
-                <select name="ccthBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="ccthBath" formControlName="ccthBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -474,7 +474,7 @@
                 <label for="ccthBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
             </div>
             <div class="relative f-outline">
-                <select name="ccthKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="ccthKitchen" formControlName="ccthKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -496,7 +496,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxCCTHPetsAllowedChange(this);" id="toggleCCTHPetsAllowed" class="sr-only">
+                <input  type="checkbox" formControlName="toggleCCTHPetsAllowed" (click)="checkBoxCCTHPetsAllowedChange(this);" id="toggleCCTHPetsAllowed" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -515,7 +515,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxCCTHPetsAllowedCostChange(this);" id="toggleCCTHPetsAllowedCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleCCTHPetsAllowedCost" (click)="checkBoxCCTHPetsAllowedCostChange(this);" id="toggleCCTHPetsAllowedCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -534,7 +534,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxCCTHLinensAvailChange(this);" id="toggleCCTHLinensAvail" class="sr-only">
+                <input  type="checkbox" formControlName="toggleCCTHLinensAvail" (click)="checkBoxCCTHLinensAvailChange(this);" id="toggleCCTHLinensAvail" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -553,7 +553,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxCCTHLinensAvailCostChange(this);" id="toggleCCTHLinensAvailCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleCCTHLinensAvailCost" (click)="checkBoxCCTHLinensAvailCostChange(this);" id="toggleCCTHLinensAvailCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -567,13 +567,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" name="lrSleepUpTo" placeholder=" "
+                <input type="text" formControlName="lrSleepUpTo" name="lrSleepUpTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrSleepUpTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" name="lrMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="lrMinStayNumOfDays" name="lrMinStayNumOfDays" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrMinStayNumOfDays"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
@@ -581,13 +581,13 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" name="lrDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="lrDailyRateFrom" name="lrDailyRateFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrDailyRateFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
             </div>
             <div class="relative pb-10 daily-rate-to">
-                <input type="text" name="lrDailyRateTo" placeholder=" "
+                <input type="text" formControlName="lrDailyRateTo" name="lrDailyRateTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrDailyRateTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
@@ -595,7 +595,7 @@
         </div>
         <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
             <div class="relative f-outline">
-                <select name="lrBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="lrBath" formControlName="lrBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -606,7 +606,7 @@
                 <label for="lrBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
             </div>
             <div class="relative f-outline">
-                <select name="lrKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="lrKitchen" formControlName="lrKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -628,7 +628,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxLRPetsAllowedChange(this);" id="toggleLRPetsAllowed" class="sr-only">
+                <input  type="checkbox" formControlName="toggleLRPetsAllowed" (click)="checkBoxLRPetsAllowedChange(this);" id="toggleLRPetsAllowed" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -647,7 +647,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxLRPetsAllowedCostChange(this);" id="toggleLRPetsAllowedCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleLRPetsAllowedCost" (click)="checkBoxLRPetsAllowedCostChange(this);" id="toggleLRPetsAllowedCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -666,7 +666,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxLRLinensAvailChange(this);" id="toggleLRLinensAvail" class="sr-only">
+                <input  type="checkbox" formControlName="toggleLRLinensAvail" (click)="checkBoxLRLinensAvailChange(this);" id="toggleLRLinensAvail" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -685,7 +685,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxLRLinensAvailCostChange(this);" id="toggleLRLinensAvailCost" class="sr-only">
+                <input  type="checkbox" formControlName="toggleLRLinensAvailCost" (click)="checkBoxLRLinensAvailCostChange(this);" id="toggleLRLinensAvailCost" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
