@@ -39,6 +39,7 @@ import { AuthService } from './user/auth.service';
 import { PublishedRatingsComponent } from './create-listing/ratings/published-ratings/published-ratings.component';
 import { RvHomesParkModelsComponent } from './create-listing/location-details/rv-homes-park-models/rv-homes-park-models.component';
 import { ListingUpdateDetailsComponent } from './create-listing/listing-update-details/listing-update-details.component';
+import { RatingsComponent } from './create-listing/ratings/ratings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { ListingUpdateDetailsComponent } from './create-listing/listing-update-d
     LoginComponent,
     PublishedRatingsComponent,
     RvHomesParkModelsComponent,
-    ListingUpdateDetailsComponent
+    ListingUpdateDetailsComponent,
+    RatingsComponent
   ],
   imports: [
     BrowserModule,
