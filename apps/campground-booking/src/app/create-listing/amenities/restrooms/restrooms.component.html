@@ -1,4 +1,4 @@
-<form [formGroup]="restrooms">
+<form [formGroup]="restroomForm" (ngSubmit)="onSubmit()">
     <div class="grid grid-cols-2 w-636">
         <div class="grid col-span-2 pb-10">
             <p class="font-bold font-cw text-cwGray text-28px34px">Restrooms</p>
@@ -15,7 +15,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxPitTolietsChange(this);" id="togglePitToliets" class="sr-only">
+                <input  type="checkbox" formControlName="togglePitToliets" (click)="checkBoxPitTolietsChange(this);" id="togglePitToliets" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -25,7 +25,7 @@
         </div>
 
         <div class="relative col-span-2 f-outline">
-            <select (change)="onChange($event)" name="interiorRoadType" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select (change)="onChange($event)" formControlName="restroomsShowersSelect" name="restroomsShowersSelect" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">Restrooms & showers</option>
             <option value="2">Option 2</option>
@@ -33,24 +33,24 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="interiorRoadType" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms/showers</label>
+            <label for="restroomsShowersSelect" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms/showers</label>
         </div>
 
         <div *ngIf="restroomsAndShowers" class="flex flex-row col-span-2 pt-10 space-x-6">
             <div class="relative pb-10 short-label">
-                <input type="text" name="numTolietsMen" placeholder=" "
+                <input type="text" formControlName="numTolietsMen" name="numTolietsMen" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTolietsMen"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - men</label>
             </div>
             <div class="relative pb-10 longer-label">
-                <input type="text" name="numTolietsWomen" placeholder=" "
+                <input type="text" formControlName="numTolietsWomen" name="numTolietsWomen" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTolietsWomen"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - women</label>
             </div>
             <div class="relative pb-10 long-label">
-                <input type="text" name="numToiletsUni" placeholder=" "
+                <input type="text" formControlName="numToiletsUni" name="numToiletsUni" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numToiletsUni"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - unisex</label>
@@ -59,19 +59,19 @@
 
         <div *ngIf="restroomsAndShowers" class="flex flex-row col-span-2 space-x-6">
             <div class="relative long-label">
-                <input type="text" name="numShowersMen" placeholder=" "
+                <input type="text" formControlName="numShowersMen" name="numShowersMen" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numShowersMen"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - men</label>
             </div>
             <div class="relative longest-label">
-                <input type="text" name="numShowersWomen" placeholder=" "
+                <input type="text" formControlName="numShowersWomen" name="numShowersWomen" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numShowersWomen"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - women</label>
             </div>
             <div class="relative longest-label">
-                <input type="text" name="numShowersUni" placeholder=" "
+                <input type="text" formControlName="numShowersUni" name="numShowersUni" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numShowersUni"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - unisex</label>
@@ -89,7 +89,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxPaidChange(this);" id="togglePaid" class="sr-only">
+                <input  type="checkbox" formControlName="togglePaid" (click)="checkBoxPaidChange(this);" id="togglePaid" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->

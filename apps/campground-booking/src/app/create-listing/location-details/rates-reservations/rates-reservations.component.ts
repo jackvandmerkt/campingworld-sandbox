@@ -1,27 +1,45 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 
 @Component({
     selector: 'rates-reservations',
     templateUrl: './rates-reservations.component.html',
     styleUrls: ['./rates-reservations.component.css']
 })
-export class RatesReservationsComponent implements OnInit{
-    ratesReservations!: FormGroup;
+export class RatesReservationsComponent {
     creditCardsAccepted: boolean = false;
     reservationsAccepted: boolean = false;
     onlineReservation: boolean = false;
-    creditCardOptions: string[] = [];
     onlineReservationOther: boolean = false;
+    creditCardOptions: string[] = [];
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.ratesReservations = new FormGroup({
+    ratesReservationsForm = this.formBuilder.group({
+        overnightRatesFrom: '',
+        overnightRatesTo: '',
+        tentRatesFrom: '',
+        tentRatesTo: '',
+        seasonalRatesFrom: '',
+        seasonalRatesTo: '',
+        byWeekMonth: '',
+        rateStartDate: '',
+        rateEndDate: '',
+        togglecreditCards: false,
+        creditCardOptions: this.formBuilder.group({
+            creditCardOption1: false, creditCardOption2: false, creditCardOption3: false, creditCardOption4: false,
+            creditCardOption5: false
+        }),
+        toggleReservations: false,
+        toggleOnlineReservation: false,
+        onlineReservationSystem: '',
+        onlineReservationSystemOther: ''
+    });
 
-        });
+    onSubmit(): void {
+        console.log(this.ratesReservationsForm.value);
     }
 
     checkBoxCreditCardsAcceptChange(cb:any) {

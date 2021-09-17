@@ -71,9 +71,6 @@ export class OnSiteServicesComponent {
       }),
       otherServicesMajor: '',
       otherServicesMinor: ''
-
-
-
     });
   
   onSubmit(): void {

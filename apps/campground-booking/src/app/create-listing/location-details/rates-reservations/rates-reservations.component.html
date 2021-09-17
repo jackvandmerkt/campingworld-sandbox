@@ -1,4 +1,4 @@
-<form [formGroup]="ratesReservations">
+<form [formGroup]="ratesReservationsForm" (ngSubmit)="onSubmit()">
     <div class="grid grid-cols-2 w-636">
         <div class="grid col-span-2 pb-9">
             <p class="font-bold font-cw text-cwGray text-28px34px">Rates & Reservations</p>
@@ -12,14 +12,14 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 from-label">
-                <input type="text" name="overnightRatesFrom" placeholder=" "
+                <input type="text" formControlName="overnightRatesFrom" name="overnightRatesFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="overnightRatesFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             </div>
             <div class="relative pb-10 to-label">
-                <input type="text" name="overnightRatesTo" placeholder=" "
+                <input type="text" formControlName="overnightRatesTo" name="overnightRatesTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="overnightRatesTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
@@ -34,14 +34,14 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-5 from-label">
-                <input type="text" name="tentRatesFrom" placeholder=" "
+                <input type="text" formControlName="tentRatesFrom" name="tentRatesFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentRatesFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             </div>
             <div class="relative pb-5 to-label">
-                <input type="text" name="tentRatesTo" placeholder=" "
+                <input type="text" formControlName="tentRatesTo" name="tentRatesTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentRatesTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
@@ -55,14 +55,14 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-5 from-label">
-                <input type="text" name="seasonalRatesFrom" placeholder=" "
+                <input type="text" formControlName="seasonalRatesFrom" name="seasonalRatesFrom" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="seasonalRatesFrom"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             </div>
             <div class="relative pb-5 to-label">
-                <input type="text" name="seasonalRatesTo" placeholder=" "
+                <input type="text" formControlName="seasonalRatesTo" name="seasonalRatesTo" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="seasonalRatesTo"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="relative col-span-2 pb-10 ">
-            <select name="byWeekMonth" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="byWeekMonth" formControlName="byWeekMonth" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -82,14 +82,14 @@
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-11 short-label">
-                <input type="text" name="rateStartDate" placeholder=" "
+            <div class="relative pb-11 rate-label">
+                <input type="text" formControlName="rateStartDate" name="rateStartDate" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rateStartDate"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rate start date</label>
             </div>
-            <div class="relative pb-11 short-label">
-                <input type="text" name="rateEndDate" placeholder=" "
+            <div class="relative pb-11 rate-label">
+                <input type="text" formControlName="rateEndDate" name="rateEndDate" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rateEndDate"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rate end date</label>
@@ -107,7 +107,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxCreditCardsAcceptChange(this);" id="togglecreditCards" class="sr-only">
+                <input  type="checkbox" formControlName="togglecreditCards" (click)="checkBoxCreditCardsAcceptChange(this);" id="togglecreditCards" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -117,43 +117,45 @@
         </div>
 
 
-        <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
-            <div class="relative">
-                <input (click)="creditCardChecked('1')" class="hidden" id="creditCardOption1" type="checkbox" name="creditCardOptionsCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption1">
-                    <img *ngIf="creditCardOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Debit</p>
-                </label>
+        <div class="" formGroupName="creditCardOptions">
+            <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
+                <div class="relative">
+                    <input (click)="creditCardChecked('1')" formControlName="creditCardOption1" class="hidden" id="creditCardOption1" type="checkbox" name="creditCardOption1">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption1">
+                        <img *ngIf="creditCardOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Debit</p>
+                    </label>
+                </div>
+                <div class="relative">
+                    <input (click)="creditCardChecked('2')" formControlName="creditCardOption2" class="hidden" id="creditCardOption2" type="checkbox" name="creditCardOption2">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption2">
+                        <img *ngIf="creditCardOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Discover</p>
+                    </label>
+                </div>
+                <div class="relative">
+                    <input (click)="creditCardChecked('3')" formControlName="creditCardOption3" class="hidden" id="creditCardOption3" type="checkbox" name="creditCardOption3">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption3">
+                        <img *ngIf="creditCardOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Visa</p>
+                    </label>
+                </div>
+                <div class="relative">
+                    <input (click)="creditCardChecked('4')" formControlName="creditCardOption4" class="hidden" id="creditCardOption4" type="checkbox" name="creditCardOption4">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption4">
+                        <img *ngIf="creditCardOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Mastercard</p>
+                    </label>
+                </div>
             </div>
-            <div class="relative">
-                <input (click)="creditCardChecked('2')" class="hidden" id="creditCardOption2" type="checkbox" name="creditCardOptionsCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption2">
-                    <img *ngIf="creditCardOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Discover</p>
-                </label>
-            </div>
-            <div class="relative">
-                <input (click)="creditCardChecked('3')" class="hidden" id="creditCardOption3" type="checkbox" name="creditCardOptionsCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption3">
-                    <img *ngIf="creditCardOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Visa</p>
-                </label>
-            </div>
-            <div class="relative">
-                <input (click)="creditCardChecked('4')" class="hidden" id="creditCardOption4" type="checkbox" name="creditCardOptionsCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption4">
-                    <img *ngIf="creditCardOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Mastercard</p>
-                </label>
-            </div>
-        </div>
-        <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
-            <div class="relative">
-                <input (click)="creditCardChecked('5')" class="hidden" id="creditCardOption5" type="checkbox" name="creditCardOptionsCB">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption5">
-                    <img *ngIf="creditCardOptions.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-                    <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">American Express</p>
-                </label>
+            <div *ngIf="creditCardsAccepted" class="flex flex-row col-span-2 pb-10 space-x-4">
+                <div class="relative">
+                    <input (click)="creditCardChecked('5')" formControlName="creditCardOption5" class="hidden" id="creditCardOption5" type="checkbox" name="creditCardOption5">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="creditCardOption5">
+                        <img *ngIf="creditCardOptions.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                        <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">American Express</p>
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -173,7 +175,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxReservationsAcceptChange(this);" id="toggleReservations" class="sr-only">
+                <input  type="checkbox" formControlName="toggleReservations" (click)="checkBoxReservationsAcceptChange(this);" id="toggleReservations" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -194,7 +196,7 @@
                     <!-- toggle -->
                     <div class="relative">
                     <!-- input -->
-                    <input  type="checkbox" (click)="checkBoxOnlineReservationChange(this);" id="toggleOnlineReservation" class="sr-only">
+                    <input  type="checkbox" formControlName="toggleOnlineReservation" (click)="checkBoxOnlineReservationChange(this);" id="toggleOnlineReservation" class="sr-only">
                     <!-- line -->
                     <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                     <!-- dot -->
@@ -205,7 +207,7 @@
         </div>
 
         <div *ngIf="onlineReservation" class="relative col-span-2 pb-10 ">
-            <select (change)="onChange($event)" name="onlineReservationSystem" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select (change)="onChange($event)" formControlName="onlineReservationSystem" name="onlineReservationSystem" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="other">Other</option>
             <option value="2">Option 2</option>
@@ -217,9 +219,9 @@
         </div>
 
         <div *ngIf="onlineReservationOther" class="relative pb-10 f-outline">
-            <input type="text" name="overnightRatesTo" placeholder=" "
+            <input type="text" formControlName="onlineReservationSystemOther" name="onlineReservationSystemOther" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
-            <label for="overnightRatesTo"
+            <label for="onlineReservationSystemOther"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Other online reservation system</label>
         </div>
         <div class="flex flex-row col-span-2 pb-10">
