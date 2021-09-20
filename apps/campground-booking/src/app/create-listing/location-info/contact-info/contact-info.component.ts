@@ -9,15 +9,30 @@ import { FormBuilder } from "@angular/forms";
 export class ContactInfoComponent implements OnInit {
 
   isSameAsMailingAddress = true;
+  isUTMChecked = false;
 
   constructor(private formBuilder: FormBuilder) {
 
   }
 
   contactInfoForm = this.formBuilder.group({
-    mailingAddress: {
-      address: ''
-    },
+    mailingAddress: this.formBuilder.group({
+      address: '',
+      city: '',
+      listStateId: 1,
+      zip: '',
+      countryId: 1
+    }),
+    physicalAddress: this.formBuilder.group({
+      address: '',
+      city: '',
+      listStateId: 1,
+      zip: '',
+      countryId: 1,
+      latitude: '',
+      longitude: '',
+      elevation: ''
+    }),
     latitude: '',
     longitude: '',
     elevation: '',
@@ -26,7 +41,7 @@ export class ContactInfoComponent implements OnInit {
     repressedTelephone: '',
     webAddress: '',
     onlineWeb: '',
-    skipUtm: '',
+    skipUtm: false,
     facebook: '',
     twitter: '',
     pinterest: '',
@@ -38,9 +53,17 @@ export class ContactInfoComponent implements OnInit {
     console.log(this.contactInfoForm.value)
   }
 
+  checkBoxUTMChange(cb: any) {
+    this.isUTMChecked = !this.isUTMChecked;
+  }
+
+  clearChanges() {
+    console.log('eu')
+    this.contactInfoForm.reset()
+  }
 
 
-  onSubmit(): void {
+  submitForm(): void {
     console.log(this.contactInfoForm.value);
   }
 

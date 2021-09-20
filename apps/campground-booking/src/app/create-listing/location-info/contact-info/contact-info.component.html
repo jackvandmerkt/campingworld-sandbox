@@ -1,21 +1,21 @@
-<form [formGroup]="contactInfoForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="contactInfoForm">
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-11">Contact Info</h1>
 
   <!-- Mailing Address -->
   <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">Mailing Address</h2>
-  <div class="grid grid-cols-2 w-636 gap-6">
+  <div formGroupName="mailingAddress" class="grid grid-cols-2 w-636 gap-6">
     <div class="relative pb-4 f-outline ">
-      <input type="text" formControlName="mailingAddress.address" placeholder=""
+      <input type="text" formControlName="address" placeholder=""
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="fileNum" placeholder=""
+      <input type="text" formControlName="city" placeholder=""
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
     </div>
     <div class="relative pb-4 f-outline">
-      <select formControlName="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      <select formControlName="listStateId" value="" onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
         <option value="1">010 - Private Park</option>
@@ -24,18 +24,18 @@
         <option value="4">Option 4</option>
         <option value="5">Option 5</option>
       </select>
-      <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
+      <label for="listStateId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
         Province</label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="fileNum" placeholder=""
+      <input type="text" formControlName="zip" placeholder=""
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="zip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Zip / Postal Code
       </label>
     </div>
     <div class="relative pb-4 f-outline">
-      <select formControlName="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+      <select formControlName="countryId" value="" onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
         <option value="1">010 - Private Park</option>
@@ -44,7 +44,7 @@
         <option value="4">Option 4</option>
         <option value="5">Option 5</option>
       </select>
-      <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
+      <label for="countryId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
     </div>
   </div>
 
@@ -61,20 +61,20 @@
       Address
     </p>
   </h3>
-  <div *ngIf="!isSameAsMailingAddress">
+  <div formGroupName="physicalAddress" *ngIf="!isSameAsMailingAddress">
     <div class="grid grid-cols-2 w-636 gap-6 mt-2">
       <div class="relative pb-4 f-outline ">
-        <input type="text" formControlName="parkName" placeholder=""
+        <input type="text" formControlName="address" placeholder=""
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
         <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="fileNum" placeholder=""
+        <input type="text" formControlName="city" placeholder=""
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
         <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
       </div>
       <div class="relative pb-4 f-outline">
-        <select formControlName="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+        <select formControlName="listStateId" value="" onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
           <option value=""></option>
           <option value="1">010 - Private Park</option>
@@ -83,18 +83,18 @@
           <option value="4">Option 4</option>
           <option value="5">Option 5</option>
         </select>
-        <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
+        <label for="listStateId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
           Province</label>
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="fileNum" placeholder=""
+        <input type="text" formControlName="zip" placeholder=""
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-        <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        <label for="zip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
           Zip / Postal Code
         </label>
       </div>
       <div class="relative pb-4 f-outline">
-        <select formControlName="sectionCode" value="" onclick="this.setAttribute('value', this.value);"
+        <select formControlName="countryId" value="" onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
           <option value=""></option>
           <option value="1">010 - Private Park</option>
@@ -103,8 +103,7 @@
           <option value="4">Option 4</option>
           <option value="5">Option 5</option>
         </select>
-        <label for="sectionCode"
-          class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
+        <label for="countryId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
       </div>
     </div>
     <div class="grid grid-cols-3 mt-6 w-636 gap-6">
@@ -193,13 +192,15 @@
     <div class="pb-10">
       <p class="font-cw text-gray-400">Do not add UTM</p>
     </div>
-    <div class="flex items-center justify-end w-full pr-2 mb-12">
-      <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
-      <label for="toggleGuests" class="flex items-center cursor-pointer">
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!isUTMChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="isUTMChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="toggleUTM" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
           <!-- input -->
-          <input type="checkbox" id="toggleUTM" class="sr-only">
+          <input type="checkbox" formControlName="skipUtm" (click)="checkBoxUTMChange(this);" id="toggleUTM"
+            class="sr-only">
           <!-- line -->
           <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
           <!-- dot -->
@@ -245,13 +246,15 @@
   <!-- Action Buttons -->
 
 
-  <div class="flex flex-row col-span-2 pb-10 mt-5">
-    <div class="">
-      <button class="font-medium border rounded font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
-    </div>
-    <div class="pl-6">
-      <button onclick="submit" class="text-white rounded bg-cwRed font-cw h-13 w-44">Save & Continue</button>
-    </div>
 
-  </div>
 </form>
+<div class="flex flex-row col-span-2 pb-10 mt-5">
+  <div class="">
+    <button (click)="clearChanges()"
+      class="font-medium border rounded font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+      Changes</button>
+  </div>
+  <div class="pl-6">
+    <button (click)="submitForm()" class="text-white rounded bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+  </div>
+</div>
