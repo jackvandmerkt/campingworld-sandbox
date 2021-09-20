@@ -8,6 +8,8 @@ import { FormBuilder } from "@angular/forms";
 })
 export class ContactInfoComponent implements OnInit {
 
+  isSameAsMailingAddress = true;
+
   constructor(private formBuilder: FormBuilder) {
 
   }
@@ -29,7 +31,8 @@ export class ContactInfoComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.isSameAsMailingAddress = false
+    console.log(this.contactInfoForm.value)
   }
 
 
