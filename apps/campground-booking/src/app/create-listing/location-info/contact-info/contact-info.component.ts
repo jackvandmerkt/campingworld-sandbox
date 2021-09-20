@@ -15,6 +15,9 @@ export class ContactInfoComponent implements OnInit {
   }
 
   contactInfoForm = this.formBuilder.group({
+    mailingAddress: {
+      address: ''
+    },
     latitude: '',
     longitude: '',
     elevation: '',
