@@ -32,6 +32,11 @@ input:checked + label {
     transform: translateY(-1rem) translatex(-.1rem) scaleX(0.75) scaleY(0.75);
 }
 
+.rate-label input:focus-within ~ label,
+.rate-label input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-.85rem) scaleX(0.75) scaleY(0.75);
+}
+
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
 select:not([value='']):valid ~ label {

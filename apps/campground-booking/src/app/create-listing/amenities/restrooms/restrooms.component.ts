@@ -1,25 +1,35 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'restrooms',
     templateUrl: './restrooms.component.html',
     styleUrls: ['./restrooms.component.css']
 })
-export class RestroomsComponent implements OnInit{
-    restrooms!: FormGroup;
+export class RestroomsComponent {
     pitTolietsOnly: boolean = false;
     restroomsShowersPaid: boolean = false;
     restroomsAndShowers: boolean = false;
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.restrooms = new FormGroup({
+    // form object
+    restroomForm = this.formBuilder.group({
+        togglePitToliets: false,
+        restroomsShowersSelect: '',
+        numTolietsMen: '',
+        numTolietsWomen: '',
+        numToiletsUni: '',
+        numShowersMen: '',
+        numShowersWomen: '',
+        numShowersUni: '',
+        togglePaid: false
+      });
 
-        });
+      onSubmit(): void {
+        console.log(this.restroomForm.value);
     }
 
     checkBoxPitTolietsChange(cb:any) {

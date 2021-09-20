@@ -1,13 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { Component } from "@angular/core";
+import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 
 @Component({
     selector: 'on-site-services',
     templateUrl: './on-site-services.component.html',
     styleUrls: ['./on-site-services.component.css']
 })
-export class OnSiteServicesComponent implements OnInit {
-    onSiteServices!: FormGroup;
+export class OnSiteServicesComponent {
     // radio checkbox variables
     basicFacilitiesOptions: string[] = [];
     securityOptions: string[] = [];
@@ -27,15 +26,56 @@ export class OnSiteServicesComponent implements OnInit {
     overnightCentralInternet: boolean = false;
     overnightCentralInternetCharge: boolean = false;
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
 
     }
 
-    ngOnInit() {
-        this.onSiteServices = new FormGroup({
-
-        });
-    }
+    // form object
+    onSiteServices = this.formBuilder.group({
+      basicOptions: this.formBuilder.group({
+        basicOption1: false, basicOption2: false, basicOption3: false, basicOption4: false
+      }),
+      securityOptions: this.formBuilder.group({
+        securityOption1: false, securityOption2: false
+      }),
+      toggleCentralInternet: false,
+      toggleCentralInternetCharge: false,
+      toggleWiFiHotspots: false,
+      toggleWiFiHotspotsCharge: false,
+      howManyHotspots: '',
+      toggleWiFi: false,
+      toggleWiFiCharge: false,
+      toggleMobileDevices: false,
+      toggleStreamingSupport: false,
+      toggleWiFiTechSupport: false,
+      toggleOvernightCentralInternet: false,
+      toggleOvernightCentralInternetCharge: false,
+      howManySitesHaveWiFi: '',
+      numDevicesSupported: '',
+      otherOptions: this.formBuilder.group({
+        otherOption1: false, otherOption2: false, otherOption3: false, otherOption4: false,
+        otherOption5: false, otherOption6: false, otherOption7: false, otherOption8: false,
+        otherOption9: false, otherOption10: false, otherOption11: false, otherOption12: false,
+        otherOption13: false, otherOption14: false, otherOption15: false, otherOption16: false,
+        otherOption17: false, otherOption18: false, otherOption19: false, otherOption20: false,
+        otherOption21: false, otherOption22: false, otherOption23: false, otherOption24: false,
+        otherOption25: false, otherOption26: false, otherOption27: false, otherOption28: false,
+        otherOption29: false, otherOption30: false, otherOption31: false, otherOption32: false,
+        otherOption33: false, otherOption34: false, otherOption35: false, otherOption36: false,
+        otherOption37: false, otherOption38: false, otherOption39: false, otherOption40: false,
+        otherOption41: false, otherOption42: false, otherOption43: false
+      }),
+      petOptions: this.formBuilder.group({
+        petOption1: false, petOption2: false, petOption3: false, petOption4: false,
+        petOption5: false, petOption6: false, petOption7: false, petOption8: false
+      }),
+      otherServicesMajor: '',
+      otherServicesMinor: ''
+    });
+  
+  onSubmit(): void {
+      console.log(this.onSiteServices.value);
+  }
 
     basicFacilitiesChecked(radio: string) {
         if (!this.basicFacilitiesOptions.includes(radio)) {
