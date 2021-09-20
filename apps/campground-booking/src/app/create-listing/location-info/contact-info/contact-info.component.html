@@ -1,4 +1,4 @@
-<form [formGroup]="contactInfoForm">
+<form [formGroup]="contactInfoForm" (ngSubmit)="onSubmit()">
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-11">Contact Info</h1>
 
   <!-- Mailing Address -->
@@ -245,16 +245,16 @@
 
   <!-- Action Buttons -->
 
-
+  <div class="flex flex-row col-span-2 pb-10 mt-5">
+    <div class="">
+      <button type="button" (click)="clearChanges()"
+        class="font-medium border rounded font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+        Changes</button>
+    </div>
+    <div class="pl-6">
+      <button type="submit" class="text-white rounded bg-cwRed font-cw h-13 w-44">Save &
+        Continue</button>
+    </div>
+  </div>
 
 </form>
-<div class="flex flex-row col-span-2 pb-10 mt-5">
-  <div class="">
-    <button (click)="clearChanges()"
-      class="font-medium border rounded font-cw text-cwGray h-13 w-44 border-cwGray">Clear
-      Changes</button>
-  </div>
-  <div class="pl-6">
-    <button (click)="submitForm()" class="text-white rounded bg-cwRed font-cw h-13 w-44">Save & Continue</button>
-  </div>
-</div>

@@ -62,7 +62,7 @@ export class ContactInfoComponent implements OnInit {
   }
 
 
-  submitForm(): void {
+  onSubmit(): void {
     console.log(this.contactInfoForm.value);
   }
 
