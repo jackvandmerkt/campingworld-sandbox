@@ -58,7 +58,6 @@ export class ContactInfoComponent implements OnInit {
   }
 
   clearChanges() {
-    console.log('eu')
     this.contactInfoForm.reset()
   }
 
