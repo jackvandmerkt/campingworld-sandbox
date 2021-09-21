@@ -1,0 +1,86 @@
+<form [formGroup]="listingUpdateDetailsForm" (ngSubmit)="onSubmit()">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-9">
+            <p class="font-bold font-cw text-cwGray text-28px34px">Listing Update Details</p>
+        </div>
+
+        <div class="relative col-span-2 pb-10 f-outline">
+            <input type="text" formGroupName="personInterviewed" name="personInterviewed" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
+            <label for="personInterviewed"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Person Interviewed for this listing info</label>
+        </div>
+
+        <div class="pb-11">
+            <p class="font-cw">Was this a phone interview?</p>
+        </div>
+
+        <div class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!phoneInterview" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="phoneInterview" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="togglePhoneInterview" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" formGroupName="togglePhoneInterview" (click)="checkBoxPhoneInterviewChange(this);" id="togglePhoneInterview" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>  
+        </div>
+
+        <div *ngIf="!phoneInterview" class="relative col-span-2 pb-10 f-outline">
+            <select name="wiFiConectivity" formGroupName="wiFiConectivity" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none wifi-connectivity w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="wiFiConectivity" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Capture's Wi-Fi connectivity at this location</label>
+        </div>
+
+        <div *ngIf="!phoneInterview" class="relative col-span-2 pb-10 f-outline">
+            <select name="cellularConectivity" formGroupName="cellularConectivity" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none cellular-connectivity w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="cellularConectivity" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Capture's cellular connectivity at this location</label>
+        </div>
+
+        <div *ngIf="!phoneInterview" class="relative col-span-2 pb-10 f-outline">
+            <select name="cellService" formGroupName="cellService" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none cell-service w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="cellService" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Cell service provider</label>
+        </div>
+
+        <div class="relative col-span-2 pb-10">
+            <input type="text"  name="calendar" placeholder=" "
+                class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+            <label for="calendar"
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Date of inspection / interview</label>
+        </div>
+
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</form>

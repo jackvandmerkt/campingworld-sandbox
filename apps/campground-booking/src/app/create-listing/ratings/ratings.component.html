@@ -1,0 +1,998 @@
+<form [formGroup]="ratingsForm" (ngSubmit)="onSubmit()">
+    <div class="grid grid-cols-2 w-636">
+        <div class="grid col-span-2 pb-9">
+            <p class="font-bold font-cw text-cwGray text-28px34px">Ratings</p>
+        </div>
+
+        <div class="flex col-span-2">
+            <div class="w-3/4 pb-11">
+                <p class="font-cw">Can this park be rated?</p>
+            </div>
+            <div class="flex items-center justify-end w-1/4 pr-2 mb-10">
+                <p *ngIf="!canParkBeRated" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+                <p *ngIf="canParkBeRated" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+                <label for="toggleCanParkBeRated" class="flex items-center cursor-pointer">
+                    <!-- toggle -->
+                    <div class="relative">
+                    <!-- input -->
+                    <input  type="checkbox" formControlName="toggleCanParkBeRated" (click)="checkBoxCanParkBeRatedChange(this);" id="toggleCanParkBeRated" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div *ngIf="!canParkBeRated" class="relative col-span-2 pb-10 f-outline">
+            <select name="nonRatedCode" formControlName="nonRatedCode" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <option value=""></option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label for="nonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Non-rated code</label>
+        </div>
+
+        <div *ngIf="canParkBeRated" class="col-span-2">
+            <div class="flex flex-row items-center border-t-2 justify-left w-636 h-21">
+                <button (click)='facilitiesToggle()' type="button" class="font-cw text-cwGray w-636">
+                    <div class="grid grid-cols-6">
+                        <p class="col-span-5 font-bold justify-self-start">Facilities</p>
+                        <img *ngIf="!unHideFacilities" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideFacilities" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
+                    </div>
+                </button>
+            </div>
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Interior Roads</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input (click)="interiorRoadsChecked(0)" formControlName="interiorRoadsRadio" value="0" class="hidden" id="interiorRoads0" type="radio" name="interiorRoadsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="interiorRoads0">
+                            <img *ngIf="interiorRoadsValue===0 && ratingsForm.controls.interiorRoadsRadio.dirty" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input (click)="interiorRoadsChecked(.5)" formControlName="interiorRoadsRadio" value=".5" class="hidden" id="interiorRoadsHalf" type="radio" name="interiorRoadsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="interiorRoadsHalf">
+                            <img *ngIf="interiorRoadsValue===.5" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input (click)="interiorRoadsChecked(1)" formControlName="interiorRoadsRadio" value="1" class="hidden" id="interiorRoads1" type="radio" name="interiorRoadsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="interiorRoads1">
+                            <img *ngIf="interiorRoadsValue===1" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Registration</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input (click)="registrationChecked(0)" formControlName="registrationRadio" value="0" class="hidden" id="registration0" type="radio" name="registrationRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="registration0">
+                            <img *ngIf="registrationValue===0 && ratingsForm.controls.registrationRadio.dirty" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input (click)="registrationChecked(.5)" formControlName="registrationRadio" value=".5" class="hidden" id="registrationHalf" type="radio" name="registrationRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="registrationHalf">
+                            <img *ngIf="registrationValue===.5" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input (click)="registrationChecked(1)" formControlName="registrationRadio" value="1" class="hidden" id="registration1" type="radio" name="registrationRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="registration1">
+                            <img *ngIf="registrationValue===1" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Sites</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="sitesRadio" value="0" class="hidden" id="sites0" type="radio" name="sitesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="sites0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="sitesRadio" value=".5" class="hidden" id="sitesHalf" type="radio" name="sitesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="sitesHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="sitesRadio" value="1" class="hidden" id="sites1" type="radio" name="sitesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="sites1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Hookups</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="hookupsRadio" value="0" class="hidden" id="hookups0" type="radio" name="hookupsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="hookups0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="hookupsRadio" value=".5" class="hidden" id="hookupsHalf" type="radio" name="hookupsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="hookupsHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="hookupsRadio" value="1" class="hidden" id="hookups1" type="radio" name="hookupsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="hookups1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Recreation</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="recreationRadio" value="0" class="hidden" id="recreation0" type="radio" name="recreationRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="recreation0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="recreationRadio" value=".5" class="hidden" id="recreationHalf" type="radio" name="recreationRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="recreationHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="recreationRadio" value="1" class="hidden" id="recreation1" type="radio" name="recreationRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="recreation1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Swimming</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="swimmingRadio" value="0" class="hidden" id="swimming0" type="radio" name="swimmingRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="swimming0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="swimmingRadio" value=".5" class="hidden" id="swimmingHalf" type="radio" name="swimmingRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="swimmingHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="swimmingRadio" value="1" class="hidden" id="swimming1" type="radio" name="swimmingRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="swimming1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Security</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="securityRadio" value="0" class="hidden" id="security0" type="radio" name="securityRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="security0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="securityRadio" value=".5" class="hidden" id="securityHalf" type="radio" name="securityRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="securityHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="securityRadio" value="1" class="hidden" id="security1" type="radio" name="securityRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="security1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Laundry</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="laundryRadio" value="0" class="hidden" id="laundry0" type="radio" name="laundryRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="laundry0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="laundryRadio" value=".5" class="hidden" id="laundryHalf" type="radio" name="laundryRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="laundryHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="laundryRadio" value="1" class="hidden" id="laundry1" type="radio" name="laundryRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="laundry1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Services</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="servicesRadio" value="0" class="hidden" id="services0" type="radio" name="servicesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="services0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="servicesRadio" value=".5" class="hidden" id="servicesHalf" type="radio" name="servicesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="servicesHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="servicesRadio" value="1" class="hidden" id="services1" type="radio" name="servicesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="services1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Internet Access</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="internetAccessRadio" value="0" class="hidden" id="internetAccess0" type="radio" name="internetAccessRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="internetAccess0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="internetAccessRadio" value=".5" class="hidden" id="internetAccessHalf" type="radio" name="internetAccessRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="internetAccessHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="internetAccessRadio" value="1" class="hidden" id="internetAccess1" type="radio" name="internetAccessRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="internetAccess1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideFacilities" class="flex pb-5 space-x-5">
+                <p class="pt-1.5 font-bold font-cw text-cwGray text-18px31px">Facilities Total</p>
+                <p class="font-bold font-cw text-cwGray text-32px38px">{{ facilitiesTotal }}</p>
+            </div>
+        </div>
+
+        <div *ngIf="canParkBeRated" class="col-span-2">
+            <div class="flex flex-row items-center border-t-2 justify-left w-636 h-21">
+                <button (click)='restroomsToggle()' type="button" class="font-cw text-cwGray w-636">
+                    <div class="grid grid-cols-6">
+                        <p class="col-span-5 font-bold justify-self-start">Restrooms</p>
+                        <img *ngIf="!unHideRestrooms" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideRestrooms" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
+                    </div>
+                </button>
+            </div>
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Toliets</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="tolietsRadio" value="0" class="hidden" id="toliets0" type="radio" name="tolietsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="toliets0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="tolietsRadio" value=".5" class="hidden" id="tolietsHalf" type="radio" name="tolietsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="tolietsHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="tolietsRadio" value="1" class="hidden" id="toliets1" type="radio" name="tolietsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="toliets1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Showers</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="showersRadio" value="0" class="hidden" id="showers0" type="radio" name="showersRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="showers0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="showersRadio" value=".5" class="hidden" id="showersHalf" type="radio" name="showersRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="showersHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="showersRadio" value="1" class="hidden" id="showers1" type="radio" name="showersRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="showers1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Floors</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="floorsRadio" value="0" class="hidden" id="floors0" type="radio" name="floorsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="floors0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="floorsRadio" value=".5" class="hidden" id="floorsHalf" type="radio" name="floorsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="floorsHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="floorsRadio" value="1" class="hidden" id="floors1" type="radio" name="floorsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="floors1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Walls</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="wallsRadio" value="0" class="hidden" id="walls0" type="radio" name="wallsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="walls0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="wallsRadio" value=".5" class="hidden" id="wallsHalf" type="radio" name="wallsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="wallsHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="wallsRadio" value="1" class="hidden" id="walls1" type="radio" name="wallsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="walls1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Sinks / Counters / Mirrors</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="scmRadio" value="0" class="hidden" id="scm0" type="radio" name="scmRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="scm0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="scmRadio" value=".5" class="hidden" id="scmHalf" type="radio" name="scmRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="scmHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="scmRadio" value="1" class="hidden" id="scm1" type="radio" name="scmRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="scm1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Interior Construction</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="interiorConstructionRadio" value="0" class="hidden" id="interiorConstruction0" type="radio" name="interiorConstructionRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="interiorConstruction0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="interiorConstructionRadio" value=".5" class="hidden" id="interiorConstructionHalf" type="radio" name="interiorConstructionRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="interiorConstructionHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="interiorConstructionRadio" value="1" class="hidden" id="interiorConstruction1" type="radio" name="interiorConstructionRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="interiorConstruction1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Supplies Odor Free</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="supplyOdorFreeRadio" value="0" class="hidden" id="supplyOdorFree0" type="radio" name="supplyOdorFreeRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="supplyOdorFree0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="supplyOdorFreeRadio" value=".5" class="hidden" id="supplyOdorFreeHalf" type="radio" name="supplyOdorFreeRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="supplyOdorFreeHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="supplyOdorFreeRadio" value="1" class="hidden" id="supplyOdorFree1" type="radio" name="supplyOdorFreeRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="supplyOdorFree1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Amount of Facilities M/W</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="amtOfFacilitiesRadio" value="0" class="hidden" id="amtOfFacilities0" type="radio" name="amtOfFacilitiesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="amtOfFacilities0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="amtOfFacilitiesRadio" value=".5" class="hidden" id="amtOfFacilitiesHalf" type="radio" name="amtOfFacilitiesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="amtOfFacilitiesHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="amtOfFacilitiesRadio" value="1" class="hidden" id="amtOfFacilities1" type="radio" name="amtOfFacilitiesRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="amtOfFacilities1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Exterior Appearance</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="extAppearanceRadio" value="0" class="hidden" id="extAppearance0" type="radio" name="extAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="extAppearance0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="extAppearanceRadio" value=".5" class="hidden" id="extAppearanceHalf" type="radio" name="extAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="extAppearanceHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="extAppearanceRadio" value="1" class="hidden" id="extAppearance1" type="radio" name="extAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="extAppearance1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Interior Appearance</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="intAppearanceRadio" value="0" class="hidden" id="intAppearance0" type="radio" name="intAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="intAppearance0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="intAppearanceRadio" value=".5" class="hidden" id="intAppearanceHalf" type="radio" name="intAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="intAppearanceHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="intAppearanceRadio" value="1" class="hidden" id="intAppearance1" type="radio" name="intAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="intAppearance1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+            <div *ngIf="unHideRestrooms" class="flex col-span-2 pb-8">
+                <label class="flex items-center">
+                  <input type="checkbox" formControlName="uninspected" id="confirmCheck" class="border-2 rounded-sm text-cwRed form-checkbox border-cwGray">
+                  <span class="ml-3 font-cw text-cwGray text-14px26px">Uninspected?</span>
+                </label>
+            </div>
+            <div *ngIf="unHideRestrooms" class="flex pb-5 space-x-5">
+                <p class="pt-1.5 font-bold font-cw text-cwGray text-18px31px">Restrooms Total</p>
+                <p class="font-bold font-cw text-cwGray text-32px38px">{{ restroomsTotal }}</p>
+            </div>
+        </div>
+
+        <div *ngIf="canParkBeRated" class="col-span-2">
+            <div class="flex flex-row items-center border-t-2 justify-left w-636 h-21">
+                <button (click)='visualAppearanceToggle()' type="button" class="font-cw text-cwGray w-636">
+                    <div class="grid grid-cols-6">
+                        <p class="col-span-5 font-bold justify-self-start">Visual Appearance / Enviornment Quality</p>
+                        <img *ngIf="!unHideVisualAppearance" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
+                        <img *ngIf="unHideVisualAppearance" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
+                    </div>
+                </button>
+            </div>
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Signage</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="signageRadio" value="0" class="hidden" id="signage0" type="radio" name="signageRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="signage0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="signageRadio" value=".5" class="hidden" id="signageHalf" type="radio" name="signageRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="signageHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="signageRadio" value="1" class="hidden" id="signage1" type="radio" name="signageRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="signage1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Entrance Area</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="entranceAreaRadio" value="0" class="hidden" id="entanceArea0" type="radio" name="entranceAreaRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="entanceArea0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="entranceAreaRadio" value=".5" class="hidden" id="entanceAreaHalf" type="radio" name="entranceAreaRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="entanceAreaHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="entranceAreaRadio" value="1" class="hidden" id="entanceArea1" type="radio" name="entranceAreaRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="entanceArea1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Park Grounds</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="parkGroundsRadio" value="0" class="hidden" id="parkGrounds0" type="radio" name="parkGroundsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="parkGrounds0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="parkGroundsRadio" value=".5" class="hidden" id="parkGroundsHalf" type="radio" name="parkGroundsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="parkGroundsHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="parkGroundsRadio" value="1" class="hidden" id="parkGrounds1" type="radio" name="parkGroundsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="parkGrounds1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Site Appearance</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="siteAppearanceRadio" value="0" class="hidden" id="siteAppearance0" type="radio" name="siteAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="siteAppearance0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="siteAppearanceRadio" value=".5" class="hidden" id="siteAppearanceHalf" type="radio" name="siteAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="siteAppearanceHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="siteAppearanceRadio" value="1" class="hidden" id="siteAppearance1" type="radio" name="siteAppearanceRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="siteAppearance1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Litter & Debris</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="litterDebrisRadio" value="0" class="hidden" id="litterDebris0" type="radio" name="litterDebrisRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="litterDebris0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="litterDebrisRadio" value=".5" class="hidden" id="litterDebrisHalf" type="radio" name="litterDebrisRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="litterDebrisHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="litterDebrisRadio" value="1" class="hidden" id="litterDebris1" type="radio" name="litterDebrisRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="litterDebris1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Exterior Building Maint.</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="extBuildingMaintRadio" value="0" class="hidden" id="extBuildingMaint0" type="radio" name="extBuildingMaintRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="extBuildingMaint0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="extBuildingMaintRadio" value=".5" class="hidden" id="extBuildingMaintHalf" type="radio" name="extBuildingMaintRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="extBuildingMaintHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="extBuildingMaintRadio" value="1" class="hidden" id="extBuildingMaint1" type="radio" name="extBuildingMaintRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="extBuildingMaint1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Trash Disposal</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="trashDisposalRadio" value="0" class="hidden" id="trashDisposal0" type="radio" name="trashDisposalRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="trashDisposal0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="trashDisposalRadio" value=".5" class="hidden" id="trashDisposalHalf" type="radio" name="trashDisposalRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="trashDisposalHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="trashDisposalRadio" value="1" class="hidden" id="trashDisposal1" type="radio" name="trashDisposalRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="trashDisposal1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Noise</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="noiseRadio" value="0" class="hidden" id="noise0" type="radio" name="noiseRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="noise0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="noiseRadio" value=".5" class="hidden" id="noiseHalf" type="radio" name="noiseRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="noiseHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="noiseRadio" value="1" class="hidden" id="noise1" type="radio" name="noiseRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="noise1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Park Setting</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="parkSettingRadio" value="0" class="hidden" id="parkSetting0" type="radio" name="parkSettingRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="parkSetting0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="parkSettingRadio" value=".5" class="hidden" id="parkSettingHalf" type="radio" name="parkSettingRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="parkSettingHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="parkSettingRadio" value="1" class="hidden" id="parkSetting1" type="radio" name="parkSettingRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="parkSetting1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
+                <div class="flex flex-row items-center col-span-2 space-x-3">
+                    <p class="font-cw text-cwGray text-14px24px">Site Layout</p>
+                    <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
+                </div>
+                <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
+                    <div class="relative">
+                        <input formControlName="siteLayoutRadio" value="0" class="hidden" id="siteLayout0" type="radio" name="siteLayoutRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="siteLayout0">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="siteLayoutRadio" value=".5" class="hidden" id="siteLayoutHalf" type="radio" name="siteLayoutRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="siteLayoutHalf">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input formControlName="siteLayoutRadio" value="1" class="hidden" id="siteLayout1" type="radio" name="siteLayoutRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="siteLayout1">
+                            <img *ngIf="" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+                            <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
+                        </label>
+                    </div>
+                </div>
+            </div> 
+
+            <div *ngIf="unHideVisualAppearance" class="flex pb-5 space-x-5">
+                <p class="pt-1.5 font-bold font-cw text-cwGray text-18px31px">Visual Appearance Total</p>
+                <p class="font-bold font-cw text-cwGray text-32px38px">{{ visualAppearanceTotal }}</p>
+            </div>
+        </div>
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+            </div>
+            <div class="pl-6">
+                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</form>

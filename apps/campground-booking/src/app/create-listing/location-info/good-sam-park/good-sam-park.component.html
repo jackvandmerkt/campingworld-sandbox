@@ -1,4 +1,4 @@
-<form [formGroup]="goodSamPark">
+<form [formGroup]="goodSamPark" (ngSubmit)="onSubmit()">
     <div class="grid grid-cols-2 w-636">
         <div class="grid col-span-2">
             <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Good Sam Park</p>
@@ -7,7 +7,7 @@
             <p class="font-bold font-cw text-cwGray text-18px24px pb-9">When park confirms affiliation, send these supplies:</p>
         </div>
         <div class="relative col-span-1 pb-10 f-outline">
-            <select name="numbersOfSigns" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="numbersOfSigns" formControlName="numbersOfSigns" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -18,7 +18,7 @@
             <label for="numbersOfSigns" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Number of signs to send</label>
         </div>
         <div class="relative col-span-1 pb-15 f-outline">
-            <select name="numbersOfFlags" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="numbersOfFlags" formControlName="numbersOfFlags" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -45,7 +45,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBox2021Change(this);" id="toggle2021" class="sr-only">
+                <input  type="checkbox" formControlName="toggle2021" (click)="checkBox2021Change(this);" id="toggle2021" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -65,7 +65,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxRenewChange(this);" id="toggleRenew" class="sr-only">
+                <input  type="checkbox" formControlName="toggleRenew" (click)="checkBoxRenewChange(this);" id="toggleRenew" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -85,7 +85,7 @@
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" (click)="checkBoxNewChange(this);" id="toggleNew" class="sr-only">
+                <input  type="checkbox" formControlName="toggleNew" (click)="checkBoxNewChange(this);" id="toggleNew" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -95,14 +95,14 @@
         </div>
 
         <div class="relative pb-10 f-outline">
-            <input type="text" name="goodSamAgisNumber" placeholder=" "
+            <input type="text" formControlName="goodSamAgisNumber" name="goodSamAgisNumber" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray bg-navGray focus:outline-none" />
             <label for="goodSamAgisNumber"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good Sam Agis Number</label>
         </div>
 
         <div class="relative pb-10 f-outline">
-            <input type="text" name="goodSamParkHistory" placeholder=" "
+            <input type="text" formControlName="goodSamParkHistory" name="goodSamParkHistory" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray bg-navGray focus:outline-none" />
             <label for="goodSamParkHistory"
                 class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good Sam Park History</label>
