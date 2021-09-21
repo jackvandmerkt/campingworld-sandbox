@@ -31,7 +31,15 @@ export class DiscountsAffiliationsComponent {
     onSubmit(): void {
         console.log(this.discountsAffiliations.value);
     }
-
+    clearChanges() {
+        this.discountsAffiliations.reset();
+        //resetting toggle text to no
+        this.isCoastChecked = false;
+        this.isNeighborChecked = false;
+        this.isAAAChecked = false;
+        this.isARVCChecked = false;
+        this.isMilitaryChecked = false;
+    }
 
     checkBoxCoastChange(cb:any) {
         this.isCoastChecked = !this.isCoastChecked;

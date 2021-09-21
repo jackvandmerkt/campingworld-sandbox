@@ -29,6 +29,13 @@ export class GoodSamParkComponent {
     onSubmit(): void {
         console.log(this.goodSamPark.value);
     }
+    clearChanges() {
+        this.goodSamPark.reset();
+        //resetting toggle text to no
+        this.is2021Checked = false;
+        this.isRenewChecked = false;
+        this.isNewChecked = false;
+    }
 
     checkBox2021Change(cb:any) {
         this.is2021Checked = !this.is2021Checked;

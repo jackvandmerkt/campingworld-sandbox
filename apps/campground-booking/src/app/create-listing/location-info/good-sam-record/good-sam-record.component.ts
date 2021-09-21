@@ -31,6 +31,12 @@ export class GoodSamRecordFormComponent {
     onSubmit(): void {
         console.log(this.goodSamRecordForm.value);
     }
+    clearChanges() {
+        this.goodSamRecordForm.reset();
+        //resetting toggle text to no
+        this.isGuestsChecked = false;
+        this.isDeleteChecked = false;
+    }
 
     checkBoxGuestsChange(cb:any) {
         this.isGuestsChecked = !this.isGuestsChecked;

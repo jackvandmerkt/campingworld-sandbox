@@ -96,6 +96,23 @@ export class RatingsComponent {
     onSubmit(): void {
         console.log(this.ratingsForm.value);
     }
+    clearChanges() {
+        this.ratingsForm.reset();
+        this.canParkBeRated = false;
+        this.unHideFacilities = false;
+        this.unHideRestrooms = false;
+        this.unHideVisualAppearance = false;
+        //resets radio button values
+        for(let key of Object.keys(this.facilitiesOptions)) {
+            this.facilitiesOptions[key] = 0;
+        }
+        for(let key of Object.keys(this.restroomsOptions)) {
+            this.restroomsOptions[key] = 0;
+        }
+        for(let key of Object.keys(this.visualAppearanceOptions)) {
+            this.visualAppearanceOptions[key] = 0;
+        } 
+    }
 
     checkBoxCanParkBeRatedChange(cb:any) {
         this.canParkBeRated = !this.canParkBeRated;
