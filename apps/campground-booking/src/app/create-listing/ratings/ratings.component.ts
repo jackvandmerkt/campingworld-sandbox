@@ -111,8 +111,6 @@ export class RatingsComponent {
         this.unHideVisualAppearance = !this.unHideVisualAppearance;
     }
 
-    
-
     // Functions for Radio button images and section totals
     facilitiesGroupChecked(radio: string, radioValue: number) {
         for(let key of Object.keys(this.facilitiesOptions)) {
