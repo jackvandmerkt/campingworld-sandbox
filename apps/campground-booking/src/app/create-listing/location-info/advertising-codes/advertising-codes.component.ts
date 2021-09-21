@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'advertising-codes',
@@ -7,9 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdvertisingCodesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
+
+  advertisingCodes = this.formBuilder.group({
+    cdAdv: '',
+    cdAdHistory: '',
+    extendedStayAdv: '',
+    extendedStayListing: '',
+    serviceAttractionAdv: '',
+    serviceAttractionListing: '',
+    basicPaidListing: '',
+    onlineSeasonsListing: '',
+    onlineRentalListing: '',
+    seoDescriptionField1: '',
+    seoDescriptionField2: '',
+    seoDescriptionField3: '',
+    seoDescriptionField4: '',
+  })
+
 
   ngOnInit(): void {
   }
+
+  onSubmit(): void {
+    console.log('form', this.advertisingCodes.value)
+  }
+
+
+  clearChanges(): void {
+    this.advertisingCodes.reset()
+  }
+
+
 
 }
