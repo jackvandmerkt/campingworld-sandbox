@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'contact-info',
@@ -7,9 +8,62 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactInfoComponent implements OnInit {
 
-  constructor() { }
+  isSameAsMailingAddress = true;
+  isUTMChecked = false;
+
+  constructor(private formBuilder: FormBuilder) {
+
+  }
+
+  contactInfoForm = this.formBuilder.group({
+    mailingAddress: this.formBuilder.group({
+      address: '',
+      city: '',
+      listStateId: 1,
+      zip: '',
+      countryId: 1
+    }),
+    physicalAddress: this.formBuilder.group({
+      address: '',
+      city: '',
+      listStateId: 1,
+      zip: '',
+      countryId: 1,
+      latitude: '',
+      longitude: '',
+      elevation: ''
+    }),
+    latitude: '',
+    longitude: '',
+    elevation: '',
+    email: '',
+    telephone: '',
+    repressedTelephone: '',
+    webAddress: '',
+    onlineWeb: '',
+    skipUtm: false,
+    facebook: '',
+    twitter: '',
+    pinterest: '',
+    instagram: '',
+  });
 
   ngOnInit(): void {
+    this.isSameAsMailingAddress = false
+    console.log(this.contactInfoForm.value)
+  }
+
+  checkBoxUTMChange(cb: any) {
+    this.isUTMChecked = !this.isUTMChecked;
+  }
+
+  clearChanges() {
+    this.contactInfoForm.reset()
+  }
+
+
+  onSubmit(): void {
+    console.log(this.contactInfoForm.value);
   }
 
 }
