@@ -135,6 +135,11 @@ export class RatingsComponent {
                 this.facilitiesOptions[key] = radioValue;
             } 
         } 
+        let sum = 0;
+        for (let key in this.facilitiesOptions) {
+            sum += this.facilitiesOptions[key];
+            this.facilitiesTotal = sum
+        }
     }
 
     restroomsGroupChecked(radio: string, radioValue: number) {
@@ -142,7 +147,12 @@ export class RatingsComponent {
             if(key === radio) {
                 this.restroomsOptions[key] = radioValue;
             } 
-        } 
+        }
+        let sum = 0;
+        for (let key in this.restroomsOptions) {
+            sum += this.restroomsOptions[key];
+            this.restroomsTotal = sum
+        }
     }
 
     visualAppearanceGroupChecked(radio: string, radioValue: number) {
@@ -151,5 +161,10 @@ export class RatingsComponent {
                 this.visualAppearanceOptions[key] = radioValue;
             } 
         } 
+        let sum = 0;
+        for (let key in this.visualAppearanceOptions) {
+            sum += this.visualAppearanceOptions[key];
+            this.visualAppearanceTotal = sum
+        }
     }
 }
