@@ -5,17 +5,18 @@
   <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">Mailing Address</h2>
   <div formGroupName="mailingAddress" class="grid grid-cols-2 w-636 gap-6">
     <div class="relative pb-4 f-outline ">
-      <input type="text" formControlName="address" placeholder=""
+      <input type="text" formControlName="address" name="address" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="city" placeholder=""
+      <input type="text" formControlName="city" name="city" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
     </div>
     <div class="relative pb-4 f-outline">
-      <select formControlName="listStateId" value="" onclick="this.setAttribute('value', this.value);"
+      <select formControlName="listStateId" name="listStateId" value=""
+        onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
         <option value="1">010 - Private Park</option>
@@ -28,14 +29,15 @@
         Province</label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="zip" placeholder=""
+      <input type="text" formControlName="zip" name="zip" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="zip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Zip / Postal Code
       </label>
     </div>
     <div class="relative pb-4 f-outline">
-      <select formControlName="countryId" value="" onclick="this.setAttribute('value', this.value);"
+      <select formControlName="countryId" name="countryId" placeholder=" " value=""
+        onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
         <option value="1">010 - Private Park</option>
@@ -64,17 +66,18 @@
   <div formGroupName="physicalAddress" *ngIf="!isSameAsMailingAddress">
     <div class="grid grid-cols-2 w-636 gap-6 mt-2">
       <div class="relative pb-4 f-outline ">
-        <input type="text" formControlName="address" placeholder=""
+        <input type="text" formControlName="address" name="address" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
         <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="city" placeholder=""
+        <input type="text" formControlName="city" name="city" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
         <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
       </div>
       <div class="relative pb-4 f-outline">
-        <select formControlName="listStateId" value="" onclick="this.setAttribute('value', this.value);"
+        <select formControlName="listStateId" name="listStateId" placeholder=" " value=""
+          onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
           <option value=""></option>
           <option value="1">010 - Private Park</option>
@@ -87,7 +90,7 @@
           Province</label>
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="zip" placeholder=""
+        <input type="text" formControlName="zip" name="zip" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
         <label for="zip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
           Zip / Postal Code
@@ -108,19 +111,19 @@
     </div>
     <div class="grid grid-cols-3 mt-6 w-636 gap-6">
       <div class="relative pb-4 f-outline ">
-        <input type="text" formControlName="latitude" placeholder=""
+        <input type="text" formControlName="latitude" name="latitude" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwGray focus:outline-none" />
         <label for="latitude" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Latitude</label>
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="longitude" placeholder=""
+        <input type="text" formControlName="longitude" name="longitude" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwGray focus:outline-none" />
         <label for="longitude"
           class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Longitude</label>
       </div>
 
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="elevation" placeholder=""
+        <input type="text" formControlName="elevation" name="elevation" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwGray focus:outline-none" />
         <label for="elevation" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
           Elevation
@@ -137,7 +140,7 @@
 
   <div class="grid grid-cols-1 w-636 gap-6">
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="email" placeholder=""
+      <input type="text" formControlName="email" name="email" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="emailAddress" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Email Address
@@ -148,7 +151,7 @@
 
   <div class="grid grid-cols-2 w-636 mt-6 gap-6">
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="telephone" placeholder=""
+      <input type="text" formControlName="telephone" name="telephone" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="telephone" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Phone Number
@@ -156,7 +159,7 @@
       <span class="ml-3 text-gray-400 text-sm">Published</span>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="repressedTelephone" placeholder=""
+      <input type="text" formControlName="repressedTelephone" name="repressedTelephone" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="repressedTelephone" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Phone Number
@@ -167,14 +170,14 @@
 
   <div class="grid grid-cols-1 w-636 mt-6 gap-6">
     <div class="relative pb-5 f-outline">
-      <input type="text" formControlName="webAddress" placeholder=""
+      <input type="text" formControlName="webAddress" name="webAddress" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="webAddress" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Web address for print
       </label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="onlineWeb" placeholder=""
+      <input type="text" formControlName="onlineWeb" name="onlineWeb" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="onlineWeb" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Online web address
@@ -213,28 +216,28 @@
 
   <div class="grid grid-cols-1 w-636 gap-6" style="margin-top: -10px;">
     <div class="relative pb-5 f-outline">
-      <input type="text" formControlName="facebook" placeholder=""
+      <input type="text" formControlName="facebook" name="facebook" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="facebook" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Facebook
       </label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="twitter" placeholder=""
+      <input type="text" formControlName="twitter" name="twitter" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="twitter" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Twitter
       </label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="pinterest" placeholder=""
+      <input type="text" formControlName="pinterest" name="pinterest" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="pinterest" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Pinterest
       </label>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="instagram" placeholder=""
+      <input type="text" formControlName="instagram" name="instagram" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="instagram" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Instagram
