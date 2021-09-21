@@ -1,0 +1,21 @@
+/*Toggle Radio Button*/
+input:checked ~ .dot {
+    transform: translateX(100%);
+}
+
+input:checked ~ .block {
+    background-color: #C30B24;
+}
+
+input:checked + label {
+	border-color: #C30B24;
+    border-width: 3px;
+    height: 50px;
+    width: 100px;
+}
+
+/*Dropdown Select Fields Floating Form Label*/
+select:focus ~ label,
+select:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-.9rem) scaleX(0.75) scaleY(0.75);
+} 
