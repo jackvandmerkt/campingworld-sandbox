@@ -138,8 +138,8 @@ export class RatingsComponent {
         let sum = 0;
         for (let key in this.facilitiesOptions) {
             sum += this.facilitiesOptions[key];
-            this.facilitiesTotal = sum
         }
+        this.facilitiesTotal = sum
     }
 
     restroomsGroupChecked(radio: string, radioValue: number) {
@@ -151,8 +151,8 @@ export class RatingsComponent {
         let sum = 0;
         for (let key in this.restroomsOptions) {
             sum += this.restroomsOptions[key];
-            this.restroomsTotal = sum
         }
+        this.restroomsTotal = sum
     }
 
     visualAppearanceGroupChecked(radio: string, radioValue: number) {
@@ -164,7 +164,7 @@ export class RatingsComponent {
         let sum = 0;
         for (let key in this.visualAppearanceOptions) {
             sum += this.visualAppearanceOptions[key];
-            this.visualAppearanceTotal = sum
         }
+        this.visualAppearanceTotal = sum
     }
 }
