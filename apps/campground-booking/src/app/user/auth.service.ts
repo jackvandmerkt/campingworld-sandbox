@@ -14,6 +14,7 @@ export class AuthService{
         return this.http.post('/api/v1/auth/login', loginInfo, options)
                 .pipe(tap(data => {
                     this.currentUser = <IUser>data;
+                    console.log(this.currentUser)
             }))
     }
 }
