@@ -43,6 +43,8 @@ import { RatingsComponent } from './create-listing/ratings/ratings.component';
 import { ListingService } from './shared/listing.service';
 import {ListingStatusesComponent} from './home/cards/listing-statuses.component';
 import {OrderByPipe} from './shared/order-by.pipe';
+import { NewListingService } from './shared/new-listing.service';
+import { TerritoriesService } from './shared/territories.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +94,7 @@ import {OrderByPipe} from './shared/order-by.pipe';
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AuthService, ListingService],
+  providers: [AuthService, ListingService, TerritoriesService, NewListingService],
   bootstrap: [AppComponent],
 
 })
