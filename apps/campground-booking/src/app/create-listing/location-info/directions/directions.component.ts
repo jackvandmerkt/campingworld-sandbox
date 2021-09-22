@@ -25,6 +25,11 @@ export class DirectionsComponent {
     onSubmit(): void {
         console.log(this.directionsForm.value);
     }
+    clearChanges() {
+        this.directionsForm.reset();
+        //resetting toggle text to no
+        this.isNascarChecked = false;
+    }
 
     checkBoxNascarChange(cb:any) {
         this.isNascarChecked = !this.isNascarChecked;

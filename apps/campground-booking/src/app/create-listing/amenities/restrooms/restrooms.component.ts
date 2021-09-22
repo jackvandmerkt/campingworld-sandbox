@@ -32,6 +32,14 @@ export class RestroomsComponent {
         console.log(this.restroomForm.value);
     }
 
+    clearChanges() {
+        this.restroomForm.reset();
+        //resetting toggle text to no
+        this.pitTolietsOnly = false;
+        this.restroomsShowersPaid = false;
+        this.restroomsAndShowers = false;    
+      }
+
     checkBoxPitTolietsChange(cb:any) {
         this.pitTolietsOnly = !this.pitTolietsOnly;
     }

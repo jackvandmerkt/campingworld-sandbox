@@ -1,3 +1,4 @@
+import { analyzeAndValidateNgModules } from "@angular/compiler";
 import { Component } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 
@@ -12,21 +13,43 @@ export class RatingsComponent {
     unHideFacilities: boolean = false;
     unHideRestrooms: boolean = false;
     unHideVisualAppearance: boolean = false;
-
-
-    interiorRoadsValue: number = 0;
-    registrationValue: number = 0;
-    sitesRadioValue: number = 0;
-    hookupsRadioValue: number = 0;
-    recreationRadioValue: number = 0;
-    swimmingRadioValue: number = 0;
-    securityRadioValue: number = 0;
-    laundryRadioValue: number = 0;
-    servicesRadioValue: number = 0;
-    internetAccessRadioValue: number = 0;
-    facilitiesTotal: number = 0;
-
-
+    facilitiesOptions: {[index: string]:any} = {
+        'interiorRoadsValue': 0,
+        'registrationValue': 0,
+        'sitesValue': 0,
+        'hookupsValue': 0, 
+        'recreationValue': 0,
+        'swimmingValue': 0,
+        'securityValue': 0,
+        'laundryValue': 0,
+        'servicesValue': 0,
+        'internetAccessValue': 0
+    };
+    restroomsOptions: {[index: string]:any} = {
+        'tolietsValue': 0,
+        'showersValue': 0,
+        'floorsValue': 0, 
+        'wallsValue': 0, 
+        'scmValue': 0,
+        'interiorConstructionValue': 0,
+        'supplyOdorFreeValue': 0,
+        'amtOfFacilitiesValue': 0,
+        'extAppearanceValue': 0,
+        'intAppearanceValue': 0
+    };
+    visualAppearanceOptions: {[index: string]:any} = {
+        'signageValue': 0,
+        'entranceAreaValue': 0,
+        'parkGroundsValue': 0, 
+        'siteAppearanceValue': 0, 
+        'litterDebrisValue':0,
+        'extBuildingMaintValue': 0,
+        'trashDisposalValue': 0,
+        'noiseValue': 0,
+        'parkSettingValue': 0,
+        'siteLayoutValue': 0
+    };
+    facilitiesTotal:number =  0;
     restroomsTotal: number = 0;
     visualAppearanceTotal: number = 0;
 
@@ -73,6 +96,23 @@ export class RatingsComponent {
     onSubmit(): void {
         console.log(this.ratingsForm.value);
     }
+    clearChanges() {
+        this.ratingsForm.reset();
+        this.canParkBeRated = false;
+        this.unHideFacilities = false;
+        this.unHideRestrooms = false;
+        this.unHideVisualAppearance = false;
+        //resets radio button values
+        for(let key of Object.keys(this.facilitiesOptions)) {
+            this.facilitiesOptions[key] = 0;
+        }
+        for(let key of Object.keys(this.restroomsOptions)) {
+            this.restroomsOptions[key] = 0;
+        }
+        for(let key of Object.keys(this.visualAppearanceOptions)) {
+            this.visualAppearanceOptions[key] = 0;
+        } 
+    }
 
     checkBoxCanParkBeRatedChange(cb:any) {
         this.canParkBeRated = !this.canParkBeRated;
@@ -88,29 +128,43 @@ export class RatingsComponent {
         this.unHideVisualAppearance = !this.unHideVisualAppearance;
     }
 
-
     // Functions for Radio button images and section totals
-
-    interiorRoadsChecked(radio: number) {
-        if(radio === 0) { 
-            this.interiorRoadsValue = 0; 
+    facilitiesGroupChecked(radio: string, radioValue: number) {
+        for(let key of Object.keys(this.facilitiesOptions)) {
+            if(key === radio) {
+                this.facilitiesOptions[key] = radioValue;
+            } 
+        } 
+        let sum = 0;
+        for (let key in this.facilitiesOptions) {
+            sum += this.facilitiesOptions[key];
         }
-        if(radio === .5) { 
-            this.interiorRoadsValue = .5; 
-        }
-        if(radio === 1) { 
-            this.interiorRoadsValue = 1; 
-        }
+        this.facilitiesTotal = sum
     }
-    registrationChecked(radio: number) {
-        if(radio === 0) { 
-            this.registrationValue = 0; 
+
+    restroomsGroupChecked(radio: string, radioValue: number) {
+        for(let key of Object.keys(this.restroomsOptions)) {
+            if(key === radio) {
+                this.restroomsOptions[key] = radioValue;
+            } 
         }
-        if(radio === .5) { 
-            this.registrationValue = .5; 
+        let sum = 0;
+        for (let key in this.restroomsOptions) {
+            sum += this.restroomsOptions[key];
         }
-        if(radio === 1) { 
-            this.registrationValue = 1; 
-        }  
+        this.restroomsTotal = sum
+    }
+
+    visualAppearanceGroupChecked(radio: string, radioValue: number) {
+        for(let key of Object.keys(this.visualAppearanceOptions)) {
+            if(key === radio) {
+                this.visualAppearanceOptions[key] = radioValue;
+            } 
+        } 
+        let sum = 0;
+        for (let key in this.visualAppearanceOptions) {
+            sum += this.visualAppearanceOptions[key];
+        }
+        this.visualAppearanceTotal = sum
     }
 }

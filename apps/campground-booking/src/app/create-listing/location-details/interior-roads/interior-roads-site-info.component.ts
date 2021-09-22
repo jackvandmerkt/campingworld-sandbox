@@ -63,6 +63,25 @@ export class InteriorRoadsSiteInformationComponent {
     onSubmit(): void {
         console.log(this.interiorRoadsSitesInfo.value);
     }
+    clearChanges() {
+        this.interiorRoadsSitesInfo.reset();
+        //resetting toggle text to no
+        this.separateSeasonalSection = false;
+        this.selfContainedUnits = false;
+        this.fullHookupUnits = false;
+        this.bigRigSite = false;
+        this.slideOuts = false;
+        // resetting radio cards
+        this.roadConditionRadioGood = false;
+        this.roadConditionRadioFair = false;
+        this.roadConditionRadioPoor = false;
+        this.sideHookupsRadioMost = false;
+        this.sideHookupsRadioSome = false;
+        this.sideHookupsRadioNone = false;
+        this.shadedSitesRadioMost = false;
+        this.shadedSitesRadioSome = false;
+        this.shadedSitesRadioNone = false;   
+      }
 
     checkBoxSeasonalChange(cb:any) {
         this.separateSeasonalSection = !this.separateSeasonalSection;

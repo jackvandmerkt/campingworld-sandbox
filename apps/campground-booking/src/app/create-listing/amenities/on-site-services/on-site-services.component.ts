@@ -76,6 +76,28 @@ export class OnSiteServicesComponent {
   onSubmit(): void {
       console.log(this.onSiteServices.value);
   }
+  clearChanges() {
+    this.onSiteServices.reset();
+    //resetting toggle text to no
+    this.centralInternet = false;
+    this.centralInternetCharge = false;
+    this.wifiHotspots = false;
+    this.wifiHotspotsCharge = false;
+    this.wifi = false;
+    this.wifiCharge = false;
+    this.mobileDevices = false;
+    this.streamingSupport = false;
+    this.wiFiTechSupport = false;
+    this.overnightCentralInternet = false;
+    this.overnightCentralInternetCharge = false;
+    
+    // resetting radios select all that apply lists
+    this.basicFacilitiesOptions = [];
+    this.securityOptions = [];
+    this.otherServicesOptions = [];
+    this.petServicesOptions = [];
+
+  }
 
     basicFacilitiesChecked(radio: string) {
         if (!this.basicFacilitiesOptions.includes(radio)) {

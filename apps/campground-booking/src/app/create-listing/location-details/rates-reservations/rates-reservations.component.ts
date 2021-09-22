@@ -41,6 +41,16 @@ export class RatesReservationsComponent {
     onSubmit(): void {
         console.log(this.ratesReservationsForm.value);
     }
+    clearChanges() {
+        this.ratesReservationsForm.reset();
+        //resetting toggle text to no
+        this.creditCardsAccepted = false;
+        this.reservationsAccepted = false;
+        this.onlineReservation = false;
+        this.onlineReservationOther = false;
+        //resetting select all that apply radio cards
+        this.creditCardOptions = [];
+      }
 
     checkBoxCreditCardsAcceptChange(cb:any) {
         this.creditCardsAccepted = !this.creditCardsAccepted;
