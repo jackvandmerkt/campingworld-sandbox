@@ -40,6 +40,9 @@ import { PublishedRatingsComponent } from './create-listing/ratings/published-ra
 import { RvHomesParkModelsComponent } from './create-listing/rent-buy/rv-homes-park-models/rv-homes-park-models.component';
 import { ListingUpdateDetailsComponent } from './create-listing/listing-update-details/listing-update-details.component';
 import { RatingsComponent } from './create-listing/ratings/ratings.component';
+import { ListingService } from './shared/listing.service';
+import {ListingStatusesComponent} from './home/cards/listing-statuses.component';
+import {OrderByPipe} from './shared/order-by.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +79,10 @@ import { RatingsComponent } from './create-listing/ratings/ratings.component';
     PublishedRatingsComponent,
     RvHomesParkModelsComponent,
     ListingUpdateDetailsComponent,
-    RatingsComponent
+    RatingsComponent,
+    ListingStatusesComponent,
+    OrderByPipe
+
   ],
   imports: [
     BrowserModule,
@@ -86,7 +92,7 @@ import { RatingsComponent } from './create-listing/ratings/ratings.component';
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AuthService],
+  providers: [AuthService, ListingService],
   bootstrap: [AppComponent],
 
 })

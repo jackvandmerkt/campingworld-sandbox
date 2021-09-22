@@ -1,0 +1,5 @@
+<div class="grid grid-cols-3 px-6 pb-5" *ngFor="let listingStatus of listingStatuses | orderBy:'description'">
+    <p class="font-bold text-cwRed font-cw">{{listingStatus.description | titlecase}}</p>
+    <p class="font-bold font-cw text-cwGray place-self-center">{{listingStatus.count}}</p>
+    <p class="font-bold font-cw text-cwGray place-self-end">{{listingStatus.percentage}}%</p>
+</div>
