@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { TerritoriesService } from "../shared/territories.service";
+import { ListingService } from "../shared/listing.service";
 
 @Component({
     selector: "home",
@@ -8,12 +8,12 @@ import { TerritoriesService } from "../shared/territories.service";
 export class HomeComponent implements OnInit{
     territories:any = []
 
-    constructor(private ts: TerritoriesService) {
+    constructor(private ls: ListingService) {
 
     }
 
     getTerritoriesDropdownData() {
-        this.ts.getTerritories().subscribe(data => {
+        this.ls.getTerritories().subscribe(data => {
             if(data) {
                 this.territories = data;
             }

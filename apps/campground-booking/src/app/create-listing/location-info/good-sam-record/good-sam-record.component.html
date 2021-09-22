@@ -54,11 +54,7 @@
       <div class="relative pb-10">
         <select name="territory" formControlName="territory" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
           <option value=""></option>
-          <option value="1">010 - Private Park</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
+          <option *ngFor="let t of territories">{{t.description}}</option>
         </select>
         <label for="territory" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Territory</label>
       </div>
