@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'good-sam-record',
@@ -7,11 +8,23 @@ import { FormBuilder } from "@angular/forms";
     styleUrls: ['./good-sam-record.component.css']
 })
 
-export class GoodSamRecordFormComponent {
+export class GoodSamRecordFormComponent implements OnInit{
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
-    constructor(private formBuilder: FormBuilder) {
+    territories:any = [];
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+    ngOnInit() {
+        this.getTerritoriesDropdownData();
+    }
+
+    getTerritoriesDropdownData() {
+        this.ls.getTerritories().subscribe(data => {
+            if(data) {
+                this.territories = data;
+            }
+        });
     }
 
     goodSamRecordForm = this.formBuilder.group({
