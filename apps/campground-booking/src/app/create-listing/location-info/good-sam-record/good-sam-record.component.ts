@@ -54,6 +54,9 @@ export class GoodSamRecordFormComponent implements OnInit{
             return;
         }
     }
+    
+    get f() { return this.goodSamRecordForm.controls; }
+
     clearChanges() {
         this.goodSamRecordForm.reset();
         this.submitted = false;
@@ -61,8 +64,6 @@ export class GoodSamRecordFormComponent implements OnInit{
         this.isGuestsChecked = false;
         this.isDeleteChecked = false;
     }
-
-    get f() { return this.goodSamRecordForm.controls; }
 
     checkBoxGuestsChange(cb:any) {
         this.isGuestsChecked = !this.isGuestsChecked;
