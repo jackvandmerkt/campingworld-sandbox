@@ -7,6 +7,13 @@ input:checked ~ .block {
     background-color: #C30B24;
 }
 
+.error-border {
+    border-color: #C30B24;
+}
+.error-label {
+    color: #C30B24;
+}
+
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
 select:not([value='']):valid ~ label {

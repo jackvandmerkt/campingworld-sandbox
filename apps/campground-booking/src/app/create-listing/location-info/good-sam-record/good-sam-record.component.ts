@@ -16,7 +16,6 @@ export class GoodSamRecordFormComponent implements OnInit{
     // temporary number, will use getter method to pull this number from api in the future
     fileNum:any = '1230405060';
     repCode:any = '101010';
-    parkName:any = 'Treasure Isle RV Park';
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
     }
@@ -54,7 +53,6 @@ export class GoodSamRecordFormComponent implements OnInit{
             console.log('not valid');
             return;
         }
-        
     }
     clearChanges() {
         this.goodSamRecordForm.reset();
