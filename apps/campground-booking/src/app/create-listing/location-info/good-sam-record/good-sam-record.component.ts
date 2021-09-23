@@ -11,9 +11,12 @@ import { ListingService } from "../../../shared/listing.service";
 export class GoodSamRecordFormComponent implements OnInit{
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
+    submitted: boolean = false;
     territories:any = [];
     // temporary number, will use getter method to pull this number from api in the future
-    fileNum:any = '1230405060'
+    fileNum:any = '1230405060';
+    repCode:any = '101010';
+    parkName:any = 'Treasure Isle RV Park';
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
     }
@@ -33,7 +36,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         parkName: ['', Validators.required],
         fileNum: [{value: this.fileNum, disabled: true},  Validators.required],
         sectionCode: ['', Validators.required],
-        repCode: ['', Validators.required],
+        repCode: [{value: this.repCode, disabled: true}, Validators.required],
         listCity: ['', Validators.required],
         listState: ['', Validators.required],
         territory: ['', Validators.required],
@@ -44,19 +47,24 @@ export class GoodSamRecordFormComponent implements OnInit{
       });
     
     onSubmit(): void {
+        this.submitted = true;
         if(this.goodSamRecordForm.valid) {
             console.log(this.goodSamRecordForm.value);
         } else {
-            console.log('not valid')
+            console.log('not valid');
+            return;
         }
         
     }
     clearChanges() {
         this.goodSamRecordForm.reset();
+        this.submitted = false;
         //resetting toggle text to no
         this.isGuestsChecked = false;
         this.isDeleteChecked = false;
     }
+
+    get f() { return this.goodSamRecordForm.controls; }
 
     checkBoxGuestsChange(cb:any) {
         this.isGuestsChecked = !this.isGuestsChecked;
