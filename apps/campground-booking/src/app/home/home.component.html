@@ -6,9 +6,8 @@
 <!-- <div class=""> -->
     <div class="pl-18 py-7.5">
         <select class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-72 h-13 ">
-          <option>All territories</option>
-          <option>1</option>
-          <option>2</option>
+            <option>All territories</option>
+            <option *ngFor="let t of territories">{{t.description}}</option>
         </select>
       </div>
 <!-- </div> -->

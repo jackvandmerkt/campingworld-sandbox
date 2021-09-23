@@ -29,4 +29,7 @@ export class PublishedRatingsComponent {
     onSubmit(): void {
         console.log(this.publishedRatings.value);
     }
+    clearChanges() {
+        this.publishedRatings.reset();
+    }
 }

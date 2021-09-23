@@ -96,6 +96,30 @@ export class TentingRentalsComponent {
     onSubmit(): void {
         console.log(this.tentingRentalsForm.value);
     }
+    clearChanges() {
+        this.tentingRentalsForm.reset();
+        //resetting toggle text to no
+        this.tentSites = false;
+        this.tentingArea = false;
+        this.rentalSites = false;
+        this.tentPetsAllowed = false;
+        this.tentPetsAllowedCost = false;
+        this.tyPetsAllowed = false;
+        this.tyPetsAllowedCost = false;
+        this.rvPetsAllowed = false;
+        this.rvPetsAllowedCost = false;
+        this.rvLinensAvail = false;
+        this.rvLinensAvailCost = false;
+        this.ccthPetsAllowed = false;
+        this.ccthPetsAllowedCost = false;
+        this.ccthLinensAvail = false;
+        this.ccthLinensAvailCost = false;
+        this.lrPetsAllowed = false;
+        this.lrPetsAllowedCost = false;
+        this.lrLinensAvail = false;
+        this.lrLinensAvailCost = false;
+        this.otherOptions = [];
+    }
 
     // Other Multi check radios
     otherChecked(radio: any) {

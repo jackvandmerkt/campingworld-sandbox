@@ -5,7 +5,6 @@ input:checked ~ .dot {
 
 input:checked ~ .block {
     background-color: #C30B24;
-    opacity: 50%;
 }
 
 /*Text Input Fields Floating Form Label*/

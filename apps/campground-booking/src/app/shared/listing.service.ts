@@ -13,6 +13,10 @@ export class ListingService {
       return this.http.get<IListingCounts>('/api/v1/listings/counts?territoryCode=' + territoryCode)
         .pipe(catchError(this.handleError<IListingCounts>('getListings', )))
     }
+
+    getTerritories() {
+      return this.http.get<any>('/api/v1/territories')
+    }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleError<T>(operation = 'operation', result?:T){
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
