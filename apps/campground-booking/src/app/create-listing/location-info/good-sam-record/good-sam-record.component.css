@@ -7,6 +7,13 @@ input:checked ~ .block {
     background-color: #C30B24;
 }
 
+.error-border {
+    border-color: #C30B24;
+}
+.error-label {
+    color: #C30B24;
+}
+
 /*Text Input Fields Floating Form Label*/
 .f-outline input:focus-within ~ label,
 .f-outline input:not(:placeholder-shown) ~ label {

@@ -41,20 +41,28 @@
         </div>
 
         <div *ngIf="isNascarChecked" class="relative pb-10 miles-km">
-            <input type="text" name="milesOrKM" formControlName="milesOrKM" placeholder=" "
+            <input type="text" name="milesOrKM" formControlName="milesOrKM" placeholder=" " [ngClass]="{'error-border': submitted && isNascarChecked && f.milesOrKM.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="milesOrKM"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">How many miles or km?</label>
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.milesOrKM.errors }">How many miles or km?</label>
+        
+            <div *ngIf="submitted && isNascarChecked && f.milesOrKM.errors">
+                <div *ngIf="f.milesOrKM.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>  
         </div>
     
         <div *ngIf="isNascarChecked" class="relative pb-10 f-outline">
-            <select name="unitOfMeasurement" formControlName="unitOfMeasurement" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="unitOfMeasurement" formControlName="unitOfMeasurement" value="" [ngClass]="{'error-border': submitted && isNascarChecked && f.unitOfMeasurement.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-306 h-13 border-cwBadgeGray focus:outline-none">
               <option value=""></option>
               <option value="1">miles</option>
               <option value="2">kilometers</option>
             </select>
-            <label for="unitOfMeasurement" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Unit of measurement</label>
-          </div>
+            <label for="unitOfMeasurement" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.unitOfMeasurement.errors }">Unit of measurement</label>
+            <div *ngIf="submitted && f.unitOfMeasurement.errors">
+                <div *ngIf="f.unitOfMeasurement.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please make a selection.</div>
+            </div>  
+        </div>
           
           <div *ngIf="isNascarChecked" class="relative pb-10 name-track">
             <input type="text" name="nameOfTrack" formControlName="nameOfTrack" placeholder=" "
