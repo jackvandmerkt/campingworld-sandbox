@@ -14,37 +14,14 @@ export class DirectionsComponent {
     }
 
     directionsForm = this.formBuilder.group({
-        directions: '',
-        directionsFromTown: '',
+        directions: ['', Validators.required],
+        directionsFromTown: ['', Validators.required],
         toggleNascar: false,
         milesOrKM: [''],
         unitOfMeasurement: [''],
         nameOfTrack: ['']
       });
-
-    // toggleNascarControl = this.directionsForm.get('toggleNascar');
-    // milesOrKMControl = this.directionsForm.get('milesOrKM');
-    // unitOfMeasurementControl = this.directionsForm.get('unitOfMeasurement');
-    // nameOfTrackControl = this.directionsForm.get('nameOfTrack');
-      
-    //   subscription = this.toggleNascarControl?.valueChanges.subscribe(value => {
-    //     if (value === true) {
-    //         this.milesOrKMControl?.addValidators([Validators.required]);
-    //         this.unitOfMeasurementControl?.addValidators([Validators.required]);
-    //         this.nameOfTrackControl?.addValidators([Validators.required]);
-    //     }
-    //     else {
-    //         this.milesOrKMControl?.setValue('lul');
-    //         this.milesOrKMControl?.setValidators(null);
-    //         this.unitOfMeasurementControl?.setValue('');
-    //         this.unitOfMeasurementControl?.setValidators(null);
-    //         this.nameOfTrackControl?.setValue('');
-    //         this.nameOfTrackControl?.setValidators(null);
-    //     }
-      
-    //     this.directionsForm.updateValueAndValidity();
-      
-    //   });
+    
       onSubmit(): void {
         this.submitted = true;
         console.log(this.directionsForm.value.toggleNascar)
@@ -67,5 +44,20 @@ export class DirectionsComponent {
 
     checkBoxNascarChange(cb:any) {
         this.isNascarChecked = !this.isNascarChecked;
+        if (this.isNascarChecked === true) {
+            this.directionsForm.get('milesOrKM')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
+            this.directionsForm.get('unitOfMeasurement')?.setValidators([Validators.required])
+            this.directionsForm.get('nameOfTrack')?.setValidators([Validators.required])
+            this.directionsForm.get('milesOrKM')?.updateValueAndValidity()
+            this.directionsForm.get('unitOfMeasurement')?.updateValueAndValidity()
+            this.directionsForm.get('nameOfTrack')?.updateValueAndValidity()
+        } else {
+            this.directionsForm.get('milesOrKM')?.clearValidators()
+            this.directionsForm.get('unitOfMeasurement')?.clearValidators()
+            this.directionsForm.get('nameOfTrack')?.clearValidators()
+            this.directionsForm.get('milesOrKM')?.updateValueAndValidity()
+            this.directionsForm.get('unitOfMeasurement')?.updateValueAndValidity()
+            this.directionsForm.get('nameOfTrack')?.updateValueAndValidity()
+        }
     }
 }
