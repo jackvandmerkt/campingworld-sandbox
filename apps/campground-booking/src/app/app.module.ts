@@ -41,8 +41,9 @@ import { RvHomesParkModelsComponent } from './create-listing/rent-buy/rv-homes-p
 import { ListingUpdateDetailsComponent } from './create-listing/listing-update-details/listing-update-details.component';
 import { RatingsComponent } from './create-listing/ratings/ratings.component';
 import { ListingService } from './shared/listing.service';
-import {ListingStatusesComponent} from './home/cards/listing-statuses.component';
-import {OrderByPipe} from './shared/order-by.pipe';
+import { ListingStatusesComponent } from './home/cards/listing-statuses.component';
+import { OrderByPipe } from './shared/order-by.pipe';
+import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +90,8 @@ import {OrderByPipe} from './shared/order-by.pipe';
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DateRangePickerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService, ListingService],
