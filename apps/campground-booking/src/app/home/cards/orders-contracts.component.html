@@ -8,7 +8,7 @@
         <p class="font-bold font-cw text-cwGray">72.7%</p>
     </div>
     <div class="flex justify-between px-6 pb-3" *ngFor="let ordersContract of ordersContracts | orderBy:'description'">
-        <p class="text-cwRed font-cw place-self-start">{{ordersContract.description}}</p>
+        <p class="text-cwRed font-cw place-self-start">{{ordersContract.displayName}}</p>
         <p class="font-cw text-cwGray place-self-center">{{ordersContract.count}}</p>
         <p class="font-cw text-cwGray place-self-end">{{ordersContract.percentage}}</p>
     </div>

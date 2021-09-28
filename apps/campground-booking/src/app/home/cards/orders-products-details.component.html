@@ -9,7 +9,7 @@
     <p class="font-bold font-cw text-cwGray">56.4%</p>
 </div>
 <div class="flex justify-between  flex px-6 pb-3" *ngFor="let ordersProduct of ordersProducts | orderBy:'description'">
-    <p class="text-cwRed font-cw">{{ordersProduct.description}}</p>
+    <p class="text-cwRed font-cw">{{ordersProduct.displayName}}</p>
     <p class="font-cw text-cwGray">{{ordersProduct.currentYearCount}}</p>
     <p class="font-cw text-cwGray">{{ordersProduct.currentYearPercentage}}</p>
     <p class="font-cw text-cwGray">{{ordersProduct.previousYearCount}}</p>
