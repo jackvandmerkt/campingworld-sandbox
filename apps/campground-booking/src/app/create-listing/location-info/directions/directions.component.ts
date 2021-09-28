@@ -24,7 +24,6 @@ export class DirectionsComponent {
     
       onSubmit(): void {
         this.submitted = true;
-        console.log(this.directionsForm.value.toggleNascar)
         if(this.directionsForm.valid) {
             console.log(this.directionsForm.value);
         } else {
@@ -45,7 +44,7 @@ export class DirectionsComponent {
     checkBoxNascarChange(cb:any) {
         this.isNascarChecked = !this.isNascarChecked;
         if (this.isNascarChecked === true) {
-            this.directionsForm.get('milesOrKM')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
+            this.directionsForm.get('milesOrKM')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
             this.directionsForm.get('unitOfMeasurement')?.setValidators([Validators.required])
             this.directionsForm.get('nameOfTrack')?.setValidators([Validators.required])
             this.directionsForm.get('milesOrKM')?.updateValueAndValidity()
