@@ -1,0 +1,34 @@
+
+    <div class="flex justify-center">
+        <p class="pb-5 text-xl font-bold text-cwRed font-cw">Contract</p>
+    </div>
+    <div class="flex justify-between px-6 pb-5 ">
+        <p class="font-bold text-cwRed font-cw">Entered in MSG</p>
+        <p class="font-bold font-cw text-cwGray">16</p>
+        <p class="font-bold font-cw text-cwGray">72.7%</p>
+    </div>
+    <div class="flex justify-between px-6 pb-3" *ngFor="let ordersContract of ordersContracts | orderBy:'description'">
+        <p class="text-cwRed font-cw place-self-start">{{ordersContract.displayName}}</p>
+        <p class="font-cw text-cwGray place-self-center">{{ordersContract.count}}</p>
+        <p class="font-cw text-cwGray place-self-end">{{ordersContract.percentage}}</p>
+    </div>
+<!--     <div class="flex justify-between px-6 pb-3">
+        <p class="text-cwRed font-cw">Created</p>
+        <p class="font-cw text-cwGray">4</p>
+    </div>
+    <div class="flex justify-between px-6 pb-3">
+        <p class="text-cwRed font-cw">Re-opened</p>
+        <p class="font-cw text-cwGray">0</p>
+    </div>
+    <div class="flex justify-between px-6 pb-3">
+        <p class="text-cwRed font-cw">Rejected</p>
+        <p class="font-cw text-cwGray">1</p>
+    </div>
+    <div class="flex justify-between px-6 pb-3">
+        <p class="text-cwRed font-cw">Submitted</p>
+        <p class="font-cw text-cwGray">1</p>
+    </div>
+    <div class="flex justify-between px-6 pb-3">
+        <p class="text-cwRed font-cw">Finance Review</p>
+        <p class="font-cw text-cwGray">0</p>
+    </div> -->

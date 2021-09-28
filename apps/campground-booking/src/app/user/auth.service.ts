@@ -10,7 +10,7 @@ export class AuthService{
     constructor(private http: HttpClient){}
     loginUser(email:string, password:string){
         const loginInfo = {email: email, password:password};
-        const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+        const options = {headers: new HttpHeaders({'Content-Type': 'application/json', 'withCredentials':'true'})}
         return this.http.post('/api/v1/auth/login', loginInfo, options)
                 .pipe(tap(data => {
                     this.currentUser = <IUser>data;

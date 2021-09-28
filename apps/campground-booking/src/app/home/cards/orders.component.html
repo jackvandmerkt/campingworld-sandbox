@@ -4,82 +4,11 @@
             <p class="pt-7.5 text-2xl font-bold  font-cw text-cwGray">Orders</p>
         </div>
         <div class="flex justify-center">
-            <p class="pb-6 text-cwGray font-cw">22</p>
+            <p class="pb-6 text-cwGray font-cw">{{ordersCounts?.total}}</p>
         </div>
         <div class="flex flex-row">
-            
-            <div class="w-1/2 border-r-2">
-                <div class="flex justify-center">
-                    <p class="pb-5 text-xl font-bold text-cwRed font-cw">Contract</p>
-                </div>
-                <div class="flex justify-between px-6 pb-5 ">
-                    <p class="font-bold text-cwRed font-cw">Entered in MSG</p>
-                    <p class="font-bold font-cw text-cwGray">16</p>
-                    <p class="font-bold font-cw text-cwGray">72.7%</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Approved for Commission</p>
-                    <p class="font-cw text-cwGray">0</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Created</p>
-                    <p class="font-cw text-cwGray">4</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Re-opened</p>
-                    <p class="font-cw text-cwGray">0</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Rejected</p>
-                    <p class="font-cw text-cwGray">1</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Submitted</p>
-                    <p class="font-cw text-cwGray">1</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Finance Review</p>
-                    <p class="font-cw text-cwGray">0</p>
-                </div>
-    
-            </div>
-    
-    
-            <div class="w-1/2">
-                <div class="flex justify-center">
-                    <p class="pb-5 text-xl font-bold text-cwRed font-cw">Product Details</p>
-                </div>
-                <div class="flex justify-between px-6 pb-5">
-                    <p class="font-bold text-cwGray font-cw">Complete</p>
-                    <p class="font-bold font-cw text-cwGray">53</p>
-                    <p class="font-bold font-cw text-cwGray">56.4%</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Copy to Come</p>
-                    <p class="font-cw text-cwGray">3</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Open</p>
-                    <p class="font-cw text-cwGray">36</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Ready for Traffic</p>
-                    <p class="font-cw text-cwGray">0</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Re-opened</p>
-                    <p class="font-cw text-cwGray">0</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Rejected</p>
-                    <p class="font-cw text-cwGray">27</p>
-                </div>
-                <div class="flex justify-between px-6 pb-3">
-                    <p class="text-cwRed font-cw">Submitted</p>
-                    <p class="font-cw text-cwGray">20</p>
-                </div>
-    
-            </div>
+            <orders-contracts class="w-1/2 border-r-2" [ordersContracts]="ordersCounts?.contractStatuses"></orders-contracts>
+            <orders-products-details class="w-1/2" [ordersProducts]="ordersCounts?.productStatuses"></orders-products-details>
     
         </div>
 
