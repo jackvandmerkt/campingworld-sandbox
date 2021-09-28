@@ -1,181 +1,207 @@
-<h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Policies</h1>
-<div class="grid grid-cols-2 w-636 mt-6 gap-6">
-  <div class="pb-10">
-    <p class="font-cw text-gray-400">Is max stay less than 30 days?</p>
+<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
+<form [formGroup]="policiesForm" (ngSubmit)="onSubmit()">
+  <h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Policies</h1>
+  <div class="grid grid-cols-2 w-636 mt-6 gap-6">
+    <div class="pb-10">
+      <p class="font-cw text-gray-400">Is max stay less than 30 days?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!isLessThan30Days" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="isLessThan30Days" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="isLessThan30Days" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" formControlName="isLessThan30Days" (click)="checkBoxIsLessThan30Days(this)"
+            id="isLessThan30Days" class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
   </div>
-  <div class="flex items-center justify-end w-full pr-2 mb-12">
-    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
-    <label for="toggleLessThan30Days" class="flex items-center cursor-pointer">
-      <!-- toggle -->
-      <div class="relative">
-        <!-- input -->
-        <input type="checkbox" id="toggleUTM" class="sr-only">
-        <!-- line -->
-        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-        <!-- dot -->
-        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-      </div>
-    </label>
+  <div class="grid grid-cols-2 w-636 gap-6">
+    <div class="pb-10">
+      <p class="font-cw text-gray-400">Open all year?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!openAllYear" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="openAllYear" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="openAllYear" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input formControlName="openAllYear" type="checkbox" (click)="checkBoxOpenAllYear(this)" id="openAllYear"
+            class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
   </div>
-</div>
-<div class="grid grid-cols-2 w-636 gap-6">
-  <div class="pb-10">
-    <p class="font-cw text-gray-400">Open all year?</p>
+  <div class="grid grid-cols-1 w-636 gap-6">
+    <h1 class="font-bold font-cw text-cwGray text-24px ">Season start date - Season end date</h1>
+    <ejs-daterangepicker id='daterangepicker' placeholder='Select a range' [startDate]='start' [endDate]='end'>
+    </ejs-daterangepicker>
+    <!-- <div class="relative pb-4 f-outline">
+      <input type="text" formControlName="start" placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+      <label for="seasonStartDate" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        Season start date
+      </label>
+    </div>
+    <div class="relative pb-4 f-outline">
+      <input type="text" formControlName="end" placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+      <label for="seasonEndDate" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        Season end date
+      </label>
+    </div>     -->
   </div>
-  <div class="flex items-center justify-end w-full pr-2 mb-12">
-    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
-    <label for="toggleOpenAllYear" class="flex items-center cursor-pointer">
-      <!-- toggle -->
-      <div class="relative">
-        <!-- input -->
-        <input type="checkbox" id="toggleUTM" class="sr-only">
-        <!-- line -->
-        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-        <!-- dot -->
-        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-      </div>
-    </label>
+  <div class="grid grid-cols-2 w-636 mt-7 gap-6">
+    <div class="pb-10">
+      <p class="font-cw text-gray-400">Age restrictions apply?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!ageRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="ageRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="ageRestrictions" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" formControlName="ageRestrictions" (click)="checkBoxAgeRestrictions(this)"
+            id="ageRestrictions" class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
   </div>
-</div>
-<div class="grid grid-cols-2 w-636 gap-6">
-  <div class="relative pb-4 f-outline">
-    <input type="text" name="fileNum" placeholder=" "
-      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-    <label for="seasonStartDate" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
-      Season start date
-    </label>
+  <div class="grid grid-cols-2 w-636 gap-6">
+    <div class="pb-10">
+      <p class="font-cw text-gray-400">Family camping?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!familyCamping" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="familyCamping" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="familyCamping" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" formControlName="familyCamping" (click)="checkBoxFamilyCamping(this)"
+            id="familyCamping" class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
   </div>
-  <div class="relative pb-4 f-outline">
-    <input type="text" name="fileNum" placeholder=" "
-      class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-    <label for="seasonEndDate" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
-      Season end date
-    </label>
+  <div class="grid grid-cols-2 w-636 gap-6">
+    <div class="pb-10">
+      <p class="font-cw text-gray-400">Allows tent campers?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!allowsTent" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="allowsTent" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="allowsTent" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" formControlName="allowsTent" (click)="checkBoxAllowsTent(this)" id="allowsTent"
+            class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
   </div>
-</div>
-<div class="grid grid-cols-2 w-636 mt-7 gap-6">
-  <div class="pb-10">
-    <p class="font-cw text-gray-400">Age restrictions apply?</p>
+  <div class="flex">
+    <h1 class="font-bold font-cw text-cwGray text-24px pb-11">Does NOT allow?</h1><span class="ml-4 text-gray-400"
+      style="margin-top: 0px;">Select all that apply</span>
   </div>
-  <div class="flex items-center justify-end w-full pr-2 mb-12">
-    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
-    <label for="ageRestrictions" class="flex items-center cursor-pointer">
-      <!-- toggle -->
-      <div class="relative">
-        <!-- input -->
-        <input type="checkbox" id="toggleUTM" class="sr-only">
-        <!-- line -->
-        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-        <!-- dot -->
-        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-      </div>
-    </label>
-  </div>
-</div>
-<div class="grid grid-cols-2 w-636 gap-6">
-  <div class="pb-10">
-    <p class="font-cw text-gray-400">Family camping?</p>
-  </div>
-  <div class="flex items-center justify-end w-full pr-2 mb-12">
-    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
-    <label for="ageRestrictions" class="flex items-center cursor-pointer">
-      <!-- toggle -->
-      <div class="relative">
-        <!-- input -->
-        <input type="checkbox" id="toggleUTM" class="sr-only">
-        <!-- line -->
-        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-        <!-- dot -->
-        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-      </div>
-    </label>
-  </div>
-</div>
-<div class="grid grid-cols-2 w-636 gap-6">
-  <div class="pb-10">
-    <p class="font-cw text-gray-400">Allows tent campers?</p>
-  </div>
-  <div class="flex items-center justify-end w-full pr-2 mb-12">
-    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
-    <label for="ageRestrictions" class="flex items-center cursor-pointer">
-      <!-- toggle -->
-      <div class="relative">
-        <!-- input -->
-        <input type="checkbox" id="toggleUTM" class="sr-only">
-        <!-- line -->
-        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-        <!-- dot -->
-        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-      </div>
-    </label>
-  </div>
-</div>
-<div class="flex">
-  <h1 class="font-bold font-cw text-cwGray text-24px pb-11">Does NOT allow?</h1><span class="ml-4 text-gray-400"
-    style="margin-top: 0px;">Select all that apply</span>
-</div>
 
-<div class="flex flex-row col-span-2 pb-10 space-x-4">
-  <div class="relative">
-    <input (click)="motorhomeClassChecked('A')" class="hidden" id="goodRadio" type="radio" name="motorhomeClass">
-    <label class="flex flex-col cursor-pointer w-147 h-152    rounded-xl bg-navGray" for="goodRadio">
-      <img *ngIf="motorhomeClass === 'A'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class A motorhome</p>
-    </label>
+  <div class="flex flex-row col-span-2 pb-10 space-x-4">
+    <div class="relative">
+      <input (click)="motorhomeClassChecked('A')" class="hidden" id="goodRadio" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="goodRadio">
+        <img *ngIf="motorhomeClass === 'A'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class A motorhome</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="motorhomeClassChecked('B')" class="hidden" id="fairRadio" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152    rounded-xl bg-navGray" for="fairRadio">
+        <img *ngIf="motorhomeClass === 'B'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class B motorhome</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="motorhomeClassChecked('C')" class="hidden" id="poorRadio" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152    rounded-xl bg-navGray" for="poorRadio">
+        <img *ngIf="motorhomeClass === 'C'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class C motorhome</p>
+      </label>
+    </div>
   </div>
-  <div class="relative">
-    <input (click)="motorhomeClassChecked('B')" class="hidden" id="fairRadio" type="radio" name="motorhomeClass">
-    <label class="flex flex-col cursor-pointer w-147 h-152    rounded-xl bg-navGray" for="fairRadio">
-      <img *ngIf="motorhomeClass === 'B'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class B motorhome</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="motorhomeClassChecked('C')" class="hidden" id="poorRadio" type="radio" name="motorhomeClass">
-    <label class="flex flex-col cursor-pointer w-147 h-152    rounded-xl bg-navGray" for="poorRadio">
-      <img *ngIf="motorhomeClass === 'C'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class C motorhome</p>
-    </label>
-  </div>
-</div>
 
-<div class="grid grid-cols-1 mt-2 w-636 gap-6">
-  <div class="relative pb-4 f-outline">
-    <input type="text" name="fileNum" placeholder=" "
-      class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
-    <label for="rvAgeRestrictions" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">
-      RV age restrictions
-    </label>
+  <div class="grid grid-cols-1 mt-2 w-636 gap-6">
+    <div class="relative pb-4 f-outline">
+      <input type="text" formControlName="rvAgeRestrictions" name="rvAgeRestrictions" placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
+      <label for="rvAgeRestrictions" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        RV age restrictions
+      </label>
+    </div>
   </div>
-</div>
-<div class="flex mt-11">
-  <h1 class="font-bold font-cw text-cwGray text-24px pb-11">Pets</h1>
-</div>
-<div class="grid grid-cols-2 w-636 gap-6">
-  <div class="pb-10">
-    <p class="font-cw text-gray-400">Are pets allowed?</p>
+  <div class="flex mt-11">
+    <h1 class="font-bold font-cw text-cwGray text-24px pb-11">Pets</h1>
   </div>
-  <div class="flex items-center justify-end w-full pr-2 mb-12">
-    <p class="pr-6 font-cw text-gray-400 text-16px26px">No</p>
-    <label for="ageRestrictions" class="flex items-center cursor-pointer">
-      <!-- toggle -->
-      <div class="relative">
-        <!-- input -->
-        <input type="checkbox" id="toggleUTM" class="sr-only">
-        <!-- line -->
-        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-        <!-- dot -->
-        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-      </div>
-    </label>
+  <div class="grid grid-cols-2 w-636 gap-6">
+    <div class="pb-10">
+      <p class="font-cw text-gray-400">Are pets allowed?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!petsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="petsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="petsAllowed" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" formControlName="petsAllowed" (click)="checkBoxPetsAllowed(this)" id="petsAllowed"
+            class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
   </div>
-</div>
-<div class="flex flex-row col-span-2 pb-10">
-  <div class="">
-    <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
-      Changes</button>
+  <div class="flex flex-row col-span-2 pb-10">
+    <div class="">
+      <button type="button" (click)="clearChanges()"
+        class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+        Changes</button>
+    </div>
+    <div class="pl-6">
+      <button type="submit" class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save &
+        Continue</button>
+    </div>
   </div>
-  <div class="pl-6">
-    <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
-  </div>
-</div>
+</form>
