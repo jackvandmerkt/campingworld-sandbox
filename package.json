@@ -40,6 +40,7 @@
     "@nrwl/angular": "12.7.2",
     "@tailwindcss/forms": "^0.3.3",
     "ng2-daterangepicker": "^2.0.12",
+    "powerbi-client-angular": "^1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
