@@ -44,7 +44,8 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="affiliation" formControlName="affiliation" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="affiliation" formControlName="affiliation" value="" [ngClass]="{'error-border': submitted && f.affiliation.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -52,7 +53,10 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="affiliation" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Affiliation</label>
+            <label for="affiliation" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.affiliation.errors }">Affiliation</label>
+            <div *ngIf="submitted && f.affiliation.errors">
+                <div *ngIf="f.affiliation.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Affiliation is required.</div>
+            </div>
         </div>
 
         <div class="">
@@ -76,7 +80,8 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="stateProvAffiliation" formControlName="stateProvAffiliation" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none State-Prov w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="stateProvAffiliation" formControlName="stateProvAffiliation" value="" [ngClass]="{'error-border': submitted && f.stateProvAffiliation.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none State-Prov w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -84,7 +89,10 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="stateProvAffiliation" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">State/Prov Affiliation</label>
+            <label for="stateProvAffiliation" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.stateProvAffiliation.errors }">State/Prov Affiliation</label>
+            <div *ngIf="submitted && f.stateProvAffiliation.errors">
+                <div *ngIf="f.stateProvAffiliation.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">State/Prov affiliation is required.</div>
+            </div>
         </div>
 
         <div class="">
@@ -108,7 +116,8 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="goodNeighborParkNum" formControlName="goodNeighborParkNum" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray Good-Neighbor focus:outline-none">
+            <select name="goodNeighborParkNum" formControlName="goodNeighborParkNum" value="" [ngClass]="{'error-border': submitted && f.goodNeighborParkNum.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray Good-Neighbor focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -116,7 +125,10 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="goodNeighborParkNum" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Good Neighbor park number</label>
+            <label for="goodNeighborParkNum" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.goodNeighborParkNum.errors }">Good Neighbor park number</label>
+            <div *ngIf="submitted && f.goodNeighborParkNum.errors">
+                <div *ngIf="f.goodNeighborParkNum.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Good neighbor park number is required.</div>
+            </div>
         </div>
 
         <div class="">
@@ -140,7 +152,8 @@
         </div>
 
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="coastToCoastMembershipNum" formControlName="coastToCoastMembershipNum" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 Coast-Coast border-cwBadgeGray focus:outline-none">
+            <select name="coastToCoastMembershipNum" formControlName="coastToCoastMembershipNum" value="" [ngClass]="{'error-border': submitted && f.coastToCoastMembershipNum.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 Coast-Coast border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -148,7 +161,10 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="coastToCoastMembershipNum" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Coast To Coast membership number</label>
+            <label for="coastToCoastMembershipNum" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.coastToCoastMembershipNum.errors }">Coast To Coast membership number</label>
+            <div *ngIf="submitted && f.coastToCoastMembershipNum.errors">
+                <div *ngIf="f.coastToCoastMembershipNum.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Coast To Coast membership number is required.</div>
+            </div>
         </div>
         
         
