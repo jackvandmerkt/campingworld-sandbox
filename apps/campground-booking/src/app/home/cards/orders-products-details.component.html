@@ -1,0 +1,41 @@
+<div class="flex justify-center">
+    <p class="pb-5 text-xl font-bold text-cwRed font-cw">Product Details</p>
+</div>
+<div class="flex justify-between px-6 pb-5">
+    <p class="font-bold text-cwGray font-cw">Complete</p>
+    <p class="font-bold font-cw text-cwGray">53</p>
+    <p class="font-bold font-cw text-cwGray">56.4%</p>
+    <p class="font-bold font-cw text-cwGray">53</p>
+    <p class="font-bold font-cw text-cwGray">56.4%</p>
+</div>
+<div class="flex justify-between  flex px-6 pb-3" *ngFor="let ordersProduct of ordersProducts | orderBy:'description'">
+    <p class="text-cwRed font-cw">{{ordersProduct.description}}</p>
+    <p class="font-cw text-cwGray">{{ordersProduct.currentYearCount}}</p>
+    <p class="font-cw text-cwGray">{{ordersProduct.currentYearPercentage}}</p>
+    <p class="font-cw text-cwGray">{{ordersProduct.previousYearCount}}</p>
+    <p class="font-cw text-cwGray">{{ordersProduct.previousYearPercentage}}</p>
+</div> 
+<div class="flex flex-row-reverse  px-6 pb-3">
+    <p class="font-bold text-cwGray font-cw ">Last Book Year</p>
+    <p class="font-bold text-cwGray font-cw px-6 ">Current Book Year</p>
+</div>
+<!-- <div class="flex justify-between px-6 pb-3">
+    <p class="text-cwRed font-cw">Open</p>
+    <p class="font-cw text-cwGray">36</p>
+</div>
+<div class="flex justify-between px-6 pb-3">
+    <p class="text-cwRed font-cw">Ready for Traffic</p>
+    <p class="font-cw text-cwGray">0</p>
+</div>
+<div class="flex justify-between px-6 pb-3">
+    <p class="text-cwRed font-cw">Re-opened</p>
+    <p class="font-cw text-cwGray">0</p>
+</div>
+<div class="flex justify-between px-6 pb-3">
+    <p class="text-cwRed font-cw">Rejected</p>
+    <p class="font-cw text-cwGray">27</p>
+</div>
+<div class="flex justify-between px-6 pb-3">
+    <p class="text-cwRed font-cw">Submitted</p>
+    <p class="font-cw text-cwGray">20</p>
+</div> -->

@@ -1,8 +1,14 @@
 <div class="grid grid-cols-3 px-6 pb-5" *ngFor="let listingStatus of listingStatuses | orderBy:'description'">
     <p *ngIf="listingStatus.description === 'approved'; else notApprovedDesc" class="font-bold text-cwRed font-cw">{{listingStatus.description | titlecase}}</p>
-        <ng-template #notApprovedDesc><p>{{listingStatus.description | titlecase}}</p></ng-template>
+    <ng-template #notApprovedDesc>
+        <p class="text-cwRed font-cw place-self-start">{{listingStatus.description | titlecase}}</p>
+    </ng-template>
     <p *ngIf="listingStatus.description === 'approved'; else notApprovedCount" class="font-bold font-cw text-cwGray place-self-center">{{listingStatus.count}}</p>
-        <ng-template #notApprovedCount><p class="text-cwRed font-cw place-self-center">{{listingStatus.count}}</p></ng-template>
+    <ng-template #notApprovedCount>
+         <p class="text-cwRed font-cw place-self-center">{{listingStatus.count}}</p>
+    </ng-template>
     <p *ngIf="listingStatus.description === 'approved'; else notApprovedPercent" class="font-bold font-cw text-cwGray place-self-end">{{listingStatus.percentage}}%</p>
-     <ng-template #notApprovedPercent><p class="font-cw text-cwGray place-self-end">{{listingStatus.percentage}}%</p></ng-template>
+    <ng-template #notApprovedPercent>
+         <p class="font-cw text-cwGray place-self-end">{{listingStatus.percentage}}%</p>
+    </ng-template>
 </div>

@@ -9,7 +9,7 @@ import {ListingService} from '../../shared/listing.service';
 })
 export class ListingsComponent implements OnInit {
     listingCounts!:IListingCounts;
-    territoryCode = 'AK';
+    territoryCode = 'ALL';
     constructor(private router: Router, private listingService:ListingService) {
     }
     redirect() {
