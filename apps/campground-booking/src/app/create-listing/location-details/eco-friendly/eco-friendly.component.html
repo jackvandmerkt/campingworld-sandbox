@@ -1,127 +1,132 @@
-<h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Eco Friendly</h1>
-<div class="grid grid-cols-2 w-636 mt-6 gap-6">
-  <div class="pb-10">
-    <p class="font-cw ">Is this park considered green?</p>
+<form action="">
+  <h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Eco Friendly</h1>
+  <div class="grid grid-cols-2 w-636 mt-6 gap-6">
+    <div class="pb-10">
+      <p class="font-cw ">Is this park considered green?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!isGreenParkChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="isGreenParkChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="toggleGreenPark" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" (click)="checkBoxGreenParkChange(this);" id="toggleGreenPark" class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
   </div>
-  <div class="flex items-center justify-end w-full pr-2 mb-10">
-    <p *ngIf="!isGreenParkChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-    <p *ngIf="isGreenParkChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-    <label for="toggleGreenPark" class="flex items-center cursor-pointer">
-      <!-- toggle -->
-      <div class="relative">
-        <!-- input -->
-        <input type="checkbox" (click)="checkBoxGreenParkChange(this);" id="toggleGreenPark" class="sr-only">
-        <!-- line -->
-        <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-        <!-- dot -->
-        <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-      </div>
-    </label>
-  </div>
-</div>
 
-<div class="grid grid-cols-4 w-636 gap-4 mt-2">
-  <div class="relative">
-    <input (click)="optionChecked('1')" class="hidden" id="option1" type="checkbox" name="option1">
-    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option1">
-      <img *ngIf="option.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-10 font-cw">Non toxic cleaning products</p>
-    </label>
+  <div class="grid grid-cols-4 w-636 gap-4 mt-2">
+    <div class="relative">
+      <input (click)="optionChecked('1')" class="hidden" id="option1" type="checkbox" name="option1">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option1">
+        <img *ngIf="option.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-10 font-cw">Non toxic cleaning products</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('2')" class="hidden" id="option2" type="checkbox" name="option2">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option2">
+        <img *ngIf="option.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Natural pest control</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('3')" class="hidden" id="option3" type="checkbox" name="option3">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option3">
+        <img *ngIf="option.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-7 p-3 font-cw">Minimized use of styrofoam and
+          plastic
+        </p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('4')" class="hidden" id="option4" type="checkbox" name="option4">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option4">
+        <img *ngIf="option.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-5 font-cw">Water efficient irrigation & drought
+          tolerant / indigenous plants</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('5')" class="hidden" id="option5" type="checkbox" name="option5">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option5">
+        <img *ngIf="option.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Recycling cans for RVers</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('6')" class="hidden" id="option6" type="checkbox" name="option6">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option6">
+        <img *ngIf="option.includes('6')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-11 font-cw">Compact fluorescent lights</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('7')" class="hidden" id="option7" type="checkbox" name="option7">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option7">
+        <img *ngIf="option.includes('7')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Insulated water heaters</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('8')" class="hidden" id="option8" type="checkbox" name="option8">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option8">
+        <img *ngIf="option.includes('8')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Lowered pool temperatures</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('9')" class="hidden" id="option9" type="checkbox" name="option9">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option9">
+        <img *ngIf="option.includes('9')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Installed solar photocells</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('10')" class="hidden" id="option10" type="checkbox" name="option10">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option10">
+        <img *ngIf="option.includes('10')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Fuel efficient vehicles</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('11')" class="hidden" id="option11" type="checkbox" name="option11">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option11">
+        <img *ngIf="option.includes('11')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-11 font-cw">Encouraging use of bikes and trikes
+        </p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('12')" class="hidden" id="option12" type="checkbox" name="option12">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option12">
+        <img *ngIf="option.includes('12')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Tankless water heaters</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('13')" class="hidden" id="option13" type="checkbox" name="option13">
+      <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option13">
+        <img *ngIf="option.includes('13')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Composting</p>
+      </label>
+    </div>
   </div>
-  <div class="relative">
-    <input (click)="optionChecked('2')" class="hidden" id="option2" type="checkbox" name="option2">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option2">
-      <img *ngIf="option.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Natural pest control</p>
-    </label>
+  <div class="flex flex-row col-span-2 pb-10 mt-10">
+    <div class="">
+      <button (click)="clearChanges()" type="reset"
+        class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+        Changes</button>
+    </div>
+    <div class="pl-6">
+      <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+    </div>
   </div>
-  <div class="relative">
-    <input (click)="optionChecked('3')" class="hidden" id="option3" type="checkbox" name="option3">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option3">
-      <img *ngIf="option.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-7 p-3 font-cw">Minimized use of styrofoam and
-        plastic
-      </p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('4')" class="hidden" id="option4" type="checkbox" name="option4">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option4">
-      <img *ngIf="option.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-5 font-cw">Water efficient irrigation & drought
-        tolerant / indigenous plants</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('5')" class="hidden" id="option5" type="checkbox" name="option5">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option5">
-      <img *ngIf="option.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Recycling cans for RVers</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('6')" class="hidden" id="option6" type="checkbox" name="option6">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option6">
-      <img *ngIf="option.includes('6')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-11 font-cw">Compact fluorescent lights</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('7')" class="hidden" id="option7" type="checkbox" name="option7">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option7">
-      <img *ngIf="option.includes('7')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Insulated water heaters</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('8')" class="hidden" id="option8" type="checkbox" name="option8">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option8">
-      <img *ngIf="option.includes('8')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Lowered pool temperatures</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('9')" class="hidden" id="option9" type="checkbox" name="option9">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option9">
-      <img *ngIf="option.includes('9')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Installed solar photocells</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('10')" class="hidden" id="option10" type="checkbox" name="option10">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option10">
-      <img *ngIf="option.includes('10')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Fuel efficient vehicles</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('11')" class="hidden" id="option11" type="checkbox" name="option11">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option11">
-      <img *ngIf="option.includes('11')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-11 font-cw">Encouraging use of bikes and trikes</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('12')" class="hidden" id="option12" type="checkbox" name="option12">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option12">
-      <img *ngIf="option.includes('12')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-14 font-cw">Tankless water heaters</p>
-    </label>
-  </div>
-  <div class="relative">
-    <input (click)="optionChecked('13')" class="hidden" id="option13" type="checkbox" name="option13">
-    <label class="flex flex-col cursor-pointer w-147 h-152   rounded-xl bg-navGray" for="option13">
-      <img *ngIf="option.includes('13')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
-      <p class="absolute font-bold text-center place-self-center top-16 font-cw">Composting</p>
-    </label>
-  </div>
-</div>
-<div class="flex flex-row col-span-2 pb-10 mt-10">
-  <div class="">
-    <button class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
-      Changes</button>
-  </div>
-  <div class="pl-6">
-    <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
-  </div>
-</div>
+</form>
