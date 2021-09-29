@@ -61,6 +61,9 @@ export class RecreationComponent implements OnInit {
 
   checkBoxRecreationChange(cb: any) {
     this.isRecreationChecked = !this.isRecreationChecked;
+    if (!this.isRecreationChecked) {
+      this.isOpenChecked = false
+    }
   }
 
   checkBoxOpenChange(cb: any) {
