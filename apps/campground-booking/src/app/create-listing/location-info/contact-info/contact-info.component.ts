@@ -19,16 +19,16 @@ export class ContactInfoComponent implements OnInit {
     mailingAddress: this.formBuilder.group({
       address: '',
       city: '',
-      listStateId: 1,
+      listStateId: 0,
       zip: '',
-      countryId: 1
+      countryId: 0
     }),
     physicalAddress: this.formBuilder.group({
       address: '',
       city: '',
-      listStateId: 1,
+      listStateId: 0,
       zip: '',
-      countryId: 1,
+      countryId: 0,
       latitude: '',
       longitude: '',
       elevation: ''

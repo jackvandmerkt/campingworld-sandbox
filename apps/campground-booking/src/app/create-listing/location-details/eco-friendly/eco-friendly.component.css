@@ -5,7 +5,6 @@ input:checked ~ .dot {
 
 input:checked ~ .block {
   background-color: #C30B24;
-  opacity: 50%;
 }
 
 input:checked + label {
@@ -14,4 +13,23 @@ input:checked + label {
   height: 152px;
   width: 147x;
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/*Text Input Fields Floating Form Label*/
+.f-outline input:focus-within ~ label,
+.f-outline input:not(:placeholder-shown) ~ label {
+  transform: translateY(-1rem) translatex(-1.4rem) scaleX(0.75) scaleY(0.75);
+}
+
+/*Text textarea Fields Floating Form Label*/
+.f-outline textarea:focus-within ~ label,
+.f-outline textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-1rem) translatex(-1.4rem) scaleX(0.75) scaleY(0.75);
+}
+
+
+/*Dropdown Select Fields Floating Form Label*/
+select:focus ~ label,
+select:not([value='']):valid ~ label {
+  transform: translateY(-1rem) translatex(-1.4rem) scaleX(0.75) scaleY(0.75);
 }
