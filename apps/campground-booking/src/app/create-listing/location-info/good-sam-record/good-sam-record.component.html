@@ -11,6 +11,9 @@
       <div *ngIf="submitted && f.parkName.errors">
         <div *ngIf="f.parkName.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>
       </div>
+      <div *ngIf="submitted && f.parkName.errors">
+        <div *ngIf="f.parkName.errors.maxlength" class="pl-3 font-cw text-cwRed text-11px20px">Park name cannot exceed 255 characters.</div>
+      </div>
 
     </div>
     <div class="relative pb-10 f-outline">

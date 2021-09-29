@@ -32,7 +32,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     }
 
     goodSamRecordForm = this.formBuilder.group({
-        parkName: ['', Validators.required],
+        parkName: ['', [Validators.required, Validators.maxLength(255)]],
         fileNum: [{value: this.fileNum, disabled: true},  Validators.required],
         sectionCode: ['', Validators.required],
         repCode: [{value: this.repCode, disabled: true}, Validators.required],

@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 export class TentingRentalsComponent {
     otherOptions: string[] = [];
+    submitted: boolean = true;
     //toggle variables
     tentSites: boolean = false;
     tentingArea: boolean = false;
@@ -94,8 +95,17 @@ export class TentingRentalsComponent {
     });
 
     onSubmit(): void {
-        console.log(this.tentingRentalsForm.value);
+        this.submitted = true;
+        if(this.tentingRentalsForm.valid) {
+            console.log(this.tentingRentalsForm.value);
+        } else {
+            console.log('not valid');
+            return;
+        }
     }
+    
+    get f() { return this.tentingRentalsForm.controls; }
+
     clearChanges() {
         this.tentingRentalsForm.reset();
         //resetting toggle text to no
