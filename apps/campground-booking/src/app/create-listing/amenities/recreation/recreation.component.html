@@ -330,7 +330,7 @@
   </div>
   <div *ngIf="isCasinoChecked" class="grid grid-cols-2 w-636 gap-6">
     <div class="relative pb-4 f-outline">
-      <input type="text" name="fileNumber" placeholder=" "
+      <input type="text" formControlName="fileNumber" name="fileNumber" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="fileNumber" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         File Number
@@ -338,7 +338,7 @@
     </div>
 
     <div class="relative pb-4 f-outline">
-      <input type="text" name="displayName" placeholder=" "
+      <input type="text" formControlName="displayName" name="displayName" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="displayName" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Display Name

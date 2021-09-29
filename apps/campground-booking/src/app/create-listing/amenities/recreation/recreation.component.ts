@@ -25,6 +25,8 @@ export class RecreationComponent implements OnInit {
     open: false,
     casino: false,
     huntingSeason: false,
+    fileNumber: '',
+    displayName: '',
     otherRecMajor: '',
     otherRecMinor: '',
     eventCalendarsUrl: '',
