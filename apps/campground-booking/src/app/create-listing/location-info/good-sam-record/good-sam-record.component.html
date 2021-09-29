@@ -50,6 +50,9 @@
         <div *ngIf="submitted && f.listCity.errors">
           <div *ngIf="f.listCity.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing city is required.</div>
         </div>
+        <div *ngIf="submitted && f.listCity.errors">
+          <div *ngIf="f.listCity.errors.maxlength" class="pl-3 font-cw text-cwRed text-11px20px">Listing city value cannot exceed 255 characters.</div>
+        </div>
     </div>
     <div class="relative pb-10">
         <select name="listState" formControlName="listState" value="" [ngClass]="{'error-border': submitted && f.listState.errors }"

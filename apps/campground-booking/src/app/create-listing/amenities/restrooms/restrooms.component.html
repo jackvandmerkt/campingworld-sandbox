@@ -25,56 +25,100 @@
         </div>
 
         <div class="relative col-span-2 f-outline">
-            <select (change)="onChange($event)" formControlName="restroomsShowersSelect" name="restroomsShowersSelect" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select (change)="onChange($event)" formControlName="restroomsShowersSelect" name="restroomsShowersSelect" value="" [ngClass]="{'error-border': submitted && f.restroomsShowersSelect.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option value="1">Restrooms & showers</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
+            <option value="restroomsAndShowers">Restrooms & Showers</option>
+            <option value="restrooms">Restrooms</option>
+            <option value="showers">Showers</option>
             </select>
-            <label for="restroomsShowersSelect" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Restrooms/showers</label>
+            <label for="restroomsShowersSelect" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.restroomsShowersSelect.errors }">Restrooms/showers</label>
+            <div *ngIf="submitted && f.restroomsShowersSelect.errors">
+                <div *ngIf="f.restroomsShowersSelect.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please make a selection.</div>
+            </div>
         </div>
 
-        <div *ngIf="restroomsAndShowers" class="flex flex-row col-span-2 pt-10 space-x-6">
-            <div class="relative pb-10 short-label">
-                <input type="text" formControlName="numTolietsMen" name="numTolietsMen" placeholder=" "
+        <div *ngIf="restroomsAndShowers || restrooms" class="flex flex-row col-span-2 pt-10 space-x-6">
+            <div class="relative short-label">
+                <input type="text" formControlName="numTolietsMen" name="numTolietsMen" placeholder=" " [ngClass]="{'error-border': submitted && f.numTolietsMen.errors}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTolietsMen"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - men</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numTolietsMen.errors}"># toliets - men</label>
+            
+                <div *ngIf="submitted && f.numTolietsMen.errors">
+                    <div *ngIf="f.numTolietsMen.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numTolietsMen.errors">
+                    <div *ngIf="f.numTolietsMen.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
-            <div class="relative pb-10 longer-label">
-                <input type="text" formControlName="numTolietsWomen" name="numTolietsWomen" placeholder=" "
+            <div class="relative longer-label">
+                <input type="text" formControlName="numTolietsWomen" name="numTolietsWomen" placeholder=" " [ngClass]="{'error-border': submitted && f.numTolietsWomen.errors}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTolietsWomen"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - women</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numTolietsWomen.errors}"># toliets - women</label>
+            
+                <div *ngIf="submitted && f.numTolietsWomen.errors">
+                    <div *ngIf="f.numTolietsWomen.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numTolietsWomen.errors">
+                    <div *ngIf="f.numTolietsWomen.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
-            <div class="relative pb-10 long-label">
-                <input type="text" formControlName="numToiletsUni" name="numToiletsUni" placeholder=" "
+            <div class="relative long-label">
+                <input type="text" formControlName="numTolietsUni" name="numTolietsUni" placeholder=" " [ngClass]="{'error-border': submitted && f.numTolietsUni.errors}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numToiletsUni"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># toliets - unisex</label>
+                <label for="numTolietsUni"
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numTolietsUni.errors}"># toliets - unisex</label>
+        
+                <div *ngIf="submitted && f.numTolietsUni.errors">
+                    <div *ngIf="f.numTolietsUni.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numTolietsUni.errors">
+                    <div *ngIf="f.numTolietsUni.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
 
-        <div *ngIf="restroomsAndShowers" class="flex flex-row col-span-2 space-x-6">
+        <div *ngIf="restroomsAndShowers || showers" class="flex flex-row col-span-2 pt-10 space-x-6">
             <div class="relative long-label">
-                <input type="text" formControlName="numShowersMen" name="numShowersMen" placeholder=" "
+                <input type="text" formControlName="numShowersMen" name="numShowersMen" placeholder=" " [ngClass]="{'error-border': submitted && f.numShowersMen.errors}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numShowersMen"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - men</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numShowersMen.errors}"># showers - men</label>
+            
+                <div *ngIf="submitted && f.numShowersMen.errors">
+                    <div *ngIf="f.numShowersMen.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numShowersMen.errors">
+                    <div *ngIf="f.numShowersMen.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative longest-label">
-                <input type="text" formControlName="numShowersWomen" name="numShowersWomen" placeholder=" "
+                <input type="text" formControlName="numShowersWomen" name="numShowersWomen" placeholder=" " [ngClass]="{'error-border': submitted && f.numShowersWomen.errors}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numShowersWomen"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - women</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numShowersWomen.errors}"># showers - women</label>
+            
+                <div *ngIf="submitted && f.numShowersWomen.errors">
+                    <div *ngIf="f.numShowersWomen.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numShowersWomen.errors">
+                    <div *ngIf="f.numShowersWomen.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative longest-label">
-                <input type="text" formControlName="numShowersUni" name="numShowersUni" placeholder=" "
+                <input type="text" formControlName="numShowersUni" name="numShowersUni" placeholder=" " [ngClass]="{'error-border': submitted && f.numShowersUni.errors}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numShowersUni"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># showers - unisex</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numShowersUni.errors}"># showers - unisex</label>
+            
+                <div *ngIf="submitted && f.numShowersUni.errors">
+                    <div *ngIf="f.numShowersUni.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numShowersUni.errors">
+                    <div *ngIf="f.numShowersUni.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
 
