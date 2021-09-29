@@ -4,13 +4,18 @@
             <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Directions</p>
         </div>
         <div class="relative pb-10 f-outline ">
-            <input type="text" name="directions" formControlName="directions" placeholder=" "
+            <input type="text" name="directions" formControlName="directions" placeholder=" " [ngClass]="{'error-border': submitted && f.directions.errors }"
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="directions"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Directions</label>
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.directions.errors }">Directions</label>
+           
+            <div *ngIf="submitted && f.directions.errors">
+                <div *ngIf="f.directions.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>
         </div>
         <div class="relative col-span-2 pb-10 f-outline">
-            <select name="directionsFromTown" formControlName="directionsFromTown" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 longer-label border-cwBadgeGray focus:outline-none">
+            <select name="directionsFromTown" formControlName="directionsFromTown" value="" [ngClass]="{'error-border': submitted && f.directionsFromTown.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 longer-label border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -18,7 +23,11 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="directionsFromTown" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Directions from Town</label>
+            <label for="directionsFromTown" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.directionsFromTown.errors }">Directions from Town</label>
+            
+            <div *ngIf="submitted && f.directionsFromTown.errors">
+                <div *ngIf="f.directionsFromTown.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>
         </div>
         <div class="pb-10">
             <p class="font-cw">Near a NASCAR track?</p>
@@ -48,6 +57,9 @@
         
             <div *ngIf="submitted && isNascarChecked && f.milesOrKM.errors">
                 <div *ngIf="f.milesOrKM.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>
+            <div *ngIf="submitted && isNascarChecked && f.milesOrKM.errors">
+                <div *ngIf="f.milesOrKM.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
             </div>  
         </div>
     
@@ -55,8 +67,8 @@
             <select name="unitOfMeasurement" formControlName="unitOfMeasurement" value="" [ngClass]="{'error-border': submitted && isNascarChecked && f.unitOfMeasurement.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-306 h-13 border-cwBadgeGray focus:outline-none">
               <option value=""></option>
-              <option value="1">miles</option>
-              <option value="2">kilometers</option>
+              <option value="1">Mi</option>
+              <option value="2">Km</option>
             </select>
             <label for="unitOfMeasurement" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.unitOfMeasurement.errors }">Unit of measurement</label>
             <div *ngIf="submitted && f.unitOfMeasurement.errors">
@@ -65,10 +77,14 @@
         </div>
           
           <div *ngIf="isNascarChecked" class="relative pb-10 name-track">
-            <input type="text" name="nameOfTrack" formControlName="nameOfTrack" placeholder=" "
+            <input type="text" name="nameOfTrack" formControlName="nameOfTrack" placeholder=" " [ngClass]="{'error-border': submitted && isNascarChecked && f.nameOfTrack.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="nameOfTrack"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Name of track</label>
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.nameOfTrack.errors }">Name of track</label>
+            
+            <div *ngIf="submitted && isNascarChecked && f.nameOfTrack.errors">
+                <div *ngIf="f.nameOfTrack.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>
         </div>
         
 

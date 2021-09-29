@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
     selector: 'interior-roads',
@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
     styleUrls: ['./interior-roads-site-info.component.css']
 })
 export class InteriorRoadsSiteInformationComponent {
+    submitted: boolean = false;
     // yes no toggle booleans
     separateSeasonalSection: boolean = false;
     selfContainedUnits: boolean = false;
@@ -29,42 +30,52 @@ export class InteriorRoadsSiteInformationComponent {
     }
 
     interiorRoadsSitesInfo = this.formBuilder.group({
-        roadConditionRadio: '',
-        interiorRoadType: '',
-        totalSpaces: '',
-        numAvailable: '',
-        numSeasonal: '',
-        numPermanent: '',
+        roadConditionRadio: ['', Validators.required],
+        interiorRoadType: ['', Validators.required],
+        totalSpaces: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numAvailable: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numSeasonal: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numPermanent: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
         toggleSeasonal: false,
-        numPaved: '',
-        numAllWeather: '',
-        numGravel: '',
-        numGrass: '',
-        numDirt: '',
-        numFullHookups: '',
-        numWater: '',
-        numSewer: '',
-        numElectric: '',
-        numNoHookups: '',
-        amps: '',
-        sideHookupsRadio: '',
+        numPaved: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numAllWeather: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numGravel: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numGrass: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numDirt: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numFullHookups: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numWater: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numSewer: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numElectric: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        numNoHookups: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+        amps: ['', Validators.required],
+        sideHookupsRadio: ['', Validators.required],
         toggleBigRig: false,
         toggleFullHookup: false,
         toggleSelfContained: false,
-        pullThruW: '',
-        pullThruL: '',
-        numOfPullThrus: '',
-        backInW: '',
-        backInL: '',
+        pullThruW: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        pullThruL: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        numOfPullThrus: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        backInW: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        backInL: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
         toggleSlideOuts: false,
-        shadedSitesRadio: ''
+        shadedSitesRadio: ['', Validators.required]
     });
 
     onSubmit(): void {
-        console.log(this.interiorRoadsSitesInfo.value);
+        this.submitted = true;
+        if(this.interiorRoadsSitesInfo.valid) {
+            console.log(this.interiorRoadsSitesInfo.value);
+        } else {
+            console.log('not valid');
+            return;
+        }
     }
+
+    get f() { return this.interiorRoadsSitesInfo.controls; }
+
     clearChanges() {
         this.interiorRoadsSitesInfo.reset();
+        this.submitted = false;
         //resetting toggle text to no
         this.separateSeasonalSection = false;
         this.selfContainedUnits = false;
