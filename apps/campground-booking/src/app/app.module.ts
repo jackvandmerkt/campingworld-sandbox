@@ -1,7 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NeedSupportComponent } from './create-listing/create-listing-cards/need-support.component';
 import { ProTipsComponent } from './create-listing/create-listing-cards/protips.component';
@@ -42,10 +41,11 @@ import { ListingUpdateDetailsComponent } from './create-listing/listing-update-d
 import { RatingsComponent } from './create-listing/ratings/ratings.component';
 import { ListingService } from './shared/listing.service';
 import { OrdersService } from './shared/orders.service';
-import {ListingStatusesComponent} from './home/cards/listing-statuses.component';
-import {OrderByPipe} from './shared/order-by.pipe';
 import {OrdersContractsComponent} from './home/cards/orders-contracts.component'
 import {OrdersProductsDetails} from './home/cards/orders-products-details.component'
+import { ListingStatusesComponent } from './home/cards/listing-statuses.component';
+import { OrderByPipe } from './shared/order-by.pipe';
+import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +93,8 @@ import {OrdersProductsDetails} from './home/cards/orders-products-details.compon
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DateRangePickerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService, ListingService, OrdersService],

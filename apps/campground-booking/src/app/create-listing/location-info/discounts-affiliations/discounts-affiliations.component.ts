@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormsModule, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
     selector: 'discounts-affiliations',
@@ -12,6 +12,7 @@ export class DiscountsAffiliationsComponent {
     isAAAChecked:boolean = false;
     isARVCChecked:boolean = false;
     isMilitaryChecked:boolean = false;
+    submitted: boolean = false;
     constructor(private formBuilder: FormBuilder) {
 
     }
@@ -19,20 +20,29 @@ export class DiscountsAffiliationsComponent {
     discountsAffiliations = this.formBuilder.group({
         toggleAAA: false,
         toggleMilitary: false,
-        affiliation: '',
+        affiliation: ['', Validators.required],
         toggleARVC: false,
-        stateProvAffiliation: '',
+        stateProvAffiliation: ['', Validators.required],
         toggleGoodNeighbor: false,
-        goodNeighborParkNum: '',
+        goodNeighborParkNum: ['', Validators.required],
         toggleCoast: false,
-        coastToCoastMembershipNum: ''
+        coastToCoastMembershipNum: ['', Validators.required]
       });
+
+      get f() { return this.discountsAffiliations.controls; }
     
     onSubmit(): void {
-        console.log(this.discountsAffiliations.value);
+        this.submitted = true;
+        if(this.discountsAffiliations.valid) {
+            console.log(this.discountsAffiliations.value);
+        } else {
+            console.log('not valid');
+            return;
+        }
     }
     clearChanges() {
         this.discountsAffiliations.reset();
+        this.submitted = false;
         //resetting toggle text to no
         this.isCoastChecked = false;
         this.isNeighborChecked = false;
