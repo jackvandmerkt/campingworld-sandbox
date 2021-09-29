@@ -17,17 +17,38 @@ input:checked ~ .block {
 /*Text Input Fields Floating Form Label*/
 .f-outline input:focus-within ~ label,
 .f-outline input:not(:placeholder-shown) ~ label {
-    transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
+    transform: translateY(-1rem) translatex(-.45rem) scaleX(0.75) scaleY(0.75);
+}
+
+.long-label input:focus-within ~ label,
+.long-label input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-.65rem) scaleX(0.75) scaleY(0.75);
 }
 
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
 select:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
+    transform: translateY(-1rem) translatex(-.65rem) scaleX(0.75) scaleY(0.75);
 } 
 
 /*List/State Province Field Floating Form Label*/
-.longer-label:focus ~ label,
-.longer-label:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-.9rem) scaleX(0.75) scaleY(0.75);
+.short-dd:focus ~ label,
+.short-dd:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-.55rem) scaleX(0.75) scaleY(0.75);
+} 
+.territory:focus ~ label,
+.territory:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-.45rem) scaleX(0.75) scaleY(0.75);
+} 
+
+/*List/State Province Field Floating Form Label*/
+.long-dd:focus ~ label,
+.long-dd:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-.8rem) scaleX(0.75) scaleY(0.75);
+} 
+
+/*List/State Province Field Floating Form Label*/
+.longer-dd:focus ~ label,
+.longer-dd:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-1.05rem) scaleX(0.75) scaleY(0.75);
 } 

@@ -10,7 +10,7 @@
 
         <div class="pb-11">
             <p class="font-cw">Are there tent sites?</p>
-        </div>
+        </div> 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!tentSites" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="tentSites" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
@@ -47,16 +47,30 @@
         </div>
 
         <div *ngIf="tentSites" class="relative pb-10 short-label">
-            <input type="text" formControlName="numTentSites" name="numTentSites" placeholder=" "
+            <input type="text" formControlName="numTentSites" name="numTentSites" placeholder=" " [ngClass]="{'error-border': submitted && f.numTentSites.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="numTentSites"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># of tent sites</label>
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numTentSites.errors }"># of tent sites</label>
+        
+            <div *ngIf="submitted && f.numTentSites.errors">
+                <div *ngIf="f.numTentSites.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>
+            <div *ngIf="submitted && f.numTentSites.errors">
+                <div *ngIf="f.numTentSites.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+            </div>  
         </div>
         <div *ngIf="tentSites" class="relative pb-10 longer-label">
-            <input type="text" formControlName="numTentOnlySites" name="numTentOnlySites" placeholder=" "
+            <input type="text" formControlName="numTentOnlySites" name="numTentOnlySites" placeholder=" " [ngClass]="{'error-border': submitted && f.numTentOnlySites.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="numTentOnlySites"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># of tent ONLY sites</label>
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numTentOnlySites.errors }"># of tent ONLY sites</label>
+    
+            <div *ngIf="submitted && f.numTentOnlySites.errors">
+                <div *ngIf="f.numTentOnlySites.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>
+            <div *ngIf="submitted && f.numTentOnlySites.errors">
+                <div *ngIf="f.numTentOnlySites.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+            </div>  
         </div>
 
         <div *ngIf="tentSites" class="flex col-span-2 pb-10">
@@ -118,44 +132,83 @@
         </div>
 
        <div *ngIf="rentalSites" class="relative col-span-2 pb-10 rental-description">
-            <input type="text" formControlName="rentalDescription" name="rentalDescription" placeholder=" "
+            <input type="text" formControlName="rentalDescription" name="rentalDescription" placeholder=" " [ngClass]="{'error-border': submitted && f.rentalDescription.errors }"
                 class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
             <label for="rentalDescription"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rental desciption</label>
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rentalDescription.errors }">Rental desciption</label>
+        
+            <div *ngIf="submitted && f.rentalDescription.errors">
+                <div *ngIf="f.rentalDescription.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>  
         </div>
         
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 short-label">
-                <input type="text" formControlName="numTentRentals" name="numTentRentals" placeholder=" "
+                <input type="text" formControlName="numTentRentals" name="numTentRentals" placeholder=" " [ngClass]="{'error-border': submitted && f.numTentRentals.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTentRentals"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># tent rentals</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numTentRentals.errors }"># tent rentals</label>
+            
+                <div *ngIf="submitted && f.numTentRentals.errors">
+                    <div *ngIf="f.numTentRentals.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numTentRentals.errors">
+                    <div *ngIf="f.numTentRentals.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 long-label">
-                <input type="text" formControlName="numTeepeeYurts" name="numTeepeeYurts" placeholder=" "
+                <input type="text" formControlName="numTeepeeYurts" name="numTeepeeYurts" placeholder=" " [ngClass]="{'error-border': submitted && f.numTeepeeYurts.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numTeepeeYurts"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># teepee / yurts</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numTeepeeYurts.errors }"># teepee / yurts</label>
+            
+                <div *ngIf="submitted && f.numTeepeeYurts.errors">
+                    <div *ngIf="f.numTeepeeYurts.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numTeepeeYurts.errors">
+                    <div *ngIf="f.numTeepeeYurts.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 longer-label">
-                <input type="text" formControlName="numRVParkModels" name="numRVParkModels" placeholder=" "
+                <input type="text" formControlName="numRVParkModels" name="numRVParkModels" placeholder=" " [ngClass]="{'error-border': submitted && f.numRVParkModels.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numRVParkModels"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># RV / Park models</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numRVParkModels.errors }"># RV / Park models</label>
+            
+                <div *ngIf="submitted && f.numRVParkModels.errors">
+                    <div *ngIf="f.numRVParkModels.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numRVParkModels.errors">
+                    <div *ngIf="f.numRVParkModels.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-15 sleep-up-to">
-                <input type="text" formControlName="numCabinsCottagesTinyHouses" name="numCabinsCottagesTinyHouses" placeholder=" "
+                <input type="text" formControlName="numCabinsCottagesTinyHouses" name="numCabinsCottagesTinyHouses" placeholder=" " [ngClass]="{'error-border': submitted && f.numCabinsCottagesTinyHouses.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numCabinsCottagesTinyHouses"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># cabins / cottages / tiny houses</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numCabinsCottagesTinyHouses.errors }"># cabins / cottages / tiny houses</label>
+            
+                <div *ngIf="submitted && f.numCabinsCottagesTinyHouses.errors">
+                    <div *ngIf="f.numCabinsCottagesTinyHouses.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numCabinsCottagesTinyHouses.errors">
+                    <div *ngIf="f.numCabinsCottagesTinyHouses.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-15 short-label">
-                <input type="text" formControlName="numLodgeRooms" name="numLodgeRooms" placeholder=" "
+                <input type="text" formControlName="numLodgeRooms" name="numLodgeRooms" placeholder=" " [ngClass]="{'error-border': submitted && f.numLodgeRooms.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="numLodgeRooms"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># lodge rooms</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numLodgeRooms.errors }"># lodge rooms</label>
+            
+                <div *ngIf="submitted && f.numLodgeRooms.errors">
+                    <div *ngIf="f.numLodgeRooms.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.numLodgeRooms.errors">
+                    <div *ngIf="f.numLodgeRooms.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
 
@@ -164,30 +217,58 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" formControlName="tentSleepUpTo" name="tentSleepUpTo" placeholder=" "
+                <input type="text" formControlName="tentSleepUpTo" name="tentSleepUpTo" placeholder=" " [ngClass]="{'error-border': submitted && f.tentSleepUpTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentSleepUpTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentSleepUpTo.errors }">Sleep up to - average # per unit</label>
+            
+                <div *ngIf="submitted && f.tentSleepUpTo.errors">
+                    <div *ngIf="f.tentSleepUpTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tentSleepUpTo.errors">
+                    <div *ngIf="f.tentSleepUpTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" formControlName="tentMinStayNumOfDays" name="tentMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="tentMinStayNumOfDays" name="tentMinStayNumOfDays" placeholder=" " [ngClass]="{'error-border': submitted && f.tentMinStayNumOfDays.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentMinStayNumOfDays"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentMinStayNumOfDays.errors }">Minimum stay # of days</label>
+            
+                <div *ngIf="submitted && f.tentMinStayNumOfDays.errors">
+                    <div *ngIf="f.tentMinStayNumOfDays.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tentMinStayNumOfDays.errors">
+                    <div *ngIf="f.tentMinStayNumOfDays.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" formControlName="tentDailyRateFrom" name="tentDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="tentDailyRateFrom" name="tentDailyRateFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.tentDailyRateFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentDailyRateFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"  [ngClass]="{'error-label': submitted && f.tentDailyRateFrom.errors }">Daily rate from ($)</label>
+            
+                <div *ngIf="submitted && f.tentDailyRateFrom.errors">
+                    <div *ngIf="f.tentDailyRateFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tentDailyRateFrom.errors">
+                    <div *ngIf="f.tentDailyRateFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-11 daily-rate-to">
-                <input type="text" formControlName="tentDailyRateTo" name="tentDailyRateTo" placeholder=" "
+                <input type="text" formControlName="tentDailyRateTo" name="tentDailyRateTo" placeholder=" " [ngClass]="{'error-border': submitted && f.tentDailyRateTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentDailyRateTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentDailyRateTo.errors }">Daily rate to ($)</label>
+            
+                <div *ngIf="submitted && f.tentDailyRateTo.errors">
+                    <div *ngIf="f.tentDailyRateTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tentDailyRateTo.errors">
+                    <div *ngIf="f.tentDailyRateTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
 
@@ -233,30 +314,58 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" formControlName="tySleepUpTo" name="tySleepUpTo" placeholder=" "
+                <input type="text" formControlName="tySleepUpTo" name="tySleepUpTo" placeholder=" " [ngClass]="{'error-border': submitted && f.tySleepUpTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tySleepUpTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tySleepUpTo.errors }">Sleep up to - average # per unit</label>
+            
+                <div *ngIf="submitted && f.tySleepUpTo.errors">
+                    <div *ngIf="f.tySleepUpTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tySleepUpTo.errors">
+                    <div *ngIf="f.tySleepUpTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-11 min-stay">
-                <input type="text" formControlName="tyMinStayNumOfDays" name="tyMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="tyMinStayNumOfDays" name="tyMinStayNumOfDays" placeholder=" " [ngClass]="{'error-border': submitted && f.tyMinStayNumOfDays.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyMinStayNumOfDays"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyMinStayNumOfDays.errors }">Minimum stay # of days</label>
+            
+                <div *ngIf="submitted && f.tyMinStayNumOfDays.errors">
+                    <div *ngIf="f.tyMinStayNumOfDays.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tyMinStayNumOfDays.errors">
+                    <div *ngIf="f.tyMinStayNumOfDays.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" formControlName="tyDailyRateFrom" name="tyDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="tyDailyRateFrom" name="tyDailyRateFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.tyDailyRateFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyDailyRateFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyDailyRateFrom.errors }">Daily rate from ($)</label>
+            
+                <div *ngIf="submitted && f.tyDailyRateFrom.errors">
+                    <div *ngIf="f.tyDailyRateFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tyDailyRateFrom.errors">
+                    <div *ngIf="f.tyDailyRateFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-11 daily-rate-to">
-                <input type="text" formControlName="tyDailyRateTo" name="tyDailyRateTo" placeholder=" "
+                <input type="text" formControlName="tyDailyRateTo" name="tyDailyRateTo" placeholder=" " [ngClass]="{'error-border': submitted && f.tyDailyRateTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyDailyRateTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyDailyRateTo.errors }">Daily rate to ($)</label>
+            
+                <div *ngIf="submitted && f.tyDailyRateTo.errors">
+                    <div *ngIf="f.tyDailyRateTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tyDailyRateTo.errors">
+                    <div *ngIf="f.tyDailyRateTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
 
@@ -303,35 +412,64 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" formControlName="rvSleepUpTo" name="rvSleepUpTo" placeholder=" "
+                <input type="text" formControlName="rvSleepUpTo" name="rvSleepUpTo" placeholder=" " [ngClass]="{'error-border': submitted && f.rvSleepUpTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvSleepUpTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvSleepUpTo.errors }">Sleep up to - average # per unit</label>
+            
+                <div *ngIf="submitted && f.rvSleepUpTo.errors">
+                    <div *ngIf="f.rvSleepUpTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.rvSleepUpTo.errors">
+                    <div *ngIf="f.rvSleepUpTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" formControlName="rvMinStayNumOfDays" name="rvMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="rvMinStayNumOfDays" name="rvMinStayNumOfDays" placeholder=" " [ngClass]="{'error-border': submitted && f.rvMinStayNumOfDays.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvMinStayNumOfDays"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvMinStayNumOfDays.errors }">Minimum stay # of days</label>
+            
+                <div *ngIf="submitted && f.rvMinStayNumOfDays.errors">
+                    <div *ngIf="f.rvMinStayNumOfDays.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.rvMinStayNumOfDays.errors">
+                    <div *ngIf="f.rvMinStayNumOfDays.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" formControlName="rvDailyRateFrom" name="rvDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="rvDailyRateFrom" name="rvDailyRateFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.rvDailyRateFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvDailyRateFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvDailyRateFrom.errors }">Daily rate from ($)</label>
+            
+                <div *ngIf="submitted && f.rvDailyRateFrom.errors">
+                    <div *ngIf="f.rvDailyRateFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.rvDailyRateFrom.errors">
+                    <div *ngIf="f.rvDailyRateFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 daily-rate-to">
-                <input type="text" formControlName="rvDailyRateTo" name="rvDailyRateTo" placeholder=" "
+                <input type="text" formControlName="rvDailyRateTo" name="rvDailyRateTo" placeholder=" " [ngClass]="{'error-border': submitted && f.rvDailyRateTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="rvDailyRateTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvDailyRateTo.errors }">Daily rate to ($)</label>
+            
+                <div *ngIf="submitted && f.rvDailyRateTo.errors">
+                    <div *ngIf="f.rvDailyRateTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.rvDailyRateTo.errors">
+                    <div *ngIf="f.rvDailyRateTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
             <div class="relative f-outline">
-                <select name="rvBath" formControlName="rvBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="rvBath" formControlName="rvBath" value="" [ngClass]="{'error-border': submitted && f.rvBath.errors }"
+                onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none bath w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -339,10 +477,14 @@
                 <option value="4">Option 4</option>
                 <option value="5">Option 5</option>
                 </select>
-                <label for="rvBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
+                <label for="rvBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvBath.errors }">Bath</label>
+                <div *ngIf="submitted && f.rvBath.errors">
+                    <div *ngIf="f.rvBath.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>  
             </div>
             <div class="relative f-outline">
-                <select name="rvKitchen" formControlName="rvKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="rvKitchen" formControlName="rvKitchen" value="" [ngClass]="{'error-border': submitted && f.rvKitchen.errors }"
+                onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none kitchen w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -350,7 +492,10 @@
                 <option value="4">Option 4</option>
                 <option value="5">Option 5</option>
                 </select>
-                <label for="rvKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Kitchen</label>
+                <label for="rvKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvKitchen.errors }">Kitchen</label>
+                <div *ngIf="submitted && f.rvKitchen.errors">
+                    <div *ngIf="f.rvKitchen.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>  
             </div>
         </div>
 
@@ -435,35 +580,64 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" formControlName="ccthSleepUpTo" name="ccthSleepUpTo" placeholder=" "
+                <input type="text" formControlName="ccthSleepUpTo" name="ccthSleepUpTo" placeholder=" " [ngClass]="{'error-border': submitted && f.ccthSleepUpTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthSleepUpTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthSleepUpTo.errors }">Sleep up to - average # per unit</label>
+            
+                <div *ngIf="submitted && f.ccthSleepUpTo.errors">
+                    <div *ngIf="f.ccthSleepUpTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.ccthSleepUpTo.errors">
+                    <div *ngIf="f.ccthSleepUpTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" formControlName="ccthMinStayNumOfDays" name="ccthMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="ccthMinStayNumOfDays" name="ccthMinStayNumOfDays" placeholder=" " [ngClass]="{'error-border': submitted && f.ccthMinStayNumOfDays.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthMinStayNumOfDays"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthMinStayNumOfDays.errors }">Minimum stay # of days</label>
+            
+                <div *ngIf="submitted && f.ccthMinStayNumOfDays.errors">
+                    <div *ngIf="f.ccthMinStayNumOfDays.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.ccthMinStayNumOfDays.errors">
+                    <div *ngIf="f.ccthMinStayNumOfDays.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" formControlName="ccthDailyRateFrom" name="ccthDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="ccthDailyRateFrom" name="ccthDailyRateFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.ccthDailyRateFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthDailyRateFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthDailyRateFrom.errors }">Daily rate from ($)</label>
+            
+                <div *ngIf="submitted && f.ccthDailyRateFrom.errors">
+                    <div *ngIf="f.ccthDailyRateFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.ccthDailyRateFrom.errors">
+                    <div *ngIf="f.ccthDailyRateFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 daily-rate-to">
-                <input type="text" formControlName="ccthDailyRateTo" name="ccthDailyRateTo" placeholder=" "
+                <input type="text" formControlName="ccthDailyRateTo" name="ccthDailyRateTo" placeholder=" " [ngClass]="{'error-border': submitted && f.ccthDailyRateTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="ccthDailyRateTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthDailyRateTo.errors }">Daily rate to ($)</label>
+            
+                <div *ngIf="submitted && f.ccthDailyRateTo.errors">
+                    <div *ngIf="f.ccthDailyRateTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.ccthDailyRateTo.errors">
+                    <div *ngIf="f.ccthDailyRateTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
             <div class="relative f-outline">
-                <select name="ccthBath" formControlName="ccthBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="ccthBath" formControlName="ccthBath" value="" [ngClass]="{'error-border': submitted && f.ccthBath.errors }"
+                onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none bath w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -471,10 +645,14 @@
                 <option value="4">Option 4</option>
                 <option value="5">Option 5</option>
                 </select>
-                <label for="ccthBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
+                <label for="ccthBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthBath.errors }">Bath</label>
+                <div *ngIf="submitted && f.ccthBath.errors">
+                    <div *ngIf="f.ccthBath.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
+                </div>
             </div>
             <div class="relative f-outline">
-                <select name="ccthKitchen" formControlName="ccthKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="ccthKitchen" formControlName="ccthKitchen" value="" [ngClass]="{'error-border': submitted && f.ccthKitchen.errors }"
+                onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none kitchen w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -482,7 +660,10 @@
                 <option value="4">Option 4</option>
                 <option value="5">Option 5</option>
                 </select>
-                <label for="ccthKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Kitchen</label>
+                <label for="ccthKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthKitchen.errors }">Kitchen</label>
+                <div *ngIf="submitted && f.ccthKitchen.errors">
+                    <div *ngIf="f.ccthKitchen.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
+                </div>  
             </div>
         </div>
 
@@ -567,35 +748,64 @@
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 sleep-up-to">
-                <input type="text" formControlName="lrSleepUpTo" name="lrSleepUpTo" placeholder=" "
+                <input type="text" formControlName="lrSleepUpTo" name="lrSleepUpTo" placeholder=" " [ngClass]="{'error-border': submitted && f.lrSleepUpTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrSleepUpTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Sleep up to - average # per unit</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrSleepUpTo.errors }">Sleep up to - average # per unit</label>
+            
+                <div *ngIf="submitted && f.lrSleepUpTo.errors">
+                    <div *ngIf="f.lrSleepUpTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.lrSleepUpTo.errors">
+                    <div *ngIf="f.lrSleepUpTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 min-stay">
-                <input type="text" formControlName="lrMinStayNumOfDays" name="lrMinStayNumOfDays" placeholder=" "
+                <input type="text" formControlName="lrMinStayNumOfDays" name="lrMinStayNumOfDays" placeholder=" " [ngClass]="{'error-border': submitted && f.lrMinStayNumOfDays.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrMinStayNumOfDays"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Minimum stay # of days</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrMinStayNumOfDays.errors }">Minimum stay # of days</label>
+            
+                <div *ngIf="submitted && f.lrMinStayNumOfDays.errors">
+                    <div *ngIf="f.lrMinStayNumOfDays.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.lrMinStayNumOfDays.errors">
+                    <div *ngIf="f.lrMinStayNumOfDays.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 daily-rate-from">
-                <input type="text" formControlName="lrDailyRateFrom" name="lrDailyRateFrom" placeholder=" "
+                <input type="text" formControlName="lrDailyRateFrom" name="lrDailyRateFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.lrDailyRateFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrDailyRateFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate from ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrDailyRateFrom.errors }">Daily rate from ($)</label>
+            
+                <div *ngIf="submitted && f.lrDailyRateFrom.errors">
+                    <div *ngIf="f.lrDailyRateFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.lrDailyRateFrom.errors">
+                    <div *ngIf="f.lrDailyRateFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
             <div class="relative pb-10 daily-rate-to">
-                <input type="text" formControlName="lrDailyRateTo" name="lrDailyRateTo" placeholder=" "
+                <input type="text" formControlName="lrDailyRateTo" name="lrDailyRateTo" placeholder=" " [ngClass]="{'error-border': submitted && f.lrDailyRateTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lrDailyRateTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Daily rate to ($)</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrDailyRateTo.errors }">Daily rate to ($)</label>
+            
+                <div *ngIf="submitted && f.lrDailyRateTo.errors">
+                    <div *ngIf="f.lrDailyRateTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.lrDailyRateTo.errors">
+                    <div *ngIf="f.lrDailyRateTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                </div>  
             </div>
         </div>
         <div *ngIf="rentalSites" class="flex col-span-2 space-x-6 pb-11">
             <div class="relative f-outline">
-                <select name="lrBath" formControlName="lrBath" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="lrBath" formControlName="lrBath" value="" [ngClass]="{'error-border': submitted && f.lrBath.errors }"
+                onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none bath w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -603,10 +813,14 @@
                 <option value="4">Option 4</option>
                 <option value="5">Option 5</option>
                 </select>
-                <label for="lrBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Bath</label>
+                <label for="lrBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrBath.errors }">Bath</label>
+                <div *ngIf="submitted && f.lrBath.errors">
+                    <div *ngIf="f.lrBath.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>  
             </div>
             <div class="relative f-outline">
-                <select name="lrKitchen" formControlName="lrKitchen" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+                <select name="lrKitchen" formControlName="lrKitchen" value="" [ngClass]="{'error-border': submitted && f.lrKitchen.errors }"
+                onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none kitchen w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -614,7 +828,10 @@
                 <option value="4">Option 4</option>
                 <option value="5">Option 5</option>
                 </select>
-                <label for="lrKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Kitchen</label>
+                <label for="lrKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrKitchen.errors }">Kitchen</label>
+                <div *ngIf="submitted && f.lrKitchen.errors">
+                    <div *ngIf="f.lrKitchen.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>  
             </div>
         </div>
 
