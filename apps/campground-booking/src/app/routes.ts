@@ -23,10 +23,13 @@ import { PublishedRatingsComponent } from "./create-listing/ratings/published-ra
 import { RvHomesParkModelsComponent } from './create-listing/rent-buy/rv-homes-park-models/rv-homes-park-models.component';
 import { ListingUpdateDetailsComponent } from "./create-listing/listing-update-details/listing-update-details.component";
 import { RatingsComponent } from "./create-listing/ratings/ratings.component";
+import {ReportComponent} from "./report/report.component"
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'report', component: ReportComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'new-listing', component: NewListingsComponent },
   { path: 'new-listing', component: NewListingsComponent },
   {
     path: 'create-listing', component: CreateListingComponent,

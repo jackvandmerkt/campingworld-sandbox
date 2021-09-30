@@ -46,6 +46,8 @@ import {OrdersProductsDetails} from './home/cards/orders-products-details.compon
 import { ListingStatusesComponent } from './home/cards/listing-statuses.component';
 import { OrderByPipe } from './shared/order-by.pipe';
 import { DatePickerModule, DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { PowerBIEmbedModule } from 'powerbi-client-angular';
+import { ReportComponent } from './report/report.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +88,9 @@ import { DatePickerModule, DateRangePickerModule } from '@syncfusion/ej2-angular
     ListingStatusesComponent,
     OrderByPipe,
     OrdersContractsComponent,
-    OrdersProductsDetails
+    OrdersProductsDetails,
+    ReportComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -95,6 +99,7 @@ import { DatePickerModule, DateRangePickerModule } from '@syncfusion/ej2-angular
     FormsModule,
     HttpClientModule,
     DateRangePickerModule,
+    PowerBIEmbedModule,
     DatePickerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -41,6 +41,7 @@
     "@syncfusion/ej2-angular-calendars": "^19.2.62",
     "@tailwindcss/forms": "^0.3.3",
     "ng2-daterangepicker": "^2.0.12",
+    "powerbi-client-angular": "^1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
