@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
     selector: 'rates-reservations',
@@ -13,17 +13,21 @@ export class RatesReservationsComponent {
     onlineReservationOther: boolean = false;
     creditCardOptions: string[] = [];
 
+    // public start: string = new Date().toLocaleDateString();
+    public start: Date = new Date();
+    public end: Date = new Date();
+
     constructor(private formBuilder: FormBuilder) {
 
     }
 
     ratesReservationsForm = this.formBuilder.group({
-        overnightRatesFrom: '',
-        overnightRatesTo: '',
-        tentRatesFrom: '',
-        tentRatesTo: '',
-        seasonalRatesFrom: '',
-        seasonalRatesTo: '',
+        overnightRatesFrom: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        overnightRatesTo: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        tentRatesFrom: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        tentRatesTo: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        seasonalRatesFrom: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        seasonalRatesTo: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
         byWeekMonth: '',
         rateStartDate: '',
         rateEndDate: '',

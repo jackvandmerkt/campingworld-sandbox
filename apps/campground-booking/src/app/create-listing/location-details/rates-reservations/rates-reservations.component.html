@@ -81,7 +81,19 @@
             <label for="byWeekMonth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">By week/month</label>
         </div>
 
-        <div class="flex flex-row col-span-2 space-x-6">
+        <div class="grid grid-cols-2 col-span-2 pb-10 ">
+            <div class="w-306">
+                <h1 class="font-bold font-cw text-cwGray"></h1>
+                <ejs-datepicker id='daterangepicker' placeholder='Rate start date' [startDate]='start'>
+                </ejs-datepicker>
+            </div>
+            <div class="w-306">
+                <h1 class="font-bold font-cw text-cwGray"></h1>
+                <ejs-datepicker id='daterangepicker' placeholder='Rate end date' [endDate]='end'>
+                </ejs-datepicker>
+            </div>
+        </div>
+        <!-- <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-11 rate-label">
                 <input type="text" formControlName="rateStartDate" name="rateStartDate" placeholder=" "
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
@@ -94,7 +106,7 @@
                 <label for="rateEndDate"
                     class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rate end date</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="pb-11">
             <p class="font-cw">Credit cards accepted?</p>

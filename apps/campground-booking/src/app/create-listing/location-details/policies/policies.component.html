@@ -1,9 +1,8 @@
-<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
 <form [formGroup]="policiesForm" (ngSubmit)="onSubmit()">
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Policies</h1>
-  <div class="grid grid-cols-2 w-636 mt-6 gap-6">
+  <div class="grid grid-cols-2 gap-6 mt-6 w-636">
     <div class="pb-10">
-      <p class="font-cw text-gray-400">Is max stay less than 30 days?</p>
+      <p class="text-gray-400 font-cw">Is max stay less than 30 days?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!isLessThan30Days" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
@@ -23,9 +22,9 @@
       </label>
     </div>
   </div>
-  <div class="grid grid-cols-2 w-636 gap-6">
+  <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="font-cw text-gray-400">Open all year?</p>
+      <p class="text-gray-400 font-cw">Open all year?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!openAllYear" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
@@ -45,7 +44,7 @@
       </label>
     </div>
   </div>
-  <div class="grid grid-cols-1 w-636 gap-6">
+  <div class="grid grid-cols-1 gap-6 w-636">
     <h1 class="font-bold font-cw text-cwGray text-24px ">Season start date - Season end date</h1>
     <ejs-daterangepicker id='daterangepicker' placeholder='Select a range' [startDate]='start' [endDate]='end'>
     </ejs-daterangepicker>
@@ -64,9 +63,9 @@
       </label>
     </div>     -->
   </div>
-  <div class="grid grid-cols-2 w-636 mt-7 gap-6">
+  <div class="grid grid-cols-2 gap-6 w-636 mt-7">
     <div class="pb-10">
-      <p class="font-cw text-gray-400">Age restrictions apply?</p>
+      <p class="text-gray-400 font-cw">Age restrictions apply?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!ageRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
@@ -86,9 +85,9 @@
       </label>
     </div>
   </div>
-  <div class="grid grid-cols-2 w-636 gap-6">
+  <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="font-cw text-gray-400">Family camping?</p>
+      <p class="text-gray-400 font-cw">Family camping?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!familyCamping" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
@@ -108,9 +107,9 @@
       </label>
     </div>
   </div>
-  <div class="grid grid-cols-2 w-636 gap-6">
+  <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="font-cw text-gray-400">Allows tent campers?</p>
+      <p class="text-gray-400 font-cw">Allows tent campers?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!allowsTent" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
@@ -145,21 +144,21 @@
     </div>
     <div class="relative">
       <input (click)="motorhomeClassChecked('B')" class="hidden" id="fairRadio" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152    rounded-xl bg-navGray" for="fairRadio">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fairRadio">
         <img *ngIf="motorhomeClass === 'B'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class B motorhome</p>
       </label>
     </div>
     <div class="relative">
       <input (click)="motorhomeClassChecked('C')" class="hidden" id="poorRadio" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152    rounded-xl bg-navGray" for="poorRadio">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="poorRadio">
         <img *ngIf="motorhomeClass === 'C'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class C motorhome</p>
       </label>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 mt-2 w-636 gap-6">
+  <div class="grid grid-cols-1 gap-6 mt-2 w-636">
     <div class="relative pb-4 f-outline">
       <input type="text" formControlName="rvAgeRestrictions" name="rvAgeRestrictions" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
@@ -171,9 +170,9 @@
   <div class="flex mt-11">
     <h1 class="font-bold font-cw text-cwGray text-24px pb-11">Pets</h1>
   </div>
-  <div class="grid grid-cols-2 w-636 gap-6">
+  <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="font-cw text-gray-400">Are pets allowed?</p>
+      <p class="text-gray-400 font-cw">Are pets allowed?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!petsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
