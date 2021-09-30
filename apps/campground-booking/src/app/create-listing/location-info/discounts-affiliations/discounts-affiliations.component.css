@@ -14,6 +14,18 @@ input:checked ~ .block {
     color: #C30B24;
 }
 
+/*long Text Input Fields Floating Form Label*/
+.coast-coast input:focus-within ~ label,
+.coast-coast input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-2.25rem) scaleX(0.75) scaleY(0.75);
+}
+
+.good-neighbor input:focus-within ~ label,
+.good-neighbor input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-1.75rem) scaleX(0.75) scaleY(0.75);
+}
+
+
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
 select:not([value='']):valid ~ label {
@@ -26,14 +38,3 @@ select:not([value='']):valid ~ label {
     transform: translateY(-1rem) translatex(-1rem) scaleX(0.75) scaleY(0.75);
 } 
 
-/*Good Neighbor Field Floating Form Label*/
-.Good-Neighbor:focus ~ label,
-.Good-Neighbor:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-1.45rem) scaleX(0.75) scaleY(0.75);
-} 
-
-/*Coast to Coast Field Floating Form Label*/
-.Coast-Coast:focus ~ label,
-.Coast-Coast:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-1.9rem) scaleX(0.75) scaleY(0.75);
-} 

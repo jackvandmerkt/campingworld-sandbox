@@ -13,6 +13,8 @@ export class DiscountsAffiliationsComponent {
     isARVCChecked:boolean = false;
     isMilitaryChecked:boolean = false;
     submitted: boolean = false;
+
+    goodNeighborParkNum: number = 1234;
     constructor(private formBuilder: FormBuilder) {
 
     }
@@ -24,9 +26,9 @@ export class DiscountsAffiliationsComponent {
         toggleARVC: false,
         stateProvAffiliation: ['', Validators.required],
         toggleGoodNeighbor: false,
-        goodNeighborParkNum: ['', Validators.required],
+        goodNeighborParkNum: [{value: this.goodNeighborParkNum, disabled: true}, Validators.required],
         toggleCoast: false,
-        coastToCoastMembershipNum: ['', Validators.required]
+        coastToCoastMembershipNum: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]
       });
 
       get f() { return this.discountsAffiliations.controls; }
