@@ -17,8 +17,7 @@
               <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
               <button (click)='locationInfoToggle()' class="font-cw text-cwGray w-222">
                   <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideLocationInfo" class="col-span-5 justify-self-start">Location Info</p>
-                      <p *ngIf="unHideLocationInfo" class="col-span-5 font-bold justify-self-start">Location Info</p>
+                      <p class="col-span-5 justify-self-start">Location Info</p>
                       <img *ngIf="!unHideLocationInfo" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                       <img *ngIf="unHideLocationInfo" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                   </div>
@@ -27,30 +26,30 @@
           <div *ngIf="unHideLocationInfo" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
               <div class="flex flex-row items-center pt-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./good-sam-record"><p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p></a>
+                  <a routerLink="./good-sam-record" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./contact-info"><p class="font-cw text-cwGray text-14px24px">Contact Info</p></a>
+                  <a routerLink="./contact-info" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Contact Info</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./discounts-affiliations"><p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p></a>
+                  <a routerLink="./discounts-affiliations" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./owner-b2b-info"><p class="font-cw text-cwGray text-14px24px">Owner & B2B Info</p></a>
+                  <a routerLink="./owner-b2b-info" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Owner & B2B Info</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./directions"><p class="font-cw text-cwGray text-14px24px">Directions</p></a>
+                  <a routerLink="./directions" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Directions</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./good-sam-park"><p class="font-cw text-cwGray text-14px24px">Good Sam Park</p></a>
+                  <a routerLink="./good-sam-park" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Good Sam Park</p></a>
               </div>
               <div class="items-center pb-4 pl-9">
-                  <a routerLink="./advertising-codes"><p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p></a>
+                  <a routerLink="./advertising-codes" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Advertising Codes (Office Use Only)</p></a>
               </div>
           </div> 
           <!-- Second dropdown section -->
@@ -58,8 +57,7 @@
               <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
               <button (click)='locationDetailsToggle()' class="font-cw text-cwGray w-222">
                   <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideLocationDetails" class="col-span-5 justify-self-start">Location Details</p>
-                      <p *ngIf="unHideLocationDetails" class="col-span-5 font-bold justify-self-start">Location Details</p>
+                      <p class="col-span-5 justify-self-start">Location Details</p>
                       <img *ngIf="!unHideLocationDetails" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                       <img *ngIf="unHideLocationDetails" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                   </div>
@@ -68,19 +66,19 @@
           <div *ngIf="unHideLocationDetails" class="grid grid-cols-1 gap-4 pl-5 bg-navGray">
               <div class="flex flex-row items-center pt-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./interior-roads"><p class="font-cw text-cwGray text-14px24px">Interior Roads & Site Info</p></a>
+                  <a routerLink="./interior-roads" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Interior Roads & Site Info</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./policies"><p class="font-cw text-cwGray text-14px24px">Policies</p></a>
+                  <a routerLink="./policies" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Policies</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./rates-reservations"><p class="font-cw text-cwGray text-14px24px">Rates & Reservations</p></a>
+                  <a routerLink="./rates-reservations" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Rates & Reservations</p></a>
               </div>
               <div class="flex flex-row items-center pb-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./eco-friendly"><p class="font-cw text-cwGray text-14px24px">Eco Friendly</p></a>
+                  <a routerLink="./eco-friendly" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Eco Friendly</p></a>
               </div>
           </div> 
           <!-- Third dropdown section -->
@@ -88,8 +86,7 @@
               <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
               <button (click)='amenitiesToggle()' class="font-cw text-cwGray w-222">
                   <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideAmenities" class="col-span-5 justify-self-start">Amenities</p>
-                      <p *ngIf="unHideAmenities" class="col-span-5 font-bold justify-self-start">Amenities</p>
+                      <p class="col-span-5 justify-self-start">Amenities</p>
                       <img *ngIf="!unHideAmenities" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                       <img *ngIf="unHideAmenities" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                   </div>
@@ -98,19 +95,19 @@
           <div *ngIf="unHideAmenities" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
               <div class="flex flex-row items-center pt-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./restrooms"><p class="font-cw text-cwGray text-14px24px">Restrooms</p></a>
+                  <a routerLink="./restrooms" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Restrooms</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./on-site-services"><p class="font-cw text-cwGray text-14px24px">On Site Services</p></a>
+                  <a routerLink="./on-site-services" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">On Site Services</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./recreation"><p class="font-cw text-cwGray text-14px24px">Recreation</p></a>
+                  <a routerLink="./recreation" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Recreation</p></a>
               </div>
               <div class="flex flex-row items-center pb-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./water-recreation"><p class="font-cw text-cwGray text-14px24px">Water Recreation</p></a>
+                  <a routerLink="./water-recreation" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Water Recreation</p></a>
               </div>
           </div> 
           <!-- Fourth dropdown section -->
@@ -118,8 +115,7 @@
               <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
               <button (click)='rentBuyToggle()' class="font-cw text-cwGray w-222">
                   <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideRentBuy" class="col-span-5 justify-self-start">Rent & Buy</p>
-                      <p *ngIf="unHideRentBuy" class="col-span-5 font-bold justify-self-start">Rent & Buy</p>
+                      <p class="col-span-5 justify-self-start">Rent & Buy</p>
                       <img *ngIf="!unHideRentBuy" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                       <img *ngIf="unHideRentBuy" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                   </div>
@@ -128,11 +124,11 @@
           <div *ngIf="unHideRentBuy" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
               <div class="flex flex-row items-center pt-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./tenting-rentals"><p class="font-cw text-cwGray text-14px24px">Tenting & Rentals</p></a>
+                  <a routerLink="./tenting-rentals" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Tenting & Rentals</p></a>
               </div>
               <div class="flex flex-row items-center pb-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./rv-homes-park-models"><p class="font-cw text-cwGray text-14px24px">RV Homes / Park Models / Lots for Sale</p></a>
+                  <a routerLink="./rv-homes-park-models" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">RV Homes / Park Models / Lots for Sale</p></a>
               </div>
           </div>
           <!-- Fifth dropdown section -->
@@ -140,8 +136,7 @@
               <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
               <button (click)='ratingsToggle()' class="font-cw text-cwGray w-222">
                   <div class="grid grid-cols-6">
-                      <p *ngIf="!unHideRatings" class="col-span-5 justify-self-start">Ratings</p>
-                      <p *ngIf="unHideRatings" class="col-span-5 font-bold justify-self-start">Ratings</p>
+                      <p class="col-span-5 justify-self-start">Ratings</p>
                       <img *ngIf="!unHideRatings" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
                       <img *ngIf="unHideRatings" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/up-arrow.png" alt="up-arrow">
                   </div>
@@ -150,17 +145,17 @@
           <div *ngIf="unHideRatings" class="grid grid-cols-1 gap-4 pl-5 bg-navGray w-222">
               <div class="flex flex-row items-center pt-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./ratings"><p class="font-cw text-cwGray text-14px24px">Ratings</p></a>
+                  <a routerLink="./ratings" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Ratings</p></a>
               </div>
               <div class="flex flex-row items-center pb-4 space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./published-ratings"><p class="font-cw text-cwGray text-14px24px">Published Ratings</p></a>
+                  <a routerLink="./published-ratings" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Published Ratings</p></a>
               </div>
           </div>
           <!-- Sixth section -->
           <div class="flex flex-row justify-center items-center space-x-2.5 ">
               <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-              <a routerLink="./listing-update-details"><p class="font-cw text-cwGray text-14px24px">Listing Update Details</p></a>
+              <a routerLink="./listing-update-details" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Listing Update Details</p></a>
           </div>
       </div>
   </div>
