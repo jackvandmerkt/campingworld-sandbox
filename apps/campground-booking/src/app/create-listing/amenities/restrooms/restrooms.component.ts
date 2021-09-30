@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
     selector: 'restrooms',
@@ -7,9 +7,12 @@ import { FormBuilder, FormGroup } from "@angular/forms";
     styleUrls: ['./restrooms.component.css']
 })
 export class RestroomsComponent {
+    submitted: boolean = false;
     pitTolietsOnly: boolean = false;
     restroomsShowersPaid: boolean = false;
     restroomsAndShowers: boolean = false;
+    restrooms: boolean = false;
+    showers: boolean = false;
 
     constructor(private formBuilder: FormBuilder) {
 
@@ -18,26 +21,37 @@ export class RestroomsComponent {
     // form object
     restroomForm = this.formBuilder.group({
         togglePitToliets: false,
-        restroomsShowersSelect: '',
-        numTolietsMen: '',
-        numTolietsWomen: '',
-        numToiletsUni: '',
-        numShowersMen: '',
-        numShowersWomen: '',
-        numShowersUni: '',
+        restroomsShowersSelect: ['', Validators.required],
+        numTolietsMen: [''],
+        numTolietsWomen: [''],
+        numTolietsUni: [''],
+        numShowersMen: [''],
+        numShowersWomen: [''],
+        numShowersUni: [''],
         togglePaid: false
       });
 
       onSubmit(): void {
-        console.log(this.restroomForm.value);
+        this.submitted = true;
+        if(this.restroomForm.valid) {
+            console.log(this.restroomForm.value);
+        } else {
+            console.log('not valid');
+            return;
+        }
     }
+    
+    get f() { return this.restroomForm.controls; }
 
     clearChanges() {
         this.restroomForm.reset();
+        this.submitted = false;
         //resetting toggle text to no
         this.pitTolietsOnly = false;
         this.restroomsShowersPaid = false;
-        this.restroomsAndShowers = false;    
+        this.restroomsAndShowers = false;
+        this.restrooms = false;      
+        this.showers = false;  
       }
 
     checkBoxPitTolietsChange(cb:any) {
@@ -49,10 +63,97 @@ export class RestroomsComponent {
 
     onChange(event:any): void {
         const newVal = event.target.value;
-        if(newVal == "1") {
+        if(newVal === "restroomsAndShowers") {
+            // setting boolean variables used in template
             this.restroomsAndShowers = true;
-        } else {
+            this.restrooms = false;
+            this.showers = false;
+
+            // setting validations
+            this.restroomForm.get('numTolietsMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numTolietsWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numTolietsUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numShowersMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numShowersWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numShowersUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+
+            // updating validations
+            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
+        }
+        else if(newVal === "restrooms") {
+            // setting boolean variables used in template
             this.restroomsAndShowers = false;
+            this.restrooms = true;
+            this.showers = false;
+
+            // setting validations
+            this.restroomForm.get('numTolietsMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numTolietsWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numTolietsUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            
+            // clearing other validations
+            this.restroomForm.get('numShowersMen')?.clearValidators();
+            this.restroomForm.get('numShowersWomen')?.clearValidators();
+            this.restroomForm.get('numShowersUni')?.clearValidators();
+
+            // updating validations
+            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
+        }
+        else if(newVal === "showers") {
+            // setting boolean variables used in template
+            this.restroomsAndShowers = false;
+            this.restrooms = false;
+            this.showers = true;
+
+            // setting validations
+            this.restroomForm.get('numShowersMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numShowersWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numShowersUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            
+            // clearing other validations
+            this.restroomForm.get('numTolietsMen')?.clearValidators();
+            this.restroomForm.get('numTolietsWomen')?.clearValidators();
+            this.restroomForm.get('numTolietsUni')?.clearValidators();
+
+            // updating validations
+            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
+        }
+        else if(newVal === "") {
+            // setting boolean variables used in template
+            this.restroomsAndShowers = false;
+            this.restrooms = false;
+            this.showers = false;
+
+            // clearing other validations
+            this.restroomForm.get('numTolietsMen')?.clearValidators();
+            this.restroomForm.get('numTolietsWomen')?.clearValidators();
+            this.restroomForm.get('numTolietsUni')?.clearValidators();
+            this.restroomForm.get('numShowersMen')?.clearValidators();
+            this.restroomForm.get('numShowersWomen')?.clearValidators();
+            this.restroomForm.get('numShowersUni')?.clearValidators();
+
+            // updating validations
+            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
         }
     }
 

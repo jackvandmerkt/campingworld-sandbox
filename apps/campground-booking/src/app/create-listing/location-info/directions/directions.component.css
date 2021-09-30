@@ -17,23 +17,23 @@ input:checked ~ .block {
 /*Text Input Fields Floating Form Label*/
 .f-outline input:focus-within ~ label,
 .f-outline input:not(:placeholder-shown) ~ label {
-    transform: translateY(-.5rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
+    transform: translateY(-.5rem) translatex(-.6rem) scaleX(0.75) scaleY(0.75);
 }
 
 .miles-km input:focus-within ~ label,
 .miles-km input:not(:placeholder-shown) ~ label {
-    transform: translateY(-1rem) translatex(-1.4rem) scaleX(0.75) scaleY(0.75);
-}
-
-.name-track input:focus-within ~ label,
-.name-track input:not(:placeholder-shown) ~ label {
-    transform: translateY(-1rem) translatex(-.8rem) scaleX(0.75) scaleY(0.75);
+    transform: translateY(-1rem) translatex(-1.45rem) scaleX(0.75) scaleY(0.75);
 }
 
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
 select:not([value='']):valid ~ label {
     transform: translateY(-1rem) translatex(-.4rem) scaleX(0.75) scaleY(0.75);
+} 
+
+.name-track:focus ~ label,
+.name-track:not([value='']):valid ~ label {
+    transform: translateY(-1rem) translatex(-.75rem) scaleX(0.75) scaleY(0.75);
 } 
 
 /*Coast to Coast Field Floating Form Label*/
