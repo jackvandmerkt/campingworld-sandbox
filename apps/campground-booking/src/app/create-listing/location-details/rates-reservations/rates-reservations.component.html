@@ -12,18 +12,32 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-10 from-label">
-                <input type="text" formControlName="overnightRatesFrom" name="overnightRatesFrom" placeholder=" "
+                <input type="text" formControlName="overnightRatesFrom" name="overnightRatesFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.overnightRatesFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="overnightRatesFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.overnightRatesFrom.errors }">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            
+                <div *ngIf="submitted && f.overnightRatesFrom.errors">
+                    <div *ngIf="f.overnightRatesFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.overnightRatesFrom.errors">
+                    <div *ngIf="f.overnightRatesFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please use currency format.</div>
+                </div> 
             </div>
             <div class="relative pb-10 to-label">
-                <input type="text" formControlName="overnightRatesTo" name="overnightRatesTo" placeholder=" "
+                <input type="text" formControlName="overnightRatesTo" name="overnightRatesTo" placeholder=" " [ngClass]="{'error-border': submitted && f.overnightRatesTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="overnightRatesTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.overnightRatesTo.errors }">To</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            
+                <div *ngIf="submitted && f.overnightRatesTo.errors">
+                    <div *ngIf="f.overnightRatesTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.overnightRatesTo.errors">
+                    <div *ngIf="f.overnightRatesTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please use currency format.</div>
+                </div> 
             </div>
         </div>
 
@@ -34,18 +48,32 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-5 from-label">
-                <input type="text" formControlName="tentRatesFrom" name="tentRatesFrom" placeholder=" "
+                <input type="text" formControlName="tentRatesFrom" name="tentRatesFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.tentRatesFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentRatesFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentRatesFrom.errors }">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+           
+                <div *ngIf="submitted && f.tentRatesFrom.errors">
+                    <div *ngIf="f.tentRatesFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tentRatesFrom.errors">
+                    <div *ngIf="f.tentRatesFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please use currency format.</div>
+                </div> 
             </div>
             <div class="relative pb-5 to-label">
-                <input type="text" formControlName="tentRatesTo" name="tentRatesTo" placeholder=" "
+                <input type="text" formControlName="tentRatesTo" name="tentRatesTo" placeholder=" " [ngClass]="{'error-border': submitted && f.tentRatesTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentRatesTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentRatesTo.errors }">To</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            
+                <div *ngIf="submitted && f.tentRatesTo.errors">
+                    <div *ngIf="f.tentRatesTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.tentRatesTo.errors">
+                    <div *ngIf="f.tentRatesTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please use currency format.</div>
+                </div> 
             </div>
         </div>
 
@@ -55,22 +83,37 @@
 
         <div class="flex flex-row col-span-2 space-x-6">
             <div class="relative pb-5 from-label">
-                <input type="text" formControlName="seasonalRatesFrom" name="seasonalRatesFrom" placeholder=" "
+                <input type="text" formControlName="seasonalRatesFrom" name="seasonalRatesFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.seasonalRatesFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="seasonalRatesFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">From</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.seasonalRatesFrom.errors }">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            
+                <div *ngIf="submitted && f.seasonalRatesFrom.errors">
+                    <div *ngIf="f.seasonalRatesFrom.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.seasonalRatesFrom.errors">
+                    <div *ngIf="f.seasonalRatesFrom.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please use currency format.</div>
+                </div> 
             </div>
             <div class="relative pb-5 to-label">
-                <input type="text" formControlName="seasonalRatesTo" name="seasonalRatesTo" placeholder=" "
+                <input type="text" formControlName="seasonalRatesTo" name="seasonalRatesTo" placeholder=" " [ngClass]="{'error-border': submitted && f.seasonalRatesTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="seasonalRatesTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">To</label>
+                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.seasonalRatesTo.errors }">To</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
+            
+                <div *ngIf="submitted && f.seasonalRatesTo.errors">
+                    <div *ngIf="f.seasonalRatesTo.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                </div>
+                <div *ngIf="submitted && f.seasonalRatesTo.errors">
+                    <div *ngIf="f.seasonalRatesTo.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please use currency format.</div>
+                </div> 
             </div>
         </div>
         <div class="relative col-span-2 pb-10 ">
-            <select name="byWeekMonth" formControlName="byWeekMonth" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+            <select name="byWeekMonth" formControlName="byWeekMonth" value="" [ngClass]="{'error-border': submitted && f.byWeekMonth.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="1">010 - Private Park</option>
             <option value="2">Option 2</option>
@@ -78,36 +121,26 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="byWeekMonth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">By week/month</label>
+            <label for="byWeekMonth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.byWeekMonth.errors }">By week/month</label>
+        
+            <div *ngIf="submitted && f.byWeekMonth.errors">
+                <div *ngIf="f.byWeekMonth.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
+            </div>
         </div>
 
         <div class="grid grid-cols-2 col-span-2 pb-10 ">
             <div class="w-306">
                 <h1 class="font-bold font-cw text-cwGray"></h1>
-                <ejs-datepicker id='daterangepicker' placeholder='Rate start date' [startDate]='start'>
+                <ejs-datepicker formControlName="rateStartDate" id='datepicker' placeholder='Rate start date' [startDate]='start'>
                 </ejs-datepicker>
             </div>
             <div class="w-306">
                 <h1 class="font-bold font-cw text-cwGray"></h1>
-                <ejs-datepicker id='daterangepicker' placeholder='Rate end date' [endDate]='end'>
+                <ejs-datepicker formControlName="rateEndDate" id='datepicker' placeholder='Rate end date' [endDate]='end'>
                 </ejs-datepicker>
             </div>
         </div>
-        <!-- <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-11 rate-label">
-                <input type="text" formControlName="rateStartDate" name="rateStartDate" placeholder=" "
-                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="rateStartDate"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rate start date</label>
-            </div>
-            <div class="relative pb-11 rate-label">
-                <input type="text" formControlName="rateEndDate" name="rateEndDate" placeholder=" "
-                    class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="rateEndDate"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rate end date</label>
-            </div>
-        </div> -->
-
+        
         <div class="pb-11">
             <p class="font-cw">Credit cards accepted?</p>
         </div>
@@ -219,7 +252,8 @@
         </div>
 
         <div *ngIf="onlineReservation" class="relative col-span-2 pb-10 ">
-            <select (change)="onChange($event)" formControlName="onlineReservationSystem" name="onlineReservationSystem" value="" onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-636 h-13 border-cwBadgeGray focus:outline-none">
+            <select (change)="onChange($event)" formControlName="onlineReservationSystem" name="onlineReservationSystem" value="" [ngClass]="{'error-border': submitted && onlineReservation && f.onlineReservationSystem.errors }"
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option value="other">Other</option>
             <option value="2">Option 2</option>
@@ -227,14 +261,22 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="onlineReservationSystem" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Online Reservation System</label>
+            <label for="onlineReservationSystem" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && onlineReservation && f.onlineReservationSystem.errors }">Online Reservation System</label>
+        
+            <div *ngIf="submitted && onlineReservation && f.onlineReservationSystem.errors">
+                <div *ngIf="f.onlineReservationSystem.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
+            </div>
         </div>
 
         <div *ngIf="onlineReservationOther" class="relative pb-10 f-outline">
-            <input type="text" formControlName="onlineReservationSystemOther" name="onlineReservationSystemOther" placeholder=" "
+            <input type="text" formControlName="onlineReservationSystemOther" name="onlineReservationSystemOther" placeholder=" " [ngClass]="{'error-border': submitted && onlineReservationOther && f.onlineReservationSystemOther.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="onlineReservationSystemOther"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Other online reservation system</label>
+                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && onlineReservationOther && f.onlineReservationSystemOther.errors }">Other online reservation system</label>
+        
+            <div *ngIf="submitted && onlineReservationOther && f.onlineReservationSystemOther.errors">
+                <div *ngIf="f.onlineReservationSystemOther.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
+            </div>
         </div>
         <div class="flex flex-row col-span-2 pb-10">
             <div class="">

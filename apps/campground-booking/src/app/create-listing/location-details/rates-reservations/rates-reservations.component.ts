@@ -7,6 +7,7 @@ import { FormBuilder, Validators } from "@angular/forms";
     styleUrls: ['./rates-reservations.component.css']
 })
 export class RatesReservationsComponent {
+    submitted: boolean = false;
     creditCardsAccepted: boolean = false;
     reservationsAccepted: boolean = false;
     onlineReservation: boolean = false;
@@ -22,15 +23,15 @@ export class RatesReservationsComponent {
     }
 
     ratesReservationsForm = this.formBuilder.group({
-        overnightRatesFrom: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        overnightRatesTo: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        tentRatesFrom: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        tentRatesTo: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        seasonalRatesFrom: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        seasonalRatesTo: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        byWeekMonth: '',
-        rateStartDate: '',
-        rateEndDate: '',
+        overnightRatesFrom: ['', [Validators.required, Validators.pattern("^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$")]],
+        overnightRatesTo: ['', [Validators.required, Validators.pattern("^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$")]],
+        tentRatesFrom: ['', [Validators.required, Validators.pattern("^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$")]],
+        tentRatesTo: ['', [Validators.required, Validators.pattern("^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$")]],
+        seasonalRatesFrom: ['', [Validators.required, Validators.pattern("^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$")]],
+        seasonalRatesTo: ['', [Validators.required, Validators.pattern("^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$")]],
+        byWeekMonth: ['', Validators.required],
+        rateStartDate: ['', Validators.required],
+        rateEndDate: ['', Validators.required],
         togglecreditCards: false,
         creditCardOptions: this.formBuilder.group({
             creditCardOption1: false, creditCardOption2: false, creditCardOption3: false, creditCardOption4: false,
@@ -38,15 +39,25 @@ export class RatesReservationsComponent {
         }),
         toggleReservations: false,
         toggleOnlineReservation: false,
-        onlineReservationSystem: '',
-        onlineReservationSystemOther: ''
+        onlineReservationSystem: [''],
+        onlineReservationSystemOther: ['']
     });
 
     onSubmit(): void {
-        console.log(this.ratesReservationsForm.value);
+        this.submitted = true;
+        if(this.ratesReservationsForm.valid) {
+            console.log(this.ratesReservationsForm.value);
+        } else {
+            console.log('not valid');
+            return;
+        }
     }
+    
+    get f() { return this.ratesReservationsForm.controls; }
+
     clearChanges() {
         this.ratesReservationsForm.reset();
+        this.submitted = false;
         //resetting toggle text to no
         this.creditCardsAccepted = false;
         this.reservationsAccepted = false;
@@ -65,6 +76,13 @@ export class RatesReservationsComponent {
     }
     checkBoxOnlineReservationChange(cb:any) {
         this.onlineReservation = !this.onlineReservation;
+        if (this.onlineReservation === true) {
+            this.ratesReservationsForm.get('onlineReservationSystem')?.setValidators([Validators.required])
+            this.ratesReservationsForm.get('onlineReservationSystem')?.updateValueAndValidity()
+        } else {
+            this.ratesReservationsForm.get('onlineReservationSystem')?.clearValidators()
+            this.ratesReservationsForm.get('onlineReservationSystem')?.updateValueAndValidity()
+        }
     }
 
     creditCardChecked(radio: any) {
@@ -79,8 +97,12 @@ export class RatesReservationsComponent {
         const newVal = event.target.value;
         if(newVal === "other") {
             this.onlineReservationOther = true;
+            this.ratesReservationsForm.get('onlineReservationSystemOther')?.setValidators([Validators.required])
+            this.ratesReservationsForm.get('onlineReservationSystemOther')?.updateValueAndValidity()
         } else {
             this.onlineReservationOther = false;
+            this.ratesReservationsForm.get('onlineReservationSystemOther')?.clearValidators()
+            this.ratesReservationsForm.get('onlineReservationSystemOther')?.updateValueAndValidity()
         }
     }
 }
