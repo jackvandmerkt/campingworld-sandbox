@@ -1,12 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
+import { IAffiliations, IListStates } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'discounts-affiliations',
     templateUrl: './discounts-affiliations.component.html',
     styleUrls: ['./discounts-affiliations.component.css']
 })
-export class DiscountsAffiliationsComponent {
+export class DiscountsAffiliationsComponent implements OnInit{
+    affiliationsFromService!: IAffiliations[];
+    listStatesFromService!: IListStates[];
+    // affiliationsFromService!: IAffiliations[];
     isCoastChecked:boolean = false;
     isNeighborChecked:boolean = false;
     isAAAChecked:boolean = false;
@@ -15,8 +20,20 @@ export class DiscountsAffiliationsComponent {
     submitted: boolean = false;
 
     goodNeighborParkNum: number = 1234;
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+    ngOnInit() {
+        this.getFormDropDownData();
+    }
+
+    getFormDropDownData() {
+        this.ls.getAffiliations().subscribe(response => {
+            this.affiliationsFromService = response;
+        });
+        this.ls.getListStates().subscribe(response => {
+            this.listStatesFromService = response;
+        });
     }
 
     discountsAffiliations = this.formBuilder.group({
