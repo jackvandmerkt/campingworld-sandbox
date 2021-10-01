@@ -2,7 +2,8 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: 'create-listing-nav',
-    templateUrl: './create-listing-nav.component.html'
+    templateUrl: './create-listing-nav.component.html',
+    styleUrls: ['./create-listing-nav.component.css']
 })
 export class CreateListingNavComponent {
     listingStatus: string = 'open';

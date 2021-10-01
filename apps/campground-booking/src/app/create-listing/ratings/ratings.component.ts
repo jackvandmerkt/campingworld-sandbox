@@ -1,6 +1,6 @@
 import { analyzeAndValidateNgModules } from "@angular/compiler";
 import { Component } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
     selector: 'ratings',
@@ -9,6 +9,7 @@ import { FormBuilder } from "@angular/forms";
 })
 
 export class RatingsComponent {
+    submitted: boolean = false;
     canParkBeRated: boolean = false;
     unHideFacilities: boolean = false;
     unHideRestrooms: boolean = false;
@@ -59,7 +60,7 @@ export class RatingsComponent {
 
     ratingsForm = this.formBuilder.group({
         toggleCanParkBeRated: false,
-        nonRatedCode: '',
+        nonRatedCode: ['', Validators.required],
         interiorRoadsRadio: '',
         registrationRadio: '',
         sitesRadio: '',
@@ -94,10 +95,20 @@ export class RatingsComponent {
     });
 
     onSubmit(): void {
-        console.log(this.ratingsForm.value);
+        this.submitted = true;
+        if(this.ratingsForm.valid) {
+            console.log(this.ratingsForm.value);
+        } else {
+            console.log('not valid');
+            return;
+        }
     }
+    
+    get f() { return this.ratingsForm.controls; }
+
     clearChanges() {
         this.ratingsForm.reset();
+        this.submitted = false;
         this.canParkBeRated = false;
         this.unHideFacilities = false;
         this.unHideRestrooms = false;
@@ -116,6 +127,13 @@ export class RatingsComponent {
 
     checkBoxCanParkBeRatedChange(cb:any) {
         this.canParkBeRated = !this.canParkBeRated;
+        if (this.canParkBeRated === true) {
+            this.ratingsForm.get('nonRatedCode')?.clearValidators()
+            this.ratingsForm.get('nonRatedCode')?.updateValueAndValidity()
+        } else {
+            this.ratingsForm.get('nonRatedCode')?.setValidators([Validators.required])
+            this.ratingsForm.get('nonRatedCode')?.updateValueAndValidity()
+        }
     }
 
     facilitiesToggle() {
@@ -134,7 +152,7 @@ export class RatingsComponent {
             if(key === radio) {
                 this.facilitiesOptions[key] = radioValue;
             } 
-        } 
+        }
         let sum = 0;
         for (let key in this.facilitiesOptions) {
             sum += this.facilitiesOptions[key];
