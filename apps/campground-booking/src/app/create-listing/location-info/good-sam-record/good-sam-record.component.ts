@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../shared/listing-counts.model";
 import { ListingService } from "../../../shared/listing.service";
 
 @Component({
@@ -12,7 +13,12 @@ export class GoodSamRecordFormComponent implements OnInit{
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
     submitted: boolean = false;
-    territories:any = [];
+    territoriesFromService!: ITerritories[];
+    sectionCodesFromService!: ISectionCodes[];
+    listStatesFromService!: IListStates[];
+    listingTypesFromService!: IListingTypes[];
+    parkTypesFromService!: IParkTypes[];
+
     // temporary number, will use getter method to pull this number from api in the future
     fileNum:any = '1230405060';
     repCode:any = '101010';
@@ -20,15 +26,30 @@ export class GoodSamRecordFormComponent implements OnInit{
 
     }
     ngOnInit() {
-        this.getTerritoriesDropdownData();
+        this.getFormDropDownData();
     }
 
-    getTerritoriesDropdownData() {
-        this.ls.getTerritories().subscribe(data => {
-            if(data) {
-                this.territories = data;
-            }
+    getFormDropDownData() {
+        this.ls.getTerritories().subscribe(response => {
+            this.territoriesFromService = response;
         });
+
+        this.ls.getListingTypes().subscribe(response => {
+            this.listingTypesFromService = response;
+        });
+
+        this.ls.getListStates().subscribe(response => {
+            this.listStatesFromService = response;
+        });
+
+        this.ls.getParkTypes().subscribe(response => {
+            this.parkTypesFromService = response;
+        });
+
+        this.ls.getSectionCodes().subscribe(response => {
+            this.sectionCodesFromService = response;
+        });
+
     }
 
     goodSamRecordForm = this.formBuilder.group({
