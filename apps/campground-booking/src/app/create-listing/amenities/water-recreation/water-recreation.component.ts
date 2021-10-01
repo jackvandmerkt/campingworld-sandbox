@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'water-recreation',
@@ -13,7 +14,14 @@ export class WaterRecreationComponent implements OnInit {
   nearby: string[] = [];
 
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+
+  }
+
+  waterRecreationForm = this.formBuilder.group({
+    bodyOfWaterName: '',
+    hpLimit: ''
+  })
 
   ngOnInit(): void {
   }
@@ -51,7 +59,18 @@ export class WaterRecreationComponent implements OnInit {
     } else {
       this.nearby = this.nearby.filter(nearby => nearby !== checkbox)
     }
+  }
 
+  onSubmit(): void {
+    console.log(this.waterRecreationForm)
+  }
+
+  clearChanges(): void {
+    this.waterRecreationForm.reset()
+    this.option = [];
+    this.bodyOfWater = [];
+    this.boatDetails = [];
+    this.nearby = [];
   }
 
 }
