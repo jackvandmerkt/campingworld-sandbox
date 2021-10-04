@@ -20,6 +20,12 @@ input:checked ~ .block {
     transform: translateY(-.5rem) translatex(-.6rem) scaleX(0.75) scaleY(0.75);
 }
 
+/*Text textarea Fields Floating Form Label*/
+.f-outline textarea:focus-within ~ label,
+.f-outline textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.05rem) translatex(-.6rem) scaleX(0.75) scaleY(0.75);
+}
+
 .miles-km input:focus-within ~ label,
 .miles-km input:not(:placeholder-shown) ~ label {
     transform: translateY(-1rem) translatex(-1.45rem) scaleX(0.75) scaleY(0.75);
