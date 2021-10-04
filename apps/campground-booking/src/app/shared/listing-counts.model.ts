@@ -90,3 +90,10 @@ export interface IMonths{
     value: string,
     abbrev: string
 }
+
+export interface IListings{
+    sectionCodeId: number,
+    parkTypeId: string,
+    repName: string,
+    locationListingsName: string
+}

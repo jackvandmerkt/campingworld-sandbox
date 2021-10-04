@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
+import { IParkTypes, ISectionCodes } from "../shared/listing-counts.model";
+import { ListingService } from "../shared/listing.service";
 
 @Component({
     selector: 'new-listing',
@@ -7,30 +9,46 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     styleUrls: ['./new-listing.component.css']
 })
 export class NewListingsComponent implements OnInit{
-    newListingForm!: FormGroup;
+    submitted: boolean = false;
+    sectionCodesFromService!: ISectionCodes[];
+    parkTypesFromService!: IParkTypes[];
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
         
     }
     ngOnInit() {
-        this.newListingForm = new FormGroup({
-            sectionCode: new FormControl(''),
-            repName: new FormControl(''),
-            parkName: new FormControl(''),
-            parkType: new FormControl('')
-        });
+      this.ls.getParkTypes().subscribe(response => {
+        this.parkTypesFromService = response;
+      });
+
+      this.ls.getSectionCodes().subscribe(response => {
+          this.sectionCodesFromService = response;
+      });
     };
 
-      getSectionCode (){
-        return this.newListingForm.get('sectionCode');
-      } 
-      getRepName (){
-        return this.newListingForm.get('repName');
-      } 
-      getParkName (){
-        return this.newListingForm.get('parkName');
-      } 
-      getParkType (){
-        return this.newListingForm.get('parkType');
-      } 
+    // form object
+    newListingForm = this.formBuilder.group({
+      sectionCodeId: ['', Validators.required],
+      parkTypeId: [''],
+      repName: ['', Validators.required],
+      locationListingName: ['', Validators.required]
+    });
+
+    onSubmit(): void {
+      this.submitted = true;
+      if(this.newListingForm.valid) {
+          console.log(this.newListingForm.value);
+          this.postForm()
+      } else {
+          console.log('not valid');
+          return;
+      }
+    }
+  
+    get f() { return this.newListingForm.controls; }
+
+    postForm() {
+      this.ls.postNewListing(this.newListingForm)
+    }
+
 }
