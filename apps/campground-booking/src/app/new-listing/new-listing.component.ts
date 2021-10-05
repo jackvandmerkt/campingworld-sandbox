@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
-import { IListingsResponse, IParkTypes, ISectionCodes } from "../shared/listing-counts.model";
+import { IListings, IParkTypes, ISectionCodes } from "../shared/listing-counts.model";
 import { ListingService } from "../shared/listing.service";
 
 @Component({
@@ -12,7 +12,7 @@ export class NewListingsComponent implements OnInit{
     submitted: boolean = false;
     sectionCodesFromService!: ISectionCodes[];
     parkTypesFromService!: IParkTypes[];
-    postResponse!: IListingsResponse[];
+    postResponse:any;
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
         
@@ -49,8 +49,8 @@ export class NewListingsComponent implements OnInit{
     get f() { return this.newListingForm.controls; }
 
     postForm() {
-      this.ls.postNewListing(this.newListingForm).subscribe(response => {
-        // this.postResponse = response;
+      this.ls.postNewListing(this.newListingForm.value).subscribe(response => {
+        this.postResponse = response;
       })
     }
 

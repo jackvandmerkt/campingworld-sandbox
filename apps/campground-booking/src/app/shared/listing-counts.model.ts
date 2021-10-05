@@ -97,9 +97,3 @@ export interface IListings{
     repName: string,
     locationListingsName: string
 }
-
-export interface IListingsResponse{
-    listingId: number,
-    repCode: number,
-    fileNumber: number
-}

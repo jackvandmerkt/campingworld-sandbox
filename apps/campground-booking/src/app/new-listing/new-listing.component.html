@@ -12,7 +12,7 @@
             <select name="sectionCodeId" formControlName="sectionCodeId" value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none long-dd w-416 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option *ngFor="let c of sectionCodesFromService">{{c.value}} - {{c.code}}</option>
+            <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
             </select>
             <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Section Code</label>
             <div *ngIf="submitted && f.sectionCodeId.errors">
@@ -23,7 +23,7 @@
             <select name="parkTypeId" formControlName="parkTypeId" value="" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none short-dd w-416 h-13 border-cwBadgeGray">
             <option value=""></option>
-            <option *ngFor="let p of parkTypesFromService">{{p.value}}</option>
+            <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
             </select>
             <label for="parkTypeId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
             <div *ngIf="submitted && f.parkTypeId.errors">
