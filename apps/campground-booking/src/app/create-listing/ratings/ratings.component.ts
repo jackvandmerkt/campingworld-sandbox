@@ -14,6 +14,13 @@ export class RatingsComponent {
     unHideFacilities: boolean = false;
     unHideRestrooms: boolean = false;
     unHideVisualAppearance: boolean = false;
+    //used to loop through and set validations if park can be rated
+    radiosArray = ['interiorRoadsRadio', 'registrationRadio', 'sitesRadio', 'hookupsRadio', 'recreationRadio', 'swimmingRadio',
+    'securityRadio', 'laundryRadio','servicesRadio','internetAccessRadio','tolietsRadio','showersRadio','floorsRadio',
+    'wallsRadio','scmRadio','interiorConstructionRadio','supplyOdorFreeRadio','amtOfFacilitiesRadio','extAppearanceRadio',
+    'intAppearanceRadio','signageRadio','entranceAreaRadio','parkGroundsRadio','siteAppearanceRadio','litterDebrisRadio',
+    'extBuildingMaintRadio','trashDisposalRadio','noiseRadio','parkSettingRadio','siteLayoutRadio']
+
     facilitiesOptions: {[index: string]:any} = {
         'interiorRoadsValue': 0,
         'registrationValue': 0,
@@ -115,24 +122,45 @@ export class RatingsComponent {
         this.unHideVisualAppearance = false;
         //resets radio button values
         for(let key of Object.keys(this.facilitiesOptions)) {
-            this.facilitiesOptions[key] = 0;
+            this.facilitiesOptions[key] = "";
         }
         for(let key of Object.keys(this.restroomsOptions)) {
-            this.restroomsOptions[key] = 0;
+            this.restroomsOptions[key] = "";
         }
         for(let key of Object.keys(this.visualAppearanceOptions)) {
-            this.visualAppearanceOptions[key] = 0;
-        } 
+            this.visualAppearanceOptions[key] = "";
+        }
+        
+        this.radiosArray.forEach((field: string) => {
+            this.ratingsForm.get(field)?.clearValidators();
+            this.ratingsForm.get(field)?.updateValueAndValidity();
+        });
     }
+
 
     checkBoxCanParkBeRatedChange(cb:any) {
         this.canParkBeRated = !this.canParkBeRated;
         if (this.canParkBeRated === true) {
             this.ratingsForm.get('nonRatedCode')?.clearValidators()
             this.ratingsForm.get('nonRatedCode')?.updateValueAndValidity()
+            // setting required validation on all radios if the park CAN be rated
+            this.radiosArray.forEach((field: string) => {
+                this.ratingsForm.get(field)?.setValidators([Validators.required]);
+                this.ratingsForm.get(field)?.updateValueAndValidity();
+            });
         } else {
             this.ratingsForm.get('nonRatedCode')?.setValidators([Validators.required])
             this.ratingsForm.get('nonRatedCode')?.updateValueAndValidity()
+            // clearing required validation on all radios if the park CANNOT be rated
+            this.radiosArray.forEach((field: string) => {
+                this.ratingsForm.get(field)?.clearValidators();
+                this.ratingsForm.get(field)?.updateValueAndValidity();
+            });
+            for(let key of Object.keys(this.facilitiesOptions)) {
+                this.facilitiesOptions[key] = '';
+            }
+            this.ratingsForm.reset();
+
         }
     }
 
