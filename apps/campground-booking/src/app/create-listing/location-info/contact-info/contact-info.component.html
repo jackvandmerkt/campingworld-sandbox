@@ -3,20 +3,30 @@
 
   <!-- Mailing Address -->
   <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7">Mailing Address</h2>
-  <div formGroupName="mailingAddress" class="grid grid-cols-2 w-636 gap-6">
+  <div class="grid grid-cols-2 w-636 gap-6">
     <div class="relative pb-4 f-outline ">
-      <input type="text" formControlName="address" name="address" placeholder=" "
+      <input [ngClass]="{'error-border': submitted && f.address.errors }" type="text" formControlName="address"
+        name="address" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
+
+      <div *ngIf="submitted && f.address.errors" class="pl-3 font-cw text-cwRed text-11px20px">Address is
+        required
+      </div>
+
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="city" name="city" placeholder="  "
+      <input [ngClass]="{'error-border': submitted && f.city.errors }" type="text" formControlName="city" name="city"
+        placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
+      <div *ngIf="submitted && f.city.errors" class="pl-3 font-cw text-cwRed text-11px20px">City is
+        required
+      </div>
     </div>
     <div class="relative pb-4 f-outline">
-      <select formControlName="listStateId" name="listStateId" placeholder=" " value=""
-        onclick="this.setAttribute('value', this.value);"
+      <select [ngClass]="{'error-border': submitted && f.listStateId.errors }" formControlName="listStateId"
+        name="listStateId" placeholder=" " value="" onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
         <option value="1">010 - Private Park</option>
@@ -27,16 +37,26 @@
       </select>
       <label for="listStateId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
         Province</label>
+      <div *ngIf="submitted && f.listStateId.errors" class="pl-3 font-cw text-cwRed text-11px20px">State is
+        required
+      </div>
+
     </div>
     <div class="relative pb-4 f-outline">
       <input type="text" formControlName="zip" name="zip" placeholder=" "
-        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+        [ngClass]="{'error-border': submitted && f.zip.errors }" class=" block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray
+        focus:outline-none" />
       <label for="zip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Zip / Postal Code
       </label>
+
+      <div *ngIf="submitted && f.zip.errors" class="pl-3 font-cw text-cwRed text-11px20px">Zip code
+        is required.
+      </div>
+
     </div>
     <div class="relative pb-4 f-outline">
-      <select formControlName="countryId" name="countryId" placeholder=" " value=""
+      <select [ngClass]="{'error-border': submitted && f.countryId.errors }" formControlName="countryId" value=""
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
@@ -47,6 +67,9 @@
         <option value="5">Option 5</option>
       </select>
       <label for="countryId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
+      <div *ngIf="submitted && f.countryId.errors" class="pl-3 font-cw text-cwRed text-11px20px">Country
+        is required.
+      </div>
     </div>
   </div>
 
@@ -57,26 +80,38 @@
   <h2 class="font-bold font-cw text-cwGray text-18px24px pb-5 mt-11">Physical Address</h2>
   <h3 class="pb-7">
     <p class='font-cw'>
-      <input (change)="isSameAsMailingAddress = !isSameAsMailingAddress" type="checkbox" style="margin-top: -2px;"
+      <input (change)="changeIsSameAsMailingAdrress()" type="checkbox" style="margin-top: -2px;"
         class="mr-4 border-2 rounded w-18px h-18px " />Same as
       Mailing
       Address
     </p>
   </h3>
-  <div formGroupName="physicalAddress" *ngIf="!isSameAsMailingAddress">
+  <div *ngIf="!isSameAsMailingAddress">
     <div class="grid grid-cols-2 w-636 gap-6 mt-2">
       <div class="relative pb-4 f-outline ">
-        <input type="text" formControlName="address" name="address" placeholder=" "
+        <input [ngClass]="{'error-border': submitted && f.physicalAddress.errors }" type="text"
+          formControlName="physicalAddress" name="physicalAddress" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-        <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
+        <label for="physicalAddress"
+          class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
+
+        <div *ngIf="submitted && f.physicalAddress.errors" class="pl-3 font-cw text-cwRed text-11px20px">Address is
+          required
+        </div>
+
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="city" name="city" placeholder=" "
+        <input [ngClass]="{'error-border': submitted && f.physicalCity.errors }" type="text"
+          formControlName="physicalCity" name="physicalCity" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-        <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
+        <label for="physicalCity" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
+        <div *ngIf="submitted && f.physicalCity.errors" class="pl-3 font-cw text-cwRed text-11px20px">City is
+          required
+        </div>
       </div>
       <div class="relative pb-4 f-outline">
-        <select formControlName="listStateId" name="listStateId" placeholder=" " value=""
+        <select [ngClass]="{'error-border': submitted && f.physicalListStateId.errors }"
+          formControlName="physicalListStateId" name="physicalListStateId" placeholder=" " value=""
           onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
           <option value=""></option>
@@ -86,18 +121,29 @@
           <option value="4">Option 4</option>
           <option value="5">Option 5</option>
         </select>
-        <label for="listStateId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
+        <label for="physicalListStateId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
           Province</label>
+        <div *ngIf="submitted && f.physicalListStateId.errors" class="pl-3 font-cw text-cwRed text-11px20px">State is
+          required
+        </div>
+
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="zip" name="zip" placeholder=" "
-          class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-        <label for="zip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        <input type="text" formControlName="physicalZip" name="physicalZip" placeholder=" "
+          [ngClass]="{'error-border': submitted && f.physicalZip.errors }" class=" block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray
+          focus:outline-none" />
+        <label for="physicalZip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
           Zip / Postal Code
         </label>
+
+        <div *ngIf="submitted && f.physicalZip.errors" class="pl-3 font-cw text-cwRed text-11px20px">Zip code
+          is required.
+        </div>
+
       </div>
       <div class="relative pb-4 f-outline">
-        <select formControlName="countryId" value="" onclick="this.setAttribute('value', this.value);"
+        <select [ngClass]="{'error-border': submitted && f.physicalCountryId.errors }"
+          formControlName="physicalCountryId" value="" onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
           <option value=""></option>
           <option value="1">010 - Private Park</option>
@@ -106,29 +152,54 @@
           <option value="4">Option 4</option>
           <option value="5">Option 5</option>
         </select>
-        <label for="countryId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
+        <label for="physicalCountryId"
+          class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
+        <div *ngIf="submitted && f.physicalCountryId.errors" class="pl-3 font-cw text-cwRed text-11px20px">Country
+          is required.
+        </div>
       </div>
     </div>
     <div class="grid grid-cols-3 mt-6 w-636 gap-6">
       <div class="relative pb-4 f-outline ">
-        <input type="text" formControlName="latitude" name="latitude" placeholder=" "
+        <input [ngClass]="{'error-border': submitted && f.latitude.errors }" type="text" formControlName="latitude"
+          name="latitude" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwGray focus:outline-none" />
         <label for="latitude" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Latitude</label>
+        <div *ngIf="submitted && f.latitude.errors">
+          <div *ngIf="f.latitude.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Latitude
+            is required.
+          </div>
+          <div *ngIf="f.latitude.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Invalid latitude value
+          </div>
+        </div>
       </div>
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="longitude" name="longitude" placeholder=" "
+        <input [ngClass]="{'error-border': submitted && f.longitude.errors }" type=" text" formControlName="longitude"
+          name="longitude" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwGray focus:outline-none" />
         <label for="longitude"
           class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Longitude</label>
+        <div *ngIf="submitted && f.longitude.errors">
+          <div *ngIf="f.longitude.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Longitude
+            is required.
+          </div>
+          <div *ngIf="f.longitude.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Invalid longitude value
+          </div>
+        </div>
       </div>
 
       <div class="relative pb-4 f-outline">
-        <input type="text" formControlName="elevation" name="elevation" placeholder=" "
+        <input [ngClass]="{'error-border': submitted && f.elevation.errors }" type="text" formControlName="elevation"
+          name="elevation" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwGray focus:outline-none" />
         <label for="elevation" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
           Elevation
         </label>
-        <span class="ml-3 text-gray-400 text-sm">If greater than 2,500 ft.</span>
+        <div *ngIf="f.elevation.errors" class="pl-3 font-cw text-cwRed text-11px20px">Elevation must be greater than
+          2,500 ft.
+        </div>
+        <span #elseBlock class="ml-3 text-gray-400 text-sm">If greater than 2,500 ft.</span>
+
       </div>
     </div>
   </div>
@@ -140,11 +211,15 @@
 
   <div class="grid grid-cols-1 w-636 gap-6">
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="email" name="email" placeholder=" "
+      <input [ngClass]="{'error-border': submitted && f.email.errors }" type="text" formControlName="email" name="email"
+        placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="emailAddress" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Email Address
       </label>
+      <div *ngIf="submitted && f.email.errors" class="pl-3 font-cw text-cwRed text-11px20px">
+        You must enter a valid email address
+      </div>
       <span class="ml-3 text-gray-400 text-sm">Published</span>
     </div>
   </div>
@@ -159,30 +234,42 @@
       <span class="ml-3 text-gray-400 text-sm">Published</span>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="repressedTelephone" name="repressedTelephone" placeholder=" "
+      <input type="text" [ngClass]="{'error-border': samePhone }" formControlName="repressedTelephone"
+        name="repressedTelephone" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
       <label for="repressedTelephone" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Phone Number
       </label>
       <span class="ml-3 text-gray-400 text-sm">Private</span>
+      <div *ngIf="samePhone" class="pl-3 font-cw text-cwRed text-11px20px">Private number can't be the same as published
+        number
+      </div>
     </div>
   </div>
 
   <div class="grid grid-cols-1 w-636 mt-6 gap-6">
     <div class="relative pb-5 f-outline">
-      <input type="text" formControlName="webAddress" name="webAddress" placeholder=" "
+      <input [ngClass]="{'error-border': submitted && f.webAddress.errors }" type="text" formControlName="webAddress"
+        name="webAddress" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="webAddress" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Web address for print
       </label>
+      <div *ngIf="f.webAddress.errors" class="pl-3 font-cw text-cwRed text-11px20px">Must be a valid URL
+      </div>
     </div>
-    <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="onlineWeb" name="onlineWeb" placeholder=" "
-        class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
-      <label for="onlineWeb" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
-        Online web address
-      </label>
+
+  </div>
+  <div class="relative pb-4 f-outline">
+    <input [ngClass]="{'error-border': submitted && f.onlineWeb.errors }" type="text" formControlName="onlineWeb"
+      name="onlineWeb" placeholder=" "
+      class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
+    <label for="onlineWeb" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      Online web address
+    </label>
+    <div *ngIf="f.onlineWeb.errors" class="pl-3 font-cw text-cwRed text-11px20px">Must be a valid URL
     </div>
+
   </div>
 
 
@@ -216,18 +303,24 @@
 
   <div class="grid grid-cols-1 w-636 gap-6" style="margin-top: -10px;">
     <div class="relative pb-5 f-outline">
-      <input type="text" formControlName="facebook" name="facebook" placeholder=" "
+      <input [ngClass]="{'error-border': submitted && f.facebook.errors }" type="text" formControlName="facebook"
+        name="facebook" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="facebook" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Facebook
       </label>
+      <div *ngIf="f.facebook.errors" class="pl-3 font-cw text-cwRed text-11px20px">Must be a valid URL
+      </div>
     </div>
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="twitter" name="twitter" placeholder=" "
+      <input [ngClass]="{'error-border': submitted && f.facebook.errors }" type="text" formControlName="twitter"
+        name="twitter" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="twitter" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Twitter
       </label>
+      <div *ngIf="f.twitter.errors" class="pl-3 font-cw text-cwRed text-11px20px">Must contain no spaces
+      </div>
     </div>
     <div class="relative pb-4 f-outline">
       <input type="text" formControlName="pinterest" name="pinterest" placeholder=" "
