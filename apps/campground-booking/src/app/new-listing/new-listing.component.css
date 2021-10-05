@@ -1,11 +1,8 @@
-/*Toggle Radio Button*/
-input:checked ~ .dot {
-  transform: translateX(100%);
+.error-border {
+  border-color: #C30B24;
 }
-
-input:checked ~ .block {
-  background-color: #C30B24;
-  opacity: 50%;
+.error-label {
+  color: #C30B24;
 }
 
 /*Text Input Fields Floating Form Label*/

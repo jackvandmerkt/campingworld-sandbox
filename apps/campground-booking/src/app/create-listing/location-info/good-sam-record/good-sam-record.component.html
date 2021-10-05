@@ -26,12 +26,8 @@
     <div class="relative pb-10 f-outline">
       <select name="sectionCode" formControlName="sectionCode" value="" [ngClass]="{'error-border': submitted && f.sectionCode.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none long-dd w-306 h-13 border-cwBadgeGray focus:outline-none">
-        <option value=""></option>
-        <option value="1">010 - Private Park</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
+      <option value=""></option>
+      <option *ngFor="let c of sectionCodesFromService">{{c.value}} - {{c.code}}</option>
       </select>
       <label for="sectionCode" [ngClass]="{'error-label': submitted && f.sectionCode.errors }" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Section Code</label>
       <div *ngIf="submitted && f.sectionCode.errors">
@@ -60,12 +56,8 @@
     <div class="relative pb-10">
         <select name="listState" formControlName="listState" value="" [ngClass]="{'error-border': submitted && f.listState.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-dd w-306 h-13 border-cwBadgeGray">
-          <option value=""></option>
-          <option value="1">010 - Private Park</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
+        <option value=""></option>
+        <option *ngFor="let l of listStatesFromService">{{l.name}}</option>
         </select>
         <label for="listState" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.listState.errors }">List State/Province</label>
         <div *ngIf="submitted && f.listState.errors">
@@ -76,7 +68,7 @@
         <select name="territory" formControlName="territory" value="" [ngClass]="{'error-border': submitted && f.territory.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none territory w-306 h-13 border-cwBadgeGray">
           <option value=""></option>
-          <option *ngFor="let t of territories">{{t.description}}</option>
+          <option *ngFor="let t of territoriesFromService">{{t.description}}</option>
         </select>
         <label for="territory" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.territory.errors }">Territory</label>
         <div *ngIf="submitted && f.territory.errors">
@@ -86,12 +78,8 @@
       <div class="relative pb-10">
         <select name="listType" formControlName="listType" value="" [ngClass]="{'error-border': submitted && f.listType.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
-          <option value=""></option>
-          <option value="1">010 - Private Park</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
+        <option value=""></option>
+        <option *ngFor="let l of listingTypesFromService">{{l.value}}</option>
         </select>
         <label for="listType" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.listType.errors }">Listing Type</label>
         <div *ngIf="submitted && f.listType.errors">
@@ -101,12 +89,8 @@
       <div class="relative col-span-2 pb-10">
         <select name="parkType" formControlName="parkType" value="" [ngClass]="{'error-border': submitted && f.parkType.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none short-dd w-306 h-13 border-cwBadgeGray">
-          <option value=""></option>
-          <option value="1">010 - Private Park</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
+        <option value=""></option>
+        <option *ngFor="let p of parkTypesFromService">{{p.value}}</option>
         </select>
         <label for="parkType" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkType.errors }">Park Type</label>
         <div *ngIf="submitted && f.parkType.errors">

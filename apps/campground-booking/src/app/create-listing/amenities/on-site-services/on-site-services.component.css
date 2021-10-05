@@ -20,6 +20,12 @@ input:checked + label {
     transform: translateY(-1rem) translatex(-1.2rem) scaleX(0.75) scaleY(0.75);
 }
 
+/*Text textarea Fields Floating Form Label*/
+.f-outline textarea:focus-within ~ label,
+.f-outline textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.05rem) translatex(-1.35rem) scaleX(0.75) scaleY(0.75);
+}
+
 .long-label input:focus-within ~ label,
 .long-label input:not(:placeholder-shown) ~ label {
     transform: translateY(-1rem) translatex(-1.7rem) scaleX(0.75) scaleY(0.75);
@@ -30,10 +36,6 @@ input:checked + label {
     transform: translateY(-1rem) translatex(-1.9rem) scaleX(0.75) scaleY(0.75);
 }
 
-.other-services input:focus-within ~ label,
-.other-services input:not(:placeholder-shown) ~ label {
-    transform: translateY(-.5rem) translatex(-1.35rem) scaleX(0.75) scaleY(0.75);
-}
 
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
