@@ -9,6 +9,14 @@ input:checked ~ .block {
   opacity: 50%;
 }
 
+.error-border {
+  border-color: #C30B24;
+}
+.error-label {
+  color: #C30B24;
+}
+
+
 input:checked + label {
   border-color: #C30B24;
   border-width: 3px;
