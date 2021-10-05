@@ -15,6 +15,7 @@ export class RecreationComponent implements OnInit {
   isOpenChecked = false;
   isCasinoChecked = false;
   isHuntingSeasonChecked = false;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder) {
 
@@ -80,9 +81,8 @@ export class RecreationComponent implements OnInit {
     this.isHuntingSeasonChecked = !this.isHuntingSeasonChecked;
   }
 
-  onSubmit() {
-    console.log('form', this.recreationForm.value)
-  }
+
+
 
   clearChanges() {
     this.option = [];
@@ -93,5 +93,18 @@ export class RecreationComponent implements OnInit {
     this.isCasinoChecked = false;
     this.isHuntingSeasonChecked = false;
     this.recreationForm.reset()
+  }
+
+  get dualShuffleboard() { if (this.option.includes('31') && this.option.includes('32')) { return true } else return false }
+
+  onSubmit(): void {
+    this.submitted = true;
+    if (this.dualShuffleboard) {
+      console.log('not VALID');
+    } else {
+      console.log('valid');
+      return;
+    }
+
   }
 }
