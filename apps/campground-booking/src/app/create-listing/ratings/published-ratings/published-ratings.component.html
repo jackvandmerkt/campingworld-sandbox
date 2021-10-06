@@ -11,11 +11,7 @@
             <select name="lyNonRatedCode" formControlName="lyNonRatedCode" value="" [ngClass]="{'error-border': submitted && f.lyNonRatedCode.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
+            <option *ngFor="let n of nonRatedCodesFromService" [ngValue]="n.id">{{n.value}}</option>
             </select>
             <label for="lyNonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyNonRatedCode.errors }">Non-rated code</label>
         
@@ -85,11 +81,7 @@
             <select name="tyNonRatedCode" formControlName="tyNonRatedCode" value="" [ngClass]="{'error-border': submitted && f.tyNonRatedCode.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
+            <option *ngFor="let n of nonRatedCodesFromService" [ngValue]="n.id">{{n.value}}</option>
             </select>
             <label for="tyNonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyNonRatedCode.errors }">Non-rated code</label>
         

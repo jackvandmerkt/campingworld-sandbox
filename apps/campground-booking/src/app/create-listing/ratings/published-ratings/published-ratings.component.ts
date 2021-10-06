@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
+import { INonRatedCodes } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'published-ratings',
@@ -7,10 +9,17 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
     styleUrls: ['./published-ratings.component.css']
 })
 
-export class PublishedRatingsComponent {
+export class PublishedRatingsComponent implements OnInit {
     submitted: boolean = false;
-    constructor(private formBuilder: FormBuilder) {
+    nonRatedCodesFromService!: INonRatedCodes[];
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getNonRatedCodes().subscribe(response => {
+            this.nonRatedCodesFromService = response;
+        });
     }
 
     publishedRatings = this.formBuilder.group({

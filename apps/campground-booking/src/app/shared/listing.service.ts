@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IByWeekMonths, ICountries, IDroppedAffiliations, IListingCounts, IListings, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IByWeekMonths, ICountries, IDroppedAffiliations, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -35,6 +35,10 @@ export class ListingService {
     getListStates():Observable<IListStates[]> {
       return this.http.get<IListStates[]>('/api/v1/refs/list-states')
         .pipe(catchError(this.handleError<IListStates[]>('getListStates', )))
+    }
+    getNonRatedCodes():Observable<INonRatedCodes[]> {
+      return this.http.get<INonRatedCodes[]>('/api/v1/refs/non-rated-codes')
+        .pipe(catchError(this.handleError<INonRatedCodes[]>('getNonRatedCodes', )))
     }
 
     // Discounts and Affiliations Form
