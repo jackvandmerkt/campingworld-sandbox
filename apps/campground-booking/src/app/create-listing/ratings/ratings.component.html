@@ -54,7 +54,7 @@
             </div>
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Interior Roads</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.interiorRoadsRadio.errors }">Interior Roads</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -84,7 +84,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Registration</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.registrationRadio.errors }">Registration</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -114,7 +114,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Sites</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.sitesRadio.errors }">Sites</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -144,7 +144,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Hookups</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.hookupsRadio.errors }">Hookups</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -174,7 +174,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Recreation</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.recreationRadio.errors }">Recreation</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -204,7 +204,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Swimming</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.swimmingRadio.errors }">Swimming</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -234,7 +234,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Security</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.securityRadio.errors }">Security</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -264,7 +264,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Laundry</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.laundryRadio.errors }">Laundry</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -293,7 +293,7 @@
             </div> 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Services</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.servicesRadio.errors }">Services</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -323,7 +323,7 @@
 
             <div *ngIf="unHideFacilities" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Internet Access</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.internetAccessRadio.errors }">Internet Access</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -353,7 +353,13 @@
 
             <div *ngIf="unHideFacilities" class="flex pb-5 space-x-5">
                 <p class="pt-1.5 font-bold font-cw text-cwGray text-18px31px">Facilities Total</p>
-                <p class="font-bold font-cw text-cwGray text-32px38px">{{ facilitiesTotal }}</p>
+                <p class="font-bold font-cw text-cwGray text-32px38px" [ngClass]="{'error-label': submitted && (f.interiorRoadsRadio.errors || f.registrationRadio.errors || f.sitesRadio.errors || f.hookupsRadio.errors ||
+                f.recreationRadio.errors || f.swimmingRadio.errors || f.securityRadio.errors || f.laundryRadio.errors || f.servicesRadio.errors || f.internetAccessRadio.errors) }">{{ facilitiesTotal }}</p>
+            </div>
+
+            <div *ngIf="submitted && (f.interiorRoadsRadio.errors || f.registrationRadio.errors || f.sitesRadio.errors || f.hookupsRadio.errors ||
+             f.recreationRadio.errors || f.swimmingRadio.errors || f.securityRadio.errors || f.laundryRadio.errors || f.servicesRadio.errors || f.internetAccessRadio.errors)">
+                <div class="pb-5 font-cw text-cwRed text-18px24px">Please select a value for each row.</div>
             </div>
         </div>
 
@@ -369,7 +375,7 @@
             </div>
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Toliets</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.tolietsRadio.errors }">Toliets</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -399,7 +405,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Showers</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.showersRadio.errors }">Showers</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -429,7 +435,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Floors</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.floorsRadio.errors }">Floors</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -459,7 +465,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Walls</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.wallsRadio.errors }">Walls</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -489,7 +495,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Sinks / Counters / Mirrors</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.scmRadio.errors }">Sinks / Counters / Mirrors</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -519,7 +525,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Interior Construction</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.interiorConstructionRadio.errors }">Interior Construction</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -549,7 +555,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Supplies Odor Free</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.supplyOdorFreeRadio.errors }">Supplies Odor Free</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -579,7 +585,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Amount of Facilities M/W</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.amtOfFacilitiesRadio.errors }">Amount of Facilities M/W</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -608,7 +614,7 @@
             </div> 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Exterior Appearance</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.extAppearanceRadio.errors }">Exterior Appearance</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -638,7 +644,7 @@
 
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Interior Appearance</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.intAppearanceRadio.errors }">Interior Appearance</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -675,6 +681,11 @@
                 <p class="pt-1.5 font-bold font-cw text-cwGray text-18px31px">Restrooms Total</p>
                 <p class="font-bold font-cw text-cwGray text-32px38px">{{ restroomsTotal }}</p>
             </div>
+
+            <div *ngIf="submitted && (f.tolietsRadio.errors || f.showersRadio.errors || f.floorsRadio.errors || f.wallsRadio.errors || f.scmRadio.errors ||
+             f.interiorConstructionRadio.errors || f.supplyOdorFreeRadio.errors || f.amtOfFacilitiesRadio.errors || f.extAppearanceRadio.errors || f.intAppearanceRadio.errors)">
+                <div class="pb-5 font-cw text-cwRed text-18px24px">Please select a value for each row.</div>
+            </div>
         </div>
 
         <div *ngIf="canParkBeRated" class="col-span-2">
@@ -689,7 +700,7 @@
             </div>
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Signage</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.signageRadio.errors }">Signage</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -719,7 +730,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Entrance Area</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.entranceAreaRadio.errors }">Entrance Area</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -749,7 +760,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Park Grounds</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.parkGroundsRadio.errors }">Park Grounds</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -779,7 +790,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Site Appearance</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.siteAppearanceRadio.errors }">Site Appearance</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -809,7 +820,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Litter & Debris</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.litterDebrisRadio.errors }">Litter & Debris</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -839,7 +850,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Exterior Building Maint.</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.extBuildingMaintRadio.errors }">Exterior Building Maint.</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -869,7 +880,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Trash Disposal</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.trashDisposalRadio.errors }">Trash Disposal</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -899,7 +910,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Noise</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.noiseRadio.errors }">Noise</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -928,7 +939,7 @@
             </div> 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Park Setting</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.parkSettingRadio.errors }">Park Setting</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -958,7 +969,7 @@
 
             <div *ngIf="unHideVisualAppearance" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px">Site Layout</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.siteLayoutRadio.errors }">Site Layout</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
@@ -990,8 +1001,13 @@
                 <p class="pt-1.5 font-bold font-cw text-cwGray text-18px31px">Visual Appearance Total</p>
                 <p class="font-bold font-cw text-cwGray text-32px38px">{{ visualAppearanceTotal }}</p>
             </div>
+
+            <div *ngIf="submitted && (f.signageRadio.errors || f.entranceAreaRadio.errors || f.parkGroundsRadio.errors || f.siteAppearanceRadio.errors || f.litterDebrisRadio.errors ||
+             f.extBuildingMaintRadio.errors || f.trashDisposalRadio.errors || f.noiseRadio.errors || f.parkSettingRadio.errors || f.siteLayoutRadio.errors)">
+                <div class="pb-5 font-cw text-cwRed text-18px24px">Please select a value for each row.</div>
+            </div>
         </div>
-        <div class="flex flex-row col-span-2 pb-10">
+        <div class="flex flex-row col-span-2 pb-5">
             <div class="">
                 <button type="button" (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
             </div>

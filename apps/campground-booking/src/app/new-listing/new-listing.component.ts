@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
+import { Router } from "@angular/router";
 import { IListings, IParkTypes, ISectionCodes } from "../shared/listing-counts.model";
 import { ListingService } from "../shared/listing.service";
 
@@ -14,7 +15,7 @@ export class NewListingsComponent implements OnInit{
     parkTypesFromService!: IParkTypes[];
     postResponse:any;
 
-    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService, private router: Router) {
         
     }
     ngOnInit() {
@@ -40,6 +41,7 @@ export class NewListingsComponent implements OnInit{
       if(this.newListingForm.valid) {
           console.log(this.newListingForm.value);
           this.postForm()
+
       } else {
           console.log('not valid');
           return;
@@ -50,7 +52,10 @@ export class NewListingsComponent implements OnInit{
 
     postForm() {
       this.ls.postNewListing(this.newListingForm.value).subscribe(response => {
-        this.postResponse = response;
+        if(response){
+          this.postResponse = response;
+          this.router.navigateByUrl('/create-listing/good-sam-record')
+        }
       })
     }
 

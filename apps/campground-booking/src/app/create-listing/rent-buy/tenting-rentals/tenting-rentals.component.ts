@@ -30,6 +30,13 @@ export class TentingRentalsComponent {
     lrLinensAvail: boolean = false;
     lrLinensAvailCost: boolean = false;
 
+    numFieldsArray = ['numTentRentals','numTeepeeYurts','numRVParkModels','numCabinsCottagesTinyHouses',
+    'numLodgeRooms','tentSleepUpTo','tentMinStayNumOfDays','tentDailyRateFrom','tentDailyRateTo','tySleepUpTo',
+    'tyMinStayNumOfDays','tyDailyRateFrom','tyDailyRateTo','rvSleepUpTo','rvMinStayNumOfDays','rvDailyRateFrom',
+    'rvDailyRateTo','ccthSleepUpTo','ccthMinStayNumOfDays','ccthDailyRateFrom','ccthDailyRateTo','lrSleepUpTo',
+    'lrMinStayNumOfDays','lrDailyRateFrom','lrDailyRateTo']
+    requiredOnlyArray = ['rvBath', 'rvKitchen', 'ccthBath', 'ccthKitchen', 'lrBath', 'lrKitchen']
+
     constructor(private formBuilder: FormBuilder) {
 
     }
@@ -131,6 +138,23 @@ export class TentingRentalsComponent {
         this.lrLinensAvail = false;
         this.lrLinensAvailCost = false;
         this.otherOptions = [];
+
+        // clearing conditional validation on form reset
+        this.tentingRentalsForm.get('numTentSites')?.clearValidators();
+        this.tentingRentalsForm.get('numTentOnlySites')?.clearValidators();
+        this.tentingRentalsForm.get('rentalDescription')?.clearValidators();
+        this.tentingRentalsForm.get('numTentSites')?.updateValueAndValidity();
+        this.tentingRentalsForm.get('numTentOnlySites')?.updateValueAndValidity();
+        this.tentingRentalsForm.get('rentalDescription')?.updateValueAndValidity();
+        this.numFieldsArray.forEach((field: string) => {
+            this.tentingRentalsForm.get(field)?.clearValidators();
+            this.tentingRentalsForm.get(field)?.updateValueAndValidity();
+        });
+        this.requiredOnlyArray.forEach((field: string) => {
+            this.tentingRentalsForm.get(field)?.clearValidators();
+            this.tentingRentalsForm.get(field)?.updateValueAndValidity();
+        });
+
     }
 
     // Other Multi check radios
@@ -145,15 +169,16 @@ export class TentingRentalsComponent {
     checkBoxTentSitesChange(cb:any) {
         this.tentSites = !this.tentSites;
         if(this.tentSites === true){
-            this.tentingRentalsForm.get('numTentSites')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('numTentOnlySites')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            //update validators
-            this.tentingRentalsForm.get('numTentSites')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('numTentOnlySites')?.updateValueAndValidity()
+            this.tentingRentalsForm.get('numTentSites')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.tentingRentalsForm.get('numTentOnlySites')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.tentingRentalsForm.get('numTentSites')?.updateValueAndValidity();
+            this.tentingRentalsForm.get('numTentOnlySites')?.updateValueAndValidity();
             
-        } else {
-            this.tentingRentalsForm.get('numTentSites')?.clearValidators()
-            this.tentingRentalsForm.get('numTentOnlySites')?.clearValidators()
+        } if(this.tentSites === false) {
+            this.tentingRentalsForm.get('numTentSites')?.clearValidators();
+            this.tentingRentalsForm.get('numTentOnlySites')?.clearValidators();
+            this.tentingRentalsForm.get('numTentSites')?.updateValueAndValidity();
+            this.tentingRentalsForm.get('numTentOnlySites')?.updateValueAndValidity();
         }
     }
     // Dedicated tenting area toggle
@@ -165,108 +190,33 @@ export class TentingRentalsComponent {
     checkBoxRentalsSitesChange(cb:any) {
         this.rentalSites = !this.rentalSites;
         if(this.rentalSites === true){
-            this.tentingRentalsForm.get('rentalDescription')?.setValidators([Validators.required])
-            this.tentingRentalsForm.get('numTentRentals')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('numTeepeeYurts')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('numRVParkModels')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('numCabinsCottagesTinyHouses')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('numLodgeRooms')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('tentSleepUpTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('tentMinStayNumOfDays')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('tentDailyRateFrom')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-            this.tentingRentalsForm.get('tentDailyRateTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-            this.tentingRentalsForm.get('tySleepUpTo')?.setValidators([Validators.required])
-            this.tentingRentalsForm.get('tyMinStayNumOfDays')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('tyDailyRateFrom')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('tyDailyRateTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('rvSleepUpTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('rvMinStayNumOfDays')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('rvDailyRateFrom')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('rvDailyRateTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('rvBath')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-            this.tentingRentalsForm.get('rvKitchen')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-            this.tentingRentalsForm.get('ccthSleepUpTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('ccthMinStayNumOfDays')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-            this.tentingRentalsForm.get('ccthDailyRateFrom')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-            this.tentingRentalsForm.get('ccthDailyRateTo')?.setValidators([Validators.required])
-            this.tentingRentalsForm.get('ccthBath')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('ccthKitchen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('lrSleepUpTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('lrMinStayNumOfDays')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('lrDailyRateFrom')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('lrDailyRateTo')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
-            this.tentingRentalsForm.get('lrBath')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-            this.tentingRentalsForm.get('lrKitchen')?.setValidators([Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")])
-
-            //update validators
-            this.tentingRentalsForm.get('rentalDescription')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('numTentRentals')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('numTeepeeYurts')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('numRVParkModels')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('numCabinsCottagesTinyHouses')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('numLodgeRooms')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tentSleepUpTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tentMinStayNumOfDays')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tentDailyRateFrom')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tentDailyRateTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tySleepUpTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tyMinStayNumOfDays')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tyDailyRateFrom')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('tyDailyRateTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('rvSleepUpTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('rvMinStayNumOfDays')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('rvDailyRateFrom')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('rvDailyRateTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('rvBath')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('rvKitchen')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('ccthSleepUpTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('ccthMinStayNumOfDays')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('ccthDailyRateFrom')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('ccthDailyRateTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('ccthBath')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('ccthKitchen')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('lrSleepUpTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('lrMinStayNumOfDays')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('lrDailyRateFrom')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('lrDailyRateTo')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('lrBath')?.updateValueAndValidity()
-            this.tentingRentalsForm.get('lrKitchen')?.updateValueAndValidity()
+            this.tentingRentalsForm.get('rentalDescription')?.setValidators([Validators.required]);
+            this.tentingRentalsForm.get('rentalDescription')?.updateValueAndValidity();
+            // setting required and number validation on all inputs if "Are there rental sites?" toggle is yes
+            this.numFieldsArray.forEach((field: string) => {
+                this.tentingRentalsForm.get(field)?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+                this.tentingRentalsForm.get(field)?.updateValueAndValidity();
+            });
+            // setting required only validation on all inputs if "Are there rental sites?" toggle is yes
+            this.requiredOnlyArray.forEach((field: string) => {
+                this.tentingRentalsForm.get(field)?.setValidators([Validators.required]);
+                this.tentingRentalsForm.get(field)?.updateValueAndValidity();
+            });
             
-        } else {
-            this.tentingRentalsForm.get('rentalDescription')?.clearValidators()
-            this.tentingRentalsForm.get('numTentRentals')?.clearValidators()
-            this.tentingRentalsForm.get('numTeepeeYurts')?.clearValidators()
-            this.tentingRentalsForm.get('numRVParkModels')?.clearValidators()
-            this.tentingRentalsForm.get('numCabinsCottagesTinyHouses')?.clearValidators()
-            this.tentingRentalsForm.get('numLodgeRooms')?.clearValidators()
-            this.tentingRentalsForm.get('tentSleepUpTo')?.clearValidators()
-            this.tentingRentalsForm.get('tentMinStayNumOfDays')?.clearValidators()
-            this.tentingRentalsForm.get('tentDailyRateFrom')?.clearValidators()
-            this.tentingRentalsForm.get('tentDailyRateTo')?.clearValidators()
-            this.tentingRentalsForm.get('tySleepUpTo')?.clearValidators()
-            this.tentingRentalsForm.get('tyMinStayNumOfDays')?.clearValidators()
-            this.tentingRentalsForm.get('tyDailyRateFrom')?.clearValidators()
-            this.tentingRentalsForm.get('tyDailyRateTo')?.clearValidators()
-            this.tentingRentalsForm.get('rvSleepUpTo')?.clearValidators()
-            this.tentingRentalsForm.get('rvMinStayNumOfDays')?.clearValidators()
-            this.tentingRentalsForm.get('rvDailyRateFrom')?.clearValidators()
-            this.tentingRentalsForm.get('rvDailyRateTo')?.clearValidators()
-            this.tentingRentalsForm.get('rvBath')?.clearValidators()
-            this.tentingRentalsForm.get('rvKitchen')?.clearValidators()
-            this.tentingRentalsForm.get('ccthSleepUpTo')?.clearValidators()
-            this.tentingRentalsForm.get('ccthMinStayNumOfDays')?.clearValidators()
-            this.tentingRentalsForm.get('ccthDailyRateFrom')?.clearValidators()
-            this.tentingRentalsForm.get('ccthDailyRateTo')?.clearValidators()
-            this.tentingRentalsForm.get('ccthBath')?.clearValidators()
-            this.tentingRentalsForm.get('ccthKitchen')?.clearValidators()
-            this.tentingRentalsForm.get('lrSleepUpTo')?.clearValidators()
-            this.tentingRentalsForm.get('lrMinStayNumOfDays')?.clearValidators()
-            this.tentingRentalsForm.get('lrDailyRateFrom')?.clearValidators()
-            this.tentingRentalsForm.get('lrDailyRateTo')?.clearValidators()
-            this.tentingRentalsForm.get('lrBath')?.clearValidators()
-            this.tentingRentalsForm.get('lrKitchen')?.clearValidators()
+        } if(this.rentalSites === false) {
+            this.tentingRentalsForm.get('rentalDescription')?.clearValidators();
+            this.tentingRentalsForm.get('rentalDescription')?.updateValueAndValidity();
+            // clearing required and number validation on all inputs if "Are there rental sites?" toggle is no
+            this.numFieldsArray.forEach((field: string) => {
+                this.tentingRentalsForm.get(field)?.clearValidators();
+                this.tentingRentalsForm.get(field)?.updateValueAndValidity();
+            });
+            // clearing required only validation on all inputs if "Are there rental sites?" toggle is no
+            this.requiredOnlyArray.forEach((field: string) => {
+                this.tentingRentalsForm.get(field)?.clearValidators();
+                this.tentingRentalsForm.get(field)?.updateValueAndValidity();
+            });
         }
-
     }
 
     // Tent Rentals toggles
