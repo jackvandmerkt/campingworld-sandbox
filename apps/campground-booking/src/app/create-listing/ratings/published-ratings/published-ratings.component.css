@@ -14,6 +14,13 @@ input:checked + label {
     width: 147x;
 }
 
+.error-border {
+    border-color: #C30B24;
+}
+.error-label {
+    color: #C30B24;
+}
+
 /*default Text Input Fields Floating Form Label*/
 .f-outline input:focus-within ~ label,
 .f-outline input:not(:placeholder-shown) ~ label {
@@ -30,9 +37,9 @@ input:checked + label {
     transform: translateY(-1rem) translatex(-.9rem) scaleX(0.75) scaleY(0.75);
 }
 
-.explanation input:focus-within ~ label,
-.explanation input:not(:placeholder-shown) ~ label {
-    transform: translateY(-.5rem) translatex(-1.7rem) scaleX(0.75) scaleY(0.75);
+.explanation textarea:focus-within ~ label,
+.explanation textarea:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.05rem) translatex(-1.7rem) scaleX(0.75) scaleY(0.75);
 }
 
 /*Dropdown Select Fields Floating Form Label*/

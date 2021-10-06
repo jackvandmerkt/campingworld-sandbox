@@ -131,15 +131,16 @@
             </label>
         </div>
 
-       <div *ngIf="rentalSites" class="relative col-span-2 pb-10 rental-description">
-            <input type="text" formControlName="rentalDescription" name="rentalDescription" placeholder=" " [ngClass]="{'error-border': submitted && f.rentalDescription.errors }"
-                class="block h-20 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none" />
-            <label for="rentalDescription"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rentalDescription.errors }">Rental desciption</label>
-        
+        <div *ngIf="rentalSites" class="relative col-span-2 pb-10 f-outline">
+            <textarea type="text" formControlName="rentalDescription" name="rentalDescription" placeholder=" " [ngClass]="{'error-border': submitted && f.rentalDescription.errors }"
+              class="block h-24 rounded appearance-none border-cwBadgeGray w-636 focus:outline-none"></textarea>
+            <label for="rentalDescription" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rentalDescription.errors }">
+                Rental description
+            </label>
+
             <div *ngIf="submitted && f.rentalDescription.errors">
                 <div *ngIf="f.rentalDescription.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
-            </div>  
+            </div>
         </div>
         
         <div *ngIf="rentalSites" class="flex flex-row col-span-2 space-x-6">
