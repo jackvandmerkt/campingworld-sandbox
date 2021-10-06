@@ -58,6 +58,11 @@
       </label>
     </div>
   </div>
+  <div *ngIf="moreThanOnePool" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Choose only one pool option
+  </div>
+  <div *ngIf="poolPaid" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Pool Paid is marked but Pool and Heated
+    Pool are both blank
+  </div>
   <h2 class="font-bold font-cw text-cwGray text-18px24px pb-3 mt-16">Body of water</h2>
   <div class="grid grid-cols-1 w-636 mt-5 gap-6">
     <div class="relative pb-4 f-outline">
@@ -144,6 +149,15 @@
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">Watersports</p>
       </label>
     </div>
+  </div>
+  <div *ngIf="invalidBodyOfWater" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Choose only one of them
+    (ocean/gulf/river/stream/lake/pond)
+  </div>
+  <div *ngIf="invalidFishing" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Fishing is marked but no body of
+    water
+    was selected
+  </div>
+  <div *ngIf="noBodyOfWater" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Please specify a body of water
   </div>
 
   <h2 class="font-bold font-cw text-cwGray text-18px24px pb-3 mt-16">Boating Details</h2>
