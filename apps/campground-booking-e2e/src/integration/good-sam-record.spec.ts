@@ -1,12 +1,10 @@
 import { getText } from '../support/app.po';
 
 describe('campground-booking', () => {
-    beforeEach(() => {
-        cy.viewport(1440, 900)
-        cy.login()
-
+    before(() => {
+        cy.login("test.user@aptitive.com", "@ptitive123") 
+        // cy.wait('@loginAttempt')
         cy.visit('/create-listing/good-sam-record')
-        
     });
     it('should render components', () => {
         getText().contains('Need Support?');
@@ -16,12 +14,13 @@ describe('campground-booking', () => {
     });
 
     it('Submit form', () => {
-        cy.get('input[name="listCity"]').type('Test Name 1')
-        cy.get('select[name="listState"]').select('')
-        cy.get('select[name="sectionCode"]').select('')
-        cy.get('select[name="listingType"]').select('')
-        cy.get('select[name="parkType"]').select('')
-        cy.get('select[name="territory"]').select('')
+        cy.get('input[formcontrolname="listCity"]').type('Test Name 1')
+        cy.get('input[formcontrolname="parkName"]').type('Test Name 1')
+        cy.get('select[formcontrolname="listState"]').select('Alaska', {force: true})
+        cy.get('select[formcontrolname="sectionCode"]').select('Private Park - 010', {force: true})
+        cy.get('select[formcontrolname="listType"]').select('Park Primary', {force: true})
+        cy.get('select[formcontrolname="parkType"]').select('Campground', {force: true})
+        cy.get('select[formcontrolname="territory"]').select('Alaska', {force: true})
     });
 
     it('', () => {
