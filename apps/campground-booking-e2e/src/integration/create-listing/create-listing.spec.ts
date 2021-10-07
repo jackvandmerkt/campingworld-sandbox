@@ -1,4 +1,4 @@
-import { getText } from '../support/app.po';
+import { getText } from '../../support/app.po';
 
 describe('campground-booking', () => {
     beforeEach(() => {
