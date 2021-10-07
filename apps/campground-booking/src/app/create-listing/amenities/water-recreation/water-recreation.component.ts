@@ -14,6 +14,7 @@ export class WaterRecreationComponent implements OnInit {
   nearby: string[] = [];
 
 
+
   constructor(private formBuilder: FormBuilder) {
 
   }
@@ -22,6 +23,61 @@ export class WaterRecreationComponent implements OnInit {
     bodyOfWaterName: '',
     hpLimit: ''
   })
+
+
+
+  // START VALIDATIONS --------------------------------------------------------------------------
+
+  get moreThanOnePool() {
+    const pools = ['1', '2', '4', '5']
+    let poolValidator = 0
+    pools.forEach(pool => this.option.forEach(optPool => pool == optPool ? poolValidator++ : ''))
+    if (poolValidator > 1) {
+      return true
+    } else { return false }
+  }
+
+  get poolPaid() {
+    const pools = ['1', '2']
+    let poolValidator = 0
+    pools.forEach(pool => this.option.forEach(optPool => pool == optPool ? poolValidator++ : ''))
+    if (this.option.includes('3') && poolValidator < 1) {
+      return true
+    } else { return false }
+  }
+
+  get invalidBodyOfWater() {
+    const bodyOfWaters = ['1', '2', '3', '4', '5']
+    let bodyOfWaterValidator = 0
+    bodyOfWaters.forEach(bodyOfWater => { this.bodyOfWater.forEach(optBody => { if (bodyOfWater == optBody) { bodyOfWaterValidator++ } }) })
+    if (bodyOfWaterValidator > 1) {
+      return true
+    } else { return false }
+  }
+
+  get invalidFishing() {
+    const bodyOfWaters = ['1', '2', '3', '4', '5']
+    let bodyOfWaterValidator = 0
+    bodyOfWaters.forEach(bodyOfWater => { this.bodyOfWater.forEach(optBody => { if (bodyOfWater == optBody) { bodyOfWaterValidator++ } }) })
+    if (this.bodyOfWater.includes('7') && bodyOfWaterValidator < 1) {
+      return true
+    } else { return false }
+  }
+
+  get noBodyOfWater() {
+    const bodyOfWaters = ['1', '2', '3', '4', '5']
+    let bodyOfWaterValidator = 0
+    bodyOfWaters.forEach(bodyOfWater => { this.bodyOfWater.forEach(optBody => { if (bodyOfWater == optBody) { bodyOfWaterValidator++ } }) })
+    if (this.waterRecreationForm.value.bodyOfWaterName == '' && bodyOfWaterValidator == 0) {
+      return true
+    } else { return false }
+  }
+
+  // END VALIDATIONS --------------------------------------------------------------------------
+
+
+
+
 
   ngOnInit(): void {
   }
@@ -62,7 +118,21 @@ export class WaterRecreationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.waterRecreationForm)
+    const formValidators = [
+      this.moreThanOnePool,
+      this.poolPaid,
+      this.invalidBodyOfWater,
+      this.invalidFishing,
+      this.noBodyOfWater
+    ]
+    let invalidValidators = 0
+    formValidators.forEach(invalid => { if (invalid == true) invalidValidators++ })
+    if (invalidValidators == 0) {
+      console.log(this.waterRecreationForm.value)
+    } else {
+      console.log('not valid')
+    }
+
   }
 
   clearChanges(): void {
