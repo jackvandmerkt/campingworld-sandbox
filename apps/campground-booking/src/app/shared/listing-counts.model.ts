@@ -97,3 +97,7 @@ export interface IListings{
     repName: string,
     locationListingsName: string
 }
+export interface INonRatedCodes{
+    id: number,
+    value: string
+}
