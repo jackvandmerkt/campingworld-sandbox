@@ -1,7 +1,10 @@
 import { getText } from '../support/app.po';
 
 describe('campground-booking', () => {
-    beforeEach(() => cy.visit('/create-listing'));
+    beforeEach(() => {
+        cy.viewport(1440, 900)
+        cy.visit('/create-listing')
+    });
     it('should render components', () => {
         getText().contains('Need Support?');
         getText().contains('Pro Tips');
