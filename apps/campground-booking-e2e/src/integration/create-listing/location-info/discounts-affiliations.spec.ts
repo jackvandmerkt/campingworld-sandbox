@@ -13,7 +13,11 @@ describe('campground-booking', () => {
     });
 
     it('Should populate form, attempt submit, but not pass validations', () => {
-        
+        cy.get('#toggleMilitary').check({force: true});
+        cy.get('select[formcontrolname="affiliation"]').select('1 - KOA', {force: true});
+        cy.get('select[formcontrolname="stateProvAffiliation"]').select('Alaska', {force: true});
+        cy.get('input[formcontrolname="coastToCoastMembershipNum"]').type('not a number');
+        cy.get("button[data='Submit']").click();
     });
 
     it('Should clear form', () => {
@@ -21,7 +25,10 @@ describe('campground-booking', () => {
     });
 
     it('Should populate, pass validations, and submit form', () => {
-        
+        cy.get('#toggleMilitary').check({force: true});
+        cy.get('select[formcontrolname="affiliation"]').select('1 - KOA', {force: true});
+        cy.get('select[formcontrolname="stateProvAffiliation"]').select('Alaska', {force: true});
+        cy.get('input[formcontrolname="coastToCoastMembershipNum"]').type('1');
+        cy.get("button[data='Submit']").click();
     });
-
 });
