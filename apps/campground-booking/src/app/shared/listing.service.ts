@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IByWeekMonths, ICountries, IDroppedAffiliations, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -45,6 +45,12 @@ export class ListingService {
     getAffiliations():Observable<IAffiliations[]> {
       return this.http.get<IAffiliations[]>('/api/v1/refs/affiliations')
         .pipe(catchError(this.handleError<IAffiliations[]>('getAffiliations', )))
+    }
+
+    // Directions Form
+    getDirectionalArrows():Observable<IDirectionalArrows[]> {
+      return this.http.get<IDirectionalArrows[]>('/api/v1/refs/directional-arrows')
+        .pipe(catchError(this.handleError<IDirectionalArrows[]>('getDirectionalArrows', )))
     }
 
     // Ownership & B2B Info Form

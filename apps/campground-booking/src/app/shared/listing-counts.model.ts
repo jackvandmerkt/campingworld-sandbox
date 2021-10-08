@@ -101,3 +101,9 @@ export interface INonRatedCodes{
     id: number,
     value: string
 }
+
+export interface IDirectionalArrows{
+    id: string,
+    code: string,
+    value: string
+}

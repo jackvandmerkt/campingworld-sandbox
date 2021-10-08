@@ -1,16 +1,25 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { IDirectionalArrows } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'directions',
     templateUrl: '/directions.component.html',
     styleUrls: ['./directions.component.css']
 })
-export class DirectionsComponent {
+export class DirectionsComponent implements OnInit {
+    directionalArrowsFromService!: IDirectionalArrows[];
     isNascarChecked:boolean = false;
     submitted: boolean = false;
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getDirectionalArrows().subscribe(response => {
+            this.directionalArrowsFromService = response;
+        });
     }
 
     directionsForm = this.formBuilder.group({
