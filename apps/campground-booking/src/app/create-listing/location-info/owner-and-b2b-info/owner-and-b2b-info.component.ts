@@ -26,16 +26,38 @@ export class OwnerAndB2bInfoComponent implements OnInit {
       countryId: ''
 
     }),
+    otherMailingAddress: this.formBuilder.group({
+      address: '',
+      city: '',
+      province: '',
+      listStateId: '',
+      zip: '',
+      countryId: ''
+    }),
     name: '',
     email: '',
     phone: '',
     adDecisionMaker: '',
+    b2BCommEmailSourceId: '',
     b2BCommEmailIfOther: '',
     b2BCommMailSourceId: '',
     objectionReasonId: '',
     droppedAffiliationReasonId: '',
     uniqueAccountId: '',
   })
+
+
+  get ownerEmailRequired() {
+    if (this.ownerAndB2bInfo.value.b2BCommEmailSourceId == '1' && this.ownerAndB2bInfo.value.b2BCommEmailIfOther == '') {
+      return true
+    } else { return false }
+  }
+
+  get invalidEmail() {
+    const email = this.ownerAndB2bInfo.value.b2BCommEmailIfOther
+    const validate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return !validate.test(email)
+  }
 
   ngOnInit(): void {
   }
@@ -56,7 +78,21 @@ export class OwnerAndB2bInfoComponent implements OnInit {
 
 
   onSubmit(): void {
-    console.log('form', this.ownerAndB2bInfo.value)
+    const formValidators = [
+      this.ownerEmailRequired,
+      this.invalidEmail
+    ]
+
+    let invalidValidators = 0
+
+    formValidators.forEach(invalid => { if (invalid == true) invalidValidators++ })
+    if (invalidValidators == 0) {
+      console.log(this.ownerAndB2bInfo.value)
+    } else {
+      console.log('not valid')
+    }
+
+
   }
 
 }

@@ -23,6 +23,7 @@
     </div>
   </div>
 
+
   <div class="grid grid-cols-2 w-636 mt-6 gap-6">
     <div class="pb-10">
       <p class="font-cw text-gray-400">Park for sale?</p>
@@ -144,20 +145,37 @@
 
   <div class="grid grid-cols-2 w-636 mt-6 gap-6">
     <div class="relative pb-4 f-outline">
-      <select formControlName="b2BCommEmailIfOther" name="b2BCommEmailIfOther" value=""
+      <select formControlName="b2BCommEmailSourceId" name="b2BCommEmailSourceId" value=""
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
-        <option value="1">010 - Private Park</option>
+        <option value="1">Other</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
         <option value="4">Option 4</option>
         <option value="5">Option 5</option>
       </select>
-      <label for="b2BCommEmailIfOther" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">B2B Comm
+      <label for="b2BCommEmailSourceId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">B2B
+        Comm
         Email
         Source</label>
     </div>
+  </div>
+
+  <div *ngIf="ownerAndB2bInfo.value.b2BCommEmailSourceId === '1'" class="grid grid-cols-1 mt-5 w-636 gap-6">
+    <div class="relative pb-4 f-outline">
+      <input [ngClass]="{'error-border': ownerEmailRequired || invalidEmail }" type="text"
+        formControlName="b2BCommEmailIfOther" name="b2BCommEmailIfOther" placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
+      <label for="b2BCommEmailIfOther" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        Owner's email
+      </label>
+      <div *ngIf="ownerEmailRequired" class="pl-3 font-cw text-cwRed text-11px20px">* B2B Comm Email is required if
+        Source
+        is Other</div>
+      <div *ngIf="invalidEmail" class="pl-3 font-cw text-cwRed text-11px20px">* Invalid email</div>
+    </div>
+
   </div>
 
   <div class="grid grid-cols-1 w-636 mt-6 gap-6">
@@ -166,7 +184,7 @@
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
         <option value=""></option>
-        <option value="1">010 - Private Park</option>
+        <option value="1">Other</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
         <option value="4">Option 4</option>
@@ -174,6 +192,53 @@
       </select>
       <label for="sectionCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">B2B Comm Mail
         Source</label>
+    </div>
+  </div>
+
+  <div *ngIf="ownerAndB2bInfo.value.b2BCommMailSourceId === '1'" formGroupName="otherMailingAddress"
+    class="grid grid-cols-2 mt-5 w-636 gap-6">
+    <div class="relative pb-4 f-outline ">
+      <input type="text" formControlName="address" name="address" placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+      <label for="address" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
+    </div>
+    <div class="relative pb-4 f-outline">
+      <input type="text" formControlName="city" name="city" placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+      <label for="city" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
+    </div>
+    <div class="relative pb-4 f-outline">
+      <select formControlName="listStateId" name="listStateId" value=""
+        onclick="this.setAttribute('value', this.value);"
+        class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
+        <option value=""></option>
+        <option value="1">010 - Private Park</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </select>
+      <label for="listStateId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
+        Province</label>
+    </div>
+    <div class="relative pb-4 f-outline">
+      <input type="text" formControlName="zip" name="zip" placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
+      <label for="zip" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        Zip / Postal Code
+      </label>
+    </div>
+    <div class="relative pb-4 f-outline">
+      <select formControlName="countryId" name="countryId" value="" onclick="this.setAttribute('value', this.value);"
+        class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
+        <option value=""></option>
+        <option value="1">010 - Private Park</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </select>
+      <label for="countryId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
     </div>
   </div>
 
