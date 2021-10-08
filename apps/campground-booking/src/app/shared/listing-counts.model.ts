@@ -107,3 +107,13 @@ export interface IDirectionalArrows{
     code: string,
     value: string
 }
+
+export interface IBaths{
+    id: string,
+    value: string
+}
+
+export interface IKitchens{
+    id: string,
+    value: string
+}

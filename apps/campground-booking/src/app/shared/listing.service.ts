@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -79,6 +79,17 @@ export class ListingService {
     getByWeekMonth():Observable<IByWeekMonths[]> {
       return this.http.get<IByWeekMonths[]>('/api/v1/refs/by-week-months')
         .pipe(catchError(this.handleError<IByWeekMonths[]>('getByWeekMonth', )))
+    }
+
+    // Tenting & Rentals
+    getBaths():Observable<IBaths[]> {
+      return this.http.get<IBaths[]>('/api/v1/refs/baths')
+        .pipe(catchError(this.handleError<IBaths[]>('getBaths', )))
+    }
+
+    getKitchens():Observable<IKitchens[]> {
+      return this.http.get<IKitchens[]>('/api/v1/refs/kitchens')
+        .pipe(catchError(this.handleError<IKitchens[]>('getKitchens', )))
     }
 
 
