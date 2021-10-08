@@ -15,19 +15,26 @@ declare namespace Cypress {
     login(email: string, password: string): void;
   }
 }
-//
-// -- This is a parent command --
-Cypress.Commands.add('login', (email, password) => {
-  console.log('Custom command example: Login', email, password);
+
+// Cypress.Commands.add('login', () => {
+//   cy.intercept('POST', '**/api/v1/auth/login?*', {
+//     statusCode: 200,
+//     body: {
+//       id: 145,
+//       email: "test.user@aptitive.com",
+//       firstName:"Test",
+//       lastName:"User",
+//       repCode:999
+//     },
+//   }).as('loginAttempt')
+// })
+
+Cypress.Commands.add("login", (email, password) => {
+  cy.visit('/login')
+  cy.get('input[name="email"]').type(email)
+  cy.get('input[name="password"]').type(password)
+  cy.get("button[data-login=Submit]").click();
+  // cy.intercept('POST','/api/v1/auth/login').as('loginAttempt')
+  // cy.wait('@loginAttempt').its('response.statusCode').should('equal', 200)
+  cy.wait(2500)
 });
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })

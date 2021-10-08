@@ -1,9 +1,9 @@
-<div class="flex justify-center h-screen  bg-white">
+<div class="flex justify-center h-screen bg-white">
     <div class="grid-cols-1">
-      <div class="pt-15 pb-10 w-636">
+      <div class="pb-10 pt-15 w-636">
         <img src="/assets/images/capture-logo.png" alt="capture-logo" h-16 w-64>
       </div>
-      <div class="h-auto grid-cols-1 bg-navGray rounded-lg shadow-cw px-110 w-636">
+      <div class="h-auto grid-cols-1 rounded-lg bg-navGray shadow-cw px-110 w-636">
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
             <div class="pt-15">
                 <p class="text-2xl font-bold font-cw text-cwGray">Welcome!</p>
@@ -13,18 +13,18 @@
             </div>
             <div class="relative pb-10 f-outline">
               <input id="email" (ngModel)="email" type="text"  name="email" placeholder=""
-                  class="block px-3 bg-F9FAFB border rounded appearance-none w-416 h-13 border-cwGray focus:outline-none" />
+                  class="block px-3 border rounded appearance-none bg-F9FAFB w-416 h-13 border-cwGray focus:outline-none" />
               <label for="email"
                   class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Email</label>
             </div>
             <div class="relative pb-10 f-outline">
               <input type="password" (ngModel)="password" name="password" placeholder=" "
-                  class="block px-3 bg-F9FAFB border rounded appearance-none w-416 h-13 border-cwGray focus:outline-none" />
+                  class="block px-3 border rounded appearance-none bg-F9FAFB w-416 h-13 border-cwGray focus:outline-none" />
               <label for="password"
                   class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Password</label>
             </div>
             <div class="pb-15">
-                <button type="submit" class="text-white rounded bg-cwRed hover:opacity-80 w-200 h-13 font-cw">Sign in</button>
+                <button type="submit" data-login="Submit" class="text-white rounded bg-cwRed hover:opacity-80 w-200 h-13 font-cw">Sign in</button>
             </div>
         </form>
       </div>
