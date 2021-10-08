@@ -8,7 +8,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 })
 export class TentingRentalsComponent {
     otherOptions: string[] = [];
-    submitted: boolean = true;
+    submitted: boolean = false;
     //toggle variables
     tentSites: boolean = false;
     tentingArea: boolean = false;
