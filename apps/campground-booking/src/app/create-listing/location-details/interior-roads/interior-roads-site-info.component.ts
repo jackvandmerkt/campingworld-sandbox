@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { IInteriorRoadConditions, IInteriorRoadTypes, ISidebySideHookups } from "../../../shared/listing-counts.model";
+import { IAmps, IInteriorRoadConditions, IInteriorRoadTypes, IShadedSites, ISidebySideHookups } from "../../../shared/listing-counts.model";
 import { ListingService } from "../../../shared/listing.service";
 
 @Component({
@@ -13,6 +13,8 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
     typesFromService!: IInteriorRoadTypes[];
     conditionsFromService!: IInteriorRoadConditions[];
     hookupsFromService!: ISidebySideHookups[];
+    shadedFromService!: IShadedSites[];
+    ampsFromService!: IAmps[];
     // yes no toggle booleans
     separateSeasonalSection: boolean = false;
     selfContainedUnits: boolean = false;
@@ -22,9 +24,7 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
     // variables used to switch checkmark image to toggled radio button
     roadConditionRadioValue: string = '';
     sideHookupsRadioValue: string = '';
-    shadedSitesRadioMost: boolean = false;
-    shadedSitesRadioSome: boolean = false;
-    shadedSitesRadioNone: boolean = false;
+    shadedSitesRadioValue: string = '';
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
@@ -37,8 +37,14 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
         this.ls.getInteriorRoadsType().subscribe(response => {
             this.typesFromService = response;
         });
+        this.ls.getAmps().subscribe(response => {
+            this.ampsFromService = response;
+        });
         this.ls.getSideBySideHookups().subscribe(response => {
             this.hookupsFromService = response;
+        });
+        this.ls.getShadedSites().subscribe(response => {
+            this.shadedFromService = response;
         });
     }
 
@@ -98,9 +104,7 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
         // resetting radio cards
         this.roadConditionRadioValue = '';
         this.sideHookupsRadioValue = '';
-        this.shadedSitesRadioMost = false;
-        this.shadedSitesRadioSome = false;
-        this.shadedSitesRadioNone = false;   
+        this.shadedSitesRadioValue = ''; 
       }
 
     checkBoxSeasonalChange(cb:any) {
@@ -148,20 +152,14 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
     }
 
     shadedSitesRadioChecked(radio: any) {
-        if(radio === "most") {
-            this.shadedSitesRadioMost = true;
-            this.shadedSitesRadioSome = false;
-            this.shadedSitesRadioNone = false;
+        if(radio === "None") {
+            this.shadedSitesRadioValue = "None";
         }
-        if(radio === "some") {
-            this.shadedSitesRadioSome = true;
-            this.shadedSitesRadioMost = false;
-            this.shadedSitesRadioNone = false;
+        if(radio === "Some") {
+            this.shadedSitesRadioValue = "Some";
         }
-        if(radio === "none") {
-            this.shadedSitesRadioNone = true;
-            this.shadedSitesRadioMost = false;
-            this.shadedSitesRadioSome = false;
+        if(radio === "Most") {
+            this.shadedSitesRadioValue = "Most";
         }
     }
 

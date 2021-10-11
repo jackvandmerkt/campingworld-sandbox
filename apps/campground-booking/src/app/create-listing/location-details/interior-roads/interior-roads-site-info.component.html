@@ -267,11 +267,7 @@
                 <select name="amps" formControlName="amps" value="" [ngClass]="{'error-border': submitted && f.amps.errors }"
                 onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none amps w-196 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
-                <option value="1">010 - Private Park</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
+                <option *ngFor="let a of ampsFromService" [ngValue]="a.id">{{a.value}}</option>
                 </select>
                 <label for="amps" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.amps.errors }">Amps</label>
             
@@ -464,25 +460,11 @@
 
         <div class="col-span-2 pb-10">
             <div class="flex flex-row space-x-4">
-                <div class="relative">
-                    <input (click)="shadedSitesRadioChecked('most')" formControlName="shadedSitesRadio" value="most" class="hidden" id="shadedMostRadio" type="radio" name="shadedSitesRadio">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shadedMostRadio">
-                        <img *ngIf="shadedSitesRadioMost" class="w-5 h-5 rounded-sm" src="assets/images/active.png" alt="active">
-                        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Most</p>
-                    </label>
-                </div>
-                <div class="relative">
-                    <input (click)="shadedSitesRadioChecked('some')" formControlName="shadedSitesRadio" value="some" class="hidden" id="shadedSomeRadio" type="radio" name="shadedSitesRadio">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shadedSomeRadio">
-                        <img *ngIf="shadedSitesRadioSome" class="w-5 h-5 rounded-sm" src="assets/images/active.png" alt="active">
-                        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Some</p>
-                    </label>
-                </div>
-                <div class="relative">
-                    <input (click)="shadedSitesRadioChecked('none')" formControlName="shadedSitesRadio" value="none" class="hidden" id="shadedNoneRadio" type="radio" name="shadedSitesRadio">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shadedNoneRadio">
-                        <img *ngIf="shadedSitesRadioNone" class="w-5 h-5 rounded-sm" src="assets/images/active.png" alt="active">
-                        <p class="absolute font-bold place-self-center top-16 font-cw">None</p>
+                <div *ngFor="let s of shadedFromService" class="relative">
+                    <input (click)="shadedSitesRadioChecked(s.value)" formControlName="shadedSitesRadio" [value]='s.value' class="hidden" id="shadedSites_{{s.id}}" type="radio" name="shadedSitesRadio">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shadedSites_{{s.id}}">
+                        <img *ngIf="shadedSitesRadioValue === s.value" class="w-5 h-5 rounded-sm" src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center place-self-center top-16 font-cw">{{s.value}}</p>
                     </label>
                 </div>
             </div>

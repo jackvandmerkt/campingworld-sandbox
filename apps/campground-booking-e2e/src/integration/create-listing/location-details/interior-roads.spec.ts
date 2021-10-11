@@ -13,8 +13,8 @@ describe('campground-booking', () => {
     });
 
     it('Should populate form, attempt submit, but not pass validations', () => {
-        cy.get('#goodRadio').check({force: true});
-        cy.get('select[formcontrolname="interiorRoadType"]').select('Option 2', {force: true});
+        cy.get('#roadCondition_1').check({force: true});
+        cy.get('select[formcontrolname="interiorRoadType"]').select('Paved', {force: true});
         cy.get('input[formcontrolname="totalSpaces"]').type('1', {force: true});
         cy.get('input[formcontrolname="numAvailable"]').type('not a number', {force: true});
         cy.get('input[formcontrolname="numSeasonal"]').type('1', {force: true});
@@ -30,8 +30,8 @@ describe('campground-booking', () => {
         cy.get('input[formcontrolname="numSewer"]').type('1', {force: true});
         cy.get('input[formcontrolname="numElectric"]').type('1', {force: true});
         cy.get('input[formcontrolname="numNoHookups"]').type('not a number', {force: true});
-        cy.get('select[formcontrolname="amps"]').select('Option 2', {force: true});
-        cy.get('#someRadio').check({force: true});
+        cy.get('select[formcontrolname="amps"]').select('15', {force: true});
+        cy.get('#sideHookups_1').check({force: true});
         cy.get('#toggleBigRig').check({force: true});
         cy.get('input[formcontrolname="pullThruW"]').type('1', {force: true});
         cy.get('input[formcontrolname="pullThruL"]').type('1', {force: true});
@@ -39,7 +39,7 @@ describe('campground-booking', () => {
         cy.get('input[formcontrolname="backInW"]').type('1', {force: true});
         cy.get('input[formcontrolname="backInL"]').type('not a number', {force: true});
         cy.get('#toggleSlideOuts').check({force: true});
-        cy.get('#shadedSomeRadio').check({force: true});
+        cy.get('#shadedSites_1').check({force: true});
         cy.get("button[data='Submit']").click();
     });
 
@@ -48,8 +48,8 @@ describe('campground-booking', () => {
     });
 
     it('Should populate, pass validations, and submit form', () => {
-        cy.get('#goodRadio').check({force: true});
-        cy.get('select[formcontrolname="interiorRoadType"]').select('Option 2', {force: true});
+        cy.get('#roadCondition_1').check({force: true});
+        cy.get('select[formcontrolname="interiorRoadType"]').select('Paved', {force: true});
         cy.get('input[formcontrolname="totalSpaces"]').type('1', {force: true});
         cy.get('input[formcontrolname="numAvailable"]').type('1', {force: true});
         cy.get('input[formcontrolname="numSeasonal"]').type('1', {force: true});
@@ -65,8 +65,8 @@ describe('campground-booking', () => {
         cy.get('input[formcontrolname="numSewer"]').type('1', {force: true});
         cy.get('input[formcontrolname="numElectric"]').type('1', {force: true});
         cy.get('input[formcontrolname="numNoHookups"]').type('1', {force: true});
-        cy.get('select[formcontrolname="amps"]').select('Option 2', {force: true});
-        cy.get('#someRadio').check({force: true});
+        cy.get('select[formcontrolname="amps"]').select('15', {force: true});
+        cy.get('#sideHookups_1').check({force: true});
         cy.get('#toggleBigRig').check({force: true});
         cy.get('input[formcontrolname="pullThruW"]').type('1', {force: true});
         cy.get('input[formcontrolname="pullThruL"]').type('1', {force: true});
@@ -74,7 +74,7 @@ describe('campground-booking', () => {
         cy.get('input[formcontrolname="backInW"]').type('1', {force: true});
         cy.get('input[formcontrolname="backInL"]').type('1', {force: true});
         cy.get('#toggleSlideOuts').check({force: true});
-        cy.get('#shadedSomeRadio').check({force: true});
+        cy.get('#shadedSites_1').check({force: true});
         cy.get("button[data='Submit']").click();
     });
 });
