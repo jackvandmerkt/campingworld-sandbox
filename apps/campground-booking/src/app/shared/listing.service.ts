@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -90,6 +90,20 @@ export class ListingService {
     getKitchens():Observable<IKitchens[]> {
       return this.http.get<IKitchens[]>('/api/v1/refs/kitchens')
         .pipe(catchError(this.handleError<IKitchens[]>('getKitchens', )))
+    }
+
+    // Interior Roads Form
+    getInteriorRoadsType():Observable<IInteriorRoadTypes[]> {
+      return this.http.get<IInteriorRoadTypes[]>('/api/v1/refs/interior-road-types')
+        .pipe(catchError(this.handleError<IInteriorRoadTypes[]>('getInteriorRoadsType', )))
+    }
+    getInteriorRoadsConditions():Observable<IInteriorRoadConditions[]> {
+      return this.http.get<IInteriorRoadConditions[]>('/api/v1/refs/interior-road-conditions')
+        .pipe(catchError(this.handleError<IInteriorRoadConditions[]>('getInteriorRoadsConditions', )))
+    }
+    getSideBySideHookups():Observable<ISidebySideHookups[]> {
+      return this.http.get<ISidebySideHookups[]>('/api/v1/refs/side-by-side-hookups')
+        .pipe(catchError(this.handleError<ISidebySideHookups[]>('getSideBySideHookups', )))
     }
 
 
