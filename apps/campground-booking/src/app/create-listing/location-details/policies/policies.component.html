@@ -68,15 +68,15 @@
 
   <div *ngIf="limitedFacilities" class="flex flex-row col-span-2 pb-10 space-x-4">
     <div class="relative">
-      <input (click)="motorhomeClassChecked('summer')" class="hidden" id="fairRadio" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fairRadio">
+      <input (click)="limitedFacilitiesChecked('summer')" class="hidden" id="summer" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="summer">
         <img *ngIf="limitedOptions === 'summer'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In summer</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="motorhomeClassChecked('winter')" class="hidden" id="poorRadio" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="poorRadio">
+      <input (click)="limitedFacilitiesChecked('winter')" class="hidden" id="winter" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="winter">
         <img *ngIf="limitedOptions === 'winter'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In winter</p>
       </label>

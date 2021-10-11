@@ -58,6 +58,10 @@ export class PoliciesComponent implements OnInit {
     this.motorhomeClass = radio
   }
 
+  limitedFacilitiesChecked(radio: string) {
+    this.limitedOptions = radio
+  }
+
   checkBoxIsLessThan30Days(cb: any) {
     this.isLessThan30Days = !this.isLessThan30Days;
   }
@@ -66,11 +70,15 @@ export class PoliciesComponent implements OnInit {
     this.openAllYear = !this.openAllYear;
     if (!this.openAllYear) {
       this.limitedFacilities = false
+      this.limitedOptions = ''
     }
   }
 
   checkBoxLimitedFacilities(cb: any) {
     this.limitedFacilities = !this.limitedFacilities;
+    if (!this.limitedFacilities) {
+      this.limitedOptions = ''
+    }
 
   }
 
