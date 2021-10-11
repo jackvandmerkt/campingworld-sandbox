@@ -19,6 +19,7 @@ export class PoliciesComponent implements OnInit {
   petsRestrictions = false
   additionalChargeForPets = false
   petRestrictionsOpts: string[] = [];
+  limitedOptions = ''
 
   public start: Date = new Date("10/07/2017");
 
@@ -46,6 +47,13 @@ export class PoliciesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get noPetsRestrictions() {
+    if (this.petsRestrictions && this.petRestrictionsOpts.length == 0) {
+      return true
+    } else { return false }
+
+  }
+
   motorhomeClassChecked(radio: string) {
     this.motorhomeClass = radio
   }
@@ -63,6 +71,7 @@ export class PoliciesComponent implements OnInit {
 
   checkBoxLimitedFacilities(cb: any) {
     this.limitedFacilities = !this.limitedFacilities;
+
   }
 
 
@@ -83,11 +92,15 @@ export class PoliciesComponent implements OnInit {
     if (!this.petsAllowed) {
       this.petsRestrictions = false
       this.additionalChargeForPets = false
+      this.petRestrictionsOpts = []
     }
   }
 
   checkBoxPetsRestrictions(cb: any) {
     this.petsRestrictions = !this.petsRestrictions;
+    if (!this.petsRestrictions) {
+      this.petRestrictionsOpts = []
+    }
   }
 
   checkBoxAdditionalChargeForPets(cb: any) {
