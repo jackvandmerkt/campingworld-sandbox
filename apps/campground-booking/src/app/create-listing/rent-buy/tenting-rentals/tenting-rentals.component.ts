@@ -1,14 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { IBaths, IKitchens } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'tenting-rentals',
     templateUrl: './tenting-rentals.component.html',
     styleUrls: ['./tenting-rentals.component.css']
 })
-export class TentingRentalsComponent {
+export class TentingRentalsComponent implements OnInit {
     otherOptions: string[] = [];
-    submitted: boolean = true;
+    bathsFromService!: IBaths[];
+    kitchensFromService!: IKitchens[];
+    submitted: boolean = false;
     //toggle variables
     tentSites: boolean = false;
     tentingArea: boolean = false;
@@ -37,8 +41,17 @@ export class TentingRentalsComponent {
     'lrMinStayNumOfDays','lrDailyRateFrom','lrDailyRateTo']
     requiredOnlyArray = ['rvBath', 'rvKitchen', 'ccthBath', 'ccthKitchen', 'lrBath', 'lrKitchen']
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getBaths().subscribe(response => {
+            this.bathsFromService = response;
+        });
+        this.ls.getKitchens().subscribe(response => {
+            this.kitchensFromService = response;
+        });
     }
 
     // form object

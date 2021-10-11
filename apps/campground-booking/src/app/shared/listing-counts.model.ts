@@ -101,3 +101,19 @@ export interface INonRatedCodes{
     id: number,
     value: string
 }
+
+export interface IDirectionalArrows{
+    id: string,
+    code: string,
+    value: string
+}
+
+export interface IBaths{
+    id: string,
+    value: string
+}
+
+export interface IKitchens{
+    id: string,
+    value: string
+}

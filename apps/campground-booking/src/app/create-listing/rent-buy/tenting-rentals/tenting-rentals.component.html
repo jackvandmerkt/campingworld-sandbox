@@ -472,11 +472,7 @@
                 <select name="rvBath" formControlName="rvBath" value="" [ngClass]="{'error-border': submitted && f.rvBath.errors }"
                 onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none bath w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
+                <option *ngFor="let b of bathsFromService" [ngValue]="b.id">{{b.value}}</option>
                 </select>
                 <label for="rvBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvBath.errors }">Bath</label>
                 <div *ngIf="submitted && f.rvBath.errors">
@@ -487,11 +483,7 @@
                 <select name="rvKitchen" formControlName="rvKitchen" value="" [ngClass]="{'error-border': submitted && f.rvKitchen.errors }"
                 onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none kitchen w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
+                <option *ngFor="let k of kitchensFromService" [ngValue]="k.id">{{k.value}}</option>
                 </select>
                 <label for="rvKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.rvKitchen.errors }">Kitchen</label>
                 <div *ngIf="submitted && f.rvKitchen.errors">
@@ -640,11 +632,7 @@
                 <select name="ccthBath" formControlName="ccthBath" value="" [ngClass]="{'error-border': submitted && f.ccthBath.errors }"
                 onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none bath w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
+                <option *ngFor="let b of bathsFromService" [ngValue]="b.id">{{b.value}}</option>
                 </select>
                 <label for="ccthBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthBath.errors }">Bath</label>
                 <div *ngIf="submitted && f.ccthBath.errors">
@@ -655,11 +643,7 @@
                 <select name="ccthKitchen" formControlName="ccthKitchen" value="" [ngClass]="{'error-border': submitted && f.ccthKitchen.errors }"
                 onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none kitchen w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
+                <option *ngFor="let k of kitchensFromService" [ngValue]="k.id">{{k.value}}</option>
                 </select>
                 <label for="ccthKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.ccthKitchen.errors }">Kitchen</label>
                 <div *ngIf="submitted && f.ccthKitchen.errors">
@@ -808,11 +792,7 @@
                 <select name="lrBath" formControlName="lrBath" value="" [ngClass]="{'error-border': submitted && f.lrBath.errors }"
                 onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none bath w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
+                <option *ngFor="let b of bathsFromService" [ngValue]="b.id">{{b.value}}</option>
                 </select>
                 <label for="lrBath" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrBath.errors }">Bath</label>
                 <div *ngIf="submitted && f.lrBath.errors">
@@ -823,11 +803,7 @@
                 <select name="lrKitchen" formControlName="lrKitchen" value="" [ngClass]="{'error-border': submitted && f.lrKitchen.errors }"
                 onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none kitchen w-306 h-13 border-cwBadgeGray focus:outline-none">
                 <option value=""></option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
+                <option *ngFor="let k of kitchensFromService" [ngValue]="k.id">{{k.value}}</option>
                 </select>
                 <label for="lrKitchen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lrKitchen.errors }">Kitchen</label>
                 <div *ngIf="submitted && f.lrKitchen.errors">
@@ -914,10 +890,10 @@
 
         <div class="flex flex-row col-span-2 pb-10">
             <div class="">
-                <button type="button" (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+                <button type="button" data='Clear' (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
             </div>
             <div class="pl-6">
-                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+                <button data='Submit' class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
             </div>
         </div>    
     </div>

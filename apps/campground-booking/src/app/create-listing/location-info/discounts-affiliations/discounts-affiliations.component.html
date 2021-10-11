@@ -79,7 +79,7 @@
             <select name="stateProvAffiliation" formControlName="stateProvAffiliation" value="" [ngClass]="{'error-border': submitted && f.stateProvAffiliation.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none State-Prov w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option *ngFor="let l of listStatesFromService">{{l.name}}</option>
+            <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
             </select>
             <label for="stateProvAffiliation" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.stateProvAffiliation.errors }">State/Prov Affiliation</label>
             <div *ngIf="submitted && f.stateProvAffiliation.errors">
@@ -152,10 +152,10 @@
 
         <div class="flex flex-row col-span-2 pb-10">
             <div class="">
-                <button type="button" (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+                <button type="button" data="Clear" (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
             </div>
             <div class="pl-6">
-                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+                <button data="Submit" class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
             </div>
         </div>
     </div>

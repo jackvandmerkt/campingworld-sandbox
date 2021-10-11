@@ -13,7 +13,12 @@ describe('campground-booking', () => {
     });
 
     it('Should populate form, attempt submit, but not pass validations', () => {
-        cy.get('input[formcontrolname="directions"]').type('Test Name 1')
+        cy.get('textarea[formcontrolname="directions"]').type('Test Name 1', {force: true})
+        cy.get('select[formcontrolname="directionsFromTown"]').select('Option 2', {force: true});
+        cy.get('#toggleNascar').check({force: true});
+        cy.get('input[formcontrolname="milesOrKM"]').type('Test Name 1', {force: true})
+        cy.get('select[formcontrolname="unitOfMeasurement"]').select('Mi', {force: true});
+        cy.get("button[data='Submit']").click();
     });
 
     it('Should clear form', () => {
@@ -21,7 +26,12 @@ describe('campground-booking', () => {
     });
 
     it('Should populate, pass validations, and submit form', () => {
-        
+        cy.get('textarea[formcontrolname="directions"]').type('Test Name 1', {force: true})
+        cy.get('select[formcontrolname="directionsFromTown"]').select('Option 2', {force: true});
+        cy.get('#toggleNascar').check({force: true});
+        cy.get('input[formcontrolname="milesOrKM"]').type('1', {force: true})
+        cy.get('select[formcontrolname="unitOfMeasurement"]').select('Mi', {force: true});
+        cy.get('select[formcontrolname="nameOfTrack"]').select('Auto Club Speedway', {force: true});
+        cy.get("button[data='Submit']").click();
     });
-
 });
