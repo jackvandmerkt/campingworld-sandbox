@@ -11,10 +11,14 @@ export class PoliciesComponent implements OnInit {
   motorhomeClass = ''
   isLessThan30Days = false
   openAllYear = false
+  limitedFacilities = false
   ageRestrictions = false
   familyCamping = false
   allowsTent = false
   petsAllowed = false
+  petsRestrictions = false
+  additionalChargeForPets = false
+  petRestrictionsOpts: string[] = [];
 
   public start: Date = new Date("10/07/2017");
 
@@ -27,12 +31,14 @@ export class PoliciesComponent implements OnInit {
   policiesForm = this.formBuilder.group({
     rvAgeRestrictions: '',
     motorhomeClass: '',
-    isLessThan30Days: false,
-    openAllYear: false,
-    ageRestrictions: false,
-    familyCamping: false,
-    allowsTent: false,
-    petsAllowed: false,
+    isLessThan30Days: this.isLessThan30Days,
+    openAllYear: this.openAllYear,
+    limitedFacilities: this.limitedFacilities,
+    ageRestrictions: this.ageRestrictions,
+    familyCamping: this.familyCamping,
+    allowsTent: this.allowsTent,
+    petsAllowed: this.petsAllowed,
+    petsRestrictions: this.petsRestrictions,
     start: '',
     end: ''
   })
@@ -47,9 +53,18 @@ export class PoliciesComponent implements OnInit {
   checkBoxIsLessThan30Days(cb: any) {
     this.isLessThan30Days = !this.isLessThan30Days;
   }
+
   checkBoxOpenAllYear(cb: any) {
     this.openAllYear = !this.openAllYear;
+    if (!this.openAllYear) {
+      this.limitedFacilities = false
+    }
   }
+
+  checkBoxLimitedFacilities(cb: any) {
+    this.limitedFacilities = !this.limitedFacilities;
+  }
+
 
   checkBoxAgeRestrictions(cb: any) {
     this.ageRestrictions = !this.ageRestrictions;
@@ -65,6 +80,26 @@ export class PoliciesComponent implements OnInit {
 
   checkBoxPetsAllowed(cb: any) {
     this.petsAllowed = !this.petsAllowed;
+    if (!this.petsAllowed) {
+      this.petsRestrictions = false
+      this.additionalChargeForPets = false
+    }
+  }
+
+  checkBoxPetsRestrictions(cb: any) {
+    this.petsRestrictions = !this.petsRestrictions;
+  }
+
+  checkBoxAdditionalChargeForPets(cb: any) {
+    this.additionalChargeForPets = !this.additionalChargeForPets;
+  }
+
+  optionChecked(checkbox: string) {
+    if (!this.petRestrictionsOpts.includes(checkbox)) {
+      this.petRestrictionsOpts.push(checkbox)
+    } else {
+      this.petRestrictionsOpts = this.petRestrictionsOpts.filter(petRestrictionsOpts => petRestrictionsOpts !== checkbox)
+    }
   }
 
   onSubmit(): void {

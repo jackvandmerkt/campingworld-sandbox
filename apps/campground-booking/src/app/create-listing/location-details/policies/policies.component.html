@@ -44,6 +44,27 @@
       </label>
     </div>
   </div>
+  <div *ngIf="openAllYear" class="grid grid-cols-2 gap-6 w-636">
+    <div class="pb-10">
+      <p class="text-gray-400 font-cw">Are there limited facilities?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!limitedFacilities" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="limitedFacilities" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="limitedFacilities" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" (click)="checkBoxLimitedFacilities(this)" id="limitedFacilities" class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
   <div class="grid grid-cols-1 gap-6 w-636">
     <h1 class="font-bold font-cw text-cwGray text-24px ">Season start date - Season end date</h1>
     <ejs-daterangepicker id='daterangepicker' placeholder='Select a range' [startDate]='start' [endDate]='end'>
@@ -61,7 +82,7 @@
       <label for="seasonEndDate" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         Season end date
       </label>
-    </div>     -->
+    </div> -->
   </div>
   <div class="grid grid-cols-2 gap-6 w-636 mt-7">
     <div class="pb-10">
@@ -192,6 +213,79 @@
       </label>
     </div>
   </div>
+
+  <div *ngIf="petsAllowed" class="grid grid-cols-2 gap-6 w-636">
+    <div class="pb-10">
+      <p class="text-gray-400 font-cw">Are there pet restrictions?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!petsRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="petsRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="petsRestrictions" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" (click)="checkBoxPetsRestrictions(this)" id="petsRestrictions" class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="petsRestrictions" class="flex flex-row col-span-2 pb-10 space-x-4">
+    <div class="relative">
+      <input (click)="optionChecked('1')" class="hidden" id="size" type="checkbox" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="size">
+        <img *ngIf="petRestrictionsOpts.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png"
+          alt="active">
+        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Size</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('2')" class="hidden" id="quantity" type="checkbox" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="quantity">
+        <img *ngIf="petRestrictionsOpts.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png"
+          alt="active">
+        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Quantity</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input (click)="optionChecked('3')" class="hidden" id="breed" type="checkbox" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="breed">
+        <img *ngIf="petRestrictionsOpts.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png"
+          alt="active">
+        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Breed</p>
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="petsAllowed" class="grid grid-cols-2 gap-6 w-636">
+    <div class="pb-10">
+      <p class="text-gray-400 font-cw">Is there an additional charge for pets?</p>
+    </div>
+    <div class="flex items-center justify-end w-full pr-2 mb-10">
+      <p *ngIf="!additionalChargeForPets" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="additionalChargeForPets" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="additionalChargeForPets" class="flex items-center cursor-pointer">
+        <!-- toggle -->
+        <div class="relative">
+          <!-- input -->
+          <input type="checkbox" (click)="checkBoxAdditionalChargeForPets(this)" id="additionalChargeForPets"
+            class="sr-only">
+          <!-- line -->
+          <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+          <!-- dot -->
+          <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+
   <div class="flex flex-row col-span-2 pb-10">
     <div class="">
       <button type="reset" (click)="clearChanges()"
