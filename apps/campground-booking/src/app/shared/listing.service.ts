@@ -75,7 +75,7 @@ export class ListingService {
         .pipe(catchError(this.handleError<IB2BCommSources[]>('getB2BCommSources', )))
     }
     
-    //
+    //Rates & Reservations Form
     getByWeekMonth():Observable<IByWeekMonths[]> {
       return this.http.get<IByWeekMonths[]>('/api/v1/refs/by-week-months')
         .pipe(catchError(this.handleError<IByWeekMonths[]>('getByWeekMonth', )))
