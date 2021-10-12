@@ -88,7 +88,6 @@ export class WaterRecreationComponent implements OnInit {
     } else {
       this.option = this.option.filter(option => option !== checkbox)
     }
-
   }
 
   bodyOfWaterChecked(checkbox: string) {
