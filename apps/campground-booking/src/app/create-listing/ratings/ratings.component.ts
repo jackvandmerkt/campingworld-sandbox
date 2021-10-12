@@ -1,6 +1,7 @@
-import { analyzeAndValidateNgModules } from "@angular/compiler";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { INonRatedCodes } from "../../shared/listing-counts.model";
+import { ListingService } from "../../shared/listing.service";
 
 @Component({
     selector: 'ratings',
@@ -8,15 +9,16 @@ import { FormBuilder, Validators } from "@angular/forms";
     styleUrls: ['./ratings.component.css']
 })
 
-export class RatingsComponent {
+export class RatingsComponent implements OnInit{
     submitted: boolean = false;
+    nonRatedCodesFromService!: INonRatedCodes[];
     canParkBeRated: boolean = false;
     unHideFacilities: boolean = false;
     unHideRestrooms: boolean = false;
     unHideVisualAppearance: boolean = false;
     //used to loop through and set validations if park can be rated
     radiosArray = ['interiorRoadsRadio', 'registrationRadio', 'sitesRadio', 'hookupsRadio', 'recreationRadio', 'swimmingRadio',
-    'securityRadio', 'laundryRadio','servicesRadio','internetAccessRadio','tolietsRadio','showersRadio','floorsRadio',
+    'securityRadio', 'laundryRadio','servicesRadio','internetAccessRadio','toiletsRadio','showersRadio','floorsRadio',
     'wallsRadio','scmRadio','interiorConstructionRadio','supplyOdorFreeRadio','amtOfFacilitiesRadio','extAppearanceRadio',
     'intAppearanceRadio','signageRadio','entranceAreaRadio','parkGroundsRadio','siteAppearanceRadio','litterDebrisRadio',
     'extBuildingMaintRadio','trashDisposalRadio','noiseRadio','parkSettingRadio','siteLayoutRadio']
@@ -34,7 +36,7 @@ export class RatingsComponent {
         'internetAccessValue': 0
     };
     restroomsOptions: {[index: string]:any} = {
-        'tolietsValue': 0,
+        'toiletsValue': 0,
         'showersValue': 0,
         'floorsValue': 0, 
         'wallsValue': 0, 
@@ -61,8 +63,14 @@ export class RatingsComponent {
     restroomsTotal: number = 0;
     visualAppearanceTotal: number = 0;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getNonRatedCodes().subscribe(response => {
+            this.nonRatedCodesFromService = response;
+        });
     }
 
     ratingsForm = this.formBuilder.group({
@@ -78,7 +86,7 @@ export class RatingsComponent {
         laundryRadio: '',
         servicesRadio: '',
         internetAccessRadio: '',
-        tolietsRadio: '',
+        toiletsRadio: '',
         showersRadio: '',
         floorsRadio: '',
         wallsRadio: '',
