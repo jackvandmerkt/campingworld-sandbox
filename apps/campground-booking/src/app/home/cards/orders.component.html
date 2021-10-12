@@ -1,23 +1,19 @@
 <div class="w-full h-full border rounded rounded-t-none shadow-cw ">
-    <div class="flex flex-col">
-        <div class="flex justify-center px-3">
-            <p class="pt-7.5 text-2xl font-bold  font-cw text-cwGray">Orders</p>
-        </div>
-        <div class="flex justify-center">
-            <p class="pb-6 text-cwGray font-cw">{{ordersCounts?.total}}</p>
-        </div>
-        <div class="flex flex-row">
-            <orders-contracts class="w-1/2 border-r-2" [ordersContracts]="ordersCounts?.contractStatuses"></orders-contracts>
-            <orders-products-details class="w-1/2" [ordersProducts]="ordersCounts?.productStatuses"></orders-products-details>
-    
-        </div>
-
-        <div class="flex justify-center">
-            <p class="pt-7.5 text-xs font-light text-cwLightGray font-cw">Includes house accounts.</p>
-        </div>
+  <div class="flex flex-col">
+    <div class="flex justify-center px-3">
+      <p class="pt-7.5 text-2xl font-bold  font-cw text-cwGray">Orders</p>
     </div>
+    <div class="flex justify-center">
+      <p class="pb-6 text-cwGray font-cw">{{ordersCounts?.total}}</p>
+    </div>
+    <div class="flex flex-row">
+      <orders-contracts class="w-1/2 border-r-2" [ordersContracts]="ordersCounts?.contractStatuses"></orders-contracts>
+      <orders-products-details class="w-1/2" [ordersProducts]="ordersCounts?.productStatuses"></orders-products-details>
+
+    </div>
+
+    <div class="flex justify-center">
+      <p class="pt-7.5 text-xs font-light text-cwLightGray font-cw pb-2">Includes house accounts.</p>
+    </div>
+  </div>
 </div>
-
-
-
-    
