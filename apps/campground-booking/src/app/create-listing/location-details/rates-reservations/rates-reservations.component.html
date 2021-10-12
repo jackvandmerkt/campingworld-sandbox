@@ -251,11 +251,7 @@
             <select (change)="onChange($event)" formControlName="onlineReservationSystem" name="onlineReservationSystem" value="" [ngClass]="{'error-border': submitted && onlineReservation && f.onlineReservationSystem.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-label w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option value="other">Other</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
+            <option *ngFor="let o of onlineReservationSystemsFromService" [value]="o.id">{{o.value}}</option>
             </select>
             <label for="onlineReservationSystem" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && onlineReservation && f.onlineReservationSystem.errors }">Online Reservation System</label>
         

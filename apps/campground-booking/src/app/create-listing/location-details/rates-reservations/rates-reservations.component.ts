@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IByWeekMonths } from "../../../shared/listing-counts.model";
+import { IByWeekMonths, IOnlineReservationSystems } from "../../../shared/listing-counts.model";
 import { ListingService } from "../../../shared/listing.service";
 
 @Component({
@@ -11,6 +11,7 @@ import { ListingService } from "../../../shared/listing.service";
 export class RatesReservationsComponent implements OnInit{
     submitted: boolean = false;
     byWeekMonthFromService!: IByWeekMonths[];
+    onlineReservationSystemsFromService!: IOnlineReservationSystems[];
     creditCardsAccepted: boolean = false;
     reservationsAccepted: boolean = false;
     onlineReservation: boolean = false;
@@ -28,6 +29,9 @@ export class RatesReservationsComponent implements OnInit{
     ngOnInit() {
         this.ls.getByWeekMonth().subscribe(response => {
             this.byWeekMonthFromService = response;
+        });
+        this.ls.getOnlineReservationSystems().subscribe(response => {
+            this.onlineReservationSystemsFromService = response;
         });
     }
 
@@ -104,7 +108,8 @@ export class RatesReservationsComponent implements OnInit{
 
     onChange(event:any): void {
         const newVal = event.target.value;
-        if(newVal === "other") {
+        console.log(newVal)
+        if(newVal == 7) {
             this.onlineReservationOther = true;
             this.ratesReservationsForm.get('onlineReservationSystemOther')?.setValidators([Validators.required])
             this.ratesReservationsForm.get('onlineReservationSystemOther')?.updateValueAndValidity()

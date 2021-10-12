@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IParkTypes, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -79,6 +79,10 @@ export class ListingService {
     getByWeekMonth():Observable<IByWeekMonths[]> {
       return this.http.get<IByWeekMonths[]>('/api/v1/refs/by-week-months')
         .pipe(catchError(this.handleError<IByWeekMonths[]>('getByWeekMonth', )))
+    }
+    getOnlineReservationSystems():Observable<IOnlineReservationSystems[]> {
+      return this.http.get<IOnlineReservationSystems[]>('/api/v1/refs/online-reservation-systems')
+        .pipe(catchError(this.handleError<IOnlineReservationSystems[]>('getOnlineReservationSystems', )))
     }
 
     // Tenting & Rentals
