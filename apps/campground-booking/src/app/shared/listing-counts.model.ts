@@ -117,3 +117,28 @@ export interface IKitchens{
     id: string,
     value: string
 }
+
+export interface IInteriorRoadTypes{
+    id: string,
+    value: string
+}
+
+export interface IAmps{
+    id: string,
+    value: string
+}
+
+export interface IInteriorRoadConditions{
+    id: string,
+    value: string
+}
+
+export interface ISidebySideHookups{
+    id: string,
+    value: string
+}
+
+export interface IShadedSites{
+    id: string,
+    value: string
+}

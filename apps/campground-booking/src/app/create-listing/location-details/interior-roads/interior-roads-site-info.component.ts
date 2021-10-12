@@ -1,32 +1,51 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { IAmps, IInteriorRoadConditions, IInteriorRoadTypes, IShadedSites, ISidebySideHookups } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'interior-roads',
     templateUrl: './interior-roads-site-info.component.html',
     styleUrls: ['./interior-roads-site-info.component.css']
 })
-export class InteriorRoadsSiteInformationComponent {
+export class InteriorRoadsSiteInformationComponent implements OnInit {
     submitted: boolean = false;
+    typesFromService!: IInteriorRoadTypes[];
+    conditionsFromService!: IInteriorRoadConditions[];
+    hookupsFromService!: ISidebySideHookups[];
+    shadedFromService!: IShadedSites[];
+    ampsFromService!: IAmps[];
     // yes no toggle booleans
     separateSeasonalSection: boolean = false;
     selfContainedUnits: boolean = false;
     fullHookupUnits: boolean = false;
     bigRigSite: boolean = false;
     slideOuts: boolean = false;
-    // boolean variables used to switch checkmark image to toggled radio button
-    roadConditionRadioGood: boolean = false;
-    roadConditionRadioFair: boolean = false;
-    roadConditionRadioPoor: boolean = false;
-    sideHookupsRadioMost: boolean = false;
-    sideHookupsRadioSome: boolean = false;
-    sideHookupsRadioNone: boolean = false;
-    shadedSitesRadioMost: boolean = false;
-    shadedSitesRadioSome: boolean = false;
-    shadedSitesRadioNone: boolean = false;
+    // variables used to switch checkmark image to toggled radio button
+    roadConditionRadioValue: string = '';
+    sideHookupsRadioValue: string = '';
+    shadedSitesRadioValue: string = '';
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getInteriorRoadsConditions().subscribe(response => {
+            this.conditionsFromService = response;
+        });
+        this.ls.getInteriorRoadsType().subscribe(response => {
+            this.typesFromService = response;
+        });
+        this.ls.getAmps().subscribe(response => {
+            this.ampsFromService = response;
+        });
+        this.ls.getSideBySideHookups().subscribe(response => {
+            this.hookupsFromService = response;
+        });
+        this.ls.getShadedSites().subscribe(response => {
+            this.shadedFromService = response;
+        });
     }
 
     interiorRoadsSitesInfo = this.formBuilder.group({
@@ -83,15 +102,9 @@ export class InteriorRoadsSiteInformationComponent {
         this.bigRigSite = false;
         this.slideOuts = false;
         // resetting radio cards
-        this.roadConditionRadioGood = false;
-        this.roadConditionRadioFair = false;
-        this.roadConditionRadioPoor = false;
-        this.sideHookupsRadioMost = false;
-        this.sideHookupsRadioSome = false;
-        this.sideHookupsRadioNone = false;
-        this.shadedSitesRadioMost = false;
-        this.shadedSitesRadioSome = false;
-        this.shadedSitesRadioNone = false;   
+        this.roadConditionRadioValue = '';
+        this.sideHookupsRadioValue = '';
+        this.shadedSitesRadioValue = ''; 
       }
 
     checkBoxSeasonalChange(cb:any) {
@@ -115,56 +128,38 @@ export class InteriorRoadsSiteInformationComponent {
     }
 
     roadConditionRadioChecked(radio: any) {
-        if(radio === "good") {
-            this.roadConditionRadioGood = true;
-            this.roadConditionRadioFair = false;
-            this.roadConditionRadioPoor = false;
+        if(radio === "Good") {
+            this.roadConditionRadioValue = "Good";
         }
-        if(radio === "fair") {
-            this.roadConditionRadioFair = true;
-            this.roadConditionRadioGood = false;
-            this.roadConditionRadioPoor = false;
+        if(radio === "Fair") {
+            this.roadConditionRadioValue = "Fair";
         }
-        if(radio === "poor") {
-            this.roadConditionRadioPoor = true;
-            this.roadConditionRadioGood = false;
-            this.roadConditionRadioFair = false;
+        if(radio === "Poor") {
+            this.roadConditionRadioValue = "Poor";
         }
     }
 
     sideHookupsRadioChecked(radio: any) {
-        if(radio === "most") {
-            this.sideHookupsRadioMost = true;
-            this.sideHookupsRadioSome = false;
-            this.sideHookupsRadioNone = false;
+        if(radio === "None") {
+            this.sideHookupsRadioValue = "None";
         }
-        if(radio === "some") {
-            this.sideHookupsRadioSome = true;
-            this.sideHookupsRadioMost = false;
-            this.sideHookupsRadioNone = false;
+        if(radio === "Some") {
+            this.sideHookupsRadioValue = "Some";
         }
-        if(radio === "none") {
-            this.sideHookupsRadioNone = true;
-            this.sideHookupsRadioMost = false;
-            this.sideHookupsRadioSome = false;
+        if(radio === "Most") {
+            this.sideHookupsRadioValue = "Most";
         }
     }
 
     shadedSitesRadioChecked(radio: any) {
-        if(radio === "most") {
-            this.shadedSitesRadioMost = true;
-            this.shadedSitesRadioSome = false;
-            this.shadedSitesRadioNone = false;
+        if(radio === "None") {
+            this.shadedSitesRadioValue = "None";
         }
-        if(radio === "some") {
-            this.shadedSitesRadioSome = true;
-            this.shadedSitesRadioMost = false;
-            this.shadedSitesRadioNone = false;
+        if(radio === "Some") {
+            this.shadedSitesRadioValue = "Some";
         }
-        if(radio === "none") {
-            this.shadedSitesRadioNone = true;
-            this.shadedSitesRadioMost = false;
-            this.shadedSitesRadioSome = false;
+        if(radio === "Most") {
+            this.shadedSitesRadioValue = "Most";
         }
     }
 

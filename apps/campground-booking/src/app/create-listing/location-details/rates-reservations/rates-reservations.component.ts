@@ -1,13 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { IByWeekMonths } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'rates-reservations',
     templateUrl: './rates-reservations.component.html',
     styleUrls: ['./rates-reservations.component.css']
 })
-export class RatesReservationsComponent {
+export class RatesReservationsComponent implements OnInit{
     submitted: boolean = false;
+    byWeekMonthFromService!: IByWeekMonths[];
     creditCardsAccepted: boolean = false;
     reservationsAccepted: boolean = false;
     onlineReservation: boolean = false;
@@ -18,8 +21,14 @@ export class RatesReservationsComponent {
     public start: Date = new Date();
     public end: Date = new Date();
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getByWeekMonth().subscribe(response => {
+            this.byWeekMonthFromService = response;
+        });
     }
 
     ratesReservationsForm = this.formBuilder.group({
