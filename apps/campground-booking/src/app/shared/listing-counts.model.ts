@@ -147,3 +147,8 @@ export interface IOnlineReservationSystems{
     id: string,
     value: string
 }
+
+export interface IRestroomsShowers{
+    id: string,
+    value: string
+}

@@ -28,9 +28,7 @@
             <select (change)="onChange($event)" formControlName="restroomsShowersSelect" name="restroomsShowersSelect" value="" [ngClass]="{'error-border': submitted && f.restroomsShowersSelect.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option value="restroomsAndShowers">Restrooms & Showers</option>
-            <option value="restrooms">Restrooms</option>
-            <option value="showers">Showers</option>
+            <option *ngFor="let r of restroomsShowersFromService" [ngValue]="r.id">{{r.value}}</option>
             </select>
             <label for="restroomsShowersSelect" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.restroomsShowersSelect.errors }">Restrooms/showers</label>
             <div *ngIf="submitted && f.restroomsShowersSelect.errors">

@@ -1,21 +1,30 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { IRestroomsShowers } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'restrooms',
     templateUrl: './restrooms.component.html',
     styleUrls: ['./restrooms.component.css']
 })
-export class RestroomsComponent {
+export class RestroomsComponent implements OnInit {
     submitted: boolean = false;
+    restroomsShowersFromService!: IRestroomsShowers[];
     pitToiletsOnly: boolean = false;
     restroomsShowersPaid: boolean = false;
     restroomsAndShowers: boolean = false;
     restrooms: boolean = false;
     showers: boolean = false;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getRestroomsShowers().subscribe(response => {
+            this.restroomsShowersFromService = response;
+        });
     }
 
     // form object

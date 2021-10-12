@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -85,12 +85,17 @@ export class ListingService {
         .pipe(catchError(this.handleError<IOnlineReservationSystems[]>('getOnlineReservationSystems', )))
     }
 
+    // Restrooms Form
+    getRestroomsShowers():Observable<IRestroomsShowers[]> {
+      return this.http.get<IRestroomsShowers[]>('/api/v1/refs/restroom-showers')
+        .pipe(catchError(this.handleError<IRestroomsShowers[]>('getRestroomsShowers', )))
+    }
+
     // Tenting & Rentals
     getBaths():Observable<IBaths[]> {
       return this.http.get<IBaths[]>('/api/v1/refs/baths')
         .pipe(catchError(this.handleError<IBaths[]>('getBaths', )))
     }
-
     getKitchens():Observable<IKitchens[]> {
       return this.http.get<IKitchens[]>('/api/v1/refs/kitchens')
         .pipe(catchError(this.handleError<IKitchens[]>('getKitchens', )))
