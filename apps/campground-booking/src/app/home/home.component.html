@@ -5,18 +5,18 @@
 </div>
 <!-- <div class=""> -->
 <div class="pl-18 py-7.5">
-  <select class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-72 h-13 ">
+  <select (change)="onChange($event)" class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-72 h-13 ">
     <option>All territories</option>
-    <option *ngFor="let t of territories">{{t.description}}</option>
+    <option *ngFor="let t of territories" [value]='t.code'>{{t.description}}</option>
   </select>
 </div>
 <!-- </div> -->
 <div class="flex flex-row space-x-6 px-18">
   <div class="w-auto">
-    <listings></listings>
+    <listings [territoryCode]="selectedTerritory"></listings>
   </div>
   <div class="w-auto">
-    <orders></orders>
+    <orders [territoryCode]="selectedTerritory"></orders>
   </div>
 </div>
 <div class="pt-10 px-18 h-330">

@@ -1,12 +1,12 @@
-<div class="w-full h-full border rounded rounded-t-none shadow-cw ">
+<div class="w-auto h-auto border rounded rounded-t-none shadow-cw ">
     <div class="flex justify-center px-3">
-        <p class="pt-7.5 text-2xl font-bold text-center font-cw text-cwGray">Listings</p>
+        <p class="pt-7.5 text-28px34px font-bold text-center font-cw text-cwGray">Listings</p>
     </div>
     <div class="flex justify-center pb-6">
-        <p class="text-center text-cwGray font-cw">{{listingCounts.total}}</p>
+        <p class="text-center text-20px26px text-cwGray font-cw">{{listingCounts.total}}</p>
     </div>
     <listing-statuses [listingStatuses]="listingCounts.statuses"></listing-statuses>
-    <div class="flex justify-center pt-32">
-        <button (click)="redirect()" data-cy="Submit" class="px-3 py-2 text-white rounded bg-cwRed hover:opacity-80 font-cw">Create New</button>
+    <div class="flex justify-center px-93 pt-32 pb-7.5">
+        <button (click)="redirect()" data-cy="Submit" class="px-6 py-4.5 text-16px16px text-white rounded-md bg-cwRed hover:opacity-80 font-cw">Create New</button>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ListingService } from "../shared/listing.service";
 
 @Component({
@@ -7,6 +7,7 @@ import { ListingService } from "../shared/listing.service";
 })
 export class HomeComponent implements OnInit{
     territories:any = []
+    selectedTerritory:string = 'All';
 
     constructor(private ls: ListingService) {
 
@@ -14,14 +15,21 @@ export class HomeComponent implements OnInit{
 
     getTerritoriesDropdownData() {
         this.ls.getTerritories().subscribe(data => {
-            if(data) {
-                this.territories = data;
-            }
+            this.territories = data;
         });
     }
 
     ngOnInit() {
         this.getTerritoriesDropdownData();
+    }
+
+    onChange(event: any) {
+        const newVal = event.target.value;
+        if (newVal === "All territories") {
+            this.selectedTerritory = "All";
+        } else {
+            this.selectedTerritory = newVal;
+        }
     }
 
 }
