@@ -8,7 +8,9 @@ module.exports = {
     extend: {
       width: {
         'listing-w': '28.8889%',
-        'orders-w': '59.4444%'
+        'orders-w': '59.4444%',
+        'orders-contract': '45.4%',
+        'orders-product': '54.6%'
       },
       fontFamily: {
         cw: ['Montserrat'],

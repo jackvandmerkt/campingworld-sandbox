@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
-import { IListings, IParkTypes, ISectionCodes } from "../shared/listing-counts.model";
+import { IParkTypes, ISectionCodes } from "../shared/listing-counts.model";
 import { ListingService } from "../shared/listing.service";
 
 @Component({

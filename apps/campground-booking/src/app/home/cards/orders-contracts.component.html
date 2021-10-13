@@ -1,15 +1,15 @@
 <div class="flex justify-center">
   <p class="pb-5 text-xl font-bold text-cwRed font-cw">Contract</p>
 </div>
-<div class="grid grid-cols-3 px-6 pb-3 ">
-  <p class="font-bold text-cwRed font-cw place-self-start">Entered in MSG</p>
-  <p class="font-bold font-cw text-cwGray place-self-end">16</p>
-  <p class="font-bold font-cw text-cwGray place-self-end">72.7%</p>
+<div class="grid grid-cols-4 px-6 pb-5 ">
+  <p class="col-span-2 font-bold text-cwRed font-cw">Entered in MSG</p>
+  <p class="font-bold font-cw justify-self-center text-cwGray">16</p>
+  <p class="font-bold font-cw justify-self-end text-cwGray">72.7%</p>
 </div>
-<div class="grid grid-cols-3 px-6 pb-3" *ngFor="let ordersContract of ordersContracts | orderBy:'description'">
-  <p class="text-cwRed font-cw place-self-start">{{ordersContract.displayName}}</p>
-  <p class="font-cw text-cwGray place-self-end">{{ordersContract.count}}</p>
-  <p class="font-cw text-cwGray place-self-end">{{ordersContract.percentage}}</p>
+<div class="grid grid-cols-4 px-6 pb-3" *ngFor="let ordersContract of ordersContracts | orderBy:'description'">
+  <p class="col-span-2 whitespace-nowrap text-cwRed font-cw">{{ordersContract.displayName}}</p>
+  <p class="font-cw text-cwGray justify-self-center">{{ordersContract.count}}</p>
+  <p class="font-cw text-cwGray justify-self-end">{{ordersContract.percentage}}</p>
 </div>
 <!--     <div class="flex justify-between px-6 pb-3">
         <p class="text-cwRed font-cw">Created</p>

@@ -18,6 +18,7 @@ export class ListingsComponent implements OnInit {
     ngOnInit(){
         this.listingService.getListings(this.territoryCode).subscribe(response => {
             this.listingCounts = response;
+            console.log(this.listingCounts)
        })
     }
 

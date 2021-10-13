@@ -7,13 +7,16 @@
       <p class="pb-6 text-cwGray font-cw">{{ordersCounts?.total}}</p>
     </div>
     <div class="flex flex-row">
-      <orders-contracts class="w-1/2 border-r-2" [ordersContracts]="ordersCounts?.contractStatuses"></orders-contracts>
-      <orders-products-details class="w-1/2" [ordersProducts]="ordersCounts?.productStatuses"></orders-products-details>
+      <orders-contracts class="border-r-2 w-orders-contract" [ordersContracts]="ordersCounts?.contractStatuses"></orders-contracts>
+      <orders-products-details class="w-orders-product" [ordersProducts]="ordersCounts?.productStatuses"></orders-products-details>
 
     </div>
-
+    <div class="flex flex-row-reverse px-7.5 pb-2.5">
+      <p class="pl-10 font-semibold text-cwGray font-cw text-14px24px">Last Book Year</p>
+      <p class="font-semibold text-cwGray font-cw text-14px24px">Current Book Year</p>
+    </div>
     <div class="flex justify-center">
-      <p class="pt-7.5 text-xs font-light text-cwLightGray font-cw pb-2">Includes house accounts.</p>
+      <p class="pt-2.5 text-xs font-light text-cwLightGray font-cw pb-2">Includes house accounts.</p>
     </div>
   </div>
 </div>
