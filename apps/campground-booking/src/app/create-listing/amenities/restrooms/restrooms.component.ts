@@ -1,30 +1,39 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { IRestroomsShowers } from "../../../shared/listing-counts.model";
+import { ListingService } from "../../../shared/listing.service";
 
 @Component({
     selector: 'restrooms',
     templateUrl: './restrooms.component.html',
     styleUrls: ['./restrooms.component.css']
 })
-export class RestroomsComponent {
+export class RestroomsComponent implements OnInit {
     submitted: boolean = false;
-    pitTolietsOnly: boolean = false;
+    restroomsShowersFromService!: IRestroomsShowers[];
+    pitToiletsOnly: boolean = false;
     restroomsShowersPaid: boolean = false;
     restroomsAndShowers: boolean = false;
     restrooms: boolean = false;
     showers: boolean = false;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
+    }
+
+    ngOnInit() {
+        this.ls.getRestroomsShowers().subscribe(response => {
+            this.restroomsShowersFromService = response;
+        });
     }
 
     // form object
     restroomForm = this.formBuilder.group({
-        togglePitToliets: false,
+        togglePitToilets: false,
         restroomsShowersSelect: ['', Validators.required],
-        numTolietsMen: [''],
-        numTolietsWomen: [''],
-        numTolietsUni: [''],
+        numToiletsMen: [''],
+        numToiletsWomen: [''],
+        numToiletsUni: [''],
         numShowersMen: [''],
         numShowersWomen: [''],
         numShowersUni: [''],
@@ -47,15 +56,15 @@ export class RestroomsComponent {
         this.restroomForm.reset();
         this.submitted = false;
         //resetting toggle text to no
-        this.pitTolietsOnly = false;
+        this.pitToiletsOnly = false;
         this.restroomsShowersPaid = false;
         this.restroomsAndShowers = false;
         this.restrooms = false;      
         this.showers = false;  
       }
 
-    checkBoxPitTolietsChange(cb:any) {
-        this.pitTolietsOnly = !this.pitTolietsOnly;
+    checkBoxPitToiletsChange(cb:any) {
+        this.pitToiletsOnly = !this.pitToiletsOnly;
     }
     checkBoxPaidChange(cb:any) {
         this.restroomsShowersPaid = !this.restroomsShowersPaid;
@@ -70,17 +79,17 @@ export class RestroomsComponent {
             this.showers = false;
 
             // setting validations
-            this.restroomForm.get('numTolietsMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
-            this.restroomForm.get('numTolietsWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
-            this.restroomForm.get('numTolietsUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numToiletsMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numToiletsWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numToiletsUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
             this.restroomForm.get('numShowersMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
             this.restroomForm.get('numShowersWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
             this.restroomForm.get('numShowersUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
 
             // updating validations
-            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsUni')?.updateValueAndValidity();
             this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
@@ -92,9 +101,9 @@ export class RestroomsComponent {
             this.showers = false;
 
             // setting validations
-            this.restroomForm.get('numTolietsMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
-            this.restroomForm.get('numTolietsWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
-            this.restroomForm.get('numTolietsUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numToiletsMen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numToiletsWomen')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
+            this.restroomForm.get('numToiletsUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
             
             // clearing other validations
             this.restroomForm.get('numShowersMen')?.clearValidators();
@@ -102,9 +111,9 @@ export class RestroomsComponent {
             this.restroomForm.get('numShowersUni')?.clearValidators();
 
             // updating validations
-            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsUni')?.updateValueAndValidity();
             this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
@@ -121,14 +130,14 @@ export class RestroomsComponent {
             this.restroomForm.get('numShowersUni')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")]);
             
             // clearing other validations
-            this.restroomForm.get('numTolietsMen')?.clearValidators();
-            this.restroomForm.get('numTolietsWomen')?.clearValidators();
-            this.restroomForm.get('numTolietsUni')?.clearValidators();
+            this.restroomForm.get('numToiletsMen')?.clearValidators();
+            this.restroomForm.get('numToiletsWomen')?.clearValidators();
+            this.restroomForm.get('numToiletsUni')?.clearValidators();
 
             // updating validations
-            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsUni')?.updateValueAndValidity();
             this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
@@ -140,17 +149,17 @@ export class RestroomsComponent {
             this.showers = false;
 
             // clearing other validations
-            this.restroomForm.get('numTolietsMen')?.clearValidators();
-            this.restroomForm.get('numTolietsWomen')?.clearValidators();
-            this.restroomForm.get('numTolietsUni')?.clearValidators();
+            this.restroomForm.get('numToiletsMen')?.clearValidators();
+            this.restroomForm.get('numToiletsWomen')?.clearValidators();
+            this.restroomForm.get('numToiletsUni')?.clearValidators();
             this.restroomForm.get('numShowersMen')?.clearValidators();
             this.restroomForm.get('numShowersWomen')?.clearValidators();
             this.restroomForm.get('numShowersUni')?.clearValidators();
 
             // updating validations
-            this.restroomForm.get('numTolietsMen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsWomen')?.updateValueAndValidity();
-            this.restroomForm.get('numTolietsUni')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsMen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsWomen')?.updateValueAndValidity();
+            this.restroomForm.get('numToiletsUni')?.updateValueAndValidity();
             this.restroomForm.get('numShowersMen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersUni')?.updateValueAndValidity();

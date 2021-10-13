@@ -29,11 +29,7 @@
             <select name="nonRatedCode" formControlName="nonRatedCode" value="" [ngClass]="{'error-border': submitted && !canParkBeRated && f.nonRatedCode.errors }"
             onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
+            <option *ngFor="let n of nonRatedCodesFromService" [ngValue]="n.id">{{n.value}}</option>
             </select>
             <label for="nonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && !canParkBeRated && f.nonRatedCode.errors }">Non-rated code</label>
         
@@ -44,7 +40,7 @@
 
         <div *ngIf="canParkBeRated" class="col-span-2">
             <div class="flex flex-row items-center border-t-2 justify-left w-636 h-21">
-                <button (click)='facilitiesToggle()' type="button" class="font-cw text-cwGray w-636">
+                <button data='unHideFacilities' (click)='facilitiesToggle()' type="button" class="font-cw text-cwGray w-636">
                     <div class="grid grid-cols-6">
                         <p class="col-span-5 font-bold justify-self-start">Facilities</p>
                         <img *ngIf="!unHideFacilities" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
@@ -365,7 +361,7 @@
 
         <div *ngIf="canParkBeRated" class="col-span-2">
             <div class="flex flex-row items-center border-t-2 justify-left w-636 h-21">
-                <button (click)='restroomsToggle()' type="button" class="font-cw text-cwGray w-636">
+                <button data='unHideRestrooms' (click)='restroomsToggle()' type="button" class="font-cw text-cwGray w-636">
                     <div class="grid grid-cols-6">
                         <p class="col-span-5 font-bold justify-self-start">Restrooms</p>
                         <img *ngIf="!unHideRestrooms" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
@@ -375,28 +371,28 @@
             </div>
             <div *ngIf="unHideRestrooms" class="grid grid-cols-5 pb-10 w-636">
                 <div class="flex flex-row items-center col-span-2 space-x-3">
-                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.tolietsRadio.errors }">Toliets</p>
+                    <p class="font-cw text-cwGray text-14px24px" [ngClass]="{'error-label': submitted && f.toiletsRadio.errors }">Toilets</p>
                     <img class="self-center w-4 h-4 justify-self-end" src="/assets/images/info-icon.png" alt="info-icon">
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
                     <div class="relative">
-                        <input (click)="restroomsGroupChecked('tolietsValue', 0)" formControlName="tolietsRadio" value="0" class="hidden" id="toliets0" type="radio" name="tolietsRadio">
-                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="toliets0">
-                            <img *ngIf="this.restroomsOptions.tolietsValue===0 && ratingsForm.controls.tolietsRadio.dirty" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
+                        <input (click)="restroomsGroupChecked('toiletsValue', 0)" formControlName="toiletsRadio" value="0" class="hidden" id="toilets0" type="radio" name="toiletsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="toilets0">
+                            <img *ngIf="this.restroomsOptions.toiletsValue===0 && ratingsForm.controls.toiletsRadio.dirty" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
                             <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
                         </label>
                     </div>
                     <div class="relative">
-                        <input (click)="restroomsGroupChecked('tolietsValue', .5)" formControlName="tolietsRadio" value=".5" class="hidden" id="tolietsHalf" type="radio" name="tolietsRadio">
-                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="tolietsHalf">
-                            <img *ngIf="this.restroomsOptions.tolietsValue===.5" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
+                        <input (click)="restroomsGroupChecked('toiletsValue', .5)" formControlName="toiletsRadio" value=".5" class="hidden" id="toiletsHalf" type="radio" name="toiletsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="toiletsHalf">
+                            <img *ngIf="this.restroomsOptions.toiletsValue===.5" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
                             <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
                         </label>
                     </div>
                     <div class="relative">
-                        <input (click)="restroomsGroupChecked('tolietsValue', 1)" formControlName="tolietsRadio" value="1" class="hidden" id="toliets1" type="radio" name="tolietsRadio">
-                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="toliets1">
-                            <img *ngIf="this.restroomsOptions.tolietsValue===1" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
+                        <input (click)="restroomsGroupChecked('toiletsValue', 1)" formControlName="toiletsRadio" value="1" class="hidden" id="toilets1" type="radio" name="toiletsRadio">
+                        <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="toilets1">
+                            <img *ngIf="this.restroomsOptions.toiletsValue===1" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
                             <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
                         </label>
                     </div>
@@ -682,7 +678,7 @@
                 <p class="font-bold font-cw text-cwGray text-32px38px">{{ restroomsTotal }}</p>
             </div>
 
-            <div *ngIf="submitted && (f.tolietsRadio.errors || f.showersRadio.errors || f.floorsRadio.errors || f.wallsRadio.errors || f.scmRadio.errors ||
+            <div *ngIf="submitted && (f.toiletsRadio.errors || f.showersRadio.errors || f.floorsRadio.errors || f.wallsRadio.errors || f.scmRadio.errors ||
              f.interiorConstructionRadio.errors || f.supplyOdorFreeRadio.errors || f.amtOfFacilitiesRadio.errors || f.extAppearanceRadio.errors || f.intAppearanceRadio.errors)">
                 <div class="pb-5 font-cw text-cwRed text-18px24px">Please select a value for each row.</div>
             </div>
@@ -690,7 +686,7 @@
 
         <div *ngIf="canParkBeRated" class="col-span-2">
             <div class="flex flex-row items-center border-t-2 justify-left w-636 h-21">
-                <button (click)='visualAppearanceToggle()' type="button" class="font-cw text-cwGray w-636">
+                <button data='unHideVAEQ' (click)='visualAppearanceToggle()' type="button" class="font-cw text-cwGray w-636">
                     <div class="grid grid-cols-6">
                         <p class="col-span-5 font-bold justify-self-start">Visual Appearance / Enviornment Quality</p>
                         <img *ngIf="!unHideVisualAppearance" class="self-center w-9.31 h-5.49 justify-self-end" src="/assets/images/down-arrow.png" alt="down-arrow">
@@ -735,21 +731,21 @@
                 </div>
                 <div class="flex flex-row items-center col-span-3 space-x-4 place-self-end">
                     <div class="relative">
-                        <input (click)="visualAppearanceGroupChecked('entranceAreaValue', 0)" formControlName="entranceAreaRadio" value="0" class="hidden" id="entanceArea0" type="radio" name="entranceAreaRadio">
+                        <input (click)="visualAppearanceGroupChecked('entranceAreaValue', 0)" formControlName="entranceAreaRadio" value="0" class="hidden" id="entranceArea0" type="radio" name="entranceAreaRadio">
                         <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="entanceArea0">
                             <img *ngIf="this.visualAppearanceOptions.entranceAreaValue===0 && ratingsForm.controls.entranceAreaRadio.dirty" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
                             <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">0</p>
                         </label>
                     </div>
                     <div class="relative">
-                        <input (click)="visualAppearanceGroupChecked('entranceAreaValue', .5)" formControlName="entranceAreaRadio" value=".5" class="hidden" id="entanceAreaHalf" type="radio" name="entranceAreaRadio">
+                        <input (click)="visualAppearanceGroupChecked('entranceAreaValue', .5)" formControlName="entranceAreaRadio" value=".5" class="hidden" id="entranceAreaHalf" type="radio" name="entranceAreaRadio">
                         <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="entanceAreaHalf">
                             <img *ngIf="this.visualAppearanceOptions.entranceAreaValue===.5" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
                             <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">.5</p>
                         </label>
                     </div>
                     <div class="relative">
-                        <input (click)="visualAppearanceGroupChecked('entranceAreaValue', 1)" formControlName="entranceAreaRadio" value="1" class="hidden" id="entanceArea1" type="radio" name="entranceAreaRadio">
+                        <input (click)="visualAppearanceGroupChecked('entranceAreaValue', 1)" formControlName="entranceAreaRadio" value="1" class="hidden" id="entranceArea1" type="radio" name="entranceAreaRadio">
                         <label class="flex flex-col cursor-pointer w-100 h-12.5 rounded-xl bg-navGray" for="entanceArea1">
                             <img *ngIf="this.visualAppearanceOptions.entranceAreaValue===1" class="w-5 h-5 rounded-sm place-self-end" src="assets/images/active.png" alt="active">
                             <p class="absolute font-bold text-center top-3.5 place-self-center font-cw">1</p>
@@ -1009,10 +1005,10 @@
         </div>
         <div class="flex flex-row col-span-2 pb-5">
             <div class="">
-                <button type="button" (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+                <button type="button" data='Clear' (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
             </div>
             <div class="pl-6">
-                <button class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+                <button data='Submit' class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
             </div>
         </div>
     </div>

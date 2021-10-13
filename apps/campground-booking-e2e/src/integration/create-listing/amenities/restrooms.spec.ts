@@ -14,9 +14,9 @@ describe('campground-booking', () => {
 
     it('Should populate form, attempt submit, but not pass validations', () => {
         cy.get('select[formcontrolname="restroomsShowersSelect"]').select('Restrooms', {force: true});
-        cy.get('input[formcontrolname="numTolietsMen"]').type('not a number', {force: true});
-        cy.get('input[formcontrolname="numTolietsWomen"]').type('2', {force: true});
-        cy.get('input[formcontrolname="numTolietsUni"]').type('not a number', {force: true});
+        cy.get('input[formcontrolname="numToiletsMen"]').type('not a number', {force: true});
+        cy.get('input[formcontrolname="numToiletsWomen"]').type('2', {force: true});
+        cy.get('input[formcontrolname="numToiletsUni"]').type('not a number', {force: true});
         cy.get('#togglePaid').check({force: true});
         cy.get("button[data='Submit']").click();
     });
@@ -27,9 +27,9 @@ describe('campground-booking', () => {
 
     it('Should populate, pass validations, and submit form', () => {
         cy.get('select[formcontrolname="restroomsShowersSelect"]').select('Restrooms', {force: true});
-        cy.get('input[formcontrolname="numTolietsMen"]').type('2', {force: true});
-        cy.get('input[formcontrolname="numTolietsWomen"]').type('2', {force: true});
-        cy.get('input[formcontrolname="numTolietsUni"]').type('4', {force: true});
+        cy.get('input[formcontrolname="numToiletsMen"]').type('2', {force: true});
+        cy.get('input[formcontrolname="numToiletsWomen"]').type('2', {force: true});
+        cy.get('input[formcontrolname="numToiletsUni"]').type('4', {force: true});
         cy.get('#togglePaid').check({force: true});
         cy.get("button[data='Submit']").click();
     });
