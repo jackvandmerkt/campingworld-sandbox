@@ -126,7 +126,7 @@ export class ListingService {
 
     // POST method for New Listing
     postNewListing(form:any):Observable<IListings[]> {
-      return this.http.post<IListings[]>('/api/v1/listings', form)
+      return this.http.post<IListings[]>('/api/v1/listings/file-number', form)
       .pipe(catchError(this.handleError<IListings[]>('postNewListing', )))
     }
 

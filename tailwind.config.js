@@ -8,7 +8,9 @@ module.exports = {
     extend: {
       width: {
         'listing-w': '28.8889%',
-        'orders-w': '59.4444%'
+        'orders-w': '59.4444%',
+        'orders-contract': '45.4%',
+        'orders-product': '54.6%'
       },
       fontFamily: {
         cw: ['Montserrat'],
@@ -47,6 +49,7 @@ module.exports = {
         '18': '72px',
         '21': '85px',
         '90': '90px',
+        '93': '93px',
         '100': '100px',
         '110': '110px',
         '116': '116.41px',
@@ -76,6 +79,7 @@ module.exports = {
         '12px18px': ['12px', '18px'],
         '14px24px': ['14px', '24px'],
         '14px26px': ['14px', '26px'],
+        '16px16px': ['16px', '16px'],
         '16px26px': ['16px', '26px'],
         '18px24px': ['18px', '24px'],
         '18px31px': ['18px', '31px'],
