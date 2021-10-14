@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit{
             this.selectedTerritory = "All";
         } else {
             this.selectedTerritory = newVal;
+            console.log(this.selectedTerritory)
         }
     }
 

@@ -1,31 +1,15 @@
 <div class="flex justify-center">
-  <p class="pb-5 text-xl font-bold text-cwRed font-cw">Contract</p>
-</div>
-<div class="grid grid-cols-4 px-6" *ngFor="let ordersContract of ordersContracts | orderBy:'count'">
-  <p *ngIf="ordersContract.displayName === 'Entered in MSG'; else notMSG" class="col-span-2 pb-5 font-bold whitespace-nowrap text-cwRed font-cw">{{ordersContract.displayName}}</p>
-  <ng-template #notMSG>
-      <p class="col-span-2 pb-3 whitespace-nowrap text-cwRed font-cw">{{ordersContract.displayName}}</p>
-  </ng-template>
-  <div class="">
-    <p *ngIf="ordersContract.displayName === 'Entered in MSG'" class="pb-5 font-bold font-cw text-cwGray justify-self-center">{{ordersContract.count}}</p>
-    <p *ngIf="ordersContract.displayName !== 'Entered in MSG'" class="pb-3 font-cw text-cwGray justify-self-center">{{ordersContract.count}}</p>
-  </div>
-  <div class="">
-    <p *ngIf="ordersContract.displayName === 'Entered in MSG'" class="pb-5 font-bold font-cw text-cwGray justify-self-end">{{ordersContract.percentage}}%</p>
-    <p *ngIf="ordersContract.displayName !== 'Entered in MSG'" class="pb-3 font-cw text-cwGray justify-self-end">{{ordersContract.percentage}}%</p>
-  </div>
+  <p class="pb-5 font-bold text-20px26px text-cwRed font-cw">Contract</p>
 </div>
 
-<!-- <div class="flex justify-center">
-  <p class="pb-5 text-xl font-bold text-cwRed font-cw">Contract</p>
+<div class="grid grid-cols-4 px-7.5" *ngFor="let ordersContract of ordersContracts">
+    <p *ngIf="ordersContract.displayName === 'Entered in MSG'" class="col-span-2 pb-5 font-bold text-16px-26px whitespace-nowrap text-cwRed font-cw">{{ordersContract.displayName}}</p>
+    <p *ngIf="ordersContract.displayName === 'Entered in MSG'" class="pb-5 pl-10 font-bold font-cw text-16px26px text-cwGray justify-self-center">{{ordersContract.count}}</p>
+    <p *ngIf="ordersContract.displayName === 'Entered in MSG'" class="pb-5 font-bold text-16px26px font-cw text-cwGray justify-self-end">{{ordersContract.percentage}}%</p>
 </div>
-<div class="grid grid-cols-4 px-6 pb-5 ">
-  <p class="col-span-2 font-bold text-cwRed font-cw">Entered in MSG</p>
-  <p class="font-bold font-cw justify-self-center text-cwGray">16</p>
-  <p class="font-bold font-cw justify-self-end text-cwGray">72.7%</p>
+
+<div class="grid grid-cols-4 px-7.5" *ngFor="let ordersContract of ordersContracts | orderBy:'displayName'">
+  <p *ngIf="ordersContract.displayName !== 'Entered in MSG'" class="col-span-2 pb-3 text-16px-26px whitespace-nowrap text-cwRed font-cw">{{ordersContract.displayName}}</p>
+  <p *ngIf="ordersContract.displayName !== 'Entered in MSG'" class="pb-3 pl-10 font-cw text-16px26px text-cwGray justify-self-center">{{ordersContract.count}}</p>
+  <p *ngIf="ordersContract.displayName !== 'Entered in MSG'" class="pb-3 text-16px26px font-cw text-cwGray justify-self-end">{{ordersContract.percentage}}%</p>
 </div>
-<div class="grid grid-cols-4 px-6 pb-3" *ngFor="let ordersContract of ordersContracts | orderBy:'description'">
-  <p class="col-span-2 whitespace-nowrap text-cwRed font-cw">{{ordersContract.displayName}}</p>
-  <p class="font-cw text-cwGray justify-self-center">{{ordersContract.count}}</p>
-  <p class="font-cw text-cwGray justify-self-end">{{ordersContract.percentage}}</p>
-</div> -->

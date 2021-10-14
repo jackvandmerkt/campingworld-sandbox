@@ -1,5 +1,5 @@
 <div class="flex justify-center">
-  <p class="pb-5 text-xl font-bold text-cwRed font-cw">Product Details</p>
+  <p class="pb-5 font-bold text-20px26px text-cwRed font-cw">Product Details</p>
 </div>
 <div class="grid grid-cols-6 px-6 pb-3">
   <p class="col-span-2 font-bold text-cwGray font-cw place-self-start text-16px26px">Complete</p>
@@ -8,30 +8,10 @@
   <p class="font-bold font-cw text-cwGray justify-self-center text-16px26px">53</p>
   <p class="font-bold font-cw text-cwGray justify-self-center text-16px26px">56.4%</p>
 </div>
-<div class="grid grid-cols-6 px-6 pt-3" *ngFor="let ordersProduct of ordersProducts | orderBy:'description'">
+<div class="grid grid-cols-6 px-6 pt-3" *ngFor="let ordersProduct of ordersProducts | orderBy:'displayName'">
   <p class="col-span-2 text-cwRed font-cw whitespace-nowrap text-16px26px">{{ordersProduct.displayName}}</p>
   <p class="font-cw text-cwGray justify-self-center text-16px26px">{{ordersProduct.currentYearCount}}</p>
   <p class="font-cw text-cwGray justify-self-center text-16px26px">{{ordersProduct.currentYearPercentage}}</p>
   <p class="font-cw text-cwGray justify-self-center text-16px26px">{{ordersProduct.previousYearCount}}</p>
   <p class="font-cw text-cwGray justify-self-center text-16px26px">{{ordersProduct.previousYearPercentage}}</p>
 </div>
-<!-- <div class="flex justify-between px-6 pb-3">
-    <p class="text-cwRed font-cw">Open</p>
-    <p class="font-cw text-cwGray">36</p>
-</div>
-<div class="flex justify-between px-6 pb-3">
-    <p class="text-cwRed font-cw">Ready for Traffic</p>
-    <p class="font-cw text-cwGray">0</p>
-</div>
-<div class="flex justify-between px-6 pb-3">
-    <p class="text-cwRed font-cw">Re-opened</p>
-    <p class="font-cw text-cwGray">0</p>
-</div>
-<div class="flex justify-between px-6 pb-3">
-    <p class="text-cwRed font-cw">Rejected</p>
-    <p class="font-cw text-cwGray">27</p>
-</div>
-<div class="flex justify-between px-6 pb-3">
-    <p class="text-cwRed font-cw">Submitted</p>
-    <p class="font-cw text-cwGray">20</p>
-</div> -->
