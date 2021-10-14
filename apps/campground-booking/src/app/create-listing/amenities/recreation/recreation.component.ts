@@ -82,8 +82,6 @@ export class RecreationComponent implements OnInit {
   }
 
 
-
-
   clearChanges() {
     this.option = [];
     this.nearby = [];
@@ -95,7 +93,7 @@ export class RecreationComponent implements OnInit {
     this.recreationForm.reset()
   }
 
-  get dualShuffleboard() { if (this.option.includes('31') && this.option.includes('32')) { return true } else return false }
+  get dualShuffleboard() { if (this.option.includes('31') && this.option.includes('32')) { return true } else { return false } }
 
   onSubmit(): void {
     this.submitted = true;
@@ -105,6 +103,5 @@ export class RecreationComponent implements OnInit {
       console.log('valid');
       return;
     }
-
   }
 }

@@ -10,5 +10,6 @@
   "screenshotsFolder": "../../dist/cypress/apps/campground-booking-e2e/screenshots",
   "chromeWebSecurity": false,
   "viewportWidth": 1440,
-  "viewportHeight": 900
+  "viewportHeight": 900,
+  "baseUrl": "http://localhost:3000"
 }
