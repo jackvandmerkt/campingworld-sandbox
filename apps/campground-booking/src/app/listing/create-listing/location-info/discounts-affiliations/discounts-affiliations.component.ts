@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
-import { IAffiliations, IListStates } from "../../../shared/listing-counts.model";
-import { ListingService } from "../../../shared/listing.service";
+import { IAffiliations, IListStates } from "../../../../shared/listing-counts.model";
+import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
     selector: 'discounts-affiliations',

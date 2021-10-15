@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IByWeekMonths, IOnlineReservationSystems } from "../../../shared/listing-counts.model";
-import { ListingService } from "../../../shared/listing.service";
+import { IByWeekMonths, IOnlineReservationSystems } from "../../../../shared/listing-counts.model";
+import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
     selector: 'rates-reservations',

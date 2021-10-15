@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { IAmps, IInteriorRoadConditions, IInteriorRoadTypes, IShadedSites, ISidebySideHookups } from "../../../shared/listing-counts.model";
-import { ListingService } from "../../../shared/listing.service";
+import { IAmps, IInteriorRoadConditions, IInteriorRoadTypes, IShadedSites, ISidebySideHookups } from "../../../../shared/listing-counts.model";
+import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
     selector: 'interior-roads',
