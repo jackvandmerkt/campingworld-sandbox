@@ -22,6 +22,7 @@ import { ListingStatusesComponent } from './home/cards/listing-statuses.componen
 import { OrderByPipe } from './shared/order-by.pipe';
 import { PowerBIEmbedModule } from 'powerbi-client-angular';
 import { ReportComponent } from './report/report.component';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,14 +43,15 @@ import { ReportComponent } from './report/report.component';
   imports: [
     BrowserModule,
     ListingModule,
+    SharedModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    PowerBIEmbedModule,
+    PowerBIEmbedModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AuthService, ListingService, OrdersService],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 
 })

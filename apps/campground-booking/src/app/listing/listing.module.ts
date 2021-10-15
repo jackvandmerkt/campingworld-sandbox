@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { DatePickerModule, DateRangePickerModule } from "@syncfusion/ej2-angular-calendars";
 import { AppComponent } from "../app.component";
 import { ListingService } from "../shared/listing.service";
+import { SharedModule } from "../shared/shared.module";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/amenities/recreation/recreation.component";
 import { RestroomsComponent } from "./create-listing/amenities/restrooms/restrooms.component";
@@ -70,10 +71,11 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
       FormsModule,
       HttpClientModule,
       DateRangePickerModule,
-      DatePickerModule
+      DatePickerModule,
+      SharedModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [ListingService],
+    providers: [],
     bootstrap: [AppComponent],
   
   })
