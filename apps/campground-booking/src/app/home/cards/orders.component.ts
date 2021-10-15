@@ -18,12 +18,13 @@ export class OrdersComponent implements OnInit, OnChanges {
     ngOnInit(){
         this.ordersService.getOrdersCounts('All').subscribe((response: IOrdersCounts) => {
             this.ordersCounts = response;
-       })
+        });
     }
 
     ngOnChanges() {
         this.ordersService.getOrdersCounts(this.territoryCode).subscribe((response: IOrdersCounts) => {
             this.ordersCounts = response;
+            console.log(this.ordersCounts)
        })
     }
 }
