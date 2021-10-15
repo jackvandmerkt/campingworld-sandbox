@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../shared/listing-counts.model";
-import { ListingService } from "../../../shared/listing.service";
+import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
+import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
     selector: 'good-sam-record',

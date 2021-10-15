@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { IRestroomsShowers } from "../../../shared/listing-counts.model";
-import { ListingService } from "../../../shared/listing.service";
+import { IRestroomsShowers } from "../../../../shared/listing-counts.model";
+import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
     selector: 'restrooms',
