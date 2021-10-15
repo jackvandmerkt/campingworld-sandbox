@@ -1,9 +1,11 @@
 {
-"/api":{
-    "target":"http://localhost:3000",
-    "secure":false,
+  "/api": {
+    "target": "http://aptintcwnodeapp.azurewebsites.net",
+    "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
-    "pathRewrite": {"^/api" : "http://localhost:3000/api"}
+    "pathRewrite": {
+      "^/api": "http://aptintcwnodeapp.azurewebsites.net/api"
     }
+  }
 }
