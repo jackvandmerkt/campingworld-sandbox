@@ -12,7 +12,6 @@ import { AppComponent } from '../app.component';
         CommonModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [ListingService, OrdersService],
-    bootstrap: [AppComponent],
+    providers: [ListingService, OrdersService]
 })
 export class SharedModule { }

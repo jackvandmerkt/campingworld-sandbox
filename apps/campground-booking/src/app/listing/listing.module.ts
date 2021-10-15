@@ -7,6 +7,8 @@ import { DatePickerModule, DateRangePickerModule } from "@syncfusion/ej2-angular
 import { AppComponent } from "../app.component";
 import { ListingService } from "../shared/listing.service";
 import { SharedModule } from "../shared/shared.module";
+import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
+import { AllListingsComponent } from "./all-listing/all-listing.component";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/amenities/recreation/recreation.component";
 import { RestroomsComponent } from "./create-listing/amenities/restrooms/restrooms.component";
@@ -62,7 +64,9 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
     PublishedRatingsComponent,
     RvHomesParkModelsComponent,
     ListingUpdateDetailsComponent,
-    RatingsComponent
+    RatingsComponent,
+    AllListingsComponent,
+    AdSummaryComponent
     ],
     imports: [
       BrowserModule,
@@ -75,8 +79,7 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
       SharedModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [],
-    bootstrap: [AppComponent],
+    providers: []
   
   })
   export class ListingModule { }
