@@ -50,11 +50,11 @@
       <p class="text-12px16px font-cw text-cwGray">{{order.delete}}</p>
     </div> -->
 
-    <table class="w-full">
+    <table class="w-full rounded">
       <thead>
         <tr class="flex-1 text-left">
-          <th class="text-12px16px font-cw text-cwRed font-bold">Status</th>
-          <th class="text-12px16px font-cw text-cwRed font-bold">Date</th>
+          <th class="text-12px16px font-cw text-cwRed p-5 font-bold">Status</th>
+          <th class="text-12px16px font-cw text-cwRed  font-bold">Date</th>
           <th class="text-12px16px font-cw text-cwGray font-bold">File #</th>
           <th class="text-12px16px flex-grow font-cw text-cwRed font-bold">Name</th>
           <th class="text-12px16px font-cw text-cwGray font-bold">LS</th>
@@ -68,8 +68,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orders" class="flex-1 text-left">
-          <td class="text-12px16px font-cw text-cwRed">{{order.status}}</td>
+        <tr *ngFor="let order of orders"
+          [ngClass]="order.background === 'gray' ? 'bg-proposalsGray backdrop-opacity-50' : ''"
+          class="flex-1 text-left">
+          <td class="text-12px16px font-cw text-cwRed p-5">{{order.status}}</td>
           <td class="text-12px16px font-cw text-cwRed">{{order.date}}</td>
           <td class="text-12px16px font-cw text-cwGray">{{order.fileNumber}}</td>
           <td class="text-12px16px flex-grow font-cw text-cwRed">{{order.name}}</td>

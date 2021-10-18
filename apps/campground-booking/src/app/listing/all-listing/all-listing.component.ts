@@ -11,7 +11,7 @@ export class AllListingsComponent implements OnInit {
 
   ngOnInit() {
     const count = ['1', '2', '3', '4', '5', '6']
-    count.forEach(() => this.orders.push({
+    count.forEach((times, index) => this.orders.push({
       status: 'open',
       date: "2021-10-18",
       fileNumber: 202211111,
@@ -43,7 +43,8 @@ export class AllListingsComponent implements OnInit {
       delete: {
         id: 1,
         value: "1 - Substandard"
-      }
+      },
+      background: index % 2 == 0 ? 'gray' : 'normal'
     }))
 
     console.log(this.orders)
