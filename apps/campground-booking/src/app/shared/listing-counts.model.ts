@@ -91,7 +91,10 @@ export interface IMonths{
     abbrev: string
 }
 export interface IListings{
-    locationListingsName: string
+    locationListingsName: string,
+    listingId: number,
+    fileNumber: number,
+    bookYear: string
 }
 export interface INonRatedCodes{
     id: number,
