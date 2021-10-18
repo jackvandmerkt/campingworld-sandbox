@@ -9,7 +9,7 @@ export interface ListingState {
   }
   const initialState: ListingState = {
     newListing: {
-        locationListingsName: '',
+        locationListingName: '',
         listingId: 0,
         fileNumber: 0,
         bookYear: ''
@@ -24,18 +24,14 @@ export const getCurrentListing = createSelector(
   );
   export const listingReducer = createReducer<ListingState>(
     initialState,
-    on(ListingActions.postListingInfo, (state, action): ListingState => {
-        const newfileNumber = 0;
-        const newlocationListingName = '';
-        const newlistingId = 0;
-        const newbookYear = '';
+    on(ListingActions.updateInitialState, (state, action): ListingState => {
         return {
           ...state,
           newListing: {
-            locationListingsName: newlocationListingName,
-            listingId: newlistingId,
-            fileNumber: newfileNumber,
-            bookYear: newbookYear
+            locationListingName: action.listing.locationListingName,
+            listingId: action.listing.listingId,
+            fileNumber: action.listing.fileNumber,
+            bookYear: action.listing.bookYear
           }
         };
     }));

@@ -10,9 +10,9 @@ export class ListingEffects {
 
   constructor(private actions$: Actions, private listingService: ListingService) { }
 
-  postListing$ = createEffect(() => {
-    return this.actions$
-      .pipe(ofType(ListingActions.postListingInfo),
-      );
-  });
+//   postListing$ = createEffect(() => {
+//     return this.actions$
+//       .pipe(ofType(ListingActions.postListingInfo),
+//       );
+//   });
 }
