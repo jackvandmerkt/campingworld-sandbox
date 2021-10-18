@@ -10,12 +10,13 @@ export class AllListingsComponent implements OnInit {
   orders: Array<any> = []
 
   ngOnInit() {
-    this.orders.push({
-      status: {},
-      date: "2021-10-18T18:25:24.822Z",
+    const count = ['1', '2', '3', '4', '5', '6']
+    count.forEach(() => this.orders.push({
+      status: 'open',
+      date: "2021-10-18",
       fileNumber: 202211111,
       name: "Amazing Alaskan Adventures",
-      city: "Juneau",
+      city: "Rehoboth Beach",
       state: {
         id: 1,
         value: "AK - Alaska",
@@ -26,7 +27,7 @@ export class AllListingsComponent implements OnInit {
         id: 1,
         value: "Park Primary"
       },
-      sectionCode: {},
+      sectionCode: '010',
       territory: {
         id: 1,
         code: "AK",
@@ -43,7 +44,8 @@ export class AllListingsComponent implements OnInit {
         id: 1,
         value: "1 - Substandard"
       }
-    })
+    }))
+
     console.log(this.orders)
   }
 
