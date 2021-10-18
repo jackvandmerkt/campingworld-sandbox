@@ -12,7 +12,7 @@ export class LoginComponent{
     constructor(private authService:AuthService, private router:Router){
         
     }
-    login(formValues: { email: string; password: string; }){
+    loginUser(formValues: { email: string; password: string; }){
       this.authService.loginUser(formValues.email,
         formValues.password)
         .subscribe(resp => {

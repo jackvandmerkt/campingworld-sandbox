@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ListingModule } from './listing/listing.module';
+import {UserModule} from './user/user.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ListingsComponent } from './home/cards/listing.component';
@@ -11,7 +12,6 @@ import { RecentlyViewedComponent } from './home/recently-viewed/recently-viewed.
 import { NavComponent } from './nav/nav.component';
 import { appRoutes } from './routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from "./user/login.component";
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './user/auth.service';
 import { ListingService } from './shared/listing.service';
@@ -23,6 +23,9 @@ import { OrderByPipe } from './shared/order-by.pipe';
 import { PowerBIEmbedModule } from 'powerbi-client-angular';
 import { ReportComponent } from './report/report.component';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,6 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     RecentlyViewedComponent,
     ProposalsComponent,
-    LoginComponent,
     ListingStatusesComponent,
     OrderByPipe,
     OrdersContractsComponent,
@@ -44,11 +46,17 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     ListingModule,
     SharedModule,
+    UserModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    PowerBIEmbedModule
+    PowerBIEmbedModule,
+    StoreModule.forRoot({},{}),
+    StoreDevtoolsModule.instrument({ 
+      name:'Camp App Devtools', 
+      maxAge: 25,
+      logOnly: environment.production })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],
