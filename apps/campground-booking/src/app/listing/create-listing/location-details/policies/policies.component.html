@@ -68,14 +68,16 @@
 
   <div *ngIf="limitedFacilities" class="flex flex-row col-span-2 pb-10 space-x-4">
     <div class="relative">
-      <input (click)="limitedFacilitiesChecked('summer')" class="hidden" id="summer" type="radio" name="motorhomeClass">
+      <input (click)="limitedFacilitiesChecked('summer')" class="hidden" id="summer" type="radio"
+        name="limitedFacilities">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="summer">
         <img *ngIf="limitedOptions === 'summer'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In summer</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="limitedFacilitiesChecked('winter')" class="hidden" id="winter" type="radio" name="motorhomeClass">
+      <input (click)="limitedFacilitiesChecked('winter')" class="hidden" id="winter" type="radio"
+        name="limitedFacilities">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="winter">
         <img *ngIf="limitedOptions === 'winter'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In winter</p>
@@ -175,22 +177,22 @@
 
   <div class="flex flex-row col-span-2 pb-10 space-x-4">
     <div class="relative">
-      <input (click)="motorhomeClassChecked('A')" class="hidden" id="goodRadio" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="goodRadio">
+      <input (click)="motorhomeClassChecked('A')" class="hidden" id="classA" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classA">
         <img *ngIf="motorhomeClass === 'A'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class A motorhome</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="motorhomeClassChecked('B')" class="hidden" id="fairRadio" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fairRadio">
+      <input (click)="motorhomeClassChecked('B')" class="hidden" id="classB" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classB">
         <img *ngIf="motorhomeClass === 'B'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class B motorhome</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="motorhomeClassChecked('C')" class="hidden" id="poorRadio" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="poorRadio">
+      <input (click)="motorhomeClassChecked('C')" class="hidden" id="classC" type="radio" name="motorhomeClass">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classC">
         <img *ngIf="motorhomeClass === 'C'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class C motorhome</p>
       </label>
@@ -199,7 +201,8 @@
 
   <div class="grid grid-cols-1 gap-6 mt-2 w-636">
     <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="rvAgeRestrictions" name="rvAgeRestrictions" placeholder=" "
+      <input type="text" formControlName="rvAgeRestrictions" id="rvAgeRestrictions" name="rvAgeRestrictions"
+        placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
       <label for="rvAgeRestrictions" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
         RV age restrictions
