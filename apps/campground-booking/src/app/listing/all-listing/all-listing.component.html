@@ -21,7 +21,7 @@
   </div>
   <h3 class="mt-10 text-16px26px font-cw text-cwGray font-bold">10 matching orders</h3>
   <div class="border shadow-cw rounded-xl mt-9">
-    <div class="grid grid-cols-12 pt-6">
+    <!-- <div class="grid grid-cols-12 pt-6">
       <p class="text-12px16px font-cw text-cwRed font-bold">Status</p>
       <p class="text-12px16px font-cw text-cwRed font-bold">Date</p>
       <p class="text-12px16px font-cw text-cwGray font-bold">File #</p>
@@ -48,7 +48,43 @@
       <p class="text-12px16px font-cw text-cwGray">{{order.newRenew}}</p>
       <p class="text-12px16px font-cw text-cwGray">{{order.cdAdv}}</p>
       <p class="text-12px16px font-cw text-cwGray">{{order.delete}}</p>
-    </div>
+    </div> -->
+
+    <table class="w-full">
+      <thead>
+        <tr class="flex-1 text-left">
+          <th class="text-12px16px font-cw text-cwRed font-bold">Status</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Date</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold">File #</th>
+          <th class="text-12px16px flex-grow font-cw text-cwRed font-bold">Name</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold">LS</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">List City</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Listing Type</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold">SC</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold">TS</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold">N/R</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold">AD</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold">DE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders" class="flex-1 text-left">
+          <td class="text-12px16px font-cw text-cwRed">{{order.status}}</td>
+          <td class="text-12px16px font-cw text-cwRed">{{order.date}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.fileNumber}}</td>
+          <td class="text-12px16px flex-grow font-cw text-cwRed">{{order.name}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.state.code}}</td>
+          <td class="text-12px16px font-cw text-cwRed">{{order.city}}</td>
+          <td class="text-12px16px font-cw text-cwRed">{{order.listingType.value}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.sectionCode}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.territory.code}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.newRenew}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.cdAdv}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.delete}}</td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
   <p><a routerLink="/ad-summary">Advertising Summary</a></p>
 </div>
