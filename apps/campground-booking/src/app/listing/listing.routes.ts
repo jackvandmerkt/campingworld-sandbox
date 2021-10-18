@@ -1,4 +1,6 @@
 import { Routes } from "@angular/router";
+import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
+import { AllListingsComponent } from "./all-listing/all-listing.component";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/amenities/recreation/recreation.component";
 import { RestroomsComponent } from "./create-listing/amenities/restrooms/restrooms.component";
@@ -24,6 +26,8 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
+  { path: 'all-listing', component: AllListingsComponent },
+  { path: 'ad-summary', component: AdSummaryComponent },
   {
     path: 'create-listing', component: CreateListingComponent,
     children: [

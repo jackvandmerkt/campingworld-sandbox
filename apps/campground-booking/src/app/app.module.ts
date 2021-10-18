@@ -22,6 +22,7 @@ import { ListingStatusesComponent } from './home/cards/listing-statuses.componen
 import { OrderByPipe } from './shared/order-by.pipe';
 import { PowerBIEmbedModule } from 'powerbi-client-angular';
 import { ReportComponent } from './report/report.component';
+import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -44,6 +45,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     ListingModule,
+    SharedModule,
     UserModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
@@ -57,7 +59,7 @@ import { environment } from '../environments/environment';
       logOnly: environment.production })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AuthService, ListingService, OrdersService],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 
 })
