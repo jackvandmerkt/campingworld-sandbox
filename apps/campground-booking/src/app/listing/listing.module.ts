@@ -36,6 +36,8 @@ import { RvHomesParkModelsComponent } from "./create-listing/rent-buy/rv-homes-p
 import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-rentals/tenting-rentals.component";
 import { listingRoutes } from "./listing.routes";
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
+import { EffectsModule } from "@ngrx/effects";
+import { ListingEffects } from "./state/listing.effects";
 
 @NgModule({
     declarations: [
@@ -77,7 +79,8 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
       DateRangePickerModule,
       DatePickerModule,
       SharedModule,
-      StoreModule.forFeature('listing-info', {listingReducer})
+      StoreModule.forFeature('listing-info', {listingReducer}),
+      EffectsModule.forFeature([ListingEffects])
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: []

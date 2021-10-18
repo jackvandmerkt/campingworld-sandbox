@@ -31,7 +31,6 @@ export class NewListingsComponent implements OnInit{
 
       this.store.select('users').subscribe(
         users => {
-          console.log('users selected')
           if (users) {
             this.repNameFromState = users.userReducer.currentUser.firstName + ' ' + users.userReducer.currentUser.lastName;
             this.newListingForm.patchValue({repName: this.repNameFromState})
