@@ -1,1 +1,24 @@
-<p><a routerLink="/ad-summary">Advertising Summary</a></p>
+<div class="pt-10 pl-15">
+  <h1 class="text-32px38px font-cw text-cwGray font-bold">All Listings</h1>
+  <div class="mt-5 fl flex space-x-6">
+    <input (change)="onChange()"
+      class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-4/12 h-13"
+      placeholder="File #, name, or list city (contains)" />
+    <select (change)="onChange()"
+      class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-1/6 h-13">
+      <option>Status</option>
+      <option>open</option>
+    </select>
+    <select (change)="onChange()"
+      class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-98 h-13">
+      <option>State</option>
+      <option>OH</option>
+    </select>
+    <button type="submit"
+      class="px-6 py-4.5 w-30 h-13 text-16px16px text-white rounded-md bg-cwRed hover:opacity-80 font-cw">
+      Search
+    </button>
+  </div>
+  <h3 class="mt-10 text-16px26px font-cw text-cwGray font-bold">10 matching orders</h3>
+  <p><a routerLink="/ad-summary">Advertising Summary</a></p>
+</div>
