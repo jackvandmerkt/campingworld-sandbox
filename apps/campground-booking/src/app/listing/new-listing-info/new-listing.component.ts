@@ -68,7 +68,7 @@ export class NewListingsComponent implements OnInit{
           this.postResponse = response;
           console.log(this.postResponse)
           this.store.dispatch(ListingActions.updateInitialState({ listing: this.postResponse}));
-          // this.router.navigateByUrl('/create-listing/good-sam-record')
+          this.router.navigateByUrl('/create-listing/good-sam-record')
         }
       })
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
@@ -20,13 +21,21 @@ export class GoodSamRecordFormComponent implements OnInit{
     parkTypesFromService!: IParkTypes[];
 
     // temporary number, will use getter method to pull this number from api in the future
-    fileNum:any = '1230405060';
+    fileNum:number = 0;
     repCode:any = '101010';
-    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService, private store: Store<any>) {
 
     }
     ngOnInit() {
         this.getFormDropDownData();
+
+        this.store.select('listing-info').subscribe(
+            data => {
+              if (data) {
+                this.fileNum = data.listingReducer.newListing.fileNumber
+                this.goodSamRecordForm.patchValue({fileNum: this.fileNum})
+              }
+            });
     }
 
     getFormDropDownData() {
