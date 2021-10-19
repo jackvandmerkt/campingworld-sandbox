@@ -6,7 +6,13 @@ export interface UserState {
     currentUser: IUser | null;
   }
   const initialState: UserState = {
-    currentUser: null
+    currentUser:  {
+      id: 145,
+      email: "test.user@aptitive.com",
+      firstName: "Test",
+      lastName: "User",
+      repCode: 999
+    }
   };
 // Selector functions
 const getUserFeatureState = createFeatureSelector<UserState>('users');
@@ -20,6 +26,7 @@ export const getCurrentUser = createSelector(
     on((state): UserState => {
       return {
         ...state,
+        
       };
     })
   );

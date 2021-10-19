@@ -3,9 +3,9 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
+import { StoreModule } from "@ngrx/store";
+import {listingReducer} from './state/listing.reducer'
 import { DatePickerModule, DateRangePickerModule } from "@syncfusion/ej2-angular-calendars";
-import { AppComponent } from "../app.component";
-import { ListingService } from "../shared/listing.service";
 import { SharedModule } from "../shared/shared.module";
 import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
 import { AllListingsComponent } from "./all-listing/all-listing.component";
@@ -36,6 +36,8 @@ import { RvHomesParkModelsComponent } from "./create-listing/rent-buy/rv-homes-p
 import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-rentals/tenting-rentals.component";
 import { listingRoutes } from "./listing.routes";
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
+import { EffectsModule } from "@ngrx/effects";
+import { ListingEffects } from "./state/listing.effects";
 
 @NgModule({
     declarations: [
@@ -76,7 +78,9 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
       HttpClientModule,
       DateRangePickerModule,
       DatePickerModule,
-      SharedModule
+      SharedModule,
+      StoreModule.forFeature('listing-info', {listingReducer}),
+      EffectsModule.forFeature([ListingEffects])
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: []
