@@ -22,7 +22,7 @@ export class GoodSamRecordFormComponent implements OnInit{
 
     // temporary number, will use getter method to pull this number from api in the future
     fileNum:number = 0;
-    repCode:any = '101010';
+    repCode:number = 0;
     constructor(private formBuilder: FormBuilder, private ls: ListingService, private store: Store<any>) {
 
     }
@@ -36,6 +36,15 @@ export class GoodSamRecordFormComponent implements OnInit{
                 this.goodSamRecordForm.patchValue({fileNum: this.fileNum})
               }
             });
+        this.store.select('users').subscribe(
+            users => {
+                if (users) {
+                this.repCode = users.userReducer.currentUser.repCode;
+                this.goodSamRecordForm.patchValue({repCode: this.repCode})
+                }
+            });
+
+
     }
 
     getFormDropDownData() {
