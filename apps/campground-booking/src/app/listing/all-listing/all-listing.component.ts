@@ -10,12 +10,13 @@ export class AllListingsComponent implements OnInit {
   orders: Array<any> = []
 
   ngOnInit() {
+    const cities = ["Amazing Alaskan Adventures", "Amazingtures", "Amazing Alaskan Adventures Amazing Alaskan Adventures", "Camp Toodik Family Campground, Cabins & Canoe Livery"]
     const count = ['1', '2', '3', '4', '5', '6']
     count.forEach((times, index) => this.orders.push({
       status: 'open',
       date: "2021-10-18",
       fileNumber: 202211111,
-      name: "Amazing Alaskan Adventures",
+      name: cities[index],
       city: "Rehoboth Beach",
       state: {
         id: 1,
