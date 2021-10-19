@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
+import { Output, EventEmitter } from '@angular/core';
+import { ListingNavService } from "apps/campground-booking/src/app/shared/listing-nav.service";
 
 @Component({
     selector: 'good-sam-record',
@@ -25,9 +27,12 @@ export class GoodSamRecordFormComponent implements OnInit{
     newListingObj: any = {};
     fileNum:any = 0;
     repCode:number = 0;
-    constructor(private formBuilder: FormBuilder, private ls: ListingService, private store: Store<any>) {
 
-    }
+    // @Output() formStatus = new EventEmitter<any>();
+
+    constructor(private formBuilder: FormBuilder, private ls: ListingService,
+         private store: Store<any>, private listingNavService: ListingNavService) {}
+
     ngOnInit() {
         this.getFormDropDownData();
 
@@ -94,11 +99,16 @@ export class GoodSamRecordFormComponent implements OnInit{
         toggleGuests: false,
         toggleDelete: false
       });
+
+    sendFormStatus(value: any) {
+        this.listingNavService.updateFormStatus(value)
+    }
     
     onSubmit(): void {
         this.submitted = true;
         if(this.goodSamRecordForm.valid) {
             console.log(this.goodSamRecordForm.value);
+            this.sendFormStatus(['goodSamRecordFormStatus', 2]);
         } else {
             console.log('not valid');
             return;

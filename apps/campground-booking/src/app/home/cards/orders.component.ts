@@ -24,7 +24,6 @@ export class OrdersComponent implements OnInit, OnChanges {
     ngOnChanges() {
         this.ordersService.getOrdersCounts(this.territoryCode).subscribe((response: IOrdersCounts) => {
             this.ordersCounts = response;
-            console.log(this.ordersCounts)
        })
     }
 }
