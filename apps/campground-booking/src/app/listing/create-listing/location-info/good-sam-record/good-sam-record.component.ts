@@ -21,7 +21,9 @@ export class GoodSamRecordFormComponent implements OnInit{
     parkTypesFromService!: IParkTypes[];
 
     // temporary number, will use getter method to pull this number from api in the future
-    fileNum:number = 0;
+    newListingTmp:any;
+    newListingObj: any = {};
+    fileNum:any = 0;
     repCode:number = 0;
     constructor(private formBuilder: FormBuilder, private ls: ListingService, private store: Store<any>) {
 
@@ -29,13 +31,22 @@ export class GoodSamRecordFormComponent implements OnInit{
     ngOnInit() {
         this.getFormDropDownData();
 
-        this.store.select('listing-info').subscribe(
-            data => {
-              if (data) {
-                this.fileNum = data.listingReducer.newListing.fileNumber
+        this.newListingTmp = window.localStorage.getItem('new-listing');
+        this.newListingObj = JSON.parse(this.newListingTmp);
+        for(let [key, value] of Object.entries(this.newListingObj)) {
+            if(key === 'fileNumber') {
+                this.fileNum = value;
                 this.goodSamRecordForm.patchValue({fileNum: this.fileNum})
-              }
-            });
+            } 
+        }
+
+        // this.store.select('listing-info').subscribe(
+        //     data => {
+        //       if (data) {
+        //         this.fileNum = data.listingReducer.newListing.fileNumber
+        //         this.goodSamRecordForm.patchValue({fileNum: this.fileNum})
+        //       }
+        //     });
         this.store.select('users').subscribe(
             users => {
                 if (users) {
