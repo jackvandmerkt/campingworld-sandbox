@@ -26,7 +26,6 @@ import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,8 +56,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreDevtoolsModule.instrument({ 
       name:'Camp App Devtools', 
       maxAge: 25,
-      logOnly: environment.production }),
-    EffectsModule.forRoot([])
+      logOnly: environment.production })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],

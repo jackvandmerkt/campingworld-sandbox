@@ -19,6 +19,9 @@ export class NewListingsComponent implements OnInit{
     repNameFromState:string = '';
     postResponse:any;
 
+    newListingTmp:any;
+    newListingObj: any = {};
+
     constructor(private formBuilder: FormBuilder, private ls: ListingService, private router: Router, private store: Store<any>) {
         
     }
@@ -68,6 +71,7 @@ export class NewListingsComponent implements OnInit{
           this.postResponse = response;
           console.log(this.postResponse)
           this.store.dispatch(ListingActions.updateInitialState({ listing: this.postResponse}));
+          window.localStorage.setItem('new-listing', JSON.stringify(this.postResponse));
           this.router.navigateByUrl('/create-listing/good-sam-record')
         }
       })
