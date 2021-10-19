@@ -1,16 +1,25 @@
 /*Toggle Radio Button*/
 input:checked ~ .dot {
-    transform: translateX(100%);
-  }
-  
-  input:checked ~ .block {
-    background-color: #C30B24;
-    opacity: 50%;
-  }
-  
-  /*Text Input Fields Floating Form Label*/
-  .f-outline input:focus-within ~ label,
-  .f-outline input:not(:placeholder-shown) ~ label {
-    transform: translateY(-1rem) translatex(-.5rem) scaleX(0.75) scaleY(0.75);
-  }
-  
+  transform: translateX(100%);
+}
+
+input:checked ~ .block {
+  background-color: #c30b24;
+  opacity: 50%;
+}
+
+/*Text Input Fields Floating Form Label*/
+.f-outline input:focus-within ~ label,
+.f-outline input:not(:placeholder-shown) ~ label {
+  transform: translateY(-1rem) translatex(-0.5rem) scaleX(0.75) scaleY(0.75);
+}
+
+.checkbox {
+  border: 2px solid rgba(33, 43, 54, 0.15);
+  border-radius: 2px;
+  margin-bottom: 3px;
+}
+
+.background {
+  background: linear-gradient(180deg, #ffffff 50%, #c30b24 50%);
+}
