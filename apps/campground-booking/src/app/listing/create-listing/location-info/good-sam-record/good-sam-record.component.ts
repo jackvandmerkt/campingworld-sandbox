@@ -121,6 +121,7 @@ export class GoodSamRecordFormComponent implements OnInit{
             this.sendFormStatus(['goodSamRecordFormStatus', 2]);
         } else {
             console.log('not valid');
+            this.sendFormStatus(['goodSamRecordFormStatus', 1]);
             return;
         }
     }
@@ -134,6 +135,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         this.isGuestsChecked = false;
         this.isDeleteChecked = false;
         this.isSalesPresentationChecked = false;
+        this.sendFormStatus(['goodSamRecordFormStatus', 0]);
     }
 
     checkBoxSalesPresentationChange(cb:any) {
