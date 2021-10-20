@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IHttpPostMessageResponse } from 'http-post-message';
 import { IReportEmbedConfiguration, models, Page, Report, service, VisualDescriptor } from 'powerbi-client';
 import { PowerBIReportEmbedComponent } from 'powerbi-client-angular';
@@ -26,7 +26,8 @@ export interface ConfigResponse {
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css'],
 })
-export class ReportComponent {
+export class ReportComponent implements OnInit{
+
   // Wrapper object to access report properties
   @ViewChild(PowerBIReportEmbedComponent) reportObj!: PowerBIReportEmbedComponent;
 
@@ -95,6 +96,10 @@ export class ReportComponent {
 
   constructor(public httpService: HttpService, private element: ElementRef<HTMLDivElement>) {}
 
+  ngOnInit() {
+    this.embedReport()
+  }
+  
   /**
    * Embeds report
    *

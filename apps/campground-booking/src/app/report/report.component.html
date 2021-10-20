@@ -1,16 +1,16 @@
 
 <div class="controls" *ngIf="isEmbedded; else embedReportFlow">
-  <button (click)="deleteVisual()">Delete Visual</button>
+  <!-- <button (click)="deleteVisual()">Delete Visual</button>
   <button (click)="hideFilterPane()">Hide Filter Pane</button>
   <button (click)="setDataSelectedEvent()">Set Event</button>
-  <div class="display-message" #status>{{ displayMessage }}</div>
+  <div class="display-message" #status>{{ displayMessage }}</div> -->
 </div>
 <ng-template #embedReportFlow>
   <div class="display-message position" #status>
-    <label>{{ displayMessage }}</label>
+    <!-- <label>{{ displayMessage }}</label> -->
   </div>
   <div class="embed-report">
-    <button (click)="embedReport()" id="embed-action" #embedReportBtn>Embed Report</button>
+    <!-- <button (click)="embedReport()" id="embed-action" #embedReportBtn>Embed Report</button> -->
   </div>
   <div class="separator"></div>
 </ng-template>
