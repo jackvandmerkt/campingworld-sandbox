@@ -8,39 +8,38 @@
           <div class="pb-10 pt-15">
               <p class="text-2xl font-bold font-cw text-cwGray">New Listing Info</p>
           </div>
-          <div class="relative pb-10 f-outline">
+          <div class="relative z-0 pb-10">
             <select name="sectionCodeId" formControlName="sectionCodeId" value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
-            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none long-dd w-416 h-13 border-cwBadgeGray focus:outline-none">
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-416 h-13 border-cwBadgeGray focus:outline-none">
             <option value=""></option>
             <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
             </select>
-            <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Section Code</label>
+            <label for="sectionCodeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }">Section Code</label>
             <div *ngIf="submitted && f.sectionCodeId.errors">
               <div *ngIf="f.sectionCodeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Section code is required.</div>
             </div>
           </div>
-          <div class="relative col-span-2 pb-10">
+          <div class="relative z-0 col-span-2 pb-10">
             <select name="parkTypeId" formControlName="parkTypeId" value="" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
-            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none short-dd w-416 h-13 border-cwBadgeGray">
+            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-416 h-13 border-cwBadgeGray">
             <option value=""></option>
             <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
             </select>
-            <label for="parkTypeId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
+            <label for="parkTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
             <div *ngIf="submitted && f.parkTypeId.errors">
               <div *ngIf="f.parkTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park type is required.</div>
             </div>
           </div>
-          <div class="relative pb-10 f-outline">
+          <div class="relative z-0 pb-10">
             <input type="text" formControlName="repName" name="repName" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-416 h-13 border-cwBadgeGray focus:outline-none" />
-            <label for="repName"
-                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Rep name</label>
+            <label for="repName" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack">Rep name</label>
           </div>
-          <div class="relative pb-10 f-outline">
+          <div class="relative z-0 pb-10">
             <input type="text" formControlName="locationListingName" name="locationListingName" placeholder=" " [ngClass]="{'error-border': submitted && f.locationListingName.errors }"
-                class="block px-3 bg-transparent border rounded appearance-none w-416 h-13 border-cwBadgeGray focus:outline-none" />
+                class="block px-3 bg-transparent border rounded appearance-none w-416 h-13 focus:outline-none border-cwBadgeGray" />
             <label for="locationListingName"
-                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.locationListingName.errors }">Park name</label>
+                class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.locationListingName.errors }">Park name</label>
           
             <div *ngIf="submitted && f.locationListingName.errors">
               <div *ngIf="f.locationListingName.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>
