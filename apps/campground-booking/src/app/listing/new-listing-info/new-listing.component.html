@@ -14,7 +14,7 @@
             <option value=""></option>
             <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
             </select>
-            <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Section Code</label>
+            <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Section Code</label>
             <div *ngIf="submitted && f.sectionCodeId.errors">
               <div *ngIf="f.sectionCodeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Section code is required.</div>
             </div>
@@ -25,7 +25,7 @@
             <option value=""></option>
             <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
             </select>
-            <label for="parkTypeId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
+            <label for="parkTypeId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
             <div *ngIf="submitted && f.parkTypeId.errors">
               <div *ngIf="f.parkTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park type is required.</div>
             </div>
@@ -34,13 +34,13 @@
             <input type="text" formControlName="repName" name="repName" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-416 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="repName"
-                class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Rep name</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Rep name</label>
           </div>
           <div class="relative pb-10 f-outline">
             <input type="text" formControlName="locationListingName" name="locationListingName" placeholder=" " [ngClass]="{'error-border': submitted && f.locationListingName.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-416 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="locationListingName"
-                class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.locationListingName.errors }">Park name</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.locationListingName.errors }">Park name</label>
           
             <div *ngIf="submitted && f.locationListingName.errors">
               <div *ngIf="f.locationListingName.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>

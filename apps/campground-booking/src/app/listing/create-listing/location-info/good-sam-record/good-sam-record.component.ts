@@ -3,8 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
-import { Output, EventEmitter } from '@angular/core';
-import { ListingNavService } from "apps/campground-booking/src/app/shared/listing-nav.service";
+import { ListingNavService } from "../../../../shared/listing-nav.service";
 
 @Component({
     selector: 'good-sam-record',
@@ -15,6 +14,8 @@ import { ListingNavService } from "apps/campground-booking/src/app/shared/listin
 export class GoodSamRecordFormComponent implements OnInit{
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
+    isSalesPresentationChecked:boolean = false;
+    isDuplicateSelected: boolean = false;
     submitted: boolean = false;
     territoriesFromService!: ITerritories[];
     sectionCodesFromService!: ISectionCodes[];
@@ -41,7 +42,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         for(let [key, value] of Object.entries(this.newListingObj)) {
             if(key === 'fileNumber') {
                 this.fileNum = value;
-                this.goodSamRecordForm.patchValue({fileNum: this.fileNum})
+                this.goodSamRecordForm.patchValue({fileNumber: this.fileNum})
             } 
         }
 
@@ -87,17 +88,21 @@ export class GoodSamRecordFormComponent implements OnInit{
     }
 
     goodSamRecordForm = this.formBuilder.group({
-        parkName: ['', [Validators.required, Validators.maxLength(255)]],
-        fileNum: [{value: this.fileNum, disabled: true},  Validators.required],
-        sectionCode: ['', Validators.required],
+        locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
+        fileNumber: [{value: this.fileNum, disabled: true},  Validators.required],
+        sectionCodeId: ['', Validators.required],
         repCode: [{value: this.repCode, disabled: true}, Validators.required],
+        listTypeId: ['', Validators.required],
+        parkTypeId: ['', Validators.required],
+        duplicateListingText: [''],
+        primaryFileNumber: [''],
         listCity: ['', [Validators.required, Validators.maxLength(255)]],
-        listState: ['', Validators.required],
-        territory: ['', Validators.required],
-        listType: ['', Validators.required],
-        parkType: ['', Validators.required],
-        toggleGuests: false,
-        toggleDelete: false
+        listStateId: ['', Validators.required],
+        territoryId: ['', Validators.required],
+        salesPresentationRequired: false,
+        noOvernightGuests: false,
+        deleteListing: false,
+        reasonForDelete: ['']
       });
 
     sendFormStatus(value: any) {
@@ -123,12 +128,40 @@ export class GoodSamRecordFormComponent implements OnInit{
         //resetting toggle text to no
         this.isGuestsChecked = false;
         this.isDeleteChecked = false;
+        this.isSalesPresentationChecked = false;
     }
 
+    checkBoxSalesPresentationChange(cb:any) {
+        this.isSalesPresentationChecked = !this.isSalesPresentationChecked;
+    }
     checkBoxGuestsChange(cb:any) {
         this.isGuestsChecked = !this.isGuestsChecked;
     }
     checkBoxDeleteChange(cb:any) {
         this.isDeleteChecked = !this.isDeleteChecked;
+        if (this.isDeleteChecked === true) {
+            this.goodSamRecordForm.get('reasonForDelete')?.setValidators([Validators.required])
+            this.goodSamRecordForm.get('reasonForDelete')?.updateValueAndValidity()
+        } else {
+            this.goodSamRecordForm.get('reasonForDelete')?.clearValidators()
+            this.goodSamRecordForm.get('reasonForDelete')?.updateValueAndValidity()
+        }
+    }
+
+    onChange(event:any): void {
+        const newVal = event.target.value;
+        if(newVal == 4) {
+            this.isDuplicateSelected = true;
+            this.goodSamRecordForm.get('duplicateListingText')?.setValidators([Validators.required])
+            this.goodSamRecordForm.get('primaryFileNumber')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
+            this.goodSamRecordForm.get('duplicateListingText')?.updateValueAndValidity()
+            this.goodSamRecordForm.get('primaryFileNumber')?.updateValueAndValidity()
+        } else {
+            this.isDuplicateSelected = false;
+            this.goodSamRecordForm.get('duplicateListingText')?.clearValidators()
+            this.goodSamRecordForm.get('primaryFileNumber')?.clearValidators()
+            this.goodSamRecordForm.get('duplicateListingText')?.updateValueAndValidity()
+            this.goodSamRecordForm.get('primaryFileNumber')?.updateValueAndValidity()
+        }
     }
 }

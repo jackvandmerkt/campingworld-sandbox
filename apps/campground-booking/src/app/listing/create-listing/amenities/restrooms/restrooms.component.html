@@ -34,7 +34,7 @@
         <option value=""></option>
         <option *ngFor="let r of restroomsShowersFromService" [ngValue]="r.id">{{r.value}}</option>
       </select>
-      <label for="restroomsShowersSelect" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+      <label for="restroomsShowersSelect" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
         [ngClass]="{'error-label': submitted && f.restroomsShowersSelect.errors }">Restrooms/showers</label>
       <div *ngIf="submitted && f.restroomsShowersSelect.errors">
         <div *ngIf="f.restroomsShowersSelect.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please make
@@ -47,7 +47,7 @@
         <input type="text" formControlName="numToiletsMen" name="numToiletsMen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numToiletsMen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="numToiletsMen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+        <label for="numToiletsMen" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
           [ngClass]="{'error-label': submitted && f.numToiletsMen.errors}"># Toilets - men</label>
 
         <div *ngIf="submitted && f.numToiletsMen.errors">
@@ -63,7 +63,7 @@
         <input type="text" formControlName="numToiletsWomen" name="numToiletsWomen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numToiletsWomen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="numToiletsWomen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+        <label for="numToiletsWomen" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
           [ngClass]="{'error-label': submitted && f.numToiletsWomen.errors}"># Toilets - women</label>
 
         <div *ngIf="submitted && f.numToiletsWomen.errors">
@@ -79,7 +79,7 @@
         <input type="text" formControlName="numToiletsUni" name="numToiletsUni" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numToiletsUni.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="numToiletsUni" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+        <label for="numToiletsUni" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
           [ngClass]="{'error-label': submitted && f.numToiletsUni.errors}"># Toilets - unisex</label>
 
         <div *ngIf="submitted && f.numToiletsUni.errors">
@@ -98,7 +98,7 @@
         <input type="text" formControlName="numShowersMen" name="numShowersMen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numShowersMen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="numShowersMen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+        <label for="numShowersMen" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
           [ngClass]="{'error-label': submitted && f.numShowersMen.errors}"># showers - men</label>
 
         <div *ngIf="submitted && f.numShowersMen.errors">
@@ -114,7 +114,7 @@
         <input type="text" formControlName="numShowersWomen" name="numShowersWomen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numShowersWomen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="numShowersWomen" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+        <label for="numShowersWomen" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
           [ngClass]="{'error-label': submitted && f.numShowersWomen.errors}"># showers - women</label>
 
         <div *ngIf="submitted && f.numShowersWomen.errors">
@@ -130,7 +130,7 @@
         <input type="text" formControlName="numShowersUni" name="numShowersUni" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numShowersUni.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="numShowersUni" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+        <label for="numShowersUni" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
           [ngClass]="{'error-label': submitted && f.numShowersUni.errors}"># showers - unisex</label>
 
         <div *ngIf="submitted && f.numShowersUni.errors">

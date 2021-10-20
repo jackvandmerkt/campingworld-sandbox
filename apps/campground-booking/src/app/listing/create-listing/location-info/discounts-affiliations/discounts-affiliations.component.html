@@ -49,7 +49,7 @@
             <option value=""></option>
             <option *ngFor="let a of affiliationsFromService">{{a.value}}</option>
             </select>
-            <label for="affiliation" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.affiliation.errors }">Affiliation</label>
+            <label for="affiliation" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.affiliation.errors }">Affiliation</label>
             <div *ngIf="submitted && f.affiliation.errors">
                 <div *ngIf="f.affiliation.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Affiliation is required.</div>
             </div>
@@ -81,7 +81,7 @@
             <option value=""></option>
             <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
             </select>
-            <label for="stateProvAffiliation" class="absolute pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.stateProvAffiliation.errors }">State/Prov Affiliation</label>
+            <label for="stateProvAffiliation" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.stateProvAffiliation.errors }">State/Prov Affiliation</label>
             <div *ngIf="submitted && f.stateProvAffiliation.errors">
                 <div *ngIf="f.stateProvAffiliation.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">State/Prov affiliation is required.</div>
             </div>
@@ -111,7 +111,7 @@
             <input type="text" formControlName="goodNeighborParkNum" name="goodNeighborParkNum" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-navGray bg-navGray focus:outline-none" />
             <label for="goodNeighborParkNum"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good Neighbor park number</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good Neighbor park number</label>
         </div>
 
         <div class="">
@@ -138,7 +138,7 @@
             <input type="text" formControlName="coastToCoastMembershipNum" name="coastToCoastMembershipNum" placeholder=" " [ngClass]="{'error-border': submitted && f.coastToCoastMembershipNum.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="coastToCoastMembershipNum"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.coastToCoastMembershipNum.errors }">Coast To Coast membership number</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.coastToCoastMembershipNum.errors }">Coast To Coast membership number</label>
         
             <div *ngIf="submitted && f.coastToCoastMembershipNum.errors">
                 <div *ngIf="f.coastToCoastMembershipNum.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>

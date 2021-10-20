@@ -6,7 +6,7 @@
         <div class="relative col-span-2 pb-10 f-outline">
             <textarea type="text" formControlName="directions" name="directions" placeholder=" " [ngClass]="{'error-border': submitted && f.directions.errors }"
               class="block h-24 rounded appearance-none border-cwBadgeGray w-636 focus:outline-none"></textarea>
-            <label for="directions" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.directions.errors }">
+            <label for="directions" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.directions.errors }">
                 Directions
             </label>
             <div *ngIf="submitted && f.directions.errors">
@@ -19,7 +19,7 @@
             <option value=""></option>
             <option *ngFor="let d of directionalArrowsFromService" [ngValue]="d.id">{{d.value}}</option>
             </select>
-            <label for="directionsFromTown" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.directionsFromTown.errors }">Directions from Town</label>
+            <label for="directionsFromTown" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.directionsFromTown.errors }">Directions from Town</label>
             
             <div *ngIf="submitted && f.directionsFromTown.errors">
                 <div *ngIf="f.directionsFromTown.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -49,7 +49,7 @@
             <input type="text" name="milesOrKM" formControlName="milesOrKM" placeholder=" " [ngClass]="{'error-border': submitted && isNascarChecked && f.milesOrKM.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="milesOrKM"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.milesOrKM.errors }">How many miles or km?</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.milesOrKM.errors }">How many miles or km?</label>
         
             <div *ngIf="submitted && isNascarChecked && f.milesOrKM.errors">
                 <div *ngIf="f.milesOrKM.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -66,7 +66,7 @@
               <option value="1">Mi</option>
               <option value="2">Km</option>
             </select>
-            <label for="unitOfMeasurement" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.unitOfMeasurement.errors }">Unit of measurement</label>
+            <label for="unitOfMeasurement" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.unitOfMeasurement.errors }">Unit of measurement</label>
             <div *ngIf="submitted && f.unitOfMeasurement.errors">
                 <div *ngIf="f.unitOfMeasurement.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please make a selection.</div>
             </div>  
@@ -79,7 +79,7 @@
               <option value="1">Atlanta Motor Speedway</option>
               <option value="2">Auto Club Speedway</option>
             </select>
-            <label for="nameOfTrack" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.nameOfTrack.errors }">Name of track</label>
+            <label for="nameOfTrack" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isNascarChecked && f.nameOfTrack.errors }">Name of track</label>
             <div *ngIf="submitted && f.nameOfTrack.errors">
                 <div *ngIf="f.nameOfTrack.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please make a selection.</div>
             </div>  
