@@ -4,34 +4,34 @@
         <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Good Sam Record ID</p>
     </div>
     <div class="relative pb-10 long-label">
-      <input type="text" formControlName="parkName" name="parkName" placeholder=" " [ngClass]="{'error-border': submitted && f.parkName.errors }"
+      <input type="text" formControlName="locationListingName" name="locationListingName" placeholder=" " [ngClass]="{'error-border': submitted && f.locationListingName.errors }"
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-      <label for="parkName"
-          class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkName.errors }">Park name</label>
-      <div *ngIf="submitted && f.parkName.errors">
-        <div *ngIf="f.parkName.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>
+      <label for="locationListingName"
+          class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.locationListingName.errors }">Park name</label>
+      <div *ngIf="submitted && f.locationListingName.errors">
+        <div *ngIf="f.locationListingName.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>
       </div>
-      <div *ngIf="submitted && f.parkName.errors">
-        <div *ngIf="f.parkName.errors.maxlength" class="pl-3 font-cw text-cwRed text-11px20px">Park name cannot exceed 255 characters.</div>
+      <div *ngIf="submitted && f.locationListingName.errors">
+        <div *ngIf="f.locationListingName.errors.maxlength" class="pl-3 font-cw text-cwRed text-11px20px">Park name cannot exceed 255 characters.</div>
       </div>
 
     </div>
     <div class="relative pb-10 long-label">
-      <input type="text" formControlName="fileNum" name="fileNum" placeholder=" "
+      <input type="text" formControlName="fileNumber" name="fileNumber" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray bg-navGray focus:outline-none" />
-      <label for="fileNum"
+      <label for="fileNumber"
           class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">File Number</label>
     </div>
 
     <div class="relative pb-10 f-outline">
-      <select name="sectionCode" formControlName="sectionCode" value="" [ngClass]="{'error-border': submitted && f.sectionCode.errors }"
+      <select name="sectionCodeId" formControlName="sectionCodeId" value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none long-dd w-306 h-13 border-cwBadgeGray focus:outline-none">
       <option value=""></option>
       <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
       </select>
-      <label for="sectionCode" [ngClass]="{'error-label': submitted && f.sectionCode.errors }" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Section Code</label>
-      <div *ngIf="submitted && f.sectionCode.errors">
-        <div *ngIf="f.sectionCode.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Section code is required.</div>
+      <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Section Code</label>
+      <div *ngIf="submitted && f.sectionCodeId.errors">
+        <div *ngIf="f.sectionCodeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Section code is required.</div>
       </div>
     </div>
     <div class="relative pb-10 f-outline">
@@ -41,6 +41,57 @@
           class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Rep Code</label>
     </div>
 
+    <div class="relative pb-10">
+      <select (change)="onChange($event)" name="listTypeId" formControlName="listTypeId" value="" [ngClass]="{'error-border': submitted && f.listTypeId.errors }"
+      onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
+      <option value=""></option>
+      <option *ngFor="let l of listingTypesFromService" [value]="l.id">{{l.value}}</option>
+      </select>
+      <label for="listTypeId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.listTypeId.errors }">Listing Type</label>
+      <div *ngIf="submitted && f.listTypeId.errors">
+        <div *ngIf="f.listTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing type is required.</div>
+      </div>
+    </div>
+    <div class="relative pb-10">
+      <select name="parkTypeId" formControlName="parkTypeId" value="" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
+      onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none short-dd w-306 h-13 border-cwBadgeGray">
+      <option value=""></option>
+      <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
+      </select>
+      <label for="parkTypeId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
+      <div *ngIf="submitted && f.parkTypeId.errors">
+        <div *ngIf="f.parkTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park type is required.</div>
+      </div>
+    </div>
+    <div *ngIf="isDuplicateSelected" class="flex flex-row col-span-2 space-x-3">
+      <div class="relative pb-10 duplicate-label">
+        <input type="text" formControlName="duplicateListingText" name="duplicateListingText" placeholder=" " [ngClass]="{'error-border': submitted && f.duplicateListingText.errors }"
+            class="block px-3 bg-transparent border rounded appearance-none w-474 h-13 border-cwBadgeGray focus:outline-none" />
+        <label for="duplicateListingText"
+            class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.duplicateListingText.errors }">Duplicate Listing Text</label>
+      
+        <div *ngIf="submitted && f.duplicateListingText.errors">
+          <div *ngIf="f.duplicateListingText.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>
+        </div>
+        <div *ngIf="submitted && f.duplicateListingText.errors">
+          <div *ngIf="f.duplicateListingText.errors.maxlength" class="pl-3 font-cw text-cwRed text-11px20px">Duplicate Listing Text cannot exceed 255 characters.</div>
+        </div>
+      </div>
+      <div class="relative pb-10 primaryFileNum-label">
+        <input type="text" formControlName="primaryFileNumber" name="primaryFileNumber" placeholder=" " [ngClass]="{'error-border': submitted && f.primaryFileNumber.errors }"
+            class="block px-3 bg-transparent border rounded appearance-none w-138 h-13 border-cwBadgeGray focus:outline-none" />
+        <label for="primaryFileNumber"
+            class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.primaryFileNumber.errors }">Primary File #</label>
+      
+        <div *ngIf="submitted && f.primaryFileNumber.errors">
+          <div *ngIf="f.primaryFileNumber.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Primary File Number is required.</div>
+        </div>
+        <div *ngIf="submitted && f.primaryFileNumber.errors">
+          <div *ngIf="f.primaryFileNumber.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Primary File Number must be an integer</div>
+        </div>
+      </div>
+    </div>
+    
     <div class="relative pb-10 f-outline">
         <input type="text" formControlName="listCity" name="listCity" placeholder=" " [ngClass]="{'error-border': submitted && f.listCity.errors }"
             class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
@@ -54,49 +105,50 @@
         </div>
     </div>
     <div class="relative pb-10">
-        <select name="listState" formControlName="listState" value="" [ngClass]="{'error-border': submitted && f.listState.errors }"
+        <select name="listStateId" formControlName="listStateId" value="" [ngClass]="{'error-border': submitted && f.listStateId.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none longer-dd w-306 h-13 border-cwBadgeGray">
         <option value=""></option>
         <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
         </select>
-        <label for="listState" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.listState.errors }">List State/Province</label>
-        <div *ngIf="submitted && f.listState.errors">
-          <div *ngIf="f.listState.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">List state/province is required.</div>
+        <label for="listStateId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.listStateId.errors }">List State/Province</label>
+        <div *ngIf="submitted && f.listStateId.errors">
+          <div *ngIf="f.listStateId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">List state/province is required.</div>
         </div>
       </div>
-      <div class="relative pb-10">
-        <select name="territory" formControlName="territory" value="" [ngClass]="{'error-border': submitted && f.territory.errors }"
+
+      <div class="relative col-span-2 pb-10">
+        <select name="territoryId" formControlName="territoryId" value="" [ngClass]="{'error-border': submitted && f.territoryId.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none territory w-306 h-13 border-cwBadgeGray">
           <option value=""></option>
           <option *ngFor="let t of territoriesFromService" [ngValue]="t.id">{{t.description}}</option>
         </select>
-        <label for="territory" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.territory.errors }">Territory</label>
-        <div *ngIf="submitted && f.territory.errors">
-          <div *ngIf="f.territory.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">territory is required.</div>
+        <label for="territoryId" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.territoryId.errors }">Territory</label>
+        <div *ngIf="submitted && f.territoryId.errors">
+          <div *ngIf="f.territoryId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">territory is required.</div>
         </div>
       </div>
-      <div class="relative pb-10">
-        <select name="listType" formControlName="listType" value="" [ngClass]="{'error-border': submitted && f.listType.errors }"
-        onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
-        <option value=""></option>
-        <option *ngFor="let l of listingTypesFromService" [ngValue]="l.id">{{l.value}}</option>
-        </select>
-        <label for="listType" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.listType.errors }">Listing Type</label>
-        <div *ngIf="submitted && f.listType.errors">
-          <div *ngIf="f.listType.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing type is required.</div>
+
+      <div *ngIf="isDeleteChecked" class="flex col-span-2">
+        <div class="w-3/4 pb-11">
+            <p class="font-cw">Overnighter must sit through sales presentation?</p>
         </div>
-      </div>
-      <div class="relative col-span-2 pb-10">
-        <select name="parkType" formControlName="parkType" value="" [ngClass]="{'error-border': submitted && f.parkType.errors }"
-        onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none short-dd w-306 h-13 border-cwBadgeGray">
-        <option value=""></option>
-        <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
-        </select>
-        <label for="parkType" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.parkType.errors }">Park Type</label>
-        <div *ngIf="submitted && f.parkType.errors">
-          <div *ngIf="f.parkType.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park type is required.</div>
+
+        <div *ngIf="isDeleteChecked" class="flex items-center justify-end w-1/4 pr-2 mb-11">
+            <p *ngIf="!isSalesPresentationChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="isSalesPresentationChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="salesPresentationRequired" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input  type="checkbox" formControlName="salesPresentationRequired" (click)="checkBoxSalesPresentationChange(this);" id="salesPresentationRequired" class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                </div>
+            </label>
         </div>
-      </div>
+    </div>
 
       <div class="pb-10">
           <p class="font-cw">No overnight guests</p>
@@ -105,11 +157,11 @@
       <div class="flex items-center justify-end w-full pr-2 mb-12">
         <p *ngIf="!isGuestsChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
         <p *ngIf="isGuestsChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-        <label for="toggleGuests" class="flex items-center cursor-pointer">
+        <label for="noOvernightGuests" class="flex items-center cursor-pointer">
           <!-- toggle -->
           <div class="relative">
             <!-- input -->
-            <input type="checkbox" formControlName="toggleGuests" (click)="checkBoxGuestsChange(this);" id="toggleGuests" class="sr-only">
+            <input type="checkbox" formControlName="noOvernightGuests" (click)="checkBoxGuestsChange(this);" id="noOvernightGuests" class="sr-only">
             <!-- line -->
             <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
             <!-- dot -->
@@ -125,11 +177,11 @@
       <div class="flex items-center justify-end w-full pr-2 mb-12">
         <p *ngIf="!isDeleteChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
         <p *ngIf="isDeleteChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-          <label for="toggleDelete" class="flex items-center cursor-pointer">
+          <label for="deleteListing" class="flex items-center cursor-pointer">
             <!-- toggle -->
             <div class="relative">
               <!-- input -->
-              <input type="checkbox" formControlName="toggleDelete" (click)="checkBoxDeleteChange(this);" id="toggleDelete" class="sr-only">
+              <input type="checkbox" formControlName="deleteListing" (click)="checkBoxDeleteChange(this);" id="deleteListing" class="sr-only">
               <!-- line -->
               <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
               <!-- dot -->
@@ -137,6 +189,17 @@
             </div>
           </label>
         </div>
+
+        <div *ngIf="isDeleteChecked" class="relative pb-10 reasonForDelete-label">
+          <input type="text" formControlName="reasonForDelete" name="reasonForDelete" placeholder=" " [ngClass]="{'error-border': submitted && isDeleteChecked && f.reasonForDelete.errors }"
+              class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
+          <label for="reasonForDelete"
+              class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && isDeleteChecked && f.reasonForDelete.errors }">Reason to delete this listing</label>
+      
+          <div *ngIf="submitted && isDeleteChecked && f.reasonForDelete.errors">
+              <div *ngIf="f.reasonForDelete.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please input a reason.</div>
+          </div>
+      </div>
 
       <div class="flex flex-row col-span-2 pb-10">
           <div class="">

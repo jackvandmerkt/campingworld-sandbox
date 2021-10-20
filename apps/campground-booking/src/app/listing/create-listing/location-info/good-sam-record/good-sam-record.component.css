@@ -25,6 +25,21 @@ input:checked ~ .block {
     transform: translateY(-1rem) translatex(-.65rem) scaleX(0.75) scaleY(0.75);
 }
 
+.primaryFileNum-label input:focus-within ~ label,
+.primaryFileNum-label input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-.75rem) scaleX(0.75) scaleY(0.75);
+}
+
+.duplicate-label input:focus-within ~ label,
+.duplicate-label input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-1.25rem) scaleX(0.75) scaleY(0.75);
+}
+
+.reasonForDelete-label input:focus-within ~ label,
+.reasonForDelete-label input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1rem) translatex(-1.65rem) scaleX(0.75) scaleY(0.75);
+}
+
 /*Dropdown Select Fields Floating Form Label*/
 select:focus ~ label,
 select:not([value='']):valid ~ label {
