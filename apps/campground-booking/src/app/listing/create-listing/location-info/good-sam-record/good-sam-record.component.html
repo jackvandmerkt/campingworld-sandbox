@@ -7,7 +7,7 @@
       <input type="text" formControlName="locationListingName" name="locationListingName" placeholder=" " [ngClass]="{'error-border': submitted && f.locationListingName.errors }"
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
       <label for="locationListingName"
-          class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.locationListingName.errors }">Park name</label>
+          class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px-26px text-formBlack" [ngClass]="{'error-label': submitted && f.locationListingName.errors }">Park name</label>
       <div *ngIf="submitted && f.locationListingName.errors">
         <div *ngIf="f.locationListingName.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>
       </div>
@@ -20,7 +20,7 @@
       <input type="text" formControlName="fileNumber" name="fileNumber" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-navGray bg-navGray focus:outline-none" />
       <label for="fileNumber"
-          class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-lato text-formBlack">File Number</label>
+          class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-cw text-16px26px text-formBlack">File Number</label>
     </div>
 
     <div class="relative z-0 pb-10">
@@ -29,7 +29,7 @@
       <option value=""></option>
       <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
       </select>
-      <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack">Section Code</label>
+      <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Section Code</label>
       <div *ngIf="submitted && f.sectionCodeId.errors">
         <div *ngIf="f.sectionCodeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Section code is required.</div>
       </div>
@@ -38,7 +38,7 @@
       <input type="text" formControlName="repCode" name="repCode" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-navGray bg-navGray focus:outline-none" />
       <label for="repCode"
-          class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-lato text-formBlack">Rep Code</label>
+          class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-cw text-16px26px text-formBlack">Rep Code</label>
     </div>
 
     <div class="relative z-0 pb-10">
@@ -47,7 +47,7 @@
       <option value=""></option>
       <option *ngFor="let l of listingTypesFromService" [value]="l.id">{{l.value}}</option>
       </select>
-      <label for="listTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.listTypeId.errors }">Listing Type</label>
+      <label for="listTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listTypeId.errors }">Listing Type</label>
       <div *ngIf="submitted && f.listTypeId.errors">
         <div *ngIf="f.listTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing type is required.</div>
       </div>
@@ -58,7 +58,7 @@
       <option value=""></option>
       <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
       </select>
-      <label for="parkTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
+      <label for="parkTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
       <div *ngIf="submitted && f.parkTypeId.errors">
         <div *ngIf="f.parkTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park type is required.</div>
       </div>
@@ -68,7 +68,7 @@
         <input type="text" formControlName="duplicateListingText" name="duplicateListingText" placeholder=" " [ngClass]="{'error-border': submitted && f.duplicateListingText.errors }"
             class="block px-3 bg-transparent border rounded appearance-none w-474 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="duplicateListingText"
-            class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.duplicateListingText.errors }">Duplicate Listing Text</label>
+            class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.duplicateListingText.errors }">Duplicate Listing Text</label>
       
         <div *ngIf="submitted && f.duplicateListingText.errors">
           <div *ngIf="f.duplicateListingText.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park name is required.</div>
@@ -81,7 +81,7 @@
         <input type="text" formControlName="primaryFileNumber" name="primaryFileNumber" placeholder=" " [ngClass]="{'error-border': submitted && f.primaryFileNumber.errors }"
             class="block px-3 bg-transparent border rounded appearance-none w-138 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="primaryFileNumber"
-            class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.primaryFileNumber.errors }">Primary File #</label>
+            class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.primaryFileNumber.errors }">Primary File #</label>
       
         <div *ngIf="submitted && f.primaryFileNumber.errors">
           <div *ngIf="f.primaryFileNumber.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Primary File Number is required.</div>
@@ -96,7 +96,7 @@
         <input type="text" formControlName="listCity" name="listCity" placeholder=" " [ngClass]="{'error-border': submitted && f.listCity.errors }"
             class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="listCity"
-            class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.listCity.errors }">List City</label>
+            class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listCity.errors }">List City</label>
         <div *ngIf="submitted && f.listCity.errors">
           <div *ngIf="f.listCity.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing city is required.</div>
         </div>
@@ -110,7 +110,7 @@
         <option value=""></option>
         <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
         </select>
-        <label for="listStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.listStateId.errors }">List State/Province</label>
+        <label for="listStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listStateId.errors }">List State/Province</label>
         <div *ngIf="submitted && f.listStateId.errors">
           <div *ngIf="f.listStateId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">List state/province is required.</div>
         </div>
@@ -122,7 +122,7 @@
           <option value=""></option>
           <option *ngFor="let t of territoriesFromService" [ngValue]="t.id">{{t.description}}</option>
         </select>
-        <label for="territoryId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && f.territoryId.errors }">Territory</label>
+        <label for="territoryId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.territoryId.errors }">Territory</label>
         <div *ngIf="submitted && f.territoryId.errors">
           <div *ngIf="f.territoryId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">territory is required.</div>
         </div>
@@ -194,7 +194,7 @@
           <input type="text" formControlName="reasonForDelete" name="reasonForDelete" placeholder=" " [ngClass]="{'error-border': submitted && isDeleteChecked && f.reasonForDelete.errors }"
               class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
           <label for="reasonForDelete"
-              class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-lato text-formBlack" [ngClass]="{'error-label': submitted && isDeleteChecked && f.reasonForDelete.errors }">Reason to delete this listing</label>
+              class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && isDeleteChecked && f.reasonForDelete.errors }">Reason to delete this listing</label>
       
           <div *ngIf="submitted && isDeleteChecked && f.reasonForDelete.errors">
               <div *ngIf="f.reasonForDelete.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please input a reason.</div>
