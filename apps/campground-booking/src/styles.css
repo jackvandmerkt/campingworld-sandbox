@@ -1,5 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@keyframes ldio-ohyoqffs56 {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-box {
+  width: 200px;
+  height: 300px;
+  margin-top: 100px;
+}
+
+.ldio-ohyoqffs56 div {
+  box-sizing: border-box !important;
+}
+.ldio-ohyoqffs56 > div {
+  position: absolute;
+  width: 144px;
+  height: 144px;
+  top: 28px;
+  left: 28px;
+  border-radius: 50%;
+  border: 16px solid #000;
+  border-color: #c30b24 transparent #c30b24 transparent;
+  animation: ldio-ohyoqffs56 1s linear infinite;
+}
+.ldio-ohyoqffs56 > div:nth-child(2) {
+  border-color: transparent;
+}
+.ldio-ohyoqffs56 > div:nth-child(2) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-ohyoqffs56 > div:nth-child(2) div:before,
+.ldio-ohyoqffs56 > div:nth-child(2) div:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: -16px;
+  left: 48px;
+  background: #c30b24;
+  border-radius: 50%;
+  box-shadow: 0 128px 0 0 #c30b24;
+}
+.ldio-ohyoqffs56 > div:nth-child(2) div:after {
+  left: -16px;
+  top: 48px;
+  box-shadow: 128px 0 0 0 #c30b24;
+}
+
+.loadingio-spinner-dual-ring-gu89oggct8j {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.ldio-ohyoqffs56 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-ohyoqffs56 div {
+  box-sizing: content-box;
+}

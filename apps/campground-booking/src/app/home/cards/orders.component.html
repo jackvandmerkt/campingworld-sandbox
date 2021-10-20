@@ -1,22 +1,27 @@
-<div class="w-auto h-full border rounded rounded-t-none shadow-cw ">
+<div *ngIf="loaded" class="w-auto h-full border rounded rounded-t-none shadow-cw ">
   <div class="flex flex-col">
     <div class="flex justify-center px-3">
       <p class="pt-7.5 text-28px34px font-bold  font-cw text-cwGray">Orders</p>
     </div>
-    <div class="flex justify-center">
-      <p class="pb-6 text-20px26px text-cwGray font-cw">{{ordersCounts?.total}}</p>
-    </div>
-    <div class="flex flex-row">
-      <orders-contracts class="border-r-2 w-orders-contract" [ordersContracts]="ordersCounts?.contractStatuses"></orders-contracts>
-      <orders-products-details class="w-orders-product" [ordersProducts]="ordersCounts?.productStatuses"></orders-products-details>
-
-    </div>
-    <div class="flex flex-row-reverse px-7.5 pb-2.5">
-      <p class="pl-10 font-semibold text-cwGray font-cw text-14px24px">Last Book Year</p>
-      <p class="font-semibold text-cwGray font-cw text-14px24px">Current Book Year</p>
-    </div>
-    <div class="flex justify-center">
-      <p class="pt-2.5 text-xs font-light text-cwLightGray font-cw pb-2">Includes house accounts.</p>
+    <div>
+      <div class="flex justify-center">
+        <p class="pb-6 text-20px26px text-cwGray font-cw">{{ordersCounts?.total}}</p>
+      </div>
+      <div>
+        <div class="flex flex-row">
+          <orders-contracts class="border-r-2 w-orders-contract" [ordersContracts]="ordersCounts?.contractStatuses">
+          </orders-contracts>
+          <orders-products-details class="w-orders-product" [ordersProducts]="ordersCounts?.productStatuses">
+          </orders-products-details>
+        </div>
+        <div class="flex flex-row-reverse px-7.5 pb-2.5">
+          <p class="pl-10 font-semibold text-cwGray font-cw text-14px24px">Last Book Year</p>
+          <p class="font-semibold text-cwGray font-cw text-14px24px">Current Book Year</p>
+        </div>
+        <div class="flex justify-center">
+          <p class="pt-2.5 text-xs font-light text-cwLightGray font-cw pb-2">Includes house accounts.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
