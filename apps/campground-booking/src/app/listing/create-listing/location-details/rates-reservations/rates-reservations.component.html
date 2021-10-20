@@ -15,7 +15,7 @@
                 <input type="text" formControlName="overnightRatesFrom" name="overnightRatesFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.overnightRatesFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="overnightRatesFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.overnightRatesFrom.errors }">From</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.overnightRatesFrom.errors }">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             
                 <div *ngIf="submitted && f.overnightRatesFrom.errors">
@@ -29,7 +29,7 @@
                 <input type="text" formControlName="overnightRatesTo" name="overnightRatesTo" placeholder=" " [ngClass]="{'error-border': submitted && f.overnightRatesTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="overnightRatesTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.overnightRatesTo.errors }">To</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.overnightRatesTo.errors }">To</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             
                 <div *ngIf="submitted && f.overnightRatesTo.errors">
@@ -51,7 +51,7 @@
                 <input type="text" formControlName="tentRatesFrom" name="tentRatesFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.tentRatesFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentRatesFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentRatesFrom.errors }">From</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentRatesFrom.errors }">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
            
                 <div *ngIf="submitted && f.tentRatesFrom.errors">
@@ -65,7 +65,7 @@
                 <input type="text" formControlName="tentRatesTo" name="tentRatesTo" placeholder=" " [ngClass]="{'error-border': submitted && f.tentRatesTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tentRatesTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentRatesTo.errors }">To</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tentRatesTo.errors }">To</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             
                 <div *ngIf="submitted && f.tentRatesTo.errors">
@@ -86,7 +86,7 @@
                 <input type="text" formControlName="seasonalRatesFrom" name="seasonalRatesFrom" placeholder=" " [ngClass]="{'error-border': submitted && f.seasonalRatesFrom.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="seasonalRatesFrom"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.seasonalRatesFrom.errors }">From</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.seasonalRatesFrom.errors }">From</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             
                 <div *ngIf="submitted && f.seasonalRatesFrom.errors">
@@ -100,7 +100,7 @@
                 <input type="text" formControlName="seasonalRatesTo" name="seasonalRatesTo" placeholder=" " [ngClass]="{'error-border': submitted && f.seasonalRatesTo.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="seasonalRatesTo"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.seasonalRatesTo.errors }">To</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.seasonalRatesTo.errors }">To</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In dollars</p>
             
                 <div *ngIf="submitted && f.seasonalRatesTo.errors">
@@ -117,7 +117,7 @@
             <option value=""></option>
             <option *ngFor="let b of byWeekMonthFromService" [ngValue]="b.id">{{b.value}}</option>
             </select>
-            <label for="byWeekMonth" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.byWeekMonth.errors }">By week/month</label>
+            <label for="byWeekMonth" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.byWeekMonth.errors }">By week/month</label>
         
             <div *ngIf="submitted && f.byWeekMonth.errors">
                 <div *ngIf="f.byWeekMonth.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
@@ -253,7 +253,7 @@
             <option value=""></option>
             <option *ngFor="let o of onlineReservationSystemsFromService" [value]="o.id">{{o.value}}</option>
             </select>
-            <label for="onlineReservationSystem" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && onlineReservation && f.onlineReservationSystem.errors }">Online Reservation System</label>
+            <label for="onlineReservationSystem" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && onlineReservation && f.onlineReservationSystem.errors }">Online Reservation System</label>
         
             <div *ngIf="submitted && onlineReservation && f.onlineReservationSystem.errors">
                 <div *ngIf="f.onlineReservationSystem.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
@@ -264,7 +264,7 @@
             <input type="text" formControlName="onlineReservationSystemOther" name="onlineReservationSystemOther" placeholder=" " [ngClass]="{'error-border': submitted && onlineReservationOther && f.onlineReservationSystemOther.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="onlineReservationSystemOther"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && onlineReservationOther && f.onlineReservationSystemOther.errors }">Other online reservation system</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && onlineReservationOther && f.onlineReservationSystemOther.errors }">Other online reservation system</label>
         
             <div *ngIf="submitted && onlineReservationOther && f.onlineReservationSystemOther.errors">
                 <div *ngIf="f.onlineReservationSystemOther.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>

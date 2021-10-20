@@ -8,7 +8,7 @@
             <input type="text" formGroupName="personInterviewed" name="personInterviewed" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="personInterviewed"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Person Interviewed for this listing info</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Person Interviewed for this listing info</label>
         </div>
 
         <div class="pb-11">
@@ -40,7 +40,7 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="wiFiConectivity" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Capture's Wi-Fi connectivity at this location</label>
+            <label for="wiFiConectivity" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Capture's Wi-Fi connectivity at this location</label>
         </div>
 
         <div *ngIf="!phoneInterview" class="relative col-span-2 pb-10 f-outline">
@@ -52,7 +52,7 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="cellularConectivity" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Capture's cellular connectivity at this location</label>
+            <label for="cellularConectivity" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Capture's cellular connectivity at this location</label>
         </div>
 
         <div *ngIf="!phoneInterview" class="relative col-span-2 pb-10 f-outline">
@@ -64,14 +64,14 @@
             <option value="4">Option 4</option>
             <option value="5">Option 5</option>
             </select>
-            <label for="cellService" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Cell service provider</label>
+            <label for="cellService" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Cell service provider</label>
         </div>
 
         <div class="relative col-span-2 pb-10">
             <input type="text"  name="calendar" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="calendar"
-                class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Date of inspection / interview</label>
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Date of inspection / interview</label>
         </div>
 
         <div class="flex flex-row col-span-2 pb-10">

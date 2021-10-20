@@ -13,7 +13,7 @@
             <option value=""></option>
             <option *ngFor="let n of nonRatedCodesFromService" [ngValue]="n.id">{{n.value}}</option>
             </select>
-            <label for="lyNonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyNonRatedCode.errors }">Non-rated code</label>
+            <label for="lyNonRatedCode" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyNonRatedCode.errors }">Non-rated code</label>
         
             <div *ngIf="submitted && f.lyNonRatedCode.errors">
                 <div *ngIf="f.lyNonRatedCode.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
@@ -25,7 +25,7 @@
                 <input type="text" formControlName="lyFacilitiesTotal" name="lyFacilitiesTotal" placeholder=" " [ngClass]="{'error-border': submitted && f.lyFacilitiesTotal.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lyFacilitiesTotal"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyFacilitiesTotal.errors }">Facilities total</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyFacilitiesTotal.errors }">Facilities total</label>
             
                 <div *ngIf="submitted && f.lyFacilitiesTotal.errors">
                     <div *ngIf="f.lyFacilitiesTotal.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -38,7 +38,7 @@
                 <input type="text" formControlName="lyRestroomsTotal" name="lyRestroomsTotal" placeholder=" " [ngClass]="{'error-border': submitted && f.lyRestroomsTotal.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lyRestroomsTotal"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyRestroomsTotal.errors }">Restrooms total</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyRestroomsTotal.errors }">Restrooms total</label>
             
                 <div *ngIf="submitted && f.lyRestroomsTotal.errors">
                     <div *ngIf="f.lyRestroomsTotal.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -51,7 +51,7 @@
                 <input type="text" formControlName="lyVisualTotal" name="lyVisualTotal" placeholder=" " [ngClass]="{'error-border': submitted && f.lyVisualTotal.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="lyVisualTotal"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyVisualTotal.errors }">Visual total</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyVisualTotal.errors }">Visual total</label>
             
                 <div *ngIf="submitted && f.lyVisualTotal.errors">
                     <div *ngIf="f.lyVisualTotal.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -65,7 +65,7 @@
         <div class="relative col-span-2 pb-10 explanation">
             <textarea type="text" formControlName="lyRatingChange" name="lyRatingChange" placeholder=" " [ngClass]="{'error-border': submitted && f.lyRatingChange.errors }"
               class="block h-24 rounded appearance-none border-cwBadgeGray w-636 focus:outline-none"></textarea>
-            <label for="lyRatingChange" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyRatingChange.errors }">
+            <label for="lyRatingChange" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.lyRatingChange.errors }">
                 Explanation of rating change
             </label>
 
@@ -83,7 +83,7 @@
             <option value=""></option>
             <option *ngFor="let n of nonRatedCodesFromService" [ngValue]="n.id">{{n.value}}</option>
             </select>
-            <label for="tyNonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyNonRatedCode.errors }">Non-rated code</label>
+            <label for="tyNonRatedCode" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyNonRatedCode.errors }">Non-rated code</label>
         
             <div *ngIf="submitted && f.tyNonRatedCode.errors">
                 <div *ngIf="f.tyNonRatedCode.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
@@ -95,7 +95,7 @@
                 <input type="text" formControlName="tyFacilitiesTotal" name="tyFacilitiesTotal" placeholder=" " [ngClass]="{'error-border': submitted && f.tyFacilitiesTotal.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyFacilitiesTotal"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyFacilitiesTotal.errors }">Facilities total</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyFacilitiesTotal.errors }">Facilities total</label>
             
                 <div *ngIf="submitted && f.tyFacilitiesTotal.errors">
                     <div *ngIf="f.tyFacilitiesTotal.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -108,7 +108,7 @@
                 <input type="text" formControlName="tyRestroomsTotal" name="tyRestroomsTotal" placeholder=" " [ngClass]="{'error-border': submitted && f.tyRestroomsTotal.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyRestroomsTotal"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyRestroomsTotal.errors }">Restrooms total</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyRestroomsTotal.errors }">Restrooms total</label>
             
                 <div *ngIf="submitted && f.tyRestroomsTotal.errors">
                     <div *ngIf="f.tyRestroomsTotal.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -121,7 +121,7 @@
                 <input type="text" formControlName="tyVisualTotal" name="tyVisualTotal" placeholder=" " [ngClass]="{'error-border': submitted && f.tyVisualTotal.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="tyVisualTotal"
-                    class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyVisualTotal.errors }">Visual total</label>
+                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyVisualTotal.errors }">Visual total</label>
             
                 <div *ngIf="submitted && f.tyVisualTotal.errors">
                     <div *ngIf="f.tyVisualTotal.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
@@ -135,7 +135,7 @@
         <div class="relative col-span-2 pb-10 explanation">
             <textarea type="text" formControlName="tyRatingChange" name="tyRatingChange" placeholder=" " [ngClass]="{'error-border': submitted && f.tyRatingChange.errors }"
               class="block h-24 rounded appearance-none border-cwBadgeGray w-636 focus:outline-none"></textarea>
-            <label for="tyRatingChange" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyRatingChange.errors }">
+            <label for="tyRatingChange" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.tyRatingChange.errors }">
                 Explanation of rating change
             </label>
 

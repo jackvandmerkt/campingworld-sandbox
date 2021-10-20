@@ -31,7 +31,7 @@
             <option value=""></option>
             <option *ngFor="let n of nonRatedCodesFromService" [ngValue]="n.id">{{n.value}}</option>
             </select>
-            <label for="nonRatedCode" class="absolute pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && !canParkBeRated && f.nonRatedCode.errors }">Non-rated code</label>
+            <label for="nonRatedCode" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && !canParkBeRated && f.nonRatedCode.errors }">Non-rated code</label>
         
             <div *ngIf="submitted && !canParkBeRated && f.nonRatedCode.errors">
                 <div *ngIf="f.nonRatedCode.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an option.</div>
