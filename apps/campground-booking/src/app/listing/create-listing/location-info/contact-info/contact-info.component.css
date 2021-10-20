@@ -6,6 +6,7 @@ input:checked ~ .dot {
 
 input:checked ~ .block {
   background-color: #C30B24;
+  opacity: 50%;
 }
 
 .error-border {
