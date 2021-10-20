@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
-import { ListingNavService } from "apps/campground-booking/src/app/shared/listing-nav.service";
+import { ListingNavService } from "../../../../shared/listing-nav.service";
 
 @Component({
     selector: 'good-sam-record',
@@ -42,7 +42,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         for(let [key, value] of Object.entries(this.newListingObj)) {
             if(key === 'fileNumber') {
                 this.fileNum = value;
-                this.goodSamRecordForm.patchValue({fileNum: this.fileNum})
+                this.goodSamRecordForm.patchValue({fileNumber: this.fileNum})
             } 
         }
 
