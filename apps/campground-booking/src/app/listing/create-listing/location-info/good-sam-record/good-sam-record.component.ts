@@ -28,6 +28,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     newListingObj: any = {};
     fileNum:any = 0;
     repCode:number = 0;
+    parkName:any;
 
     // @Output() formStatus = new EventEmitter<any>();
 
@@ -43,7 +44,11 @@ export class GoodSamRecordFormComponent implements OnInit{
             if(key === 'fileNumber') {
                 this.fileNum = value;
                 this.goodSamRecordForm.patchValue({fileNumber: this.fileNum})
-            } 
+            }
+            if(key === 'locationListingName') {
+                this.parkName = value;
+                this.goodSamRecordForm.patchValue({locationListingName: this.parkName})
+            }
         }
 
         // this.store.select('listing-info').subscribe(
