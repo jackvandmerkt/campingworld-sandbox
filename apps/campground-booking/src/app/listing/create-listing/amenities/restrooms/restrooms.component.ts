@@ -72,7 +72,7 @@ export class RestroomsComponent implements OnInit {
 
     onChange(event:any): void {
         const newVal = event.target.value;
-        if(newVal === "restroomsAndShowers") {
+        if(newVal == "3") {
             // setting boolean variables used in template
             this.restroomsAndShowers = true;
             this.restrooms = false;
@@ -94,7 +94,7 @@ export class RestroomsComponent implements OnInit {
             this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
         }
-        else if(newVal === "restrooms") {
+        else if(newVal == "2") {
             // setting boolean variables used in template
             this.restroomsAndShowers = false;
             this.restrooms = true;
@@ -118,7 +118,7 @@ export class RestroomsComponent implements OnInit {
             this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
         }
-        else if(newVal === "showers") {
+        else if(newVal == "1") {
             // setting boolean variables used in template
             this.restroomsAndShowers = false;
             this.restrooms = false;
@@ -142,7 +142,7 @@ export class RestroomsComponent implements OnInit {
             this.restroomForm.get('numShowersWomen')?.updateValueAndValidity();
             this.restroomForm.get('numShowersUni')?.updateValueAndValidity();
         }
-        else if(newVal === "") {
+        else if(newVal == "" || newVal == "4") {
             // setting boolean variables used in template
             this.restroomsAndShowers = false;
             this.restrooms = false;

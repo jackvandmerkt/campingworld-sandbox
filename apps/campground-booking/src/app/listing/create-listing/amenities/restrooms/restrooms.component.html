@@ -32,7 +32,7 @@
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
         <option value=""></option>
-        <option *ngFor="let r of restroomsShowersFromService" [ngValue]="r.id">{{r.value}}</option>
+        <option *ngFor="let r of restroomsShowersFromService" [value]="r.id">{{r.value}}</option>
       </select>
       <label for="restroomsShowersSelect" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
         [ngClass]="{'error-label': submitted && f.restroomsShowersSelect.errors }">Restrooms/showers</label>
