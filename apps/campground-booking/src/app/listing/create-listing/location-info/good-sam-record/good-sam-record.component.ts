@@ -28,6 +28,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     newListingObj: any = {};
     fileNum:any = 0;
     repCode:number = 0;
+    parkName:any;
 
     // @Output() formStatus = new EventEmitter<any>();
 
@@ -43,7 +44,11 @@ export class GoodSamRecordFormComponent implements OnInit{
             if(key === 'fileNumber') {
                 this.fileNum = value;
                 this.goodSamRecordForm.patchValue({fileNumber: this.fileNum})
-            } 
+            }
+            if(key === 'locationListingName') {
+                this.parkName = value;
+                this.goodSamRecordForm.patchValue({locationListingName: this.parkName})
+            }
         }
 
         // this.store.select('listing-info').subscribe(
@@ -116,6 +121,7 @@ export class GoodSamRecordFormComponent implements OnInit{
             this.sendFormStatus(['goodSamRecordFormStatus', 2]);
         } else {
             console.log('not valid');
+            this.sendFormStatus(['goodSamRecordFormStatus', 1]);
             return;
         }
     }
@@ -129,6 +135,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         this.isGuestsChecked = false;
         this.isDeleteChecked = false;
         this.isSalesPresentationChecked = false;
+        this.sendFormStatus(['goodSamRecordFormStatus', 0]);
     }
 
     checkBoxSalesPresentationChange(cb:any) {

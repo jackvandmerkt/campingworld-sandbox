@@ -40,6 +40,10 @@ export class ListingService {
       return this.http.get<INonRatedCodes[]>('/api/v1/refs/non-rated-codes')
         .pipe(catchError(this.handleError<INonRatedCodes[]>('getNonRatedCodes', )))
     }
+    getCountries():Observable<ICountries[]> {
+      return this.http.get<ICountries[]>('/api/v1/refs/countries')
+        .pipe(catchError(this.handleError<ICountries[]>('getCountries', )))
+    }
 
     // Discounts and Affiliations Form
     getAffiliations():Observable<IAffiliations[]> {
@@ -54,10 +58,6 @@ export class ListingService {
     }
 
     // Ownership & B2B Info Form
-    getCountries():Observable<ICountries[]> {
-      return this.http.get<ICountries[]>('/api/v1/refs/countries')
-        .pipe(catchError(this.handleError<ICountries[]>('getCountries', )))
-    }
     getUniqueAccounts():Observable<IUniqueAccounts[]> {
       return this.http.get<IUniqueAccounts[]>('/api/v1/refs/unique-accounts')
         .pipe(catchError(this.handleError<IUniqueAccounts[]>('getUniqueAccounts', )))

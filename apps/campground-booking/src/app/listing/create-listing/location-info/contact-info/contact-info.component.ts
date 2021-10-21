@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from "@angular/forms";
+import { ICountries, IListStates } from 'apps/campground-booking/src/app/shared/listing-counts.model';
+import { ListingService } from 'apps/campground-booking/src/app/shared/listing.service';
 
 @Component({
   selector: 'contact-info',
@@ -7,17 +9,15 @@ import { FormBuilder, Validators, FormControl } from "@angular/forms";
   styleUrls: ['./contact-info.component.css']
 })
 export class ContactInfoComponent implements OnInit {
-
+  listStatesFromService!: IListStates[];
+  countriesFromService!: ICountries[];
   isSameAsMailingAddress = true;
   isUTMChecked = false;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
   }
-
-
-
 
   contactInfoForm = this.formBuilder.group({
     address: ['', [Validators.required]],
@@ -47,7 +47,12 @@ export class ContactInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSameAsMailingAddress = false
-    console.log(this.contactInfoForm.value)
+    this.ls.getListStates().subscribe(response => {
+      this.listStatesFromService = response;
+    });
+    this.ls.getCountries().subscribe(response => {
+      this.countriesFromService = response;
+    });
   }
 
   checkBoxUTMChange(cb: any) {
