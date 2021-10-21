@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   territories: any = []
   selectedTerritory = 'All';
+  loadingOrders = true
+  loadingListings = true
 
   constructor(private ls: ListingService, private router: Router) {
 
@@ -33,6 +35,11 @@ export class HomeComponent implements OnInit {
     } else {
       this.selectedTerritory = newVal;
     }
+  }
+
+  stopLoading() {
+    this.loadingOrders = false
+    this.loadingListings = false
   }
 
 }
