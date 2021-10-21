@@ -12,7 +12,9 @@ import { ListingService } from "../../../shared/listing.service";
 
 export class RatingsComponent implements OnInit{
     submitted: boolean = false;
-    nonRatedCodesFromService!: INonRatedCodes[];
+    allRefsTmp:any;
+    allRefsObj: any = {};
+    nonRatedCodesFromService: any = {};
     canParkBeRated: boolean = false;
     unHideFacilities: boolean = false;
     unHideRestrooms: boolean = false;
@@ -70,9 +72,7 @@ export class RatingsComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.ls.getNonRatedCodes().subscribe(response => {
-            this.nonRatedCodesFromService = response;
-        });
+        this.getFormDropDownData();
     }
 
     ratingsForm = this.formBuilder.group({
@@ -154,7 +154,16 @@ export class RatingsComponent implements OnInit{
         });
     }
 
-
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'nonRatedCodes') {
+                this.nonRatedCodesFromService = value;
+            }
+        }
+    }
     checkBoxCanParkBeRatedChange(cb:any) {
         this.canParkBeRated = !this.canParkBeRated;
         if (this.canParkBeRated === true) {

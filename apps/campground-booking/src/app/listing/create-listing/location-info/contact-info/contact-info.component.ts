@@ -9,8 +9,10 @@ import { ListingService } from 'apps/campground-booking/src/app/shared/listing.s
   styleUrls: ['./contact-info.component.css']
 })
 export class ContactInfoComponent implements OnInit {
-  listStatesFromService!: IListStates[];
-  countriesFromService!: ICountries[];
+  allRefsTmp:any;
+  allRefsObj: any = {};
+  listStatesFromService: any = {};
+  countriesFromService: any = {};
   isSameAsMailingAddress = true;
   isUTMChecked = false;
   submitted = false;
@@ -47,16 +49,19 @@ export class ContactInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSameAsMailingAddress = false
-    this.ls.getListStates().subscribe(response => {
-      this.listStatesFromService = response;
-    });
-    this.ls.getCountries().subscribe(response => {
-      this.countriesFromService = response;
-    });
+    this.getFormDropDownData();
   }
 
-  checkBoxUTMChange(cb: any) {
-    this.isUTMChecked = !this.isUTMChecked;
+  onSubmit(): void {
+    this.submitted = true;
+    if (this.contactInfoForm.valid) {
+      console.log('VALID', this.contactInfoForm.controls);
+    } else if (this.samePhone) {
+      console.log('not valid: phones are the same')
+    } else {
+      console.log('not valid', this.contactInfoForm.controls);
+      return;
+    }
   }
 
   clearChanges() {
@@ -64,7 +69,25 @@ export class ContactInfoComponent implements OnInit {
     this.contactInfoForm.reset()
   }
 
-  changeIsSameAsMailingAdrress() {
+  getFormDropDownData() {
+    this.allRefsTmp = window.localStorage.getItem('all-refs');
+    this.allRefsObj = JSON.parse(this.allRefsTmp);
+    console.log(this.allRefsObj)
+    for(let [key, value] of Object.entries(this.allRefsObj)) {
+        if(key === 'listStates') {
+            this.listStatesFromService = value;
+        }
+        if(key === 'countries') {
+            this.countriesFromService = value;
+        }
+    }
+  }
+
+  checkBoxUTMChange(cb: any) {
+    this.isUTMChecked = !this.isUTMChecked;
+  }
+
+  changeIsSameAsMailingAddress() {
     this.isSameAsMailingAddress = !this.isSameAsMailingAddress;
     if (this.isSameAsMailingAddress) {
       this.contactInfoForm.removeControl('physicalAddress')
@@ -86,18 +109,6 @@ export class ContactInfoComponent implements OnInit {
       this.contactInfoForm.addControl('elevation', new FormControl('', Validators.pattern("(250[1-9]|25[1-9][0-9]|2[6-9][0-9]{2}|[3-9][0-9]{3}|1[0-9]{4}|2[0-8][0-9]{3}|290[0-2][0-9]|2903[0-3])")))
     }
 
-  }
-
-  onSubmit(): void {
-    this.submitted = true;
-    if (this.contactInfoForm.valid) {
-      console.log('VALID', this.contactInfoForm.controls);
-    } else if (this.samePhone) {
-      console.log('not valid: phones are the same')
-    } else {
-      console.log('not valid', this.contactInfoForm.controls);
-      return;
-    }
   }
 
   get f() { return this.contactInfoForm.controls; }

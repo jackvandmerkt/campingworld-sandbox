@@ -17,11 +17,13 @@ export class GoodSamRecordFormComponent implements OnInit{
     isSalesPresentationChecked:boolean = false;
     isDuplicateSelected: boolean = false;
     submitted: boolean = false;
-    territoriesFromService!: ITerritories[];
-    sectionCodesFromService!: ISectionCodes[];
-    listStatesFromService!: IListStates[];
-    listingTypesFromService!: IListingTypes[];
-    parkTypesFromService!: IParkTypes[];
+    allRefsTmp:any;
+    allRefsObj: any = {};
+    territoriesFromService: any = {};
+    sectionCodesFromService: any = {};
+    listStatesFromService: any = {};
+    listingTypesFromService: any = {};
+    parkTypesFromService: any = {};
 
     // temporary number, will use getter method to pull this number from api in the future
     newListingTmp:any;
@@ -37,7 +39,6 @@ export class GoodSamRecordFormComponent implements OnInit{
 
     ngOnInit() {
         this.getFormDropDownData();
-
         this.newListingTmp = window.localStorage.getItem('new-listing');
         this.newListingObj = JSON.parse(this.newListingTmp);
         for(let [key, value] of Object.entries(this.newListingObj)) {
@@ -50,14 +51,6 @@ export class GoodSamRecordFormComponent implements OnInit{
                 this.goodSamRecordForm.patchValue({locationListingName: this.parkName})
             }
         }
-
-        // this.store.select('listing-info').subscribe(
-        //     data => {
-        //       if (data) {
-        //         this.fileNum = data.listingReducer.newListing.fileNumber
-        //         this.goodSamRecordForm.patchValue({fileNum: this.fileNum})
-        //       }
-        //     });
         this.store.select('users').subscribe(
             users => {
                 if (users) {
@@ -70,26 +63,26 @@ export class GoodSamRecordFormComponent implements OnInit{
     }
 
     getFormDropDownData() {
-        this.ls.getTerritories().subscribe(response => {
-            this.territoriesFromService = response;
-        });
-
-        this.ls.getListingTypes().subscribe(response => {
-            this.listingTypesFromService = response;
-        });
-
-        this.ls.getListStates().subscribe(response => {
-            this.listStatesFromService = response;
-        });
-
-        this.ls.getParkTypes().subscribe(response => {
-            this.parkTypesFromService = response;
-        });
-
-        this.ls.getSectionCodes().subscribe(response => {
-            this.sectionCodesFromService = response;
-        });
-
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'territories') {
+                this.territoriesFromService = value;
+            }
+            if(key === 'sectionCodes') {
+                this.sectionCodesFromService = value;
+            }
+            if(key === 'listStates') {
+                this.listStatesFromService = value;
+            }
+            if(key === 'listingTypes') {
+                this.listingTypesFromService = value;
+            }
+            if(key === 'parkTypes') {
+                this.parkTypesFromService = value;
+            }
+        }
     }
 
     goodSamRecordForm = this.formBuilder.group({

@@ -29,6 +29,9 @@ export class GoodSamParkComponent {
     onSubmit(): void {
         console.log(this.goodSamPark.value);
     }
+
+    get f() { return this.goodSamPark.controls; }
+
     clearChanges() {
         this.goodSamPark.reset();
         //resetting toggle text to no

@@ -10,8 +10,10 @@ import { ListingService } from "../../../../shared/listing.service";
 })
 export class TentingRentalsComponent implements OnInit {
     otherOptions: string[] = [];
-    bathsFromService!: IBaths[];
-    kitchensFromService!: IKitchens[];
+    allRefsTmp:any;
+    allRefsObj: any = {};
+    bathsFromService: any = {};
+    kitchensFromService: any = {};
     submitted: boolean = false;
     //toggle variables
     tentSites: boolean = false;
@@ -43,15 +45,6 @@ export class TentingRentalsComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
-    }
-
-    ngOnInit() {
-        this.ls.getBaths().subscribe(response => {
-            this.bathsFromService = response;
-        });
-        this.ls.getKitchens().subscribe(response => {
-            this.kitchensFromService = response;
-        });
     }
 
     // form object
@@ -114,6 +107,10 @@ export class TentingRentalsComponent implements OnInit {
         toggleLRLinensAvailCost: false
     });
 
+    ngOnInit() {
+        this.getFormDropDownData();
+    }
+
     onSubmit(): void {
         this.submitted = true;
         if(this.tentingRentalsForm.valid) {
@@ -168,6 +165,20 @@ export class TentingRentalsComponent implements OnInit {
             this.tentingRentalsForm.get(field)?.updateValueAndValidity();
         });
 
+    }
+
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'baths') {
+                this.bathsFromService = value;
+            }
+            if(key === 'kitchens') {
+                this.kitchensFromService = value;
+            }
+        }
     }
 
     // Other Multi check radios

@@ -9,17 +9,13 @@ import { ListingService } from "../../../../shared/listing.service";
     styleUrls: ['./directions.component.css']
 })
 export class DirectionsComponent implements OnInit {
-    directionalArrowsFromService!: IDirectionalArrows[];
+    allRefsTmp:any;
+    allRefsObj: any = {};
+    directionalArrowsFromService: any = {};
     isNascarChecked:boolean = false;
     submitted: boolean = false;
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
-    }
-
-    ngOnInit() {
-        this.ls.getDirectionalArrows().subscribe(response => {
-            this.directionalArrowsFromService = response;
-        });
     }
 
     directionsForm = this.formBuilder.group({
@@ -30,15 +26,19 @@ export class DirectionsComponent implements OnInit {
         unitOfMeasurement: [''],
         nameOfTrack: ['']
       });
+
+    ngOnInit() {
+        this.getFormDropDownData();
+    }
     
-      onSubmit(): void {
+    onSubmit(): void {
         this.submitted = true;
         if(this.directionsForm.valid) {
             console.log(this.directionsForm.value);
         } else {
             console.log('not valid');
             return;
-        }
+        }   
     }
     
     get f() { return this.directionsForm.controls; }
@@ -50,6 +50,16 @@ export class DirectionsComponent implements OnInit {
         this.isNascarChecked = false;
     }
 
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'directionalArrows') {
+                this.directionalArrowsFromService = value;
+            }
+        }
+    }
     checkBoxNascarChange(cb:any) {
         this.isNascarChecked = !this.isNascarChecked;
         if (this.isNascarChecked === true) {

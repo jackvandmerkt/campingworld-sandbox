@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -13,6 +13,11 @@ export class ListingService {
     getListings(territoryCode:string):Observable<IListingCounts> {
       return this.http.get<IListingCounts>('/api/v1/listings/counts?territoryCode=' + territoryCode)
         .pipe(catchError(this.handleError<IListingCounts>('getListings', )))
+    }
+
+    getAllRefs():Observable<IAllRefs[]> {
+      return this.http.get<IAllRefs[]>('/api/v1/refs/all')
+        .pipe(catchError(this.handleError<IAllRefs[]>('getAllRefs', )))
     }
 
     // used in multiple forms
