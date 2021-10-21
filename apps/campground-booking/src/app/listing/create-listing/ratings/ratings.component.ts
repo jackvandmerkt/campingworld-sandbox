@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { INonRatedCodes } from "../../../shared/listing-counts.model";
+import { ListingNavService } from "../../../shared/listing-nav.service";
 import { ListingService } from "../../../shared/listing.service";
 
 @Component({
@@ -63,7 +64,8 @@ export class RatingsComponent implements OnInit{
     restroomsTotal: number = 0;
     visualAppearanceTotal: number = 0;
 
-    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
+    constructor(private formBuilder: FormBuilder, private ls: ListingService, 
+        private listingNavService: ListingNavService) {
 
     }
 
@@ -109,12 +111,18 @@ export class RatingsComponent implements OnInit{
         siteLayoutRadio: ''
     });
 
+    sendFormStatus(value: any) {
+        this.listingNavService.updateFormStatus(value)
+    }
+
     onSubmit(): void {
         this.submitted = true;
         if(this.ratingsForm.valid) {
             console.log(this.ratingsForm.value);
+            this.sendFormStatus(['ratingsFormStatus', 2]);
         } else {
             console.log('not valid');
+            this.sendFormStatus(['ratingsFormStatus', 1]);
             return;
         }
     }
@@ -128,6 +136,7 @@ export class RatingsComponent implements OnInit{
         this.unHideFacilities = false;
         this.unHideRestrooms = false;
         this.unHideVisualAppearance = false;
+        this.sendFormStatus(['ratingsFormStatus', 0]);
         //resets radio button values
         for(let key of Object.keys(this.facilitiesOptions)) {
             this.facilitiesOptions[key] = "";
