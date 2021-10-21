@@ -47,7 +47,13 @@ import { environment } from '../environments/environment';
     ListingModule,
     SharedModule,
     UserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {
+            // Restore the last scroll position
+            scrollPositionRestoration: "enabled",
+            scrollOffset: [0, 0],
+            // Enable scrolling to anchors
+            anchorScrolling: "enabled",
+    }),
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
