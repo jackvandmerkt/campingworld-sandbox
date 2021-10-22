@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IBaths, IKitchens } from "../../../../shared/listing-counts.model";
+import { IAllRefs, IBaths, IKitchens } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -11,7 +11,7 @@ import { ListingService } from "../../../../shared/listing.service";
 export class TentingRentalsComponent implements OnInit {
     otherOptions: string[] = [];
     allRefsTmp:any;
-    allRefsObj: any = {};
+    allRefsObj!: IAllRefs[];
     bathsFromService: any = {};
     kitchensFromService: any = {};
     submitted: boolean = false;

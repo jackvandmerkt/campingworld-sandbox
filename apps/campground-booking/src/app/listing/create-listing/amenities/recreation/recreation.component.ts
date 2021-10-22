@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
+import { IAllRefs } from 'apps/campground-booking/src/app/shared/listing-counts.model';
 
 @Component({
   selector: 'recreation',
@@ -7,7 +8,9 @@ import { FormBuilder } from "@angular/forms";
   styleUrls: ['./recreation.component.css']
 })
 export class RecreationComponent implements OnInit {
-
+  allRefsTmp:any;
+  allRefsObj!: IAllRefs[];
+  familyActivitiesFromService: any = {};
   option: string[] = [];
   nearby: string[] = [];
   hunting: string[] = [];
@@ -35,8 +38,40 @@ export class RecreationComponent implements OnInit {
   })
 
   ngOnInit(): void {
-
+    this.getFormDropDownData();
   }
+
+  onSubmit(): void {
+    this.submitted = true;
+    if (this.dualShuffleboard) {
+      console.log('not VALID');
+    } else {
+      console.log('valid');
+      return;
+    }
+  }
+
+  clearChanges() {
+    this.option = [];
+    this.nearby = [];
+    this.hunting = [];
+    this.isRecreationChecked = false;
+    this.isOpenChecked = false;
+    this.isCasinoChecked = false;
+    this.isHuntingSeasonChecked = false;
+    this.recreationForm.reset()
+  }
+
+  getFormDropDownData() {
+    this.allRefsTmp = window.localStorage.getItem('all-refs');
+    this.allRefsObj = JSON.parse(this.allRefsTmp);
+    console.log(this.allRefsObj)
+    for(let [key, value] of Object.entries(this.allRefsObj)) {
+        if(key === 'plannedFamilyActivities') {
+            this.familyActivitiesFromService = value;
+        }
+    }
+}
 
   optionChecked(radio: string) {
     if (!this.option.includes(radio)) {
@@ -81,30 +116,10 @@ export class RecreationComponent implements OnInit {
     this.isHuntingSeasonChecked = !this.isHuntingSeasonChecked;
   }
 
-
-
-
-  clearChanges() {
-    this.option = [];
-    this.nearby = [];
-    this.hunting = [];
-    this.isRecreationChecked = false;
-    this.isOpenChecked = false;
-    this.isCasinoChecked = false;
-    this.isHuntingSeasonChecked = false;
-    this.recreationForm.reset()
-  }
-
-  get dualShuffleboard() { if (this.option.includes('31') && this.option.includes('32')) { return true } else return false }
-
-  onSubmit(): void {
-    this.submitted = true;
-    if (this.dualShuffleboard) {
-      console.log('not VALID');
-    } else {
-      console.log('valid');
-      return;
-    }
-
+  get dualShuffleboard() { 
+    if (this.option.includes('31') && this.option.includes('32')) { 
+      return true 
+    } else 
+    return false 
   }
 }

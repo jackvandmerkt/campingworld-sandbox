@@ -346,5 +346,11 @@ export interface IAllRefs {
             id: number,
             value: string
         }
+      ],
+      plannedFamilyActivities: [
+        {
+            id: number,
+            value: string
+        }
       ]
 }

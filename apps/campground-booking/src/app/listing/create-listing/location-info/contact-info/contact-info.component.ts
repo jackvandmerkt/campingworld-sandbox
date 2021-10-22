@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from "@angular/forms";
-import { ICountries, IListStates } from 'apps/campground-booking/src/app/shared/listing-counts.model';
+import { IAllRefs, ICountries, IListStates } from 'apps/campground-booking/src/app/shared/listing-counts.model';
 import { ListingService } from 'apps/campground-booking/src/app/shared/listing.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ListingService } from 'apps/campground-booking/src/app/shared/listing.s
 })
 export class ContactInfoComponent implements OnInit {
   allRefsTmp:any;
-  allRefsObj: any = {};
+  allRefsObj!: IAllRefs[];
   listStatesFromService: any = {};
   countriesFromService: any = {};
   isSameAsMailingAddress = true;

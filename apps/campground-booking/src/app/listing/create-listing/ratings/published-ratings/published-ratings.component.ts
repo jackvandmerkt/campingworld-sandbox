@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { INonRatedCodes } from "../../../../shared/listing-counts.model";
+import { IAllRefs, INonRatedCodes } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -12,7 +12,7 @@ import { ListingService } from "../../../../shared/listing.service";
 export class PublishedRatingsComponent implements OnInit {
     submitted: boolean = false;
     allRefsTmp:any;
-    allRefsObj: any = {};
+    allRefsObj!: IAllRefs[];
     nonRatedCodesFromService: any = {};
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
