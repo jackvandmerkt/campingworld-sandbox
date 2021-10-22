@@ -11,15 +11,11 @@ import { ListingService } from "../../../../shared/listing.service";
 
 export class PublishedRatingsComponent implements OnInit {
     submitted: boolean = false;
-    nonRatedCodesFromService!: INonRatedCodes[];
+    allRefsTmp:any;
+    allRefsObj: any = {};
+    nonRatedCodesFromService: any = {};
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
-    }
-
-    ngOnInit() {
-        this.ls.getNonRatedCodes().subscribe(response => {
-            this.nonRatedCodesFromService = response;
-        });
     }
 
     publishedRatings = this.formBuilder.group({
@@ -36,6 +32,10 @@ export class PublishedRatingsComponent implements OnInit {
         confirmCheck: false
     });
 
+    ngOnInit() {
+        this.getFormDropDownData();
+    }
+
     onSubmit(): void {
         this.submitted = true;
         if(this.publishedRatings.valid) {
@@ -51,5 +51,16 @@ export class PublishedRatingsComponent implements OnInit {
     clearChanges() {
         this.publishedRatings.reset();
         this.submitted = false;
+    }
+
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'nonRatedCodes') {
+                this.nonRatedCodesFromService = value;
+            }
+        }
     }
 }

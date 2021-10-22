@@ -10,7 +10,9 @@ import { ListingService } from "../../../../shared/listing.service";
 })
 export class RestroomsComponent implements OnInit {
     submitted: boolean = false;
-    restroomsShowersFromService!: IRestroomsShowers[];
+    allRefsTmp:any;
+    allRefsObj: any = {};
+    restroomsShowersFromService: any = {};
     pitToiletsOnly: boolean = false;
     restroomsShowersPaid: boolean = false;
     restroomsAndShowers: boolean = false;
@@ -22,9 +24,7 @@ export class RestroomsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.ls.getRestroomsShowers().subscribe(response => {
-            this.restroomsShowersFromService = response;
-        });
+        this.getFormDropDownData();
     }
 
     // form object
@@ -61,7 +61,17 @@ export class RestroomsComponent implements OnInit {
         this.restroomsAndShowers = false;
         this.restrooms = false;      
         this.showers = false;  
-      }
+    }
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'restroomShowers') {
+                this.restroomsShowersFromService = value;
+            }
+        }
+    }
 
     checkBoxPitToiletsChange(cb:any) {
         this.pitToiletsOnly = !this.pitToiletsOnly;

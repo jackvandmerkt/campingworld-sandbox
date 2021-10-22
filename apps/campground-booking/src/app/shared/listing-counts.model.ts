@@ -150,3 +150,201 @@ export interface IRestroomsShowers{
     id: string,
     value: string
 }
+
+export interface IAllRefs {
+    inventoryItemStatuses: [
+        {
+            inventoryItemStatusCode: string,
+            inventoryItemStatusDescription: string,
+            displayName: string
+        }
+      ],
+    listingStatuses: [
+        {
+            inventoryItemStatusCode: string,
+            inventoryItemStatusDescription: string,
+            displayName: string
+        }
+      ],
+      listingTypes: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      months: [
+        {
+            id: number,
+            value: string,
+            abbrev: string
+        }
+      ],
+      byWeekMonths: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      orderStatuses: [
+        {
+            id: number,
+            orderStatusCode: string,
+            orderStatusDescription: string,
+            displayName: string
+        }
+      ],
+      parkTypes: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      repCodes: [
+        {
+            id: number,
+            code: string,
+            value: string
+        }
+      ],
+      sectionCodes: [
+        {
+            id: number,
+            value: string,
+            code: string
+        }
+      ],
+      shadeTypes: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      territories: [
+        {
+            id: number,
+            code: string,
+            description: string,
+            listStateId: number,
+            hidden: string,
+            countryId: string
+        }
+      ],
+      listStates: [
+        {
+            id: number,
+            value: string,
+            code: string,
+            name: string
+        }
+      ],
+      affiliations: [
+        {
+            id: number,
+            code: string,
+            value: string
+        }
+      ],
+      uniqueAccounts: [
+        {
+            id: number,
+            code: string,
+            value: string,
+            eightyTwentySplit: string,
+            active: string,
+            house: string,
+            territoryId: number
+        }
+      ],
+      countries: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      b2bCommSources: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      advertisingObjections: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      droppedAffiliationReasons: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      nonRatedCodes: [
+        {
+            id: number,
+            code: string,
+            value: string
+        }
+      ],
+      directionalArrows: [
+        {
+            id: number,
+            code: string,
+            value: string
+        }
+      ],
+      baths: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      kitchens: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      interiorRoadConditions: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      interiorRoadTypes: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      sideBySideHookups: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      amps: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      onlineReservationSystems: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      restroomShowers: [
+        {
+            id: number,
+            value: string
+        }
+      ],
+      deletes: [
+        {
+            id: number,
+            value: string
+        }
+      ]
+}

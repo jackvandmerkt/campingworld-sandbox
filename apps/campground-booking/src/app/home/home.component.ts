@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ListingService } from "../shared/listing.service";
 import { Router } from '@angular/router';
+import { IAllRefs } from "../shared/listing-counts.model";
 
 @Component({
   selector: "home",
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   territories: any = []
+  allRefsFromService!: IAllRefs[];
   selectedTerritory = 'All';
   loadingOrders = true
   loadingListings = true
@@ -26,6 +28,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getTerritoriesDropdownData();
+    this.ls.getAllRefs().subscribe(data => {
+      if(data) {
+        this.allRefsFromService = data;
+        window.localStorage.setItem('all-refs', JSON.stringify(this.allRefsFromService));
+      }
+    })
   }
 
   onChange(event: any) {

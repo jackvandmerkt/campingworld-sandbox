@@ -9,8 +9,10 @@ import { ListingService } from "../../../../shared/listing.service";
     styleUrls: ['./discounts-affiliations.component.css']
 })
 export class DiscountsAffiliationsComponent implements OnInit{
-    affiliationsFromService!: IAffiliations[];
-    listStatesFromService!: IListStates[];
+    allRefsTmp:any;
+    allRefsObj: any = {};
+    affiliationsFromService: any = {};
+    listStatesFromService: any = {};
     // affiliationsFromService!: IAffiliations[];
     isCoastChecked:boolean = false;
     isNeighborChecked:boolean = false;
@@ -22,18 +24,6 @@ export class DiscountsAffiliationsComponent implements OnInit{
     goodNeighborParkNum: number = 1234;
     constructor(private formBuilder: FormBuilder, private ls: ListingService) {
 
-    }
-    ngOnInit() {
-        this.getFormDropDownData();
-    }
-
-    getFormDropDownData() {
-        this.ls.getAffiliations().subscribe(response => {
-            this.affiliationsFromService = response;
-        });
-        this.ls.getListStates().subscribe(response => {
-            this.listStatesFromService = response;
-        });
     }
 
     discountsAffiliations = this.formBuilder.group({
@@ -48,7 +38,9 @@ export class DiscountsAffiliationsComponent implements OnInit{
         coastToCoastMembershipNum: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]
       });
 
-      get f() { return this.discountsAffiliations.controls; }
+    ngOnInit() {
+        this.getFormDropDownData();
+    }
     
     onSubmit(): void {
         this.submitted = true;
@@ -59,6 +51,8 @@ export class DiscountsAffiliationsComponent implements OnInit{
             return;
         }
     }
+    get f() { return this.discountsAffiliations.controls; }
+    
     clearChanges() {
         this.discountsAffiliations.reset();
         this.submitted = false;
@@ -68,6 +62,20 @@ export class DiscountsAffiliationsComponent implements OnInit{
         this.isAAAChecked = false;
         this.isARVCChecked = false;
         this.isMilitaryChecked = false;
+    }
+
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'affiliations') {
+                this.affiliationsFromService = value;
+            }
+            if(key === 'listStates') {
+                this.listStatesFromService = value;
+            }
+        }
     }
 
     checkBoxCoastChange(cb:any) {
