@@ -3,8 +3,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
-import { StoreModule } from "@ngrx/store";
-import {listingReducer} from './state/listing.reducer'
 import { DatePickerModule, DateRangePickerModule } from "@syncfusion/ej2-angular-calendars";
 import { SharedModule } from "../shared/shared.module";
 import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
@@ -76,8 +74,7 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
       HttpClientModule,
       DateRangePickerModule,
       DatePickerModule,
-      SharedModule,
-      StoreModule.forFeature('listing-info', {listingReducer})
+      SharedModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: []

@@ -1,8 +1,7 @@
-import { createAction, props } from "@ngrx/store";
-import { IListings } from "../../../shared/listing-counts.model";
+import { Listing } from "../models/listing";
 
-export const updateInitialState = createAction(
-    '[Listing Info] Update Listing Info',
-    props<{ listing: IListings }>()
-  );
+export class UpdateGoodSamRecordForm {
+    static readonly type = '[Listing] GoodSamRecord Update';
+    constructor(public goodSamRecord: Listing) {}
+}
 

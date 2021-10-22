@@ -5,7 +5,6 @@ import { Store } from "@ngrx/store";
 import { IParkTypes, ISectionCodes } from "../../shared/listing-counts.model";
 import { ListingService } from "../../shared/listing.service";
 import { ListingActions } from "../state/actions";
-import { listingReducer } from "../state/listing.reducer";
 
 @Component({
     selector: 'new-listing',
@@ -69,7 +68,6 @@ export class NewListingsComponent implements OnInit{
       this.ls.postNewListing(this.newListingForm.value).subscribe(response => {
         if(response){
           this.postResponse = response;
-          this.store.dispatch(ListingActions.updateInitialState({ listing: this.postResponse}));
           window.localStorage.setItem('new-listing', JSON.stringify(this.postResponse));
           this.router.navigateByUrl('/create-listing/good-sam-record')
         }

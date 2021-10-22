@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
-import { Store } from "@ngrx/store";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Store } from '@ngxs/store';
 import { IAllRefs, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
+import { UpdateGoodSamRecordForm } from "../../../state/actions/listing.actions";
 
 @Component({
     selector: 'good-sam-record',
@@ -12,6 +13,7 @@ import { ListingNavService } from "../../../../shared/listing-nav.service";
 })
 
 export class GoodSamRecordFormComponent implements OnInit{
+    goodSamRecordForm!: FormGroup;
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
     isSalesPresentationChecked:boolean = false;
@@ -35,7 +37,9 @@ export class GoodSamRecordFormComponent implements OnInit{
     // @Output() formStatus = new EventEmitter<any>();
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService,
-         private store: Store<any>, private listingNavService: ListingNavService) {}
+         private store: Store, private listingNavService: ListingNavService) {
+            this.createForm();
+         }
 
     ngOnInit() {
         this.getFormDropDownData();
@@ -85,7 +89,8 @@ export class GoodSamRecordFormComponent implements OnInit{
         }
     }
 
-    goodSamRecordForm = this.formBuilder.group({
+    createForm() {
+        this.goodSamRecordForm = this.formBuilder.group({
         locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
         fileNumber: [{value: this.fileNum, disabled: true},  Validators.required],
         sectionCodeId: ['', Validators.required],
@@ -102,6 +107,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         deleteListing: false,
         reasonForDelete: ['']
       });
+    }
 
     sendFormStatus(value: any) {
         this.listingNavService.updateFormStatus(value)
@@ -111,6 +117,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         this.submitted = true;
         if(this.goodSamRecordForm.valid) {
             console.log(this.goodSamRecordForm.value);
+            this.store.dispatch(new UpdateGoodSamRecordForm({goodSamRecord: this.goodSamRecordForm.value}));
             this.sendFormStatus(['goodSamRecordFormStatus', 2]);
         } else {
             console.log('not valid');

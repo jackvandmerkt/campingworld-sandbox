@@ -14,8 +14,6 @@ import { appRoutes } from './routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './user/auth.service';
-import { ListingService } from './shared/listing.service';
-import { OrdersService } from './shared/orders.service';
 import {OrdersContractsComponent} from './home/cards/orders-contracts.component'
 import {OrdersProductsDetails} from './home/cards/orders-products-details.component'
 import { ListingStatusesComponent } from './home/cards/listing-statuses.component';
@@ -26,6 +24,11 @@ import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { ListingState } from './listing/state/listing.state';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,10 +62,11 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     PowerBIEmbedModule,
     StoreModule.forRoot({},{}),
-    StoreDevtoolsModule.instrument({ 
-      name:'Camp App Devtools', 
-      maxAge: 25,
-      logOnly: environment.production })
+    NgxsModule.forRoot([
+      ListingState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],
