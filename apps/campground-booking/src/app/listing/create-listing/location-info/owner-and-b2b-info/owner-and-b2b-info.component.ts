@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
+import { IAllRefs } from 'apps/campground-booking/src/app/shared/listing-counts.model';
 
 @Component({
   selector: 'owner-and-b2b-info',
@@ -10,7 +11,7 @@ export class OwnerAndB2bInfoComponent implements OnInit {
   newOwner = false;
   parkForSale = false;
   allRefsTmp:any;
-  allRefsObj: any = {};
+  allRefsObj!: IAllRefs[];
   countriesFromService: any = {};
   listStatesFromService: any = {};
   b2bCommSourcesFromService: any = {};

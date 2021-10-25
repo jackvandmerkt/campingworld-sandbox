@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
+import { IAllRefs, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
 
@@ -18,7 +18,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     isDuplicateSelected: boolean = false;
     submitted: boolean = false;
     allRefsTmp:any;
-    allRefsObj: any = {};
+    allRefsObj!: IAllRefs[];
     territoriesFromService: any = {};
     sectionCodesFromService: any = {};
     listStatesFromService: any = {};

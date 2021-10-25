@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
-import { IAffiliations, IListStates } from "../../../../shared/listing-counts.model";
+import { IAffiliations, IAllRefs, IListStates } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -10,7 +10,7 @@ import { ListingService } from "../../../../shared/listing.service";
 })
 export class DiscountsAffiliationsComponent implements OnInit{
     allRefsTmp:any;
-    allRefsObj: any = {};
+    allRefsObj!: IAllRefs[];
     affiliationsFromService: any = {};
     listStatesFromService: any = {};
     // affiliationsFromService!: IAffiliations[];

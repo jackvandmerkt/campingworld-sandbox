@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { IRestroomsShowers } from "../../../../shared/listing-counts.model";
+import { IAllRefs, IRestroomsShowers } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -11,7 +11,7 @@ import { ListingService } from "../../../../shared/listing.service";
 export class RestroomsComponent implements OnInit {
     submitted: boolean = false;
     allRefsTmp:any;
-    allRefsObj: any = {};
+    allRefsObj!: IAllRefs[];
     restroomsShowersFromService: any = {};
     pitToiletsOnly: boolean = false;
     restroomsShowersPaid: boolean = false;

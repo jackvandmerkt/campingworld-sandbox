@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IDirectionalArrows } from "../../../../shared/listing-counts.model";
+import { IAllRefs, IDirectionalArrows } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -10,7 +10,7 @@ import { ListingService } from "../../../../shared/listing.service";
 })
 export class DirectionsComponent implements OnInit {
     allRefsTmp:any;
-    allRefsObj: any = {};
+    allRefsObj!: IAllRefs[];
     directionalArrowsFromService: any = {};
     isNascarChecked:boolean = false;
     submitted: boolean = false;

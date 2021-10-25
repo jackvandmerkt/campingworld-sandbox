@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { INonRatedCodes } from "../../../shared/listing-counts.model";
+import { IAllRefs, INonRatedCodes } from "../../../shared/listing-counts.model";
 import { ListingNavService } from "../../../shared/listing-nav.service";
 import { ListingService } from "../../../shared/listing.service";
 
@@ -13,7 +13,7 @@ import { ListingService } from "../../../shared/listing.service";
 export class RatingsComponent implements OnInit{
     submitted: boolean = false;
     allRefsTmp:any;
-    allRefsObj: any = {};
+    allRefsObj!: IAllRefs[];
     nonRatedCodesFromService: any = {};
     canParkBeRated: boolean = false;
     unHideFacilities: boolean = false;
