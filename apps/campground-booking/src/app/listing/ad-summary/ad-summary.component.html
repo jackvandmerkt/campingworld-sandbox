@@ -1,1 +1,145 @@
-Text
+<div class="pt-10 px-15">
+  <h1 class="text-32px38px font-cw text-cwGray font-bold">Orders</h1>
+  <div class="mt-5 fl flex space-x-6">
+    <input (change)="onChange()"
+      class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-80 h-13"
+      placeholder="Search..." />
+  </div>
+  <div class="border shadow-cw rounded-xl mt-9">
+    <table class="w-full">
+      <thead>
+        <tr class="flex-1 text-left">
+          <th class="text-12px16px font-cw text-cwRed p-5 font-bold">BookYr</th>
+          <th class="text-12px16px font-cw text-cwRed  font-bold">Status</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Order-rev</th>
+          <th class="text-12px16px flex-grow font-cw text-cwRed font-bold">Product</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Date Created</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders"
+          [ngClass]="order.background === 'gray' ? 'bg-proposalsGray backdrop-opacity-50' : ''"
+          class="flex-1 text-left">
+          <td class="text-12px16px font-cw text-cwGray p-5">{{order.bookYr}}</td>
+          <td class="text-12px16px font-cw text-cwRed font-bold">{{order.status}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.orderRev}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.product}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{order.dateCreated}}</td>
+          <td class="text-12px16px font-cw text-cwGray font-bold">{{order.price}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="pt-10 px-15 mt-4">
+  <div class="flex">
+    <div>
+      <div class="flex space-x-7">
+        <h1 class="text-32px38px font-cw text-cwGray font-bold">Proposals</h1>
+        <span class="text-14px24px font-cw text-cwGray mt-2">Last year's Net Sales: $2,090.00</span>
+      </div>
+      <div class="mt-5 fl flex space-x-6">
+        <input (change)="onChange()"
+          class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-80 h-13"
+          placeholder="Search..." />
+      </div>
+    </div>
+    <div class="flex-grow"></div>
+    <div>
+      <div class="flex mb-6 text-right">
+        <div class="flex-grow"></div>
+        <div class="text-cwRed text-14px20px font-cw font-bold">View media kit</div>
+        <embed src="/assets/images/arrow.svg" class="ml-2" alt="arrow">
+      </div>
+      <button type="submit"
+        class="px-6 py-4.5 w-30 h-13 text-16px16px text-white rounded-md bg-cwRed hover:opacity-80 font-cw">
+        Create Proposal
+      </button>
+    </div>
+  </div>
+  <div class="border shadow-cw rounded-xl mt-9">
+    <table class="w-full rounded">
+      <thead>
+        <tr class="flex-1 text-left">
+          <th class="text-12px16px font-cw text-cwRed p-5 font-bold">BookYr</th>
+          <th class="text-12px16px font-cw text-cwRed  font-bold">Status</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Order-rev</th>
+          <th class="text-12px16px flex-grow font-cw text-cwRed font-bold">Product</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Date Created</th>
+          <th class="text-12px16px font-cw text-cwRed font-bold">Price</th>
+          <th class="text-12px16px font-cw text-cwGray font-bold text-center">Forecast?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let proposal of proposals"
+          [ngClass]="proposal.background === 'gray' ? 'bg-proposalsGray backdrop-opacity-50' : ''"
+          class="flex-1 text-left">
+          <td class="text-12px16px font-cw text-cwGray p-5">{{proposal.bookYr}}</td>
+          <td class="text-12px16px font-cw text-cwRed font-bold">{{proposal.status}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{proposal.orderRev}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{proposal.product}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{proposal.dateCreated}}</td>
+          <td class="text-12px16px font-cw text-cwGray font-bold">{{proposal.price}}</td>
+          <td class="text-12px16px font-cw text-cwGray font-bold text-center">
+            <input type="checkbox" class="mr-2 checkbox">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="p-6 flex">
+      <embed src="/assets/images/alert.svg" class="logo mr-5" alt="alert">
+      <p class="font-bold text-14px24px font-cw text-cwRed">Forecast instructions & definitions</p>
+    </div>
+    <div class="px-6 pb-6 flex space-x-6">
+      <select (change)="onChange()"
+        class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-48 h-13">
+        <option>Status</option>
+        <option>open</option>
+      </select>
+      <input (change)="onChange()"
+        class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-48 h-13"
+        placeholder="LB date" />
+      <select (change)="onChange()"
+        class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-48 h-13">
+        <option>LB reason</option>
+        <option>open</option>
+      </select>
+    </div>
+    <div class="px-6 pb-6 flex space-x-6">
+      <select (change)="onChange()"
+        class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-1/2 h-13">
+        <option>LB reason</option>
+        <option>open</option>
+      </select>
+      <select (change)="onChange()"
+        class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-1/2 h-13">
+        <option>LB reason</option>
+        <option>open</option>
+      </select>
+    </div>
+    <div class="px-6 pb-6">
+      <button type="submit"
+        class="px-6 py-4.5 w-30 h-13 text-16px16px text-white rounded-md bg-cwRed hover:opacity-80 font-cw">
+        Search
+      </button>
+    </div>
+    <table class="w-full rounded">
+      <tbody>
+        <tr *ngFor="let proposal of proposals"
+          [ngClass]="proposal.background === 'gray' ? 'bg-proposalsGray backdrop-opacity-50' : ''"
+          class="flex-1 text-left">
+          <td class="text-12px16px font-cw text-cwGray p-5">{{proposal.bookYr}}</td>
+          <td class="text-12px16px font-cw text-cwRed font-bold">{{proposal.status}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{proposal.orderRev}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{proposal.product}}</td>
+          <td class="text-12px16px font-cw text-cwGray">{{proposal.dateCreated}}</td>
+          <td class="text-12px16px font-cw text-cwGray font-bold">{{proposal.price}}</td>
+          <td class="text-12px16px font-cw text-cwGray font-bold px-3">
+            <input type="checkbox" class="mr-2 checkbox">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

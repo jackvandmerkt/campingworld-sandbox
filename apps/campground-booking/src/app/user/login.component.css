@@ -14,12 +14,6 @@ input:checked ~ .block {
   transform: translateY(-1rem) translatex(-0.5rem) scaleX(0.75) scaleY(0.75);
 }
 
-.checkbox {
-  border: 2px solid rgba(33, 43, 54, 0.15);
-  border-radius: 2px;
-  margin-bottom: 3px;
-}
-
 .background {
   background: linear-gradient(180deg, #ffffff 50%, #c30b24 50%);
 }
