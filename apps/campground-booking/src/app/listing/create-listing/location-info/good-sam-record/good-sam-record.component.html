@@ -24,7 +24,7 @@
     </div>
 
     <div class="relative z-0 pb-10">
-      <select name="sectionCodeId" formControlName="sectionCodeId" value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
+      <select name="sectionCodeId" formControlName="sectionCodeId" #sectionCodeId value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
       <option value=""></option>
       <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
@@ -42,18 +42,18 @@
     </div>
 
     <div class="relative z-0 pb-10">
-      <select (change)="onChange($event)" name="listTypeId" formControlName="listTypeId" value="" [ngClass]="{'error-border': submitted && f.listTypeId.errors }"
+      <select (change)="onChange($event)" name="listingTypeId" formControlName="listingTypeId" #listingTypeId value="" [ngClass]="{'error-border': submitted && f.listingTypeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
       <option value=""></option>
-      <option *ngFor="let l of listingTypesFromService" [value]="l.id">{{l.value}}</option>
+      <option *ngFor="let l of listingTypesFromService" [ngValue]="l.id">{{l.value}}</option>
       </select>
-      <label for="listTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listTypeId.errors }">Listing Type</label>
-      <div *ngIf="submitted && f.listTypeId.errors">
-        <div *ngIf="f.listTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing type is required.</div>
+      <label for="listingTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listingTypeId.errors }">Listing Type</label>
+      <div *ngIf="submitted && f.listingTypeId.errors">
+        <div *ngIf="f.listingTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing type is required.</div>
       </div>
     </div>
     <div class="relative z-0 pb-10">
-      <select name="parkTypeId" formControlName="parkTypeId" value="" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
+      <select name="parkTypeId" formControlName="parkTypeId" #parkTypeId value="" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
       <option value=""></option>
       <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
@@ -105,7 +105,7 @@
         </div>
     </div>
     <div class="relative z-0 pb-10">
-        <select name="listStateId" formControlName="listStateId" value="" [ngClass]="{'error-border': submitted && f.listStateId.errors }"
+        <select name="listStateId" formControlName="listStateId" #listStateId value="" [ngClass]="{'error-border': submitted && f.listStateId.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
         <option value=""></option>
         <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
@@ -117,7 +117,7 @@
       </div>
 
       <div class="relative z-0 col-span-2 pb-10">
-        <select name="territoryId" formControlName="territoryId" value="" [ngClass]="{'error-border': submitted && f.territoryId.errors }"
+        <select name="territoryId" formControlName="territoryId" #territoryId value="" [ngClass]="{'error-border': submitted && f.territoryId.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
           <option value=""></option>
           <option *ngFor="let t of territoriesFromService" [ngValue]="t.id">{{t.description}}</option>

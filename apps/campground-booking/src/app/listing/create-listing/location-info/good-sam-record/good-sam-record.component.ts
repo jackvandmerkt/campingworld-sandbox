@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { IAllRefs, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
+import { IAllRefs, IGoodSamRecordId, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
 
@@ -31,18 +31,45 @@ export class GoodSamRecordFormComponent implements OnInit{
     fileNum:any = 0;
     repCode:number = 0;
     parkName:any;
+    postResponse:any;
+    currentListing!:any;
+
+    @ViewChild('sectionCodeId') private sectionCodeCSS!: ElementRef;
+    @ViewChild('parkTypeId') private parkTypeIdCSS!: ElementRef;
+    @ViewChild('listingTypeId') private listingTypeCSS!: ElementRef;
+    @ViewChild('listStateId') private listingStateCSS!: ElementRef;
+    @ViewChild('territoryId') private territoryCSS!: ElementRef;
 
     // @Output() formStatus = new EventEmitter<any>();
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService,
          private store: Store<any>, private listingNavService: ListingNavService) {}
-
+         goodSamRecordForm = this.formBuilder.group({
+            locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
+            fileNumber: [{value: this.fileNum},  Validators.required],
+            sectionCodeId: ['', Validators.required],
+            repCode: [{value: this.repCode}, Validators.required],
+            listingTypeId: ['', Validators.required],
+            parkTypeId: ['', Validators.required],
+            duplicateListingText: null,
+            primaryFileNumber: null,
+            listCity: ['', [Validators.required, Validators.maxLength(255)]],
+            listStateId: ['', Validators.required],
+            territoryId: ['', Validators.required],
+            salesPresentationRequired: false,
+            noOvernightGuests: false,
+            deleteListing: false,
+            reasonForDelete: ['']
+          });
+          //listing typeid needs to be inter
+          //
+    
     ngOnInit() {
         this.getFormDropDownData();
         this.newListingTmp = window.localStorage.getItem('new-listing');
         this.newListingObj = JSON.parse(this.newListingTmp);
         for(let [key, value] of Object.entries(this.newListingObj)) {
-            if(key === 'fileNumber') {
+         if(key === 'fileNumber') {
                 this.fileNum = value;
                 this.goodSamRecordForm.patchValue({fileNumber: this.fileNum})
             }
@@ -58,9 +85,34 @@ export class GoodSamRecordFormComponent implements OnInit{
                 this.goodSamRecordForm.patchValue({repCode: this.repCode})
                 }
             });
-
+        this.ls.getGoodSamRecordId(this.fileNum).subscribe(data => {
+            if(data){
+                this.currentListing = data;
+                console.log(this.currentListing.listCity)
+                this.goodSamRecordForm.patchValue({
+                    sectionCodeId: this.currentListing.sectionCodeId,
+                    listingTypeId: this.currentListing.listingTypeId,
+                    parkTypeId:data.parkTypeId,
+                    listCity: this.currentListing.listCity,
+                    listStateId: this.currentListing.listStateId,
+                    territoryId: this.currentListing.territoryId,
+                    noOvernightGuests: this.currentListing.noOvernightGuests,
+                    salesPresentationRequired: this.currentListing.salesPresentationRequired,
+                    deleteListing: this.currentListing.deleteListing
+                }); 
+            }
+            this.setAttributes(data);
+        })
+    }
+    setAttributes(data: IGoodSamRecordId){
+        this.sectionCodeCSS.nativeElement.setAttribute('value', data.sectionCodeId)
+        this.listingTypeCSS.nativeElement.setAttribute('value', data.listingTypeId)
+        this.parkTypeIdCSS.nativeElement.setAttribute('value', data.parkTypeId)
+        this.listingStateCSS.nativeElement.setAttribute('value', data.listStateId)
+        this.territoryCSS.nativeElement.setAttribute('value', data.territoryId)
 
     }
+    
 
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
@@ -85,23 +137,6 @@ export class GoodSamRecordFormComponent implements OnInit{
         }
     }
 
-    goodSamRecordForm = this.formBuilder.group({
-        locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
-        fileNumber: [{value: this.fileNum, disabled: true},  Validators.required],
-        sectionCodeId: ['', Validators.required],
-        repCode: [{value: this.repCode, disabled: true}, Validators.required],
-        listTypeId: ['', Validators.required],
-        parkTypeId: ['', Validators.required],
-        duplicateListingText: [''],
-        primaryFileNumber: [''],
-        listCity: ['', [Validators.required, Validators.maxLength(255)]],
-        listStateId: ['', Validators.required],
-        territoryId: ['', Validators.required],
-        salesPresentationRequired: false,
-        noOvernightGuests: false,
-        deleteListing: false,
-        reasonForDelete: ['']
-      });
 
     sendFormStatus(value: any) {
         this.listingNavService.updateFormStatus(value)
@@ -111,6 +146,8 @@ export class GoodSamRecordFormComponent implements OnInit{
         this.submitted = true;
         if(this.goodSamRecordForm.valid) {
             console.log(this.goodSamRecordForm.value);
+            this.postForm();
+            
             this.sendFormStatus(['goodSamRecordFormStatus', 2]);
         } else {
             console.log('not valid');
@@ -118,6 +155,14 @@ export class GoodSamRecordFormComponent implements OnInit{
             return;
         }
     }
+    postForm() {
+        this.ls.postGoodSamRecordId(this.goodSamRecordForm.value, this.fileNum).subscribe(response => {
+          if(response){
+            this.postResponse = response;
+            console.log(this.postResponse);
+          }
+        })
+      }
     
     get f() { return this.goodSamRecordForm.controls; }
 
@@ -148,9 +193,12 @@ export class GoodSamRecordFormComponent implements OnInit{
         }
     }
 
+
+    //Jack todo - change if conditional
     onChange(event:any): void {
         const newVal = event.target.value;
-        if(newVal == 4) {
+        console.log(newVal)
+        if(newVal == '4: 4') {
             this.isDuplicateSelected = true;
             this.goodSamRecordForm.get('duplicateListingText')?.setValidators([Validators.required])
             this.goodSamRecordForm.get('primaryFileNumber')?.setValidators([Validators.required, Validators.pattern("^[0-9]*$")])
