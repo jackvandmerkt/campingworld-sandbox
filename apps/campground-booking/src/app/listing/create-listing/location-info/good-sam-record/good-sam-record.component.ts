@@ -32,7 +32,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     repCode:number = 0;
     parkName:any;
     postResponse:any;
-    currentListing!:any;
+    currentListing:any= {};
 
     @ViewChild('sectionCodeId') private sectionCodeCSS!: ElementRef;
     @ViewChild('parkTypeId') private parkTypeIdCSS!: ElementRef;
@@ -98,7 +98,9 @@ export class GoodSamRecordFormComponent implements OnInit{
                     territoryId: this.currentListing.territoryId,
                     noOvernightGuests: this.currentListing.noOvernightGuests,
                     salesPresentationRequired: this.currentListing.salesPresentationRequired,
-                    deleteListing: this.currentListing.deleteListing
+                    deleteListing: this.currentListing.deleteListing,
+                    duplicateListingText:this.currentListing.duplicateListingText,
+                    primaryFileNumber: this.currentListing.primaryFileNumber
                 }); 
             }
             this.setAttributes(data);
@@ -110,10 +112,41 @@ export class GoodSamRecordFormComponent implements OnInit{
         this.parkTypeIdCSS.nativeElement.setAttribute('value', data.parkTypeId)
         this.listingStateCSS.nativeElement.setAttribute('value', data.listStateId)
         this.territoryCSS.nativeElement.setAttribute('value', data.territoryId)
-
     }
-    
-
+    clearChanges(){
+        this.goodSamRecordForm.patchValue({
+            sectionCodeId: this.currentListing.sectionCodeId,
+            listingTypeId: this.currentListing.listingTypeId,
+            parkTypeId:this.currentListing.parkTypeId,
+            listCity: this.currentListing.listCity,
+            listStateId: this.currentListing.listStateId,
+            territoryId: this.currentListing.territoryId,
+            noOvernightGuests: this.currentListing.noOvernightGuests,
+            salesPresentationRequired: this.currentListing.salesPresentationRequired,
+            deleteListing: this.currentListing.deleteListing,
+            duplicateListingText: this.currentListing.duplicateListingText,
+            primaryFileNumber: this.currentListing.primaryFileNumber,
+            reasonForDelete:''
+        }); 
+        if(!this.currentListing.noOvernightGuests){
+            this.isGuestsChecked = false;
+        }
+            else{
+                this.isGuestsChecked = true;
+        }
+        if(!this.currentListing.salesPresentationRequired){
+            this.isSalesPresentationChecked = false;
+        }
+            else{
+                this.isSalesPresentationChecked = true;
+            }
+        if(!this.currentListing.deleteListing){
+            this.isDeleteChecked = false;
+        }
+            else{
+                this.isDeleteChecked = true;
+            }
+    }
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
         this.allRefsObj = JSON.parse(this.allRefsTmp);
@@ -166,7 +199,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     
     get f() { return this.goodSamRecordForm.controls; }
 
-    clearChanges() {
+/*     clearChanges() {
         this.goodSamRecordForm.reset();
         this.submitted = false;
         //resetting toggle text to no
@@ -174,7 +207,7 @@ export class GoodSamRecordFormComponent implements OnInit{
         this.isDeleteChecked = false;
         this.isSalesPresentationChecked = false;
         this.sendFormStatus(['goodSamRecordFormStatus', 0]);
-    }
+    } */
 
     checkBoxSalesPresentationChange(cb:any) {
         this.isSalesPresentationChecked = !this.isSalesPresentationChecked;
