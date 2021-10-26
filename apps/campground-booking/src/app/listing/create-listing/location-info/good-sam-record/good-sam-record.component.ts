@@ -1,10 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Store } from '@ngxs/store';
-import { IAllRefs, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
+import { Select, Store } from '@ngxs/store';
+import { IAllRefs } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
 import { UpdateGoodSamRecordForm } from "../../../state/actions/listing.actions";
+import { IGoodSamRecord } from "../../../state/models/listing";
+import { ListingState } from "../../../state/listing.state";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'good-sam-record',
@@ -12,8 +15,13 @@ import { UpdateGoodSamRecordForm } from "../../../state/actions/listing.actions"
     styleUrls: ['./good-sam-record.component.css']
 })
 
-export class GoodSamRecordFormComponent implements OnInit{
+export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     goodSamRecordForm!: FormGroup;
+
+    @Select(ListingState.getGoodSamRecord)
+    goodSamRecordState$!: Observable<IGoodSamRecord>;
+    goodSamRecordState:any;
+
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
     isSalesPresentationChecked:boolean = false;
@@ -35,14 +43,42 @@ export class GoodSamRecordFormComponent implements OnInit{
     parkName:any;
 
     // @Output() formStatus = new EventEmitter<any>();
+    @ViewChild('sectionCodeId') private sectionCodeCSS!: ElementRef;
+    @ViewChild('listStateId') private listStateCSS!: ElementRef;
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService,
-         private store: Store, private listingNavService: ListingNavService) {
+         private store: Store, private listingNavService: ListingNavService, private readonly changeDetectorRef: ChangeDetectorRef) {
             this.createForm();
          }
 
+        createForm() {
+        this.goodSamRecordForm = this.formBuilder.group({
+        locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
+        fileNumber: [{value: this.fileNum, disabled: true},  Validators.required],
+        sectionCodeId: ['', Validators.required],
+        repCode: [{value: this.repCode, disabled: true}, Validators.required],
+        listTypeId: ['', Validators.required],
+        parkTypeId: ['', Validators.required],
+        duplicateListingText: [''],
+        primaryFileNumber: [''],
+        listCity: ['', [Validators.required, Validators.maxLength(255)]],
+        listStateId: ['', Validators.required],
+        territoryId: ['', Validators.required],
+        salesPresentationRequired: false,
+        noOvernightGuests: false,
+        deleteListing: false,
+        reasonForDelete: ['']
+        });
+    }
+
     ngOnInit() {
-        this.getFormDropDownData();
+        this.getFormDropDownData(); 
+        this.goodSamRecordState$.subscribe(data => {
+            // this.goodSamRecordForm.patchValue({sectionCodeId: data.sectionCodeId})
+            this.goodSamRecordForm.patchValue({listStateId: data.listStateId})
+            this.goodSamRecordForm.patchValue({listCity: data.listCity})
+        })
+        console.log(this.goodSamRecordState)       
         this.newListingTmp = window.localStorage.getItem('new-listing');
         this.newListingObj = JSON.parse(this.newListingTmp);
         for(let [key, value] of Object.entries(this.newListingObj)) {
@@ -62,8 +98,12 @@ export class GoodSamRecordFormComponent implements OnInit{
                 this.goodSamRecordForm.patchValue({repCode: this.repCode})
                 }
             });
-
-
+    }
+    ngAfterViewInit() {
+        this.goodSamRecordState$.subscribe(data => {
+            this.sectionCodeCSS.nativeElement.setAttribute('value', data.sectionCodeId);
+            this.listStateCSS.nativeElement.setAttribute('value', data.listStateId);
+        })
     }
 
     getFormDropDownData() {
@@ -89,35 +129,15 @@ export class GoodSamRecordFormComponent implements OnInit{
         }
     }
 
-    createForm() {
-        this.goodSamRecordForm = this.formBuilder.group({
-        locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
-        fileNumber: [{value: this.fileNum, disabled: true},  Validators.required],
-        sectionCodeId: ['', Validators.required],
-        repCode: [{value: this.repCode, disabled: true}, Validators.required],
-        listTypeId: ['', Validators.required],
-        parkTypeId: ['', Validators.required],
-        duplicateListingText: [''],
-        primaryFileNumber: [''],
-        listCity: ['', [Validators.required, Validators.maxLength(255)]],
-        listStateId: ['', Validators.required],
-        territoryId: ['', Validators.required],
-        salesPresentationRequired: false,
-        noOvernightGuests: false,
-        deleteListing: false,
-        reasonForDelete: ['']
-      });
-    }
-
     sendFormStatus(value: any) {
         this.listingNavService.updateFormStatus(value)
     }
     
-    onSubmit(): void {
+    onSubmit(form: IGoodSamRecord): void {
         this.submitted = true;
         if(this.goodSamRecordForm.valid) {
             console.log(this.goodSamRecordForm.value);
-            this.store.dispatch(new UpdateGoodSamRecordForm({goodSamRecord: this.goodSamRecordForm.value}));
+            this.store.dispatch(new UpdateGoodSamRecordForm(form));
             this.sendFormStatus(['goodSamRecordFormStatus', 2]);
         } else {
             console.log('not valid');

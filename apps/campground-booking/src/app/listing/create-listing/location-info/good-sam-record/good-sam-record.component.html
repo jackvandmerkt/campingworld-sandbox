@@ -1,4 +1,4 @@
-<form [formGroup]="goodSamRecordForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="goodSamRecordForm" (ngSubmit)="onSubmit(goodSamRecordForm.value)">
   <div class="grid grid-cols-2 w-636">
     <div class="grid col-span-2">
         <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Good Sam Record ID</p>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="relative z-0 pb-10">
-      <select name="sectionCodeId" formControlName="sectionCodeId" value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
+      <select name="sectionCodeId" formControlName="sectionCodeId" #sectionCodeId value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
       <option value=""></option>
       <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
@@ -44,7 +44,7 @@
     <div class="relative z-0 pb-10">
       <select (change)="onChange($event)" name="listTypeId" formControlName="listTypeId" value="" [ngClass]="{'error-border': submitted && f.listTypeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
-      <option value=""></option>
+      <option value="" ></option>
       <option *ngFor="let l of listingTypesFromService" [value]="l.id">{{l.value}}</option>
       </select>
       <label for="listTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listTypeId.errors }">Listing Type</label>
@@ -105,7 +105,7 @@
         </div>
     </div>
     <div class="relative z-0 pb-10">
-        <select name="listStateId" formControlName="listStateId" value="" [ngClass]="{'error-border': submitted && f.listStateId.errors }"
+        <select name="listStateId" formControlName="listStateId" value="" #listStateId [ngClass]="{'error-border': submitted && f.listStateId.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
         <option value=""></option>
         <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>

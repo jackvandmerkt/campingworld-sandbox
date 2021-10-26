@@ -1,82 +1,77 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { UpdateGoodSamRecordForm } from './actions/listing.actions';
-import { Listing } from './models/listing';
-
-// export class ListingStateModel {
-//     listing!: Listing[];
-// }
-
-// @State<ListingStateModel>({
-//     name: 'listing',
-//     defaults: {
-//         listing: []
-//     }
-// })
-// export class ListingState {
-
-//     @Selector()
-//     static getListing(state: ListingStateModel) {
-//         return state.listing;
-//     }
-
-//     @Action(UpdateListingForm)
-//     add({getState, patchState }: StateContext<ListingStateModel>, { payload }: UpdateListingForm) {
-//         const state = getState();
-//         patchState({
-//             listing: [...state.listing, payload]
-//         });
-//     }
-// }
-
+import { IGoodSamRecord, IContactInfo } from './models/listing';
 export class ListingStateModel {
-  listing!: Listing;
+    goodSamRecord!: IGoodSamRecord;
+    contactInfo!: IContactInfo;
 }
-
 @State<ListingStateModel>({
   name: 'listing',
   defaults: {
-    listing: {
       goodSamRecord: {
-        locationListingName: 'na',
+        locationListingName: 'Default',
         sectionCodeId: 1,
-        listTypeId: "2",
-        parkTypeId: 2,
-        duplicateListingText: "",
-        primaryFileNumber: "",
-        listCity: "x",
+        listingTypeId: 1,
+        parkTypeId: 1,
+        duplicateListingText: 'Default',
+        primaryFileNumber: 1,
+        listCity: 'Default',
         listStateId: 1,
-        territoryId: 2,
+        territoryId: 1,
         salesPresentationRequired: false,
-        noOvernightGuests: false,
+        noOverniteGuests: false,
         deleteListing: false,
-        reasonForDelete: ""
+        deleteCodeId: 1
       },
-      contactinfo: {
-        name: 'l'
+      contactInfo: {
+        mailingAddress: {
+          street1: "123 Some Street",
+          street2: "123 Some Street",
+          city: "Chicago",
+          listStateId: 5,
+          zip: "60603",
+          countryId: 1
+        },
+        physicalAndMailingAddressSame: false,
+        physicalAddress: {
+          street1: "123 Some Street",
+          street2: "123 Some Street",
+          city: "Chicago",
+          listStateId: 5,
+          zip: "60603",
+          countryId: 1
+        },
+        latitude: 89.12323,
+        longitude: 135.23488,
+        elevation: 2732,
+        email: "john.doe@example.com",
+        telephone: "555-555-5555",
+        repressedTelephone: "555-555-5555",
+        webAddress: "https://www.example.com/",
+        onlineWeb: "https://www.example.com/",
+        skipUtm: false,
+        facebook: "https://www.facebook.com/...",
+        twitter: "https://twitter.com/...",
+        pinterest: "https://www.pinterest.com/...",
+        instagram: "https://www.instagram.com/...",
+        parkTypeId: 1
       }
-  }
 }
 })
 export class ListingState {
-
   @Selector()
-  static getListing(state: ListingStateModel) {
-      return state.listing;
+  static getGoodSamRecord(state: ListingStateModel) {
+    return state.goodSamRecord;
   }
-
-  // @Action(UpdateGoodSamRecordForm)
-  // add({getState, setState }: StateContext<Listing>, { goodSamRecord }: UpdateGoodSamRecordForm) {
-  //     const state = getState();
-  //     setState({
-  //         listing: {...state.listing, goodSamRecord}
-  //     });
-  // }
+  static getContactInfo(state: ListingStateModel) {
+    return state.contactInfo;
+}
 
   @Action(UpdateGoodSamRecordForm)
-  update({getState, setState }: StateContext<ListingStateModel>, { goodSamRecord }: UpdateGoodSamRecordForm) {
+  update({getState, patchState }: StateContext<ListingStateModel>, { goodSamRecord }: UpdateGoodSamRecordForm) {
     const state = getState();
-    setState({
-      ...state.listing, listing: goodSamRecord
+    patchState({
+      ...state, goodSamRecord
   });
   }
 }

@@ -48,7 +48,6 @@ export class CreateListingNavComponent implements OnInit, OnChanges{
 
     ngOnInit() {
         this.listingNavService.getFormStatus().subscribe(data => {
-            console.log(data)
             for(let key of Object.keys(this.formSubmitStatus)) {
                 if(key === data[0]) {
                     this.formSubmitStatus[key] = data[1];
@@ -59,7 +58,6 @@ export class CreateListingNavComponent implements OnInit, OnChanges{
 
     ngOnChanges() {
         this.listingNavService.getFormStatus().subscribe(data => {
-            console.log(data)
             for(let key of Object.keys(this.formSubmitStatus)) {
                 if(key === data[0]) {
                     this.formSubmitStatus[key] = data[1];

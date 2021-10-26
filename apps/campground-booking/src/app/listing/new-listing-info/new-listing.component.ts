@@ -46,7 +46,7 @@ export class NewListingsComponent implements OnInit{
     newListingForm = this.formBuilder.group({
       sectionCodeId: ['', Validators.required],
       parkTypeId: [''],
-      repName: [{value: this.repNameFromState, disabled: true},  Validators.required],
+      repName: [{value: this.repNameFromState},  Validators.required],
       locationListingName: ['', Validators.required]
     });
 
