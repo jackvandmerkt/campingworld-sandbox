@@ -78,7 +78,7 @@
         </div>
       </div>
       <div class="relative z-0 pb-10 primaryFileNum-label">
-        <input type="text" formControlName="primaryFileNumber" name="primaryFileNumber" placeholder=" " [ngClass]="{'error-border': submitted && f.primaryFileNumber.errors }"
+        <input type="number" formControlName="primaryFileNumber" name="primaryFileNumber" placeholder=" " [ngClass]="{'error-border': submitted && f.primaryFileNumber.errors }"
             class="block px-3 bg-transparent border rounded appearance-none w-138 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="primaryFileNumber"
             class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.primaryFileNumber.errors }">Primary File #</label>
