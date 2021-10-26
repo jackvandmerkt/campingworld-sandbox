@@ -98,7 +98,9 @@ export class GoodSamRecordFormComponent implements OnInit{
                     territoryId: this.currentListing.territoryId,
                     noOvernightGuests: this.currentListing.noOvernightGuests,
                     salesPresentationRequired: this.currentListing.salesPresentationRequired,
-                    deleteListing: this.currentListing.deleteListing
+                    deleteListing: this.currentListing.deleteListing,
+                    duplicateListingText:this.currentListing.duplicateListingText,
+                    primaryFileNumber: this.currentListing.primaryFileNumber
                 }); 
             }
             this.setAttributes(data);
@@ -122,6 +124,8 @@ export class GoodSamRecordFormComponent implements OnInit{
             noOvernightGuests: this.currentListing.noOvernightGuests,
             salesPresentationRequired: this.currentListing.salesPresentationRequired,
             deleteListing: this.currentListing.deleteListing,
+            duplicateListingText: this.currentListing.duplicateListingText,
+            primaryFileNumber: this.currentListing.primaryFileNumber,
             reasonForDelete:''
         }); 
     }
