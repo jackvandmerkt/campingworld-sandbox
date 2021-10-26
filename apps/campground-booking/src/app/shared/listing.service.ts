@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations,IGoodSamRecordId, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -135,6 +135,16 @@ export class ListingService {
       .pipe(catchError(this.handleError<IListings[]>('postNewListing', )))
     }
 
+    //Location Info - Good Sam Recrod ID Form
+    postGoodSamRecordId(form:IGoodSamRecordId, fileNumber:string):Observable<IGoodSamRecordId>{
+      return this.http.put<IGoodSamRecordId>(`/api/v1/listings/${fileNumber}/location-info/good-sam-record-id`, form)
+      .pipe(catchError(this.handleError<IGoodSamRecordId>('postGoodSamRecordId', )))
+    }
+    getGoodSamRecordId(fileNumber:string):Observable<IGoodSamRecordId>{
+      return this.http.get<IGoodSamRecordId>(`api/v1/listings/${fileNumber}/location-info/good-sam-record-id`)
+      .pipe(catchError(this.handleError<IGoodSamRecordId>('getGoodSamRecordId', )))
+    }
+    
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleError<T>(operation = 'operation', result?:T){
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

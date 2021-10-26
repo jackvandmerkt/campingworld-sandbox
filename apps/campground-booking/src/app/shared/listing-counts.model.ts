@@ -354,3 +354,21 @@ export interface IAllRefs {
         }
       ]
 }
+export interface IGoodSamRecordId {
+  locationListingName:string,
+  fileNumber:number,
+  listingId:number,
+  sectionCodeId:number,
+  repCode:number,
+  listingTypeId:number,
+  parkTypeId:number,
+  duplicateListingText?:string,
+  primaryFileNumber?:string,
+  listCity:string,
+  listStateId:string,
+  territoryId:string,
+  salesPresentationRequired:boolean,
+  noOvernightGuests:boolean,
+  deleteListing:boolean,
+  reasonForDelete?:string
+}
