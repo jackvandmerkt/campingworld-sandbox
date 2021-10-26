@@ -13,6 +13,16 @@
   }
 }
 
+.checkbox {
+  border: 2px solid rgba(33, 43, 54, 0.15);
+  border-radius: 2px;
+  margin-bottom: 3px;
+}
+
+.checkbox:checked {
+  color: #c30b24;
+}
+
 .loading-box {
   width: 200px;
   height: 300px;
