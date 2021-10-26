@@ -32,7 +32,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     repCode:number = 0;
     parkName:any;
     postResponse:any;
-    currentListing!:any;
+    currentListing:any= {};
 
     @ViewChild('sectionCodeId') private sectionCodeCSS!: ElementRef;
     @ViewChild('parkTypeId') private parkTypeIdCSS!: ElementRef;
@@ -128,6 +128,24 @@ export class GoodSamRecordFormComponent implements OnInit{
             primaryFileNumber: this.currentListing.primaryFileNumber,
             reasonForDelete:''
         }); 
+        if(!this.currentListing.noOvernightGuests){
+            this.isGuestsChecked = false;
+        }
+            else{
+                this.isGuestsChecked = true;
+        }
+        if(!this.currentListing.salesPresentationRequired){
+            this.isSalesPresentationChecked = false;
+        }
+            else{
+                this.isSalesPresentationChecked = true;
+            }
+        if(!this.currentListing.deleteListing){
+            this.isDeleteChecked = false;
+        }
+            else{
+                this.isDeleteChecked = true;
+            }
     }
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
