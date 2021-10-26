@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { IAllRefs, IGoodSamRecordId, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'good-sam-record',
@@ -11,7 +12,7 @@ import { ListingNavService } from "../../../../shared/listing-nav.service";
     styleUrls: ['./good-sam-record.component.css']
 })
 
-export class GoodSamRecordFormComponent implements OnInit{
+export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
     isSalesPresentationChecked:boolean = false;
@@ -43,7 +44,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     // @Output() formStatus = new EventEmitter<any>();
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService,
-         private store: Store<any>, private listingNavService: ListingNavService) {}
+         private store: Store<any>, private listingNavService: ListingNavService, private route: ActivatedRoute) {}
          goodSamRecordForm = this.formBuilder.group({
             locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
             fileNumber: [{value: this.fileNum},  Validators.required],
@@ -85,33 +86,38 @@ export class GoodSamRecordFormComponent implements OnInit{
                 this.goodSamRecordForm.patchValue({repCode: this.repCode})
                 }
             });
-        this.ls.getGoodSamRecordId(this.fileNum).subscribe(data => {
-            if(data){
-                this.currentListing = data;
-                console.log(this.currentListing.listCity)
-                this.goodSamRecordForm.patchValue({
-                    sectionCodeId: this.currentListing.sectionCodeId,
-                    listingTypeId: this.currentListing.listingTypeId,
-                    parkTypeId:data.parkTypeId,
-                    listCity: this.currentListing.listCity,
-                    listStateId: this.currentListing.listStateId,
-                    territoryId: this.currentListing.territoryId,
-                    noOvernightGuests: this.currentListing.noOvernightGuests,
-                    salesPresentationRequired: this.currentListing.salesPresentationRequired,
-                    deleteListing: this.currentListing.deleteListing,
-                    duplicateListingText:this.currentListing.duplicateListingText,
-                    primaryFileNumber: this.currentListing.primaryFileNumber
-                }); 
-            }
-            this.setAttributes(data);
-        })
+        this.currentListing = this.route.snapshot.data['data'];
+        this.goodSamRecordForm.patchValue({
+            sectionCodeId: this.currentListing.sectionCodeId,
+            listingTypeId: this.currentListing.listingTypeId,
+            parkTypeId: this.currentListing.parkTypeId,
+            listCity: this.currentListing.listCity,
+            listStateId: this.currentListing.listStateId,
+            territoryId: this.currentListing.territoryId,
+            noOvernightGuests: this.currentListing.noOvernightGuests,
+            salesPresentationRequired: this.currentListing.salesPresentationRequired,
+            deleteListing: this.currentListing.deleteListing,
+            duplicateListingText:this.currentListing.duplicateListingText,
+            primaryFileNumber: this.currentListing.primaryFileNumber
+        }); 
+    // this.setAttributes();
+    // console.log(this.currentListing)
+        // this.ls.getGoodSamRecordId(this.fileNum).subscribe(data => {
+        //     if(data){
+        //         this.currentListing = data;
+        // })
     }
-    setAttributes(data: IGoodSamRecordId){
-        this.sectionCodeCSS.nativeElement.setAttribute('value', data.sectionCodeId)
-        this.listingTypeCSS.nativeElement.setAttribute('value', data.listingTypeId)
-        this.parkTypeIdCSS.nativeElement.setAttribute('value', data.parkTypeId)
-        this.listingStateCSS.nativeElement.setAttribute('value', data.listStateId)
-        this.territoryCSS.nativeElement.setAttribute('value', data.territoryId)
+
+    ngAfterViewInit() {
+        this.setAttributes();
+    }
+
+    setAttributes(){
+        this.sectionCodeCSS.nativeElement.setAttribute('value', 1)
+        this.listingTypeCSS.nativeElement.setAttribute('value', 1)
+        this.parkTypeIdCSS.nativeElement.setAttribute('value', 1)
+        this.listingStateCSS.nativeElement.setAttribute('value',1)
+        this.territoryCSS.nativeElement.setAttribute('value', 1)
     }
     clearChanges(){
         this.goodSamRecordForm.patchValue({
@@ -150,7 +156,6 @@ export class GoodSamRecordFormComponent implements OnInit{
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
         this.allRefsObj = JSON.parse(this.allRefsTmp);
-        console.log(this.allRefsObj)
         for(let [key, value] of Object.entries(this.allRefsObj)) {
             if(key === 'territories') {
                 this.territoriesFromService = value;
