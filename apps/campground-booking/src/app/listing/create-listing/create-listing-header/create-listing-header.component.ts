@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 
 @Component({
@@ -9,9 +10,9 @@ export class CreateListingHeaderComponent implements OnInit {
     newListingTmp:any;
     newListingObj: any = {};
     parkName: any;
-    fileNum: any = 0;
+    fileNum:any = 0;
 
-    constructor(private store: Store<any>) {
+    constructor(private store: Store<any>, private route: ActivatedRoute) {
 
     }
 
@@ -26,17 +27,5 @@ export class CreateListingHeaderComponent implements OnInit {
                 this.fileNum = value;
             } 
         }
-        // this.store.select('listing-info').subscribe(
-        //     data => {
-        //       if (data) {
-        //         this.fileNum = data.listingReducer.newListing.fileNumber
-        //       }
-        //     });
-        // this.store.select('listing-info').subscribe(
-        //     data => {
-        //         if (data) {
-        //         this.parkName = data.listingReducer.newListing.locationListingName
-        //         }
-        //     });
     }
 }

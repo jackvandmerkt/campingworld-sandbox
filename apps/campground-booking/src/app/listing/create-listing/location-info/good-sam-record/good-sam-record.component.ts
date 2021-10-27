@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { IAllRefs, IGoodSamRecordId, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
+import { IAllRefs } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
 import { ActivatedRoute } from "@angular/router";
@@ -89,19 +89,21 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                 }
             });
         this.currentListing = this.route.snapshot.data['data'];
-        this.goodSamRecordForm.patchValue({
-            sectionCodeId: this.currentListing.sectionCodeId,
-            listingTypeId: this.currentListing.listingTypeId,
-            parkTypeId: this.currentListing.parkTypeId,
-            listCity: this.currentListing.listCity,
-            listStateId: this.currentListing.listStateId,
-            territoryId: this.currentListing.territoryId,
-            noOvernightGuests: this.currentListing.noOvernightGuests,
-            salesPresentationRequired: this.currentListing.salesPresentationRequired,
-            deleteListing: this.currentListing.deleteListing,
-            duplicateListingText:this.currentListing.duplicateListingText,
-            primaryFileNumber: this.currentListing.primaryFileNumber
-        }); 
+        if (this.currentListing != null) {
+            this.goodSamRecordForm.patchValue({
+                sectionCodeId: this.currentListing.sectionCodeId,
+                listingTypeId: this.currentListing.listingTypeId,
+                parkTypeId: this.currentListing.parkTypeId,
+                listCity: this.currentListing.listCity,
+                listStateId: this.currentListing.listStateId,
+                territoryId: this.currentListing.territoryId,
+                noOvernightGuests: this.currentListing.noOvernightGuests,
+                salesPresentationRequired: this.currentListing.salesPresentationRequired,
+                deleteListing: this.currentListing.deleteListing,
+                duplicateListingText:this.currentListing.duplicateListingText,
+                primaryFileNumber: this.currentListing.primaryFileNumber
+            }); 
+        }
     }
 
     ngAfterViewInit() {
@@ -109,23 +111,26 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     }
 
     setAttributes(){
-        for(let [key, value] of Object.entries(this.currentListing)) {
-            if(key === 'sectionCodeId') {
-                this.sectionCodeCSS.nativeElement.setAttribute('value', value) 
-            }
-            if(key === 'listingTypeId') {
-                this.listingTypeCSS.nativeElement.setAttribute('value', value)
-            }
-            if(key === 'parkTypeId') {
-                this.parkTypeIdCSS.nativeElement.setAttribute('value', value)
-            }
-            if(key === 'listStateId') {
-                this.listingStateCSS.nativeElement.setAttribute('value',value)
-            }
-            if(key === 'territoryId') {
-                this.territoryCSS.nativeElement.setAttribute('value', value)
+        if (this.currentListing != null) {
+            for(let [key, value] of Object.entries(this.currentListing)) {
+                if(key === 'sectionCodeId') {
+                    this.sectionCodeCSS.nativeElement.setAttribute('value', value) 
+                }
+                if(key === 'listingTypeId') {
+                    this.listingTypeCSS.nativeElement.setAttribute('value', value)
+                }
+                if(key === 'parkTypeId') {
+                    this.parkTypeIdCSS.nativeElement.setAttribute('value', value)
+                }
+                if(key === 'listStateId') {
+                    this.listingStateCSS.nativeElement.setAttribute('value',value)
+                }
+                if(key === 'territoryId') {
+                    this.territoryCSS.nativeElement.setAttribute('value', value)
+                }
             }
         }
+        
     }
     clearChanges(){
         this.goodSamRecordForm.patchValue({
