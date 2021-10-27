@@ -42,8 +42,6 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     @ViewChild('listStateId') private listingStateCSS!: ElementRef;
     @ViewChild('territoryId') private territoryCSS!: ElementRef;
 
-    // @Output() formStatus = new EventEmitter<any>();
-
     constructor(private formBuilder: FormBuilder, private ls: ListingService,
          private store: Store<any>, private listingNavService: ListingNavService, private route: ActivatedRoute) {}
          goodSamRecordForm = this.formBuilder.group({
@@ -63,8 +61,6 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
             deleteListing: false,
             reasonForDelete: ['']
           });
-          //listing typeid needs to be inter
-          //
     
     ngOnInit() {
         this.route.snapshot.paramMap.get('filenumber');
@@ -110,28 +106,20 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
         this.setAttributes();
     }
 
-    setAttributes(){
-        if (this.currentListing != null) {
-            for(let [key, value] of Object.entries(this.currentListing)) {
-                if(key === 'sectionCodeId') {
-                    this.sectionCodeCSS.nativeElement.setAttribute('value', value) 
-                }
-                if(key === 'listingTypeId') {
-                    this.listingTypeCSS.nativeElement.setAttribute('value', value)
-                }
-                if(key === 'parkTypeId') {
-                    this.parkTypeIdCSS.nativeElement.setAttribute('value', value)
-                }
-                if(key === 'listStateId') {
-                    this.listingStateCSS.nativeElement.setAttribute('value',value)
-                }
-                if(key === 'territoryId') {
-                    this.territoryCSS.nativeElement.setAttribute('value', value)
-                }
-            }
+    onSubmit(): void {
+        this.submitted = true;
+        if(this.goodSamRecordForm.valid) {
+            console.log(this.goodSamRecordForm.value);
+            this.postForm();
+            
+            this.sendFormStatus(['goodSamRecordFormStatus', 2]);
+        } else {
+            console.log('not valid');
+            this.sendFormStatus(['goodSamRecordFormStatus', 1]);
+            return;
         }
-        
     }
+    get f() { return this.goodSamRecordForm.controls; }
     clearChanges(){
         this.goodSamRecordForm.patchValue({
             sectionCodeId: this.currentListing.sectionCodeId,
@@ -149,22 +137,19 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
         }); 
         if(!this.currentListing.noOvernightGuests){
             this.isGuestsChecked = false;
-        }
-            else{
-                this.isGuestsChecked = true;
+        } else{
+            this.isGuestsChecked = true;
         }
         if(!this.currentListing.salesPresentationRequired){
             this.isSalesPresentationChecked = false;
+        } else{
+            this.isSalesPresentationChecked = true;
         }
-            else{
-                this.isSalesPresentationChecked = true;
-            }
         if(!this.currentListing.deleteListing){
             this.isDeleteChecked = false;
+        } else{
+            this.isDeleteChecked = true;
         }
-            else{
-                this.isDeleteChecked = true;
-            }
     }
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
@@ -187,24 +172,30 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
             }
         }
     }
-
-
+    setAttributes(){
+        if (this.currentListing != null) {
+            for(let [key, value] of Object.entries(this.currentListing)) {
+                if(key === 'sectionCodeId') {
+                    this.sectionCodeCSS.nativeElement.setAttribute('value', value) 
+                }
+                if(key === 'listingTypeId') {
+                    this.listingTypeCSS.nativeElement.setAttribute('value', value)
+                }
+                if(key === 'parkTypeId') {
+                    this.parkTypeIdCSS.nativeElement.setAttribute('value', value)
+                }
+                if(key === 'listStateId') {
+                    this.listingStateCSS.nativeElement.setAttribute('value',value)
+                }
+                if(key === 'territoryId') {
+                    this.territoryCSS.nativeElement.setAttribute('value', value)
+                }
+            }
+        }
+        
+    }
     sendFormStatus(value: any) {
         this.listingNavService.updateFormStatus(value)
-    }
-    
-    onSubmit(): void {
-        this.submitted = true;
-        if(this.goodSamRecordForm.valid) {
-            console.log(this.goodSamRecordForm.value);
-            this.postForm();
-            
-            this.sendFormStatus(['goodSamRecordFormStatus', 2]);
-        } else {
-            console.log('not valid');
-            this.sendFormStatus(['goodSamRecordFormStatus', 1]);
-            return;
-        }
     }
     postForm() {
         this.ls.postGoodSamRecordId(this.goodSamRecordForm.value, this.fileNum).subscribe(response => {
@@ -215,18 +206,6 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
         })
       }
     
-    get f() { return this.goodSamRecordForm.controls; }
-
-/*     clearChanges() {
-        this.goodSamRecordForm.reset();
-        this.submitted = false;
-        //resetting toggle text to no
-        this.isGuestsChecked = false;
-        this.isDeleteChecked = false;
-        this.isSalesPresentationChecked = false;
-        this.sendFormStatus(['goodSamRecordFormStatus', 0]);
-    } */
-
     checkBoxSalesPresentationChange(cb:any) {
         this.isSalesPresentationChecked = !this.isSalesPresentationChecked;
     }
@@ -243,8 +222,6 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
             this.goodSamRecordForm.get('reasonForDelete')?.updateValueAndValidity()
         }
     }
-
-
     //Jack todo - change if conditional
     onChange(event:any): void {
         const newVal = event.target.value;
