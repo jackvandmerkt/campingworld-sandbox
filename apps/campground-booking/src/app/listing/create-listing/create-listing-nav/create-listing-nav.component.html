@@ -28,7 +28,7 @@
                   <img *ngIf='formSubmitStatus.goodSamRecordFormStatus === 0' class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
                   <img *ngIf='formSubmitStatus.goodSamRecordFormStatus === 1' class="w-5 h-5" src="/assets/images/error.png" alt="error">
                   <img *ngIf='formSubmitStatus.goodSamRecordFormStatus === 2' class="w-5 h-5" src="/assets/images/green-check.png" alt="green-check">
-                  <a routerLink="./good-sam-record" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p></a>
+                  <a [routerLink]="['./good-sam-record', fileNumber ]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
@@ -159,7 +159,7 @@
           <!-- Sixth section -->
           <div class="flex flex-row justify-center items-center space-x-2.5 ">
               <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-              <a routerLink="./listing-update-details" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Listing Update Details</p></a>
+              <a routerLink="./listing-update-details" routerLinkActive="router-link-active"><p class="font-cw text-cwGray">Listing Update Details</p></a>
           </div>
       </div>
   </div>

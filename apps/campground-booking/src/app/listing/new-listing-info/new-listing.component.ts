@@ -18,7 +18,7 @@ export class NewListingsComponent implements OnInit{
     parkTypesFromService!: IParkTypes[];
     repNameFromState:string = '';
     postResponse:any;
-
+    fileNumber:any;
     newListingTmp:any;
     newListingObj: any = {};
 
@@ -69,9 +69,15 @@ export class NewListingsComponent implements OnInit{
       this.ls.postNewListing(this.newListingForm.value).subscribe(response => {
         if(response){
           this.postResponse = response;
+          console.log(this.postResponse)
           this.store.dispatch(ListingActions.updateInitialState({ listing: this.postResponse}));
           window.localStorage.setItem('new-listing', JSON.stringify(this.postResponse));
-          this.router.navigateByUrl('/create-listing/good-sam-record')
+          for(let [key, value] of Object.entries(this.postResponse)) {
+            if(key === 'fileNumber') {
+                this.fileNumber = value;
+            }
+          }
+          this.router.navigateByUrl('/create-listing/good-sam-record/' + this.fileNumber)
         }
       })
     }

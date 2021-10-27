@@ -36,6 +36,7 @@ import { RvHomesParkModelsComponent } from "./create-listing/rent-buy/rv-homes-p
 import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-rentals/tenting-rentals.component";
 import { listingRoutes } from "./listing.routes";
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
+import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-record/good-sam-record.resolver.service";
 
 @NgModule({
     declarations: [
@@ -80,7 +81,9 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
       StoreModule.forFeature('listing-info', {listingReducer})
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: []
+    providers: [
+      GoodSamRecordResolver
+    ]
   
   })
   export class ListingModule { }
