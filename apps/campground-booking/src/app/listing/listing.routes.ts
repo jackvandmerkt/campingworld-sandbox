@@ -30,7 +30,7 @@ export const listingRoutes: Routes = [
   { path: 'all-listing', component: AllListingsComponent },
   { path: 'ad-summary', component: AdSummaryComponent },
   {
-    path: 'create-listing', component: CreateListingComponent,
+    path: 'listing', component: CreateListingComponent,
     children: [
       { path: 'good-sam-record/:fileNumber', component: GoodSamRecordFormComponent, 
         resolve: {data:GoodSamRecordResolver} },

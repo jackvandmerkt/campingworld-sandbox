@@ -77,7 +77,7 @@ export class NewListingsComponent implements OnInit{
                 this.fileNumber = value;
             }
           }
-          this.router.navigateByUrl('/create-listing/good-sam-record/' + this.fileNumber)
+          this.router.navigateByUrl('/listing/good-sam-record/' + this.fileNumber)
         }
       })
     }
