@@ -6,7 +6,7 @@ export const appRoutes: Routes = [
   { path: 'report', component: ReportComponent },
   { path: 'home', component: HomeComponent },
   {
-    path: 'create-listing',
+    path: 'listing',
     loadChildren: () =>
       import('./listing/listing.routes').then(m => m.listingRoutes)
   },
