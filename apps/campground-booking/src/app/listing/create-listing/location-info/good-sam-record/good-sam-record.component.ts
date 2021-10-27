@@ -30,6 +30,7 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     newListingTmp:any;
     newListingObj: any = {};
     fileNum:any = 0;
+    fileNumParam:any;
     repCode:number = 0;
     parkName:any;
     postResponse:any;
@@ -66,11 +67,12 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
           //
     
     ngOnInit() {
+        this.route.snapshot.paramMap.get('filenumber');
         this.getFormDropDownData();
         this.newListingTmp = window.localStorage.getItem('new-listing');
         this.newListingObj = JSON.parse(this.newListingTmp);
         for(let [key, value] of Object.entries(this.newListingObj)) {
-         if(key === 'fileNumber') {
+            if(key === 'fileNumber') {
                 this.fileNum = value;
                 this.goodSamRecordForm.patchValue({fileNumber: this.fileNum})
             }
@@ -100,12 +102,6 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
             duplicateListingText:this.currentListing.duplicateListingText,
             primaryFileNumber: this.currentListing.primaryFileNumber
         }); 
-    // this.setAttributes();
-    // console.log(this.currentListing)
-        // this.ls.getGoodSamRecordId(this.fileNum).subscribe(data => {
-        //     if(data){
-        //         this.currentListing = data;
-        // })
     }
 
     ngAfterViewInit() {
@@ -113,11 +109,23 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     }
 
     setAttributes(){
-        this.sectionCodeCSS.nativeElement.setAttribute('value', 1)
-        this.listingTypeCSS.nativeElement.setAttribute('value', 1)
-        this.parkTypeIdCSS.nativeElement.setAttribute('value', 1)
-        this.listingStateCSS.nativeElement.setAttribute('value',1)
-        this.territoryCSS.nativeElement.setAttribute('value', 1)
+        for(let [key, value] of Object.entries(this.currentListing)) {
+            if(key === 'sectionCodeId') {
+                this.sectionCodeCSS.nativeElement.setAttribute('value', value) 
+            }
+            if(key === 'listingTypeId') {
+                this.listingTypeCSS.nativeElement.setAttribute('value', value)
+            }
+            if(key === 'parkTypeId') {
+                this.parkTypeIdCSS.nativeElement.setAttribute('value', value)
+            }
+            if(key === 'listStateId') {
+                this.listingStateCSS.nativeElement.setAttribute('value',value)
+            }
+            if(key === 'territoryId') {
+                this.territoryCSS.nativeElement.setAttribute('value', value)
+            }
+        }
     }
     clearChanges(){
         this.goodSamRecordForm.patchValue({
