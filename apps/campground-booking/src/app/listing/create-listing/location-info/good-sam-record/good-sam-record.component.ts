@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { IAllRefs, IGoodSamRecordId, IListingTypes, IListStates, IParkTypes, ISectionCodes, ITerritories } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'good-sam-record',
@@ -11,7 +12,7 @@ import { ListingNavService } from "../../../../shared/listing-nav.service";
     styleUrls: ['./good-sam-record.component.css']
 })
 
-export class GoodSamRecordFormComponent implements OnInit{
+export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     isGuestsChecked:boolean = false;
     isDeleteChecked:boolean = false;
     isSalesPresentationChecked:boolean = false;
@@ -29,6 +30,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     newListingTmp:any;
     newListingObj: any = {};
     fileNum:any = 0;
+    fileNumParam:any;
     repCode:number = 0;
     parkName:any;
     postResponse:any;
@@ -43,7 +45,7 @@ export class GoodSamRecordFormComponent implements OnInit{
     // @Output() formStatus = new EventEmitter<any>();
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService,
-         private store: Store<any>, private listingNavService: ListingNavService) {}
+         private store: Store<any>, private listingNavService: ListingNavService, private route: ActivatedRoute) {}
          goodSamRecordForm = this.formBuilder.group({
             locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
             fileNumber: [{value: this.fileNum},  Validators.required],
@@ -65,11 +67,12 @@ export class GoodSamRecordFormComponent implements OnInit{
           //
     
     ngOnInit() {
+        this.route.snapshot.paramMap.get('filenumber');
         this.getFormDropDownData();
         this.newListingTmp = window.localStorage.getItem('new-listing');
         this.newListingObj = JSON.parse(this.newListingTmp);
         for(let [key, value] of Object.entries(this.newListingObj)) {
-         if(key === 'fileNumber') {
+            if(key === 'fileNumber') {
                 this.fileNum = value;
                 this.goodSamRecordForm.patchValue({fileNumber: this.fileNum})
             }
@@ -85,33 +88,44 @@ export class GoodSamRecordFormComponent implements OnInit{
                 this.goodSamRecordForm.patchValue({repCode: this.repCode})
                 }
             });
-        this.ls.getGoodSamRecordId(this.fileNum).subscribe(data => {
-            if(data){
-                this.currentListing = data;
-                console.log(this.currentListing.listCity)
-                this.goodSamRecordForm.patchValue({
-                    sectionCodeId: this.currentListing.sectionCodeId,
-                    listingTypeId: this.currentListing.listingTypeId,
-                    parkTypeId:data.parkTypeId,
-                    listCity: this.currentListing.listCity,
-                    listStateId: this.currentListing.listStateId,
-                    territoryId: this.currentListing.territoryId,
-                    noOvernightGuests: this.currentListing.noOvernightGuests,
-                    salesPresentationRequired: this.currentListing.salesPresentationRequired,
-                    deleteListing: this.currentListing.deleteListing,
-                    duplicateListingText:this.currentListing.duplicateListingText,
-                    primaryFileNumber: this.currentListing.primaryFileNumber
-                }); 
-            }
-            this.setAttributes(data);
-        })
+        this.currentListing = this.route.snapshot.data['data'];
+        this.goodSamRecordForm.patchValue({
+            sectionCodeId: this.currentListing.sectionCodeId,
+            listingTypeId: this.currentListing.listingTypeId,
+            parkTypeId: this.currentListing.parkTypeId,
+            listCity: this.currentListing.listCity,
+            listStateId: this.currentListing.listStateId,
+            territoryId: this.currentListing.territoryId,
+            noOvernightGuests: this.currentListing.noOvernightGuests,
+            salesPresentationRequired: this.currentListing.salesPresentationRequired,
+            deleteListing: this.currentListing.deleteListing,
+            duplicateListingText:this.currentListing.duplicateListingText,
+            primaryFileNumber: this.currentListing.primaryFileNumber
+        }); 
     }
-    setAttributes(data: IGoodSamRecordId){
-        this.sectionCodeCSS.nativeElement.setAttribute('value', data.sectionCodeId)
-        this.listingTypeCSS.nativeElement.setAttribute('value', data.listingTypeId)
-        this.parkTypeIdCSS.nativeElement.setAttribute('value', data.parkTypeId)
-        this.listingStateCSS.nativeElement.setAttribute('value', data.listStateId)
-        this.territoryCSS.nativeElement.setAttribute('value', data.territoryId)
+
+    ngAfterViewInit() {
+        this.setAttributes();
+    }
+
+    setAttributes(){
+        for(let [key, value] of Object.entries(this.currentListing)) {
+            if(key === 'sectionCodeId') {
+                this.sectionCodeCSS.nativeElement.setAttribute('value', value) 
+            }
+            if(key === 'listingTypeId') {
+                this.listingTypeCSS.nativeElement.setAttribute('value', value)
+            }
+            if(key === 'parkTypeId') {
+                this.parkTypeIdCSS.nativeElement.setAttribute('value', value)
+            }
+            if(key === 'listStateId') {
+                this.listingStateCSS.nativeElement.setAttribute('value',value)
+            }
+            if(key === 'territoryId') {
+                this.territoryCSS.nativeElement.setAttribute('value', value)
+            }
+        }
     }
     clearChanges(){
         this.goodSamRecordForm.patchValue({
@@ -150,7 +164,6 @@ export class GoodSamRecordFormComponent implements OnInit{
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
         this.allRefsObj = JSON.parse(this.allRefsTmp);
-        console.log(this.allRefsObj)
         for(let [key, value] of Object.entries(this.allRefsObj)) {
             if(key === 'territories') {
                 this.territoriesFromService = value;

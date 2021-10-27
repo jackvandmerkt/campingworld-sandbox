@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from "@angular/core";
+import { Component, OnChanges, OnInit } from "@angular/core";
 import { ListingNavService } from "../../../shared/listing-nav.service";
 
 @Component({
@@ -13,7 +13,9 @@ export class CreateListingNavComponent implements OnInit, OnChanges{
     unHideAmenities: boolean = false;
     unHideRentBuy: boolean = false;
     unHideRatings: boolean = false;
-
+    currentListingTmp:any;
+    currentListingObj:any = {};
+    fileNumber:any;
     // variables for switching checkmark images
     formSubmitStatus:any = {
         locationInfoSectionStatus: 0,
@@ -55,6 +57,7 @@ export class CreateListingNavComponent implements OnInit, OnChanges{
                 }
             } 
         });
+        this.getFileNumber();
     }
 
     ngOnChanges() {
@@ -68,6 +71,15 @@ export class CreateListingNavComponent implements OnInit, OnChanges{
         });
     }
 
+    getFileNumber() {
+        this.currentListingTmp =  window.localStorage.getItem('new-listing');
+        this.currentListingObj = JSON.parse(this.currentListingTmp);
+          for(let [key, value] of Object.entries(this.currentListingObj)) {
+            if(key === 'fileNumber') {
+                this.fileNumber = value;
+            }
+          }
+    }
 
     expandAll() {
         if(this.unHideLocationInfo == false) {

@@ -17,6 +17,7 @@ import { DirectionsComponent } from "./create-listing/location-info/directions/d
 import { DiscountsAffiliationsComponent } from "./create-listing/location-info/discounts-affiliations/discounts-affiliations.component";
 import { GoodSamParkComponent } from "./create-listing/location-info/good-sam-park/good-sam-park.component";
 import { GoodSamRecordFormComponent } from "./create-listing/location-info/good-sam-record/good-sam-record.component";
+import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-record/good-sam-record.resolver.service";
 import { OwnerAndB2bInfoComponent } from "./create-listing/location-info/owner-and-b2b-info/owner-and-b2b-info.component";
 import { PublishedRatingsComponent } from "./create-listing/ratings/published-ratings/published-ratings.component";
 import { RatingsComponent } from "./create-listing/ratings/ratings.component";
@@ -31,7 +32,8 @@ export const listingRoutes: Routes = [
   {
     path: 'create-listing', component: CreateListingComponent,
     children: [
-      { path: 'good-sam-record', component: GoodSamRecordFormComponent },
+      { path: 'good-sam-record/:fileNumber', component: GoodSamRecordFormComponent, 
+        resolve: {data:GoodSamRecordResolver} },
       { path: 'contact-info', component: ContactInfoComponent },
       { path: 'discounts-affiliations', component: DiscountsAffiliationsComponent },
       { path: 'owner-b2b-info', component: OwnerAndB2bInfoComponent },
