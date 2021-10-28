@@ -31,8 +31,10 @@
                   <a [routerLink]="['./good-sam-record', fileNumber ]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Good Sam Record ID</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./contact-info" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Contact Info</p></a>
+                <img *ngIf='formSubmitStatus.contactInfoFormStatus === 0' class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+                <img *ngIf='formSubmitStatus.contactInfoFormStatus === 1' class="w-5 h-5" src="/assets/images/error.png" alt="error">
+                <img *ngIf='formSubmitStatus.contactInfoFormStatus === 2' class="w-5 h-5" src="/assets/images/green-check.png" alt="green-check">
+                  <a [routerLink]="['./contact-info',fileNumber]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Contact Info</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">

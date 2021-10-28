@@ -26,7 +26,7 @@
     </div>
     <div class="relative z-0 pb-4">
       <select [ngClass]="{'error-border': submitted && f.listStateId.errors }" formControlName="listStateId"
-        name="listStateId" placeholder=" " value="" onclick="this.setAttribute('value', this.value);"
+        name="listStateId" placeholder=" " #listStateId value="" onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
         <option value=""></option>
         <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
@@ -50,7 +50,7 @@
 
     </div>
     <div class="relative z-0 pb-4">
-      <select [ngClass]="{'error-border': submitted && f.countryId.errors }" formControlName="countryId" value=""
+      <select [ngClass]="{'error-border': submitted && f.countryId.errors }" formControlName="countryId" #countryId value=""
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
         <option value=""></option>
@@ -98,7 +98,7 @@
       </div>
       <div class="relative z-0 pb-4">
         <select [ngClass]="{'error-border': submitted && f.physicalListStateId.errors }"
-          formControlName="physicalListStateId" name="physicalListStateId" placeholder=" " value=""
+          formControlName="physicalListStateId" name="physicalListStateId" placeholder=" " #physicalListStateId value=""
           onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
           <option value=""></option>
@@ -124,7 +124,7 @@
       </div>
       <div class="relative z-0 pb-4">
         <select [ngClass]="{'error-border': submitted && f.physicalCountryId.errors }"
-          formControlName="physicalCountryId" value="" onclick="this.setAttribute('value', this.value);"
+          formControlName="physicalCountryId" #physicalCountryId value="" onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
           <option value=""></option>
           <option *ngFor="let c of countriesFromService" [ngValue]="c.id">{{c.value}}</option>
@@ -138,7 +138,7 @@
     </div>
     <div class="grid grid-cols-3 gap-6 mt-6 w-636">
       <div class="relative z-0 pb-4 ">
-        <input [ngClass]="{'error-border': submitted && f.latitude.errors }" type="text" formControlName="latitude"
+        <input [ngClass]="{'error-border': submitted && f.latitude.errors }" type="number" formControlName="latitude"
           name="latitude" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="latitude" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Latitude</label>
@@ -151,7 +151,7 @@
         </div>
       </div>
       <div class="relative z-0 pb-4">
-        <input [ngClass]="{'error-border': submitted && f.longitude.errors }" type=" text" formControlName="longitude"
+        <input [ngClass]="{'error-border': submitted && f.longitude.errors }" type="number" formControlName="longitude"
           name="longitude" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="longitude"
@@ -166,7 +166,7 @@
       </div>
 
       <div class="relative z-0 pb-4">
-        <input [ngClass]="{'error-border': submitted && f.elevation.errors }" type="text" formControlName="elevation"
+        <input [ngClass]="{'error-border': submitted && f.elevation.errors }" type="number" formControlName="elevation"
           name="elevation" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="elevation" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">

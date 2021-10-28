@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations,IGoodSamRecordId, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations,IGoodSamRecordId, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, IContactInfo } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -144,7 +144,17 @@ export class ListingService {
       return this.http.get<IGoodSamRecordId>(`api/v1/listings/${fileNumber}/location-info/good-sam-record-id`)
       .pipe(catchError(this.handleError<IGoodSamRecordId>('getGoodSamRecordId', )))
     }
+  
     
+    // Location Info - Contact Info Form
+    postContactInfo(form:IContactInfo, fileNumber:string):Observable<IContactInfo>{
+      return this.http.put<IContactInfo>(`/api/v1/listings/${fileNumber}/location-info/contact-info`, form)
+      .pipe(catchError(this.handleError<IContactInfo>('postContactInfo', )))
+    }
+    getContactInfo(fileNumber:string):Observable<IContactInfo>{
+      return this.http.get<IContactInfo>(`api/v1/listings/${fileNumber}/location-info/contact-info`)
+      .pipe(catchError(this.handleError<IContactInfo>('getContactInfo', )))
+    }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleError<T>(operation = 'operation', result?:T){
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
