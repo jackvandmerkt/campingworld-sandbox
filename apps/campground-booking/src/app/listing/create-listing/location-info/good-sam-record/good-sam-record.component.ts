@@ -17,6 +17,7 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     isDeleteChecked:boolean = false;
     isSalesPresentationChecked:boolean = false;
     isDuplicateSelected: boolean = false;
+    isMembershipParkSelected: boolean = false;
     submitted: boolean = false;
     allRefsTmp:any;
     allRefsObj!: IAllRefs[];
@@ -54,7 +55,7 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
         parkTypeId: [null, Validators.required],
         duplicateListingText: null,
         primaryFileNumber: null,
-        listCity: [null, [Validators.required, Validators.maxLength(255)]],
+        listCity: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
         listStateId: [null, Validators.required],
         territoryId: [null, Validators.required],
         salesPresentationRequired: false,
@@ -145,7 +146,7 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                 deleteListing: this.currentListing.deleteListing,
                 duplicateListingText: this.currentListing.duplicateListingText,
                 primaryFileNumber: this.currentListing.primaryFileNumber,
-                reasonForDelete:''
+                reasonForDelete: null
             }); 
             if(!this.currentListing.noOvernightGuests){
                 this.isGuestsChecked = false;
@@ -171,6 +172,8 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
             this.isGuestsChecked = false;
             this.isSalesPresentationChecked = false;
             this.isDeleteChecked = false;
+            this.isDuplicateSelected = false;
+            this.isMembershipParkSelected = false;
             this.setAttributes();
         }
     }
@@ -248,10 +251,11 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
         } else {
             this.goodSamRecordForm.get('reasonForDelete')?.clearValidators()
             this.goodSamRecordForm.get('reasonForDelete')?.updateValueAndValidity()
+            this.goodSamRecordForm.controls['reasonForDelete'].reset()
         }
     }
     //Jack todo - change if conditional
-    onChange(event:any): void {
+    onChangeListingType(event:any): void {
         const newVal = event.target.value;
         console.log(newVal)
         if(newVal == '4: 4') {
@@ -266,6 +270,18 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
             this.goodSamRecordForm.get('primaryFileNumber')?.clearValidators()
             this.goodSamRecordForm.get('duplicateListingText')?.updateValueAndValidity()
             this.goodSamRecordForm.get('primaryFileNumber')?.updateValueAndValidity()
+            this.goodSamRecordForm.controls['duplicateListingText'].reset()
+            this.goodSamRecordForm.controls['primaryFileNumber'].reset()
+        }
+    }
+
+    onChangeParkType(event:any): void {
+        const newVal = event.target.value;
+        console.log(newVal)
+        if(newVal == '6: 6') {
+            this.isMembershipParkSelected = true;
+        } else {
+            this.isMembershipParkSelected = false;
         }
     }
 }
