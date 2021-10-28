@@ -24,9 +24,9 @@
     </div>
 
     <div class="relative z-0 pb-10">
-      <select name="sectionCodeId" formControlName="sectionCodeId" #sectionCodeId value="" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
+      <select name="sectionCodeId" formControlName="sectionCodeId" #sectionCodeId value="null" [ngClass]="{'error-border': submitted && f.sectionCodeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
-      <option value=""></option>
+      <option value="null"></option>
       <option *ngFor="let c of sectionCodesFromService" [ngValue]="c.id">{{c.value}} - {{c.code}}</option>
       </select>
       <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Section Code</label>
@@ -42,9 +42,9 @@
     </div>
 
     <div class="relative z-0 pb-10">
-      <select (change)="onChange($event)" name="listingTypeId" formControlName="listingTypeId" #listingTypeId value="" [ngClass]="{'error-border': submitted && f.listingTypeId.errors }"
+      <select (change)="onChange($event)" name="listingTypeId" formControlName="listingTypeId" #listingTypeId value="null" [ngClass]="{'error-border': submitted && f.listingTypeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
-      <option value=""></option>
+      <option value="null"></option>
       <option *ngFor="let l of listingTypesFromService" [ngValue]="l.id">{{l.value}}</option>
       </select>
       <label for="listingTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listingTypeId.errors }">Listing Type</label>
@@ -53,9 +53,9 @@
       </div>
     </div>
     <div class="relative z-0 pb-10">
-      <select name="parkTypeId" formControlName="parkTypeId" #parkTypeId value="" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
+      <select name="parkTypeId" formControlName="parkTypeId" #parkTypeId value="null" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
-      <option value=""></option>
+      <option value="null"></option>
       <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
       </select>
       <label for="parkTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
@@ -105,9 +105,9 @@
         </div>
     </div>
     <div class="relative z-0 pb-10">
-        <select name="listStateId" formControlName="listStateId" #listStateId value="" [ngClass]="{'error-border': submitted && f.listStateId.errors }"
+        <select name="listStateId" formControlName="listStateId" #listStateId value="null" [ngClass]="{'error-border': submitted && f.listStateId.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
-        <option value=""></option>
+        <option value="null"></option>
         <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
         </select>
         <label for="listStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listStateId.errors }">List State/Province</label>
@@ -117,9 +117,9 @@
       </div>
 
       <div class="relative z-0 col-span-2 pb-10">
-        <select name="territoryId" formControlName="territoryId" #territoryId value="" [ngClass]="{'error-border': submitted && f.territoryId.errors }"
+        <select name="territoryId" formControlName="territoryId" #territoryId value="null" [ngClass]="{'error-border': submitted && f.territoryId.errors }"
         onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
-          <option value=""></option>
+          <option value="null"></option>
           <option *ngFor="let t of territoriesFromService" [ngValue]="t.id">{{t.description}}</option>
         </select>
         <label for="territoryId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.territoryId.errors }">Territory</label>

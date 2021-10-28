@@ -38,6 +38,7 @@ import { listingRoutes } from "./listing.routes";
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
 import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-record/good-sam-record.resolver.service";
 import { ContactInfoResolver } from './create-listing/location-info/contact-info/contact-info.resolver.service';
+import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 
 @NgModule({
     declarations: [
@@ -84,7 +85,8 @@ import { ContactInfoResolver } from './create-listing/location-info/contact-info
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
       GoodSamRecordResolver,
-      ContactInfoResolver
+      ContactInfoResolver,
+      RestroomsResolver
     ]
   
   })
