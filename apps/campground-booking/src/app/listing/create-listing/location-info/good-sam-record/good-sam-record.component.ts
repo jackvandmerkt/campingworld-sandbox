@@ -104,6 +104,9 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
             if(this.currentListing.listingTypeId == 4){
                 this.isDuplicateSelected = true;
             }
+            if(this.currentListing.parkTypeId == 6){
+                this.isMembershipParkSelected = true;
+            }
             if(this.currentListing.noOvernightGuests == true){
                 this.isGuestsChecked = true;
             }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IByWeekMonths, IOnlineReservationSystems } from "../../../../shared/listing-counts.model";
+import { IAllRefs } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -10,8 +10,10 @@ import { ListingService } from "../../../../shared/listing.service";
 })
 export class RatesReservationsComponent implements OnInit{
     submitted: boolean = false;
-    byWeekMonthFromService!: IByWeekMonths[];
-    onlineReservationSystemsFromService!: IOnlineReservationSystems[];
+    allRefsTmp:any;
+    allRefsObj!: IAllRefs[];
+    byWeekMonthFromService: any = {};
+    onlineReservationSystemsFromService: any = {};
     creditCardsAccepted: boolean = false;
     reservationsAccepted: boolean = false;
     onlineReservation: boolean = false;
@@ -27,12 +29,7 @@ export class RatesReservationsComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.ls.getByWeekMonth().subscribe(response => {
-            this.byWeekMonthFromService = response;
-        });
-        this.ls.getOnlineReservationSystems().subscribe(response => {
-            this.onlineReservationSystemsFromService = response;
-        });
+        this.getFormDropDownData();
     }
 
     ratesReservationsForm = this.formBuilder.group({
@@ -78,7 +75,20 @@ export class RatesReservationsComponent implements OnInit{
         this.onlineReservationOther = false;
         //resetting select all that apply radio cards
         this.creditCardOptions = [];
-      }
+    }
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'byWeekMonths') {
+                this.byWeekMonthFromService = value;
+            }
+            if(key === 'onlineReservationSystems') {
+                this.onlineReservationSystemsFromService = value;
+            }
+        }
+    }
 
     checkBoxCreditCardsAcceptChange(cb:any) {
         this.creditCardsAccepted = !this.creditCardsAccepted;
