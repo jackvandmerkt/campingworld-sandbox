@@ -372,3 +372,37 @@ export interface IGoodSamRecordId {
   deleteListing:boolean,
   reasonForDelete?:string
 }
+export interface IContactInfo
+ {
+  mailingAddress:{
+    street1:string,
+    street2:string,
+    city:string,
+    listStateId:number,
+    countryId:number
+    zip:number
+  },
+  physicalAndMailingAddressSame:boolean,
+  physicalAddress:{
+    street1:string,
+    street2:string,
+    city:string,
+    listStateId:number,
+    countryId:number
+    zip:number
+  },
+  latitude:number,
+  longitude:number,
+  elevation:number,
+  email:string,
+  telephone:string,
+  repressedTelephone:string,
+  webAddress:string,
+  onlineWeb:string,
+  skipUtm:boolean,
+  facebook:string,
+  twitter:string,
+  pinterest:string,
+  instagram:string,
+  parkTypeId:number
+};
