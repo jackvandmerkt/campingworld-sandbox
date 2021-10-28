@@ -37,6 +37,7 @@ import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-renta
 import { listingRoutes } from "./listing.routes";
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
 import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-record/good-sam-record.resolver.service";
+import { ContactInfoResolver } from './create-listing/location-info/contact-info/contact-info.resolver.service';
 
 @NgModule({
     declarations: [
@@ -82,7 +83,8 @@ import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-r
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
-      GoodSamRecordResolver
+      GoodSamRecordResolver,
+      ContactInfoResolver
     ]
   
   })
