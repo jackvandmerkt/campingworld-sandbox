@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations,IGoodSamRecordId, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, IContactInfo } from '../shared/listing-counts.model';
+import { IAdvertisingObjections, IAffiliations,IGoodSamRecordId, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, IContactInfo, IRestrooms } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -135,7 +135,7 @@ export class ListingService {
       .pipe(catchError(this.handleError<IListings[]>('postNewListing', )))
     }
 
-    //Location Info - Good Sam Recrod ID Form
+    //Location Info - Good Sam Record ID Form
     postGoodSamRecordId(form:IGoodSamRecordId, fileNumber:string):Observable<IGoodSamRecordId>{
       return this.http.put<IGoodSamRecordId>(`/api/v1/listings/${fileNumber}/location-info/good-sam-record-id`, form)
       .pipe(catchError(this.handleError<IGoodSamRecordId>('postGoodSamRecordId', )))
@@ -155,6 +155,18 @@ export class ListingService {
       return this.http.get<IContactInfo>(`api/v1/listings/${fileNumber}/location-info/contact-info`)
       .pipe(catchError(this.handleError<IContactInfo>('getContactInfo', )))
     }
+
+    // Amenities - Restrooms Form
+    postRestrooms(form:IRestrooms, fileNumber:string):Observable<IRestrooms>{
+      return this.http.put<IRestrooms>(`/api/v1/listings/${fileNumber}/amenities/restrooms`, form)
+      .pipe(catchError(this.handleError<IRestrooms>('postRestrooms', )))
+    }
+    getRestrooms(fileNumber:string):Observable<IRestrooms>{
+      return this.http.get<IRestrooms>(`api/v1/listings/${fileNumber}/amenities/restrooms`)
+      .pipe(catchError(this.handleError<IRestrooms>('getRestrooms', )))
+    }
+
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleError<T>(operation = 'operation', result?:T){
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -406,3 +406,15 @@ export interface IContactInfo
   instagram:string,
   parkTypeId:number
 };
+
+export interface IRestrooms {
+  pitToilets: boolean,
+  restroomShowerId: number,
+  numberToiletsMen: number,
+  numberToiletsWomen: number,
+  numberToiletsUnisex: number,
+  numberShowersMen: number,
+  numberShowersWomen: number,
+  numberShowersUnisex: number,
+  restroomsShowerPaid: boolean
+}

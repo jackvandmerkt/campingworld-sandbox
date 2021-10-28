@@ -26,6 +26,7 @@ import { RatingsComponent } from "./create-listing/ratings/ratings.component";
 import { RvHomesParkModelsComponent } from "./create-listing/rent-buy/rv-homes-park-models/rv-homes-park-models.component";
 import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-rentals/tenting-rentals.component";
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
+import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
@@ -48,7 +49,8 @@ export const listingRoutes: Routes = [
       { path: 'interior-roads', component: InteriorRoadsSiteInformationComponent },
       { path: 'eco-friendly', component: EcoFriendlyComponent },
       { path: 'rates-reservations', component: RatesReservationsComponent },
-      { path: 'restrooms', component: RestroomsComponent },
+      { path: 'restrooms/:fileNumber', component: RestroomsComponent,
+        resolve: {data:RestroomsResolver} },
       { path: 'on-site-services', component: OnSiteServicesComponent },
       { path: 'recreation', component: RecreationComponent },
       { path: 'water-recreation', component: WaterRecreationComponent },
