@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 import { ListingNavService } from "apps/campground-booking/src/app/shared/listing-nav.service";
 import { IAllRefs } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
@@ -9,42 +10,82 @@ import { ListingService } from "../../../../shared/listing.service";
     templateUrl: './restrooms.component.html',
     styleUrls: ['./restrooms.component.css']
 })
-export class RestroomsComponent implements OnInit {
+export class RestroomsComponent implements OnInit, AfterViewInit {
     submitted: boolean = false;
     allRefsTmp:any;
     allRefsObj!: IAllRefs[];
     restroomsShowersFromService: any = {};
-    pitToiletsOnly: boolean = false;
-    restroomsShowersPaid: boolean = false;
+    pitToiletsToggle: boolean = false;
+    restroomsShowersPaidToggle: boolean = false;
     restroomsAndShowers: boolean = false;
     restrooms: boolean = false;
     showers: boolean = false;
+    newListingTmp:any;
+    newListingObj: any = {};
+    postResponse:any;
+    fileNum:any;
+    currentListing:any= {};
+
+    @ViewChild('restroomShowerId') private restroomShowerCSS!: ElementRef;
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService, 
-        private listingNavService: ListingNavService) {
+        private listingNavService: ListingNavService, private route: ActivatedRoute) {
 
     }
 
     restroomForm = this.formBuilder.group({
         pitToilets: false,
-        restroomShowerId: ['', Validators.required],
-        numberToiletsMen: [''],
-        numberToiletsWomen: [''],
-        numberToiletsUnisex: [''],
-        numberShowersMen: [''],
-        numberShowersWomen: [''],
-        numberShowersUnisex: [''],
+        restroomShowerId: [null, Validators.required],
+        numberToiletsMen: [null],
+        numberToiletsWomen: [null],
+        numberToiletsUnisex: [null],
+        numberShowersMen: [null],
+        numberShowersWomen: [null],
+        numberShowersUnisex: [null],
         restroomsShowerPaid: false
       });
 
     ngOnInit() {
+        this.route.snapshot.paramMap.get('fileNumber');
         this.getFormDropDownData();
+        this.newListingTmp = window.localStorage.getItem('new-listing');
+        this.newListingObj = JSON.parse(this.newListingTmp);
+        for(let [key, value] of Object.entries(this.newListingObj)) {
+            if(key === 'fileNumber') {
+                this.fileNum = value;
+            }
+        }
+        this.currentListing = this.route.snapshot.data['data'];
+        if (this.currentListing != null) {
+            this.restroomForm.patchValue({
+                pitToilets: this.currentListing.pitToilets,
+                restroomShowerId: this.currentListing.restroomShowerId,
+                numberToiletsMen: this.currentListing.numberToiletsMen,
+                numberToiletsWomen: this.currentListing.numberToiletsWomen,
+                numberToiletsUnisex: this.currentListing.numberToiletsUnisex,
+                numberShowersMen: this.currentListing.numberShowersMen,
+                numberShowersWomen: this.currentListing.numberShowersWomen,
+                numberShowersUnisex: this.currentListing.numberShowersUnisex,
+                restroomsShowerPaid: this.currentListing.restroomsShowerPaid
+            }); 
+            if(this.currentListing.pitToilets == true){
+                this.pitToiletsToggle = true;
+            }
+            if(this.currentListing.restroomsShowerPaid == true){
+                this.restroomsShowersPaidToggle = true;
+            }
+        } else {
+            console.log('current listing is null')
+        }
+    }
+    ngAfterViewInit() {
+        this.setAttributes();
     }
 
     onSubmit(): void {
         this.submitted = true;
         if(this.restroomForm.valid) {
-            console.log(this.restroomForm.value);
+            this.postForm();
             this.sendFormStatus(['restroomsFormStatus', 2]);
         } else {
             console.log('not valid');
@@ -52,18 +93,44 @@ export class RestroomsComponent implements OnInit {
             return;
         }
     }
-    
     get f() { return this.restroomForm.controls; }
-
     clearChanges() {
-        this.restroomForm.reset();
         this.submitted = false;
-        //resetting toggle text to no
-        this.pitToiletsOnly = false;
-        this.restroomsShowersPaid = false;
-        this.restroomsAndShowers = false;
-        this.restrooms = false;      
-        this.showers = false;  
+        this.submitted = false;
+        if (this.currentListing != null) {
+            this.restroomForm.patchValue({
+                pitToilets: this.currentListing.pitToilets,
+                restroomShowerId: this.currentListing.restroomShowerId,
+                numberToiletsMen: this.currentListing.numberToiletsMen,
+                numberToiletsWomen: this.currentListing.numberToiletsWomen,
+                numberToiletsUnisex: this.currentListing.numberToiletsUnisex,
+                numberShowersMen: this.currentListing.numberShowersMen,
+                numberShowersWomen: this.currentListing.numberShowersWomen,
+                numberShowersUnisex: this.currentListing.numberShowersUnisex,
+                restroomsShowerPaid: this.currentListing.restroomsShowerPaid
+            }); 
+            if(!this.currentListing.pitToilets){
+                this.pitToiletsToggle = false;
+            } else{
+                this.pitToiletsToggle = true;
+            }
+            if(!this.currentListing.restroomsShowerPaid){
+                this.restroomsShowersPaidToggle = false;
+            } else{
+                this.restroomsShowersPaidToggle = true;
+            }
+        } else {
+            this.restroomForm.reset({
+                pitToilets: null, restroomShowerId: null, numberToiletsMen: null, numberToiletsWomen: null, numberToiletsUnisex: null,
+                numberShowersMen: null, numberShowersWomen: null, numberShowersUnisex: null, restroomsShowerPaid: null
+            });
+            this.pitToiletsToggle = false;
+            this.restroomsShowersPaidToggle = false;
+            this.restroomsAndShowers = false;
+            this.restrooms = false;      
+            this.showers = false;  
+            this.setAttributes();
+        }
     }
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
@@ -75,17 +142,36 @@ export class RestroomsComponent implements OnInit {
             }
         }
     }
+    setAttributes(){
+        if (this.currentListing != null) {
+            for(let [key, value] of Object.entries(this.currentListing)) {
+                if(key === 'restroomShowerId') {
+                    this.restroomShowerCSS.nativeElement.setAttribute('value', value) 
+                }
+            }
+        } else {
+            this.restroomShowerCSS.nativeElement.setAttribute('value', null)
+        }  
+    }
     sendFormStatus(value: any) {
         this.listingNavService.updateFormStatus(value)
     }
-
+    postForm() {
+        this.ls.postRestrooms(this.restroomForm.value, this.fileNum).subscribe(response => {
+          if(response){
+            this.postResponse = response;
+            console.log(this.postResponse);
+          }
+        })
+    }
     checkBoxPitToiletsChange(cb:any) {
-        this.pitToiletsOnly = !this.pitToiletsOnly;
+        this.pitToiletsToggle = !this.pitToiletsToggle;
     }
     checkBoxPaidChange(cb:any) {
-        this.restroomsShowersPaid = !this.restroomsShowersPaid;
+        this.restroomsShowersPaidToggle = !this.restroomsShowersPaidToggle;
     }
 
+    // OnChange for Restrooms/showers dropdown
     onChange(event:any): void {
         const newVal = event.target.value;
         console.log(newVal)
@@ -194,5 +280,4 @@ export class RestroomsComponent implements OnInit {
             this.restroomForm.get('numberShowersUnisex')?.updateValueAndValidity();
         }
     }
-
 }

@@ -9,8 +9,8 @@
     </div>
 
     <div class="flex items-center justify-end w-full pr-2 mb-11">
-      <p *ngIf="!pitToiletsOnly" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="pitToiletsOnly" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <p *ngIf="!pitToiletsToggle" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="pitToiletsToggle" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="pitToilets" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
@@ -27,11 +27,11 @@
     </div>
 
     <div class="relative z-0 col-span-2">
-      <select (change)="onChange($event)" formControlName="restroomShowerId" name="restroomShowerId"
-        value="" [ngClass]="{'error-border': submitted && f.restroomShowerId.errors }"
+      <select (change)="onChange($event)" formControlName="restroomShowerId" #restroomShowerId name="restroomShowerId"
+        value="null" [ngClass]="{'error-border': submitted && f.restroomShowerId.errors }"
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
-        <option value=""></option>
+        <option value="null"></option>
         <option *ngFor="let r of restroomsShowersFromService" [ngValue]="r.id">{{r.value}}</option>
       </select>
       <label for="restroomShowerId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
@@ -44,7 +44,7 @@
 
     <div *ngIf="restroomsAndShowers || restrooms" class="flex flex-row col-span-2 pt-10 space-x-6">
       <div class="relative z-0">
-        <input type="text" formControlName="numberToiletsMen" name="numberToiletsMen" placeholder=" "
+        <input type="number" formControlName="numberToiletsMen" name="numberToiletsMen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numberToiletsMen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="numberToiletsMen" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="relative">
-        <input type="text" formControlName="numberToiletsWomen" name="numberToiletsWomen" placeholder=" "
+        <input type="number" formControlName="numberToiletsWomen" name="numberToiletsWomen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numberToiletsWomen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="numberToiletsWomen" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
@@ -76,7 +76,7 @@
         </div>
       </div>
       <div class="relative z-0">
-        <input type="text" formControlName="numberToiletsUnisex" name="numberToiletsUnisex" placeholder=" "
+        <input type="number" formControlName="numberToiletsUnisex" name="numberToiletsUnisex" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numberToiletsUnisex.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="numberToiletsUnisex" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
@@ -95,7 +95,7 @@
 
     <div *ngIf="restroomsAndShowers || showers" class="flex flex-row col-span-2 pt-10 space-x-6">
       <div class="relative z-0">
-        <input type="text" formControlName="numberShowersMen" name="numberShowersMen" placeholder=" "
+        <input type="number" formControlName="numberShowersMen" name="numberShowersMen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numberShowersMen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="numberShowersMen" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
@@ -111,7 +111,7 @@
         </div>
       </div>
       <div class="relative z-0">
-        <input type="text" formControlName="numberShowersWomen" name="numberShowersWomen" placeholder=" "
+        <input type="number" formControlName="numberShowersWomen" name="numberShowersWomen" placeholder=" "
           [ngClass]="{'error-border': submitted && f.numberShowersWomen.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="numberShowersWomen" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
@@ -125,7 +125,7 @@
         </div>
       </div>
       <div class="relative z-0">
-        <input type="text" formControlName="numberShowersUnisex" name="numberShowersUnisex" placeholder=" " [ngClass]="{'error-border': submitted && f.numberShowersUnisex.errors}"
+        <input type="number" formControlName="numberShowersUnisex" name="numberShowersUnisex" placeholder=" " [ngClass]="{'error-border': submitted && f.numberShowersUnisex.errors}"
           class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="numberShowersUnisex" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
           [ngClass]="{'error-label': submitted && f.numberShowersUnisex.errors}"># showers - unisex</label>
@@ -144,8 +144,8 @@
     </div>
 
     <div class="flex items-center justify-end w-full pr-2 my-11">
-      <p *ngIf="!restroomsShowersPaid" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="restroomsShowersPaid" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <p *ngIf="!restroomsShowersPaidToggle" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="restroomsShowersPaidToggle" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="restroomsShowerPaid" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">

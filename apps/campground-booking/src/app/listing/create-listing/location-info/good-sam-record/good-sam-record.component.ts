@@ -46,21 +46,21 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
          private store: Store<any>, private listingNavService: ListingNavService, private route: ActivatedRoute) {}
     
     goodSamRecordForm = this.formBuilder.group({
-        locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
+        locationListingName: [null, [Validators.required, Validators.maxLength(255)]],
         fileNumber: [{value: this.fileNum},  Validators.required],
-        sectionCodeId: ['', Validators.required],
+        sectionCodeId: [null, Validators.required],
         repCode: [{value: this.repCode}, Validators.required],
-        listingTypeId: ['', Validators.required],
-        parkTypeId: ['', Validators.required],
+        listingTypeId: [null, Validators.required],
+        parkTypeId: [null, Validators.required],
         duplicateListingText: null,
         primaryFileNumber: null,
-        listCity: ['', [Validators.required, Validators.maxLength(255)]],
-        listStateId: ['', Validators.required],
-        territoryId: ['', Validators.required],
+        listCity: [null, [Validators.required, Validators.maxLength(255)]],
+        listStateId: [null, Validators.required],
+        territoryId: [null, Validators.required],
         salesPresentationRequired: false,
         noOvernightGuests: false,
         deleteListing: false,
-        reasonForDelete: ['']
+        reasonForDelete: [null]
     });
     
     ngOnInit() {
@@ -99,7 +99,16 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                 deleteListing: this.currentListing.deleteListing,
                 duplicateListingText:this.currentListing.duplicateListingText,
                 primaryFileNumber: this.currentListing.primaryFileNumber
-            }); 
+            });
+            if(this.currentListing.noOvernightGuests == true){
+                this.isGuestsChecked = true;
+            }
+            if(this.currentListing.salesPresentationRequired == true){
+                this.isSalesPresentationChecked = true;
+            }
+            if(this.currentListing.deleteListing == true){
+                this.isDeleteChecked = true;
+            }
         }
     }
 
@@ -122,34 +131,47 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     }
     get f() { return this.goodSamRecordForm.controls; }
     clearChanges(){
-        this.goodSamRecordForm.patchValue({
-            sectionCodeId: this.currentListing.sectionCodeId,
-            listingTypeId: this.currentListing.listingTypeId,
-            parkTypeId:this.currentListing.parkTypeId,
-            listCity: this.currentListing.listCity,
-            listStateId: this.currentListing.listStateId,
-            territoryId: this.currentListing.territoryId,
-            noOvernightGuests: this.currentListing.noOvernightGuests,
-            salesPresentationRequired: this.currentListing.salesPresentationRequired,
-            deleteListing: this.currentListing.deleteListing,
-            duplicateListingText: this.currentListing.duplicateListingText,
-            primaryFileNumber: this.currentListing.primaryFileNumber,
-            reasonForDelete:''
-        }); 
-        if(!this.currentListing.noOvernightGuests){
+        this.submitted = false;
+        if (this.currentListing != null) {
+            this.goodSamRecordForm.patchValue({
+                sectionCodeId: this.currentListing.sectionCodeId,
+                listingTypeId: this.currentListing.listingTypeId,
+                parkTypeId:this.currentListing.parkTypeId,
+                listCity: this.currentListing.listCity,
+                listStateId: this.currentListing.listStateId,
+                territoryId: this.currentListing.territoryId,
+                noOvernightGuests: this.currentListing.noOvernightGuests,
+                salesPresentationRequired: this.currentListing.salesPresentationRequired,
+                deleteListing: this.currentListing.deleteListing,
+                duplicateListingText: this.currentListing.duplicateListingText,
+                primaryFileNumber: this.currentListing.primaryFileNumber,
+                reasonForDelete:''
+            }); 
+            if(!this.currentListing.noOvernightGuests){
+                this.isGuestsChecked = false;
+            } else{
+                this.isGuestsChecked = true;
+            }
+            if(!this.currentListing.salesPresentationRequired){
+                this.isSalesPresentationChecked = false;
+            } else{
+                this.isSalesPresentationChecked = true;
+            }
+            if(!this.currentListing.deleteListing){
+                this.isDeleteChecked = false;
+            } else{
+                this.isDeleteChecked = true;
+            }
+        } else {
+            this.goodSamRecordForm.reset({
+                locationListingName: this.parkName, fileNumber: this.fileNum, repCode: this.repCode, sectionCodeId: null, 
+                listingTypeId: null, parkTypeId: null, listCity: null, listStateId: null, territoryId: null, noOvernightGuests: null, 
+                salesPresentationRequired: null, deleteListing: null, duplicateListingText: null, primaryFileNumber: null, reasonForDelete: null
+            });
             this.isGuestsChecked = false;
-        } else{
-            this.isGuestsChecked = true;
-        }
-        if(!this.currentListing.salesPresentationRequired){
             this.isSalesPresentationChecked = false;
-        } else{
-            this.isSalesPresentationChecked = true;
-        }
-        if(!this.currentListing.deleteListing){
             this.isDeleteChecked = false;
-        } else{
-            this.isDeleteChecked = true;
+            this.setAttributes();
         }
     }
     getFormDropDownData() {
@@ -192,8 +214,13 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                     this.territoryCSS.nativeElement.setAttribute('value', value)
                 }
             }
-        }
-        
+        } else {
+            this.sectionCodeCSS.nativeElement.setAttribute('value', null)
+            this.listingTypeCSS.nativeElement.setAttribute('value', null)
+            this.parkTypeIdCSS.nativeElement.setAttribute('value', null)
+            this.listingStateCSS.nativeElement.setAttribute('value',null)
+            this.territoryCSS.nativeElement.setAttribute('value', null)
+        }  
     }
     sendFormStatus(value: any) {
         this.listingNavService.updateFormStatus(value)
