@@ -44,23 +44,24 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
 
     constructor(private formBuilder: FormBuilder, private ls: ListingService,
          private store: Store<any>, private listingNavService: ListingNavService, private route: ActivatedRoute) {}
-         goodSamRecordForm = this.formBuilder.group({
-            locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
-            fileNumber: [{value: this.fileNum},  Validators.required],
-            sectionCodeId: ['', Validators.required],
-            repCode: [{value: this.repCode}, Validators.required],
-            listingTypeId: ['', Validators.required],
-            parkTypeId: ['', Validators.required],
-            duplicateListingText: null,
-            primaryFileNumber: null,
-            listCity: ['', [Validators.required, Validators.maxLength(255)]],
-            listStateId: ['', Validators.required],
-            territoryId: ['', Validators.required],
-            salesPresentationRequired: false,
-            noOvernightGuests: false,
-            deleteListing: false,
-            reasonForDelete: ['']
-          });
+    
+    goodSamRecordForm = this.formBuilder.group({
+        locationListingName: ['', [Validators.required, Validators.maxLength(255)]],
+        fileNumber: [{value: this.fileNum},  Validators.required],
+        sectionCodeId: ['', Validators.required],
+        repCode: [{value: this.repCode}, Validators.required],
+        listingTypeId: ['', Validators.required],
+        parkTypeId: ['', Validators.required],
+        duplicateListingText: null,
+        primaryFileNumber: null,
+        listCity: ['', [Validators.required, Validators.maxLength(255)]],
+        listStateId: ['', Validators.required],
+        territoryId: ['', Validators.required],
+        salesPresentationRequired: false,
+        noOvernightGuests: false,
+        deleteListing: false,
+        reasonForDelete: ['']
+    });
     
     ngOnInit() {
         this.route.snapshot.paramMap.get('filenumber');
