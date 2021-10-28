@@ -101,6 +101,9 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                 duplicateListingText:this.currentListing.duplicateListingText,
                 primaryFileNumber: this.currentListing.primaryFileNumber
             });
+            if(this.currentListing.listingTypeId == 4){
+                this.isDuplicateSelected = true;
+            }
             if(this.currentListing.noOvernightGuests == true){
                 this.isGuestsChecked = true;
             }
