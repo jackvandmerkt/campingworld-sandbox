@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms } from '../shared/listing-counts.model';
+import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation } from './listing.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -61,6 +61,35 @@ export class ListingService {
       .pipe(catchError(this.handleError<IRestrooms>('getRestrooms', )))
     }
 
+    // Amenities Section - On Site Services Form
+    postOnSiteServices(form:IOnSiteServices, fileNumber:string):Observable<IOnSiteServices>{
+      return this.http.put<IOnSiteServices>(`/api/v1/listings/${fileNumber}/amenities/on-site-services`, form)
+      .pipe(catchError(this.handleError<IOnSiteServices>('postOnSiteServices', )))
+    }
+    getOnSiteServices(fileNumber:string):Observable<IOnSiteServices>{
+      return this.http.get<IOnSiteServices>(`api/v1/listings/${fileNumber}/amenities/on-site-services`)
+      .pipe(catchError(this.handleError<IOnSiteServices>('getOnSiteServices', )))
+    }
+
+    // Amenities Section - Recreation Form
+    postRecreation(form:IRecreation, fileNumber:string):Observable<IRecreation>{
+      return this.http.put<IRecreation>(`/api/v1/listings/${fileNumber}/amenities/recreation`, form)
+      .pipe(catchError(this.handleError<IRecreation>('postRecreation', )))
+    }
+    getRecreation(fileNumber:string):Observable<IRecreation>{
+      return this.http.get<IRecreation>(`api/v1/listings/${fileNumber}/amenities/recreation`)
+      .pipe(catchError(this.handleError<IRecreation>('getRecreation', )))
+    }
+
+    // Amenities Section - Water Recreation Form
+    postWaterRecreation(form:IWaterRecreation, fileNumber:string):Observable<IWaterRecreation>{
+      return this.http.put<IWaterRecreation>(`/api/v1/listings/${fileNumber}/amenities/water-recreation`, form)
+      .pipe(catchError(this.handleError<IWaterRecreation>('postWaterRecreation', )))
+    }
+    getWaterRecreation(fileNumber:string):Observable<IWaterRecreation>{
+      return this.http.get<IWaterRecreation>(`api/v1/listings/${fileNumber}/amenities/water-recreation`)
+      .pipe(catchError(this.handleError<IWaterRecreation>('getWaterRecreation', )))
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleError<T>(operation = 'operation', result?:T){

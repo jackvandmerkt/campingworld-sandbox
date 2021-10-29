@@ -282,14 +282,50 @@ export interface IContactInfo
   parkTypeId:number
 };
 
+// Amenities Section Interfaces
 export interface IRestrooms {
-  pitToilets: boolean,
-  restroomShowerId: number,
-  numberToiletsMen: number,
-  numberToiletsWomen: number,
-  numberToiletsUnisex: number,
-  numberShowersMen: number,
-  numberShowersWomen: number,
-  numberShowersUnisex: number,
-  restroomsShowerPaid: boolean
+  pitToilets: boolean, restroomShowerId: number, numberToiletsMen: number, 
+  numberToiletsWomen: number, numberToiletsUnisex: number, numberShowersMen: number, 
+  numberShowersWomen: number,  numberShowersUnisex: number, restroomsShowerPaid: boolean
+}
+export interface IOnSiteServices {
+  dumpingStationGs1: boolean, mobileSewerService: boolean, laundry: boolean, partialHandicapAccess: boolean,
+  controlAccessGate: boolean, emergencyPhone: boolean, centralInternetHU: boolean, centralInternetHUPaid: boolean,
+  wifiHotspot: boolean, wifiHotspotPaid: boolean, wifiHotspotCount: number, wifiWirelessInternet: boolean,
+  wifiWirelessPaid: boolean, wifiWirelessMobile: boolean, wifiWirelessStreaming: boolean, wifiWirelessSupport: boolean,
+  wifiOvernightSites: boolean, wifiOvernightSitesPaid: boolean, atmMachine: boolean, boatStorage: boolean,
+  bbqAtSite: boolean, cableMajor: boolean, cableMinor: boolean, offerCarRentals: boolean, churchServices: boolean,
+  cocktailLounge: boolean, complimentaryBreakfast: boolean, dvdRentals: boolean, evChargingStation: boolean,
+  evChargingStationPlanned: boolean, entertainment: boolean, faxCopyService: boolean, firewood: boolean, fireRings: boolean,
+  fishingGuides: boolean, fishingLicenses: boolean, fishingSupplies: boolean, golfCarts: boolean, groceries: boolean,
+  guestServices: boolean,horseCorral: boolean, ice: boolean, libraryBookExchange: boolean, lpBottlesOnly: boolean,
+  meteredLpGas: boolean, mailDelivery: boolean, newspaper: boolean, onsiteRvService: boolean, patiosYes: boolean,
+  personalEscortToSite: boolean, outdoorGear: boolean, restaurant: boolean, rvSuppliesGs1: boolean, secureRvStorage: boolean,
+  selfServRvWash: boolean, staffedRvWash: boolean, shuttleService: boolean, snackBar: boolean, spaServices: boolean, tableAtSite: boolean,
+  tourShowTickets: boolean, trashPickupAtSite: boolean, dogPark: boolean, dogWalkingServices: boolean, dogWashingStation: boolean,
+  enclosedDogRun: boolean, petBoarding: boolean, petGrooming: boolean, petSitting: boolean, petSuppliesInStore: boolean,
+  otherServicesMinor: string, otherServicesMajor: string
+}
+
+export interface IRecreation {
+  archeryRange: boolean, badminton: boolean, basketball: boolean, bikeRentals: boolean, billiardRoom: boolean,
+  poolRoom1Table: boolean, bocceBall: boolean, bouncePillow: boolean, childrensActivities: boolean, enclosedGameRoom: boolean,
+  enclosedRecreationHall: boolean, exerciseRoom: boolean, frisbeeGolf: boolean, golf: boolean, horsebackRiding: boolean,
+  horseshoes: boolean, ladderBall: boolean, lawnBowling: boolean,lawnChess: boolean, miniGolfNonPro: boolean, miniGolfPro: boolean,
+  natureTrails: boolean, outdoorGames: boolean, pavilion: boolean, pedalCarts: boolean, pickleBall: boolean, plannedActivities: boolean,
+  playground: boolean, puttingGreen: boolean, sauna: boolean, shuffleboard: boolean, oneShuffleboard: boolean, softball: boolean,
+  tennis: boolean, touristAttractions: boolean, volleyball: boolean, casinoOnSite: boolean, archeryRangeNearby: boolean,
+  atvRidingNearby: boolean, casinoNearby: boolean, hikingNearby: boolean, mountainBikingNearby: boolean, roadBikingTrailsNearby: boolean,
+  rockClimbingNearby: boolean, snowSportsNearby: boolean,huntingNearby: boolean, cleaningFacilities: boolean, meatStorageFacilities: boolean,
+  huntingLicenses: boolean, huntingGuideServices: boolean, huntingSeasonYearRound: boolean, otherRecMajor: string,
+  otherRecMinor: string, eventsCalendarUrl: string, plannedFamilyActivitiesId: number
+}
+export interface IWaterRecreation {
+  swimPool: boolean, heatedPool: boolean, poolPaid: boolean, whirlPool: boolean, wadingPool: boolean,
+  splashPad: boolean, waterSlide: boolean, waterUmbrella: boolean, bodyOfWater: string, ocean: boolean,
+  gulf: boolean, river: boolean, stream: boolean, lake: boolean, pond: boolean, fishing: boolean,
+  kayaking: boolean, swimming: boolean, watersports: boolean, boatMarina: boolean, boatDock: boolean,
+  boatRamp: boolean, hpLimit: string, electMotorsOnly: boolean, noMotors: boolean, boatRentals: boolean,
+  paddleBoats: boolean, boatingNearby: boolean, fishingNearby: boolean, houseboatingNearby: boolean,
+  kayakingNearby: boolean, marinaNearby: boolean, watersportsNearby: boolean, raftingNearby: boolean
 }

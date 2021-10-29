@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { IAllRefs } from "../../shared/listing-counts.model";
+import { IAllRefs } from "../../shared/listing.model";
 import { ListingService } from "../../shared/listing.service";
 import { ListingActions } from "../state/actions";
 

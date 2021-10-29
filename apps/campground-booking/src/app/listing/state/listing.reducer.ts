@@ -1,5 +1,5 @@
 import { createReducer, on, createFeatureSelector, createSelector  } from '@ngrx/store';
-import { IListings } from '../../shared/listing-counts.model';
+import { IListings } from '../../shared/listing.model';
 import { listingRoutes } from '../listing.routes';
 import { ListingActions } from './actions';
 
