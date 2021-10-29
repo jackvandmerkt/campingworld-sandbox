@@ -2,66 +2,68 @@
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-14">Contact Info</h1>
 
   <!-- Mailing Address -->
-  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7.5">Mailing Address</h2>
-  <div class="grid grid-cols-2 gap-6 w-636">
-    <div class="relative z-0 pb-4 ">
-      <input [ngClass]="{'error-border': submitted && f.address.errors }" type="text" formControlName="address"
-        name="address" placeholder=" "
-        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-      <label for="address" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Address</label>
+  <div formGroupName="mailingAddress">
+    <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7.5">Mailing Address</h2>
+    <div class="grid grid-cols-2 gap-6 w-636">
+      <div class="relative z-0 pb-4 ">
+        <input [ngClass]="{'error-border': submitted && f.address.errors }" type="text" formControlName="address"
+          name="address" placeholder=" "
+          class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+        <label for="address" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Address</label>
 
-      <div *ngIf="submitted && f.address.errors" class="pl-3 font-cw text-cwRed text-11px20px">Address is
-        required
-      </div>
+        <div *ngIf="submitted && f.address.errors" class="pl-3 font-cw text-cwRed text-11px20px">Address is
+          required
+        </div>
 
-    </div>
-    <div class="relative z-0 pb-4">
-      <input [ngClass]="{'error-border': submitted && f.city.errors }" type="text" formControlName="city" name="city"
-        placeholder=" "
-        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-      <label for="city" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">City</label>
-      <div *ngIf="submitted && f.city.errors" class="pl-3 font-cw text-cwRed text-11px20px">City is
-        required
       </div>
-    </div>
-    <div class="relative z-0 pb-4">
-      <select [ngClass]="{'error-border': submitted && f.listStateId.errors }" formControlName="listStateId"
-        name="listStateId" placeholder=" " #listStateId value="" onclick="this.setAttribute('value', this.value);"
-        class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
-      </select>
-      <label for="listStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">State / Province</label>
-      <div *ngIf="submitted && f.listStateId.errors" class="pl-3 font-cw text-cwRed text-11px20px">State is
-        required
+      <div class="relative z-0 pb-4">
+        <input [ngClass]="{'error-border': submitted && f.city.errors }" type="text" formControlName="city" name="city"
+          placeholder=" "
+          class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+        <label for="city" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">City</label>
+        <div *ngIf="submitted && f.city.errors" class="pl-3 font-cw text-cwRed text-11px20px">City is
+          required
+        </div>
       </div>
+      <div class="relative z-0 pb-4">
+        <select [ngClass]="{'error-border': submitted && f.listStateId.errors }" formControlName="listStateId"
+          name="listStateId" placeholder=" " #listStateId value="" onclick="this.setAttribute('value', this.value);"
+          class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+          <option value=""></option>
+          <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
+        </select>
+        <label for="listStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">State / Province</label>
+        <div *ngIf="submitted && f.listStateId.errors" class="pl-3 font-cw text-cwRed text-11px20px">State is
+          required
+        </div>
 
-    </div>
-    <div class="relative z-0 pb-4">
-      <input type="text" formControlName="zip" name="zip" placeholder=" "
-        [ngClass]="{'error-border': submitted && f.zip.errors }" class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-      <label for="zip" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
-        Zip / Postal Code
-      </label>
-
-      <div *ngIf="submitted && f.zip.errors" class="pl-3 font-cw text-cwRed text-11px20px">Zip code
-        is required.
       </div>
+      <div class="relative z-0 pb-4">
+        <input type="text" formControlName="zip" name="zip" placeholder=" "
+          [ngClass]="{'error-border': submitted && f.zip.errors }" class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
+        <label for="zip" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
+          Zip / Postal Code
+        </label>
 
-    </div>
-    <div class="relative z-0 pb-4">
-      <select [ngClass]="{'error-border': submitted && f.countryId.errors }" formControlName="countryId" #countryId value=""
-        onclick="this.setAttribute('value', this.value);"
-        class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let c of countriesFromService" [ngValue]="c.id">{{c.value}}</option>
-      </select>
-      <label for="countryId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Country</label>
-      <div *ngIf="submitted && f.countryId.errors" class="pl-3 font-cw text-cwRed text-11px20px">Country
-        is required.
+        <div *ngIf="submitted && f.zip.errors" class="pl-3 font-cw text-cwRed text-11px20px">Zip code
+          is required.
+        </div>
+
+      </div>
+      <div class="relative z-0 pb-4">
+        <select [ngClass]="{'error-border': submitted && f.countryId.errors }" formControlName="countryId" #countryId value=""
+          onclick="this.setAttribute('value', this.value);"
+          class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
+          <option value=""></option>
+          <option *ngFor="let c of countriesFromService" [ngValue]="c.id">{{c.value}}</option>
+        </select>
+        <label for="countryId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Country</label>
+        <div *ngIf="submitted && f.countryId.errors" class="pl-3 font-cw text-cwRed text-11px20px">Country
+          is required.
+        </div>
       </div>
     </div>
-  </div>
+</div>
 
   <!-- Physical Address -->
   <h2 class="pb-5 font-bold font-cw text-cwGray text-18px24px mt-11">Physical Address</h2>
@@ -74,6 +76,7 @@
     </p>
   </h3>
   <div *ngIf="!isSameAsMailingAddress">
+    <div formGroupName="physicalAddress">
     <div class="grid grid-cols-2 gap-6 mt-2 w-636">
       <div class="relative z-0 pb-4 ">
         <input [ngClass]="{'error-border': submitted && f.physicalAddress.errors }" type="text"
@@ -136,6 +139,7 @@
         </div>
       </div>
     </div>
+  </div>
     <div class="grid grid-cols-3 gap-6 mt-6 w-636">
       <div class="relative z-0 pb-4 ">
         <input [ngClass]="{'error-border': submitted && f.latitude.errors }" type="number" formControlName="latitude"
