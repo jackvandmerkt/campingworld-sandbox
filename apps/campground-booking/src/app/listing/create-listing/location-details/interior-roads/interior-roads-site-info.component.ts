@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { IAmps, IInteriorRoadConditions, IInteriorRoadTypes, IShadedSites, ISidebySideHookups } from "../../../../shared/listing-counts.model";
+import { FormBuilder, Validators } from "@angular/forms";
+import { IAllRefs } from "../../../../shared/listing-counts.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -10,11 +10,13 @@ import { ListingService } from "../../../../shared/listing.service";
 })
 export class InteriorRoadsSiteInformationComponent implements OnInit {
     submitted: boolean = false;
-    typesFromService!: IInteriorRoadTypes[];
-    conditionsFromService!: IInteriorRoadConditions[];
-    hookupsFromService!: ISidebySideHookups[];
-    shadedFromService!: IShadedSites[];
-    ampsFromService!: IAmps[];
+    allRefsTmp:any;
+    allRefsObj!: IAllRefs[];
+    typesFromService: any = {};
+    conditionsFromService: any = {};
+    hookupsFromService: any = {};
+    shadedFromService: any = {};
+    ampsFromService: any = {};
     // yes no toggle booleans
     separateSeasonalSection: boolean = false;
     selfContainedUnits: boolean = false;
@@ -31,21 +33,7 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.ls.getInteriorRoadsConditions().subscribe(response => {
-            this.conditionsFromService = response;
-        });
-        this.ls.getInteriorRoadsType().subscribe(response => {
-            this.typesFromService = response;
-        });
-        this.ls.getAmps().subscribe(response => {
-            this.ampsFromService = response;
-        });
-        this.ls.getSideBySideHookups().subscribe(response => {
-            this.hookupsFromService = response;
-        });
-        this.ls.getShadedSites().subscribe(response => {
-            this.shadedFromService = response;
-        });
+        this.getFormDropDownData();
     }
 
     interiorRoadsSitesInfo = this.formBuilder.group({
@@ -106,6 +94,29 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
         this.sideHookupsRadioValue = '';
         this.shadedSitesRadioValue = ''; 
       }
+
+    getFormDropDownData() {
+        this.allRefsTmp = window.localStorage.getItem('all-refs');
+        this.allRefsObj = JSON.parse(this.allRefsTmp);
+        console.log(this.allRefsObj)
+        for(let [key, value] of Object.entries(this.allRefsObj)) {
+            if(key === 'interiorRoadTypes') {
+                this.typesFromService = value;
+            }
+            if(key === 'interiorRoadConditions') {
+                this.conditionsFromService = value;
+            }
+            if(key === 'sideBySideHookups') {
+                this.hookupsFromService = value;
+            }
+            if(key === 'shadeTypes') {
+                this.shadedFromService = value;
+            }
+            if(key === 'amps') {
+                this.ampsFromService = value;
+            }
+        }
+    }
 
     checkBoxSeasonalChange(cb:any) {
         this.separateSeasonalSection = !this.separateSeasonalSection;
