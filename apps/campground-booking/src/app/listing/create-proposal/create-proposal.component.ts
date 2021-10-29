@@ -6,7 +6,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ['./create-proposal.component.css']
 })
 export class CreateProposalComponent implements OnInit {
-
+  displayItemPrices = false
+  displayMediaKit = false
 
   ngOnInit() {
     console.log('aa')
@@ -15,5 +16,14 @@ export class CreateProposalComponent implements OnInit {
   onChange(): void {
     console.log('aa')
   }
+
+  displayItemPricesChange(value: any) {
+    this.displayItemPrices = value
+  }
+
+  displayMediaKitChange(value: any) {
+    this.displayMediaKit = value
+  }
+
 
 }
