@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { ListingService } from "../shared/listing.service";
 import { Router } from '@angular/router';
-import { IAllRefs } from "../shared/listing-counts.model";
+import { IAllRefs } from "../shared/listing.model";
 
 @Component({
   selector: "home",

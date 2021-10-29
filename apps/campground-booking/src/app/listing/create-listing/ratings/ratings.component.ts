@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IAllRefs } from "../../../shared/listing-counts.model";
+import { IAllRefs } from "../../../shared/listing.model";
 import { ListingNavService } from "../../../shared/listing-nav.service";
 import { ListingService } from "../../../shared/listing.service";
 

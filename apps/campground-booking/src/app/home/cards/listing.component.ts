@@ -1,6 +1,6 @@
 import { Component, Input, Output, OnChanges, OnInit, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
-import { IListingCounts } from '../../shared/listing-counts.model';
+import { IListingCounts } from '../../shared/listing.model';
 import { ListingService } from '../../shared/listing.service';
 
 @Component({

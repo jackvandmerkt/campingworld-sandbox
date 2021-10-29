@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
-import { IAllRefs } from 'apps/campground-booking/src/app/shared/listing-counts.model';
+import { IAllRefs } from 'apps/campground-booking/src/app/shared/listing.model';
 
 @Component({
   selector: 'recreation',
