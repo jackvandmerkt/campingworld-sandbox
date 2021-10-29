@@ -7,31 +7,31 @@
         <div class="grid col-span-2 pb-7.5">
             <p class="font-bold font-cw text-cwGray text-18px24px">Basic Facilities</p>
         </div>
-        <div formGroupName="basicOptions" class="flex flex-row col-span-2 space-x-4 pb-15">
+        <div class="flex flex-row col-span-2 space-x-4 pb-15">
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('1')" formControlName="basicOption1" class="hidden" id="basicOption1" type="checkbox" name="basicOption1">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption1">
+                <input (click)="basicFacilitiesChecked('1')" formControlName="dumpingStationGs1" class="hidden" id="dumpingStationGs1" type="checkbox" name="dumpingStationGs1">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dumpingStationGs1">
                     <img *ngIf="basicFacilitiesOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Dump station</p>
                 </label>
                 </div>
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('2')" formControlName="basicOption2" class="hidden" id="basicOption2" type="checkbox" name="basicOption2">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption2">
+                <input (click)="basicFacilitiesChecked('2')" formControlName="mobileSewerService" class="hidden" id="mobileSewerService" type="checkbox" name="mobileSewerService">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="mobileSewerService">
                     <img *ngIf="basicFacilitiesOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Mobile sewer station</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('3')" formControlName="basicOption3" class="hidden" id="basicOption3" type="checkbox" name="basicOption3">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption3">
+                <input (click)="basicFacilitiesChecked('3')" formControlName="laundry" class="hidden" id="laundry" type="checkbox" name="laundry">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="laundry">
                     <img *ngIf="basicFacilitiesOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Laundry</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('4')" formControlName="basicOption4" class="hidden" id="basicOption4" type="checkbox" name="basicOption4">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basicOption4">
+                <input (click)="basicFacilitiesChecked('4')" formControlName="partialHandicapAccess" class="hidden" id="partialHandicapAccess" type="checkbox" name="partialHandicapAccess">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="partialHandicapAccess">
                     <img *ngIf="basicFacilitiesOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Handicap access</p>
                 </label>
@@ -41,17 +41,17 @@
         <div class="grid col-span-2 pb-7.5">
             <p class="font-bold font-cw text-cwGray text-18px24px">Security</p>
         </div>
-        <div formGroupName="securityOptions" class="flex flex-row col-span-2 space-x-4 pb-15">
+        <div class="flex flex-row col-span-2 space-x-4 pb-15">
             <div class="relative">
-                <input (click)="securityChecked('1')" formControlName="securityOption1" class="hidden" id="securityOption1" type="checkbox" name="securityOption1">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="securityOption1">
+                <input (click)="securityChecked('1')" formControlName="controlAccessGate" class="hidden" id="controlAccessGate" type="checkbox" name="controlAccessGate">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="controlAccessGate">
                     <img *ngIf="securityOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Controlled access gate</p>
                 </label>
                 </div>
             <div class="relative">
-                <input (click)="securityChecked('2')" formControlName="securityOption2" class="hidden" id="securityOption2" type="checkbox" name="securityOption2">
-                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="securityOption2">
+                <input (click)="securityChecked('2')" formControlName="emergencyPhone" class="hidden" id="emergencyPhone" type="checkbox" name="emergencyPhone">
+                <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="emergencyPhone">
                     <img *ngIf="securityOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                     <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Emergency phone</p>
                 </label>
@@ -69,11 +69,11 @@
             <div class="flex items-center justify-end w-1/4 pr-2 mb-10">
                 <p *ngIf="!centralInternet" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
                 <p *ngIf="centralInternet" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-                <label for="toggleCentralInternet" class="flex items-center cursor-pointer">
+                <label for="centralInternetHU" class="flex items-center cursor-pointer">
                     <!-- toggle -->
                     <div class="relative">
                     <!-- input -->
-                    <input  type="checkbox" formControlName="toggleCentralInternet" (click)="checkBoxCentralInternetChange(this);" id="toggleCentralInternet" class="sr-only">
+                    <input  type="checkbox" formControlName="centralInternetHU" (click)="checkBoxCentralInternetChange(this);" id="centralInternetHU" class="sr-only">
                     <!-- line -->
                     <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                     <!-- dot -->
@@ -90,11 +90,11 @@
         <div *ngIf="centralInternet" class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!centralInternetCharge" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="centralInternetCharge" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleCentralInternetCharge" class="flex items-center cursor-pointer">
+            <label for="centralInternetHUPaid" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleCentralInternetCharge" (click)="checkBoxCentralInternetChargeChange(this);" id="toggleCentralInternetCharge" class="sr-only">
+                <input  type="checkbox" formControlName="centralInternetHUPaid" (click)="checkBoxCentralInternetChargeChange(this);" id="centralInternetHUPaid" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -107,13 +107,13 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-            <p *ngIf="!wifiHotspots" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-            <p *ngIf="wifiHotspots" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleWiFiHotspots" class="flex items-center cursor-pointer">
+            <p *ngIf="!wifiHotspotBool" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="wifiHotspotBool" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="wifiHotspot" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleWiFiHotspots" (click)="checkBoxWiFiHotspotsChange(this);" id="toggleWiFiHotspots" class="sr-only">
+                <input  type="checkbox" formControlName="wifiHotspot" (click)="checkBoxWiFiHotspotsChange(this);" id="wifiHotspot" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -121,18 +121,18 @@
                 </div>
             </label>
         </div>
-        <div *ngIf="wifiHotspots" class="pb-11">
+        <div *ngIf="wifiHotspotBool" class="pb-11">
             <p class="font-cw">is there a charge?</p>
         </div>
 
-        <div *ngIf="wifiHotspots" class="flex items-center justify-end w-full pr-2 mb-10">
+        <div *ngIf="wifiHotspotBool" class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!wifiHotspotsCharge" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="wifiHotspotsCharge" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleWiFiHotspotsCharge" class="flex items-center cursor-pointer">
+            <label for="wifiHotspotPaid" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleWiFiHotspotsCharge" (click)="checkBoxWiFiHotspotsChargeChange(this);" id="toggleWiFiHotspotsCharge" class="sr-only">
+                <input  type="checkbox" formControlName="wifiHotspotPaid" (click)="checkBoxWiFiHotspotsChargeChange(this);" id="wifiHotspotPaid" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -141,10 +141,10 @@
             </label>
         </div>
 
-        <div *ngIf="wifiHotspots" class="relative col-span-2 pb-11 f-outline">
-            <input type="text" formControlName="howManyHotspots" name="howManyHotspots" placeholder=" "
+        <div *ngIf="wifiHotspotBool" class="relative col-span-2 pb-11 f-outline">
+            <input type="text" formControlName="wifiHotspotCount" name="wifiHotspotCount" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-            <label for="howManyHotspots"
+            <label for="wifiHotspotCount"
                 class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">How many Hotspots</label>
         </div>
 
@@ -155,11 +155,11 @@
         <div class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!wifi" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="wifi" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleWiFi" class="flex items-center cursor-pointer">
+            <label for="wifiWirelessInternet" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleWiFi" (click)="checkBoxWiFiChange(this);" id="toggleWiFi" class="sr-only">
+                <input  type="checkbox" formControlName="wifiWirelessInternet" (click)="checkBoxWiFiChange(this);" id="wifiWirelessInternet" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -174,11 +174,11 @@
         <div *ngIf="wifi" class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!wifiCharge" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="wifiCharge" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleWiFiCharge" class="flex items-center cursor-pointer">
+            <label for="wifiWirelessPaid" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleWiFiCharge" (click)="checkBoxWiFiChargeChange(this);" id="toggleWiFiCharge" class="sr-only">
+                <input  type="checkbox" formControlName="wifiWirelessPaid" (click)="checkBoxWiFiChargeChange(this);" id="wifiWirelessPaid" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -193,11 +193,11 @@
         <div *ngIf="wifi" class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!mobileDevices" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="mobileDevices" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleMobileDevices" class="flex items-center cursor-pointer">
+            <label for="wifiWirelessMobile" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleMobileDevices" (click)="checkBoxMobileDevicesChange(this);" id="toggleMobileDevices" class="sr-only">
+                <input  type="checkbox" formControlName="wifiWirelessMobile" (click)="checkBoxMobileDevicesChange(this);" id="wifiWirelessMobile" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -212,11 +212,11 @@
         <div *ngIf="wifi" class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!streamingSupport" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="streamingSupport" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleStreamingSupport" class="flex items-center cursor-pointer">
+            <label for="wifiWirelessStreaming" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleStreamingSupport" (click)="checkBoxStreamingSupportChange(this);" id="toggleStreamingSupport" class="sr-only">
+                <input  type="checkbox" formControlName="wifiWirelessStreaming" (click)="checkBoxStreamingSupportChange(this);" id="wifiWirelessStreaming" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -231,11 +231,11 @@
         <div *ngIf="wifi" class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!wiFiTechSupport" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="wiFiTechSupport" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleWiFiTechSupport" class="flex items-center cursor-pointer">
+            <label for="wifiWirelessSupport" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleWiFiTechSupport" (click)="checkBoxWiFiTechSupportChange(this);" id="toggleWiFiTechSupport" class="sr-only">
+                <input  type="checkbox" formControlName="wifiWirelessSupport" (click)="checkBoxWiFiTechSupportChange(this);" id="wifiWirelessSupport" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -255,11 +255,11 @@
             <div class="flex items-center justify-end w-1/4 pr-2 mb-10">
                 <p *ngIf="!overnightCentralInternet" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
                 <p *ngIf="overnightCentralInternet" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-                <label for="toggleOvernightCentralInternet" class="flex items-center cursor-pointer">
+                <label for="wifiOvernightSites" class="flex items-center cursor-pointer">
                     <!-- toggle -->
                     <div class="relative">
                     <!-- input -->
-                    <input  type="checkbox" formControlName="toggleOvernightCentralInternet" (click)="checkBoxOvernightCentralInternetChange(this);" id="toggleOvernightCentralInternet" class="sr-only">
+                    <input  type="checkbox" formControlName="wifiOvernightSites" (click)="checkBoxOvernightCentralInternetChange(this);" id="wifiOvernightSites" class="sr-only">
                     <!-- line -->
                     <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                     <!-- dot -->
@@ -275,11 +275,11 @@
         <div *ngIf="overnightCentralInternet" class="flex items-center justify-end w-full pr-2 mb-10">
             <p *ngIf="!overnightCentralInternetCharge" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="overnightCentralInternetCharge" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleOvernightCentralInternetCharge" class="flex items-center cursor-pointer">
+            <label for="wifiOvernightSitesPaid" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
                 <!-- input -->
-                <input  type="checkbox" formControlName="toggleOvernightCentralInternetCharge" (click)="checkBoxOvernightCentralInternetChargeChange(this);" id="toggleOvernightCentralInternetCharge" class="sr-only">
+                <input  type="checkbox" formControlName="wifiOvernightSitesPaid" (click)="checkBoxOvernightCentralInternetChargeChange(this);" id="wifiOvernightSitesPaid" class="sr-only">
                 <!-- line -->
                 <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
                 <!-- dot -->
@@ -305,32 +305,32 @@
             <p class="font-bold font-cw text-cwGray text-18px24px">Other Services</p>
             <p class="pl-4 font-cw text-cwGray text-14px24px">(Select all that apply)</p>
         </div>
-        <div formGroupName="otherOptions" class="grid grid-cols-2">
+        <div class="grid grid-cols-2">
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('1')" formControlName="otherOption1" class="hidden" id="otherOption1" type="checkbox" name="otherOption1">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption1">
+                    <input (click)="otherServicesChecked('1')" formControlName="atmMachine" class="hidden" id="atmMachine" type="checkbox" name="atmMachine">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="atmMachine">
                         <img *ngIf="otherServicesOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">ATM machine</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('2')" formControlName="otherOption2" class="hidden" id="otherOption2" type="checkbox" name="otherOption2">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption2">
+                    <input (click)="otherServicesChecked('2')" formControlName="boatStorage" class="hidden" id="boatStorage" type="checkbox" name="boatStorage">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatStorage">
                         <img *ngIf="otherServicesOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boat storage</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('3')" formControlName="otherOption3" class="hidden" id="otherOption3" type="checkbox" name="otherOption3">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption3">
+                    <input (click)="otherServicesChecked('3')" formControlName="bbqAtSite" class="hidden" id="bbqAtSite" type="checkbox" name="bbqAtSite">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bbqAtSite">
                         <img *ngIf="otherServicesOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">BBQ at site</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('4')" formControlName="otherOption4" class="hidden" id="otherOption4" type="checkbox" name="otherOption4">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption4">
+                    <input (click)="otherServicesChecked('4')" formControlName="cableMajor" class="hidden" id="cableMajor" type="checkbox" name="cableMajor">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="cableMajor">
                         <img *ngIf="otherServicesOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cable (major)</p>
                     </label>
@@ -338,29 +338,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('5')" formControlName="otherOption5" class="hidden" id="otherOption5" type="checkbox" name="otherOption5">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption5">
+                    <input (click)="otherServicesChecked('5')" formControlName="cableMinor" class="hidden" id="cableMinor" type="checkbox" name="cableMinor">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="cableMinor">
                         <img *ngIf="otherServicesOptions.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cable (minor)</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('6')" formControlName="otherOption6" class="hidden" id="otherOption6" type="checkbox" name="otherOption6">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption6">
+                    <input (click)="otherServicesChecked('6')" formControlName="offerCarRentals" class="hidden" id="offerCarRentals" type="checkbox" name="offerCarRentals">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="offerCarRentals">
                         <img *ngIf="otherServicesOptions.includes('6')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Car rentals</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('7')" formControlName="otherOption7" class="hidden" id="otherOption7" type="checkbox" name="otherOption7">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption7">
+                    <input (click)="otherServicesChecked('7')" formControlName="churchServices" class="hidden" id="churchServices" type="checkbox" name="churchServices">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="churchServices">
                         <img *ngIf="otherServicesOptions.includes('7')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Church services</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('8')" formControlName="otherOption8" class="hidden" id="otherOption8" type="checkbox" name="otherOption8">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption8">
+                    <input (click)="otherServicesChecked('8')" formControlName="cocktailLounge" class="hidden" id="cocktailLounge" type="checkbox" name="cocktailLounge">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="cocktailLounge">
                         <img *ngIf="otherServicesOptions.includes('8')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cocktail lounge</p>
                     </label>
@@ -368,29 +368,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('9')" formControlName="otherOption9" class="hidden" id="otherOption9" type="checkbox" name="otherOption9">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption9">
+                    <input (click)="otherServicesChecked('9')" formControlName="complimentaryBreakfast" class="hidden" id="complimentaryBreakfast" type="checkbox" name="complimentaryBreakfast">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="complimentaryBreakfast">
                         <img *ngIf="otherServicesOptions.includes('9')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Comp breakfast (Daily)</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('10')" formControlName="otherOption10" class="hidden" id="otherOption10" type="checkbox" name="otherOption10">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption10">
+                    <input (click)="otherServicesChecked('10')" formControlName="dvdRentals" class="hidden" id="dvdRentals" type="checkbox" name="dvdRentals">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dvdRentals">
                         <img *ngIf="otherServicesOptions.includes('10')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">DVD rentals</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('11')" formControlName="otherOption11" class="hidden" id="otherOption11" type="checkbox" name="otherOption11">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption11">
+                    <input (click)="otherServicesChecked('11')" formControlName="evChargingStation" class="hidden" id="evChargingStation" type="checkbox" name="evChargingStation">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="evChargingStation">
                         <img *ngIf="otherServicesOptions.includes('11')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Electric vehicle charging station</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('12')" formControlName="otherOption12" class="hidden" id="otherOption12" type="checkbox" name="otherOption12">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption12">
+                    <input (click)="otherServicesChecked('12')" formControlName="evChargingStationPlanned" class="hidden" id="evChargingStationPlanned" type="checkbox" name="evChargingStationPlanned">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="evChargingStationPlanned">
                         <img *ngIf="otherServicesOptions.includes('12')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-11 font-cw">Electric vehicle charging station planned</p>
                     </label>
@@ -398,29 +398,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('13')" formControlName="otherOption13" class="hidden" id="otherOption13" type="checkbox" name="otherOption13">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption13">
+                    <input (click)="otherServicesChecked('13')" formControlName="entertainment" class="hidden" id="entertainment" type="checkbox" name="entertainment">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="entertainment">
                         <img *ngIf="otherServicesOptions.includes('13')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Entertainment</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('14')" formControlName="otherOption14" class="hidden" id="otherOption14" type="checkbox" name="otherOption14">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption14">
+                    <input (click)="otherServicesChecked('14')" formControlName="faxCopyService" class="hidden" id="faxCopyService" type="checkbox" name="faxCopyService">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="faxCopyService">
                         <img *ngIf="otherServicesOptions.includes('14')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Fax / copy service</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('15')" formControlName="otherOption15" class="hidden" id="otherOption15" type="checkbox" name="otherOption15">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption15">
+                    <input (click)="otherServicesChecked('15')" formControlName="firewood" class="hidden" id="firewood" type="checkbox" name="firewood">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="firewood">
                         <img *ngIf="otherServicesOptions.includes('15')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Firewood</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('16')" formControlName="otherOption16" class="hidden" id="otherOption16" type="checkbox" name="otherOption16">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption16">
+                    <input (click)="otherServicesChecked('16')" formControlName="fireRings" class="hidden" id="fireRings" type="checkbox" name="fireRings">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fireRings">
                         <img *ngIf="otherServicesOptions.includes('16')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fire rings</p>
                     </label>
@@ -428,29 +428,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('17')" formControlName="otherOption17" class="hidden" id="otherOption17" type="checkbox" name="otherOption17">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption17">
+                    <input (click)="otherServicesChecked('17')" formControlName="fishingGuides" class="hidden" id="fishingGuides" type="checkbox" name="fishingGuides">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishingGuides">
                         <img *ngIf="otherServicesOptions.includes('17')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing guides</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('18')" formControlName="otherOption18" class="hidden" id="otherOption18" type="checkbox" name="otherOption18">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption18">
+                    <input (click)="otherServicesChecked('18')" formControlName="fishingLicenses" class="hidden" id="fishingLicenses" type="checkbox" name="fishingLicenses">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishingLicenses">
                         <img *ngIf="otherServicesOptions.includes('18')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing licenses</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('19')" formControlName="otherOption19" class="hidden" id="otherOption19" type="checkbox" name="otherOption19">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption19">
+                    <input (click)="otherServicesChecked('19')" formControlName="fishingSupplies" class="hidden" id="fishingSupplies" type="checkbox" name="fishingSupplies">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishingSupplies">
                         <img *ngIf="otherServicesOptions.includes('19')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing supplies</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('20')" formControlName="otherOption20" class="hidden" id="otherOption20" type="checkbox" name="otherOption20">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption20">
+                    <input (click)="otherServicesChecked('20')" formControlName="golfCarts" class="hidden" id="golfCarts" type="checkbox" name="golfCarts">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="golfCarts">
                         <img *ngIf="otherServicesOptions.includes('20')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Golf carts</p>
                     </label>
@@ -458,29 +458,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('21')" formControlName="otherOption21" class="hidden" id="otherOption21" type="checkbox" name="otherOption21">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption21">
+                    <input (click)="otherServicesChecked('21')" formControlName="groceries" class="hidden" id="groceries" type="checkbox" name="groceries">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="groceries">
                         <img *ngIf="otherServicesOptions.includes('21')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Groceries</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('22')" formControlName="otherOption22" class="hidden" id="otherOption22" type="checkbox" name="otherOption22">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption22">
+                    <input (click)="otherServicesChecked('22')" formControlName="guestServices" class="hidden" id="guestServices" type="checkbox" name="guestServices">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="guestServices">
                         <img *ngIf="otherServicesOptions.includes('22')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Guest services</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('23')" formControlName="otherOption23" class="hidden" id="otherOption23" type="checkbox" name="otherOption23">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption23">
+                    <input (click)="otherServicesChecked('23')" formControlName="horseCorral" class="hidden" id="horseCorral" type="checkbox" name="horseCorral">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="horseCorral">
                         <img *ngIf="otherServicesOptions.includes('23')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Horse corral</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('24')" formControlName="otherOption24" class="hidden" id="otherOption24" type="checkbox" name="otherOption24">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption24">
+                    <input (click)="otherServicesChecked('24')" formControlName="ice" class="hidden" id="ice" type="checkbox" name="ice">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="ice">
                         <img *ngIf="otherServicesOptions.includes('24')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Ice</p>
                     </label>
@@ -488,29 +488,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('25')" formControlName="otherOption25" class="hidden" id="otherOption25" type="checkbox" name="otherOption25">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption25">
+                    <input (click)="otherServicesChecked('25')" formControlName="libraryBookExchange" class="hidden" id="libraryBookExchange" type="checkbox" name="libraryBookExchange">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="libraryBookExchange">
                         <img *ngIf="otherServicesOptions.includes('25')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Library / book exchange</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('26')" formControlName="otherOption26" class="hidden" id="otherOption26" type="checkbox" name="otherOption26">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption26">
+                    <input (click)="otherServicesChecked('26')" formControlName="lpBottlesOnly" class="hidden" id="lpBottlesOnly" type="checkbox" name="lpBottlesOnly">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="lpBottlesOnly">
                         <img *ngIf="otherServicesOptions.includes('26')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">LP gas - bottles only</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('27')" formControlName="otherOption27" class="hidden" id="otherOption27" type="checkbox" name="otherOption27">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption27">
+                    <input (click)="otherServicesChecked('27')" formControlName="meteredLpGas" class="hidden" id="meteredLpGas" type="checkbox" name="meteredLpGas">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="meteredLpGas">
                         <img *ngIf="otherServicesOptions.includes('27')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">LP gas - metered</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('28')" formControlName="otherOption28" class="hidden" id="otherOption28" type="checkbox" name="otherOption28">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption28">
+                    <input (click)="otherServicesChecked('28')" formControlName="mailDelivery" class="hidden" id="mailDelivery" type="checkbox" name="mailDelivery">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="mailDelivery">
                         <img *ngIf="otherServicesOptions.includes('28')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Mail delivery</p>
                     </label>
@@ -518,29 +518,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('29')" formControlName="otherOption29" class="hidden" id="otherOption29" type="checkbox" name="otherOption29">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption29">
+                    <input (click)="otherServicesChecked('29')" formControlName="newspaper" class="hidden" id="newspaper" type="checkbox" name="newspaper">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="newspaper">
                         <img *ngIf="otherServicesOptions.includes('29')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Newspaper</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('30')" formControlName="otherOption30" class="hidden" id="otherOption30" type="checkbox" name="otherOption30">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption30">
+                    <input (click)="otherServicesChecked('30')" formControlName="onsiteRvService" class="hidden" id="onsiteRvService" type="checkbox" name="onsiteRvService">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="onsiteRvService">
                         <img *ngIf="otherServicesOptions.includes('30')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Onsite RV service</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('31')" formControlName="otherOption31" class="hidden" id="otherOption31" type="checkbox" name="otherOption31">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption31">
+                    <input (click)="otherServicesChecked('31')" formControlName="patiosYes" class="hidden" id="patiosYes" type="checkbox" name="patiosYes">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="patiosYes">
                         <img *ngIf="otherServicesOptions.includes('31')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Patios</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('32')" formControlName="otherOption32" class="hidden" id="otherOption32" type="checkbox" name="otherOption32">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption32">
+                    <input (click)="otherServicesChecked('32')" formControlName="personalEscortToSite" class="hidden" id="personalEscortToSite" type="checkbox" name="personalEscortToSite">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="personalEscortToSite">
                         <img *ngIf="otherServicesOptions.includes('32')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Personal escort to site</p>
                     </label>
@@ -548,29 +548,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('33')" formControlName="otherOption33" class="hidden" id="otherOption33" type="checkbox" name="otherOption33">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption33">
+                    <input (click)="otherServicesChecked('33')" formControlName="restaurant" class="hidden" id="restaurant" type="checkbox" name="restaurant">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="restaurant">
                         <img *ngIf="otherServicesOptions.includes('33')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Restaraunt</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('34')" formControlName="otherOption34" class="hidden" id="otherOption34" type="checkbox" name="otherOption34">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption34">
+                    <input (click)="otherServicesChecked('34')" formControlName="rvSuppliesGs1" class="hidden" id="rvSuppliesGs1" type="checkbox" name="rvSuppliesGs1">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="rvSuppliesGs1">
                         <img *ngIf="otherServicesOptions.includes('34')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">RV supplies</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('35')" formControlName="otherOption35" class="hidden" id="otherOption35" type="checkbox" name="otherOption35">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption35">
+                    <input (click)="otherServicesChecked('35')" formControlName="secureRvStorage" class="hidden" id="secureRvStorage" type="checkbox" name="secureRvStorage">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="secureRvStorage">
                         <img *ngIf="otherServicesOptions.includes('35')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">RV storage - secure</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('36')" formControlName="otherOption36" class="hidden" id="otherOption36" type="checkbox" name="otherOption36">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption36">
+                    <input (click)="otherServicesChecked('36')" formControlName="selfServRvWash" class="hidden" id="selfServRvWash" type="checkbox" name="selfServRvWash">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="selfServRvWash">
                         <img *ngIf="otherServicesOptions.includes('36')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">RV wash - self service</p>
                     </label>
@@ -578,29 +578,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('37')" formControlName="otherOption37" class="hidden" id="otherOption37" type="checkbox" name="otherOption37">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption37">
+                    <input (click)="otherServicesChecked('37')" formControlName="staffedRvWash" class="hidden" id="staffedRvWash" type="checkbox" name="staffedRvWash">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="staffedRvWash">
                         <img *ngIf="otherServicesOptions.includes('37')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">RV wash - staffed</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('38')" formControlName="otherOption38" class="hidden" id="otherOption38" type="checkbox" name="otherOption38">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption38">
+                    <input (click)="otherServicesChecked('38')" formControlName="shuttleService" class="hidden" id="shuttleService" type="checkbox" name="shuttleService">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shuttleService">
                         <img *ngIf="otherServicesOptions.includes('38')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Shuttle service</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('39')" formControlName="otherOption39" class="hidden" id="otherOption39" type="checkbox" name="otherOption39">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption39">
+                    <input (click)="otherServicesChecked('39')" formControlName="snackBar" class="hidden" id="snackBar" type="checkbox" name="snackBar">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="snackBar">
                         <img *ngIf="otherServicesOptions.includes('39')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Snack bar</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('40')" formControlName="otherOption40" class="hidden" id="otherOption40" type="checkbox" name="otherOption40">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption40">
+                    <input (click)="otherServicesChecked('40')" formControlName="spaServices" class="hidden" id="spaServices" type="checkbox" name="spaServices">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="spaServices">
                         <img *ngIf="otherServicesOptions.includes('40')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Spa services</p>
                     </label>
@@ -608,22 +608,22 @@
             </div>
             <div class="flex flex-row col-span-2 space-x-4 pb-15">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('41')" formControlName="otherOption41" class="hidden" id="otherOption41" type="checkbox" name="otherOption41">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption41">
+                    <input (click)="otherServicesChecked('41')" formControlName="tableAtSite" class="hidden" id="tableAtSite" type="checkbox" name="tableAtSite">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="tableAtSite">
                         <img *ngIf="otherServicesOptions.includes('41')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Table at site</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('42')" formControlName="otherOption42" class="hidden" id="otherOption42" type="checkbox" name="otherOption42">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption42">
+                    <input (click)="otherServicesChecked('42')" formControlName="tourShowTickets" class="hidden" id="tourShowTickets" type="checkbox" name="tourShowTickets">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="tourShowTickets">
                         <img *ngIf="otherServicesOptions.includes('42')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Tour / show tickets</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('43')" formControlName="otherOption43" class="hidden" id="otherOption43" type="checkbox" name="otherOption43">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="otherOption43">
+                    <input (click)="otherServicesChecked('43')" formControlName="trashPickupAtSite" class="hidden" id="trashPickupAtSite" type="checkbox" name="trashPickupAtSite">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="trashPickupAtSite">
                         <img *ngIf="otherServicesOptions.includes('43')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Trash pickup at site</p>
                     </label>
@@ -636,32 +636,32 @@
         <div class="flex col-span-2 pb-7.5">
             <p class="font-bold font-cw text-cwGray text-18px24px">Pets</p>
         </div>
-        <div formGroupName="petOptions" class="grid grid-cols-2">
+        <div class="grid grid-cols-2">
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="petServicesChecked('1')" formControlName="petOption1" class="hidden" id="petOption1" type="checkbox" name="petOption1">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption1">
+                    <input (click)="petServicesChecked('1')" formControlName="dogPark" class="hidden" id="dogPark" type="checkbox" name="dogPark">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dogPark">
                         <img *ngIf="petServicesOptions.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Dog park</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('2')" formControlName="petOption2" class="hidden" id="petOption2" type="checkbox" name="petOption2">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption2">
+                    <input (click)="petServicesChecked('2')" formControlName="dogWalkingServices" class="hidden" id="dogWalkingServices" type="checkbox" name="dogWalkingServices">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dogWalkingServices">
                         <img *ngIf="petServicesOptions.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Dog walking services</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('3')" formControlName="petOption3" class="hidden" id="petOption3" type="checkbox" name="petOption3">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption3">
+                    <input (click)="petServicesChecked('3')" formControlName="dogWashingStation" class="hidden" id="dogWashingStation" type="checkbox" name="dogWashingStation">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dogWashingStation">
                         <img *ngIf="petServicesOptions.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Dog washing station</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('4')" formControlName="petOption4" class="hidden" id="petOption4" type="checkbox" name="petOption4">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption4">
+                    <input (click)="petServicesChecked('4')" formControlName="enclosedDogRun" class="hidden" id="enclosedDogRun" type="checkbox" name="enclosedDogRun">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="enclosedDogRun">
                         <img *ngIf="petServicesOptions.includes('4')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Enclosed dog run</p>
                     </label>
@@ -669,29 +669,29 @@
             </div>
             <div class="flex flex-row col-span-2 pb-10 space-x-4">
                 <div class="relative">
-                    <input (click)="petServicesChecked('5')" formControlName="petOption5" class="hidden" id="petOption5" type="checkbox" name="petOption5">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption5">
+                    <input (click)="petServicesChecked('5')" formControlName="petBoarding" class="hidden" id="petBoarding" type="checkbox" name="petBoarding">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petBoarding">
                         <img *ngIf="petServicesOptions.includes('5')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pet boarding</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('6')" formControlName="petOption6" class="hidden" id="petOption6" type="checkbox" name="petOption6">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption6">
+                    <input (click)="petServicesChecked('6')" formControlName="petGrooming" class="hidden" id="petGrooming" type="checkbox" name="petGrooming">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petGrooming">
                         <img *ngIf="petServicesOptions.includes('6')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pet grooming</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('7')" formControlName="petOption7" class="hidden" id="petOption7" type="checkbox" name="petOption7">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption7">
+                    <input (click)="petServicesChecked('7')" formControlName="petSitting" class="hidden" id="petSitting" type="checkbox" name="petSitting">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petSitting">
                         <img *ngIf="petServicesOptions.includes('7')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pet sitting</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('8')" formControlName="petOption8" class="hidden" id="petOption8" type="checkbox" name="petOption8">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petOption8">
+                    <input (click)="petServicesChecked('8')" formControlName="petSuppliesInStore" class="hidden" id="petSuppliesInStore" type="checkbox" name="petSuppliesInStore">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petSuppliesInStore">
                         <img *ngIf="petServicesOptions.includes('8')" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Pet supplies in store</p>
                     </label>

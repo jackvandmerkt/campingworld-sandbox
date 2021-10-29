@@ -11,16 +11,17 @@
         <div class="pb-5">
           <p class="text-lg font-cw text-cwGray">Sign in below to access your data</p>
         </div>
-        <div class="relative pb-10 f-outline">
-          <input id="email" (ngModel)="email" type="text" name="email" placeholder=""
-            class="block px-3 border rounded appearance-none bg-F9FAFB w-416 h-13 border-cwGray focus:outline-none" />
-          <label for="email" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Email</label>
+        <div class="relative z-0 pb-6">
+          <input id="email" (ngModel)="email" type="text" name="email" placeholder=" "
+              class="block px-3 bg-transparent bg-white border rounded appearance-none w-416 h-13 border-cwBadgeGray focus:outline-none" />
+          <label for="email"
+              class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-cw text-16px26px text-formBlack">Email</label>
         </div>
-        <div class="relative pb-5 f-outline">
+        <div class="relative z-0 pb-5">
           <input type="password" (ngModel)="password" name="password" placeholder=" "
-            class="block px-3 border rounded appearance-none bg-F9FAFB w-416 h-13 border-cwGray focus:outline-none" />
+              class="block px-3 bg-transparent bg-white border rounded appearance-none w-416 h-13 border-cwBadgeGray focus:outline-none" />
           <label for="password"
-            class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5">Password</label>
+              class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-cw text-16px26px text-formBlack">Password</label>
           <div class="flex mt-3">
             <div><input type="checkbox" class="mr-2 checkbox">Remember me</div>
             <div class="flex-grow"></div>
