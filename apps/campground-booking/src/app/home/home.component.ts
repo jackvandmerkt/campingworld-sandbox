@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { ListingService } from "../shared/listing.service";
 import { Router } from '@angular/router';
 import { IAllRefs } from "../shared/listing.model";
@@ -7,7 +7,7 @@ import { IAllRefs } from "../shared/listing.model";
   selector: "home",
   templateUrl: "home.component.html"
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
   territories: any = []
   allRefsFromService!: IAllRefs[];
   selectedTerritory = 'All';
@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getTerritoriesDropdownData();
+  }
+  ngAfterViewInit(){
     this.ls.getAllRefs().subscribe(data => {
       if(data) {
         this.allRefsFromService = data;
