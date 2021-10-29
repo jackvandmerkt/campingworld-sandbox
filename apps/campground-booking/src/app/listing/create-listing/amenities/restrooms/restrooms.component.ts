@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angula
 import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { ListingNavService } from "apps/campground-booking/src/app/shared/listing-nav.service";
-import { IAllRefs } from "../../../../shared/listing-counts.model";
+import { IAllRefs } from "../../../../shared/listing.model";
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
