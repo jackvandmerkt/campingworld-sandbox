@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-
 @Component({
   selector: 'create-proposal',
   templateUrl: './create-proposal.component.html',
   styleUrls: ['./create-proposal.component.css']
 })
 export class CreateProposalComponent implements OnInit {
+  downPaymentRequired = false
   displayItemPrices = false
   displayMediaKit = false
 
@@ -15,6 +15,10 @@ export class CreateProposalComponent implements OnInit {
 
   onChange(): void {
     console.log('aa')
+  }
+
+  downPaymentRequiredChange(value: any) {
+    this.downPaymentRequired = value
   }
 
   displayItemPricesChange(value: any) {

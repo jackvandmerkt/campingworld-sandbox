@@ -39,7 +39,29 @@
           <h1 class="text-24px30px font-cw text-cwGray">Down payment required</h1>
         </div>
         <div class="flex-grow"></div>
-        <h1 class="text-24px30px font-cw text-cwGray">$0.00</h1>
+        <div class="flex" style="margin-right: -10px;">
+          <div class="w-3/4 pb-11">
+            <p class="font-cw text-16px26px mr-3 mt-1">No</p>
+          </div>
+          <div class="flex items-center justify-end w-1/4 pr-2 mb-10 text-right">
+            <p *ngIf="!downPaymentRequired" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="downPaymentRequired" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="toggleDownPaymentRequired" class="flex items-center cursor-pointer">
+              <!-- toggle -->
+              <div class="relative">
+                <!-- input -->
+                <input type="checkbox" (click)="downPaymentRequiredChange(this)" id="toggleDownPaymentRequired"
+                  class="sr-only">
+                <!-- line -->
+                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                <!-- dot -->
+                <div
+                  class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
     <div class="p-10">
