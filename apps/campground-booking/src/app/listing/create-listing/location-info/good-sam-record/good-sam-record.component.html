@@ -17,7 +17,7 @@
 
     </div>
     <div class="relative z-0 pb-10 long-label">
-      <input type="text" formControlName="fileNumber" name="fileNumber" placeholder=" "
+      <input type="text" readonly formControlName="fileNumber" name="fileNumber" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-navGray bg-navGray focus:outline-none" />
       <label for="fileNumber"
           class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-cw text-16px26px text-formBlack">File Number</label>
@@ -35,14 +35,14 @@
       </div>
     </div>
     <div class="relative z-0 pb-10">
-      <input type="text" formControlName="repCode" name="repCode" placeholder=" "
+      <input type="text" readonly formControlName="repCode" name="repCode" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-navGray bg-navGray focus:outline-none" />
       <label for="repCode"
           class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-cw text-16px26px text-formBlack">Rep Code</label>
     </div>
 
     <div class="relative z-0 pb-10">
-      <select (change)="onChange($event)" name="listingTypeId" formControlName="listingTypeId" #listingTypeId value="null" [ngClass]="{'error-border': submitted && f.listingTypeId.errors }"
+      <select (change)="onChangeListingType($event)" name="listingTypeId" formControlName="listingTypeId" #listingTypeId value="null" [ngClass]="{'error-border': submitted && f.listingTypeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
       <option value="null"></option>
       <option *ngFor="let l of listingTypesFromService" [ngValue]="l.id">{{l.value}}</option>
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="relative z-0 pb-10">
-      <select name="parkTypeId" formControlName="parkTypeId" #parkTypeId value="null" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
+      <select (change)="onChangeParkType($event)" name="parkTypeId" formControlName="parkTypeId" #parkTypeId value="null" [ngClass]="{'error-border': submitted && f.parkTypeId.errors }"
       onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray">
       <option value="null"></option>
       <option *ngFor="let p of parkTypesFromService" [ngValue]="p.id">{{p.value}}</option>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div *ngIf="isDuplicateSelected" class="flex flex-row col-span-2 space-x-3">
-      <div class="relative z-0 pb-10 duplicate-label">
+      <div class="relative z-0 pb-10">
         <input type="text" formControlName="duplicateListingText" name="duplicateListingText" placeholder=" " [ngClass]="{'error-border': submitted && f.duplicateListingText.errors }"
             class="block px-3 bg-transparent border rounded appearance-none w-474 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="duplicateListingText"
@@ -77,7 +77,7 @@
           <div *ngIf="f.duplicateListingText.errors.maxlength" class="pl-3 font-cw text-cwRed text-11px20px">Duplicate Listing Text cannot exceed 255 characters.</div>
         </div>
       </div>
-      <div class="relative z-0 pb-10 primaryFileNum-label">
+      <div class="relative z-0 pb-10">
         <input type="number" formControlName="primaryFileNumber" name="primaryFileNumber" placeholder=" " [ngClass]="{'error-border': submitted && f.primaryFileNumber.errors }"
             class="block px-3 bg-transparent border rounded appearance-none w-138 h-13 border-cwBadgeGray focus:outline-none" />
         <label for="primaryFileNumber"
@@ -102,6 +102,9 @@
         </div>
         <div *ngIf="submitted && f.listCity.errors">
           <div *ngIf="f.listCity.errors.maxlength" class="pl-3 font-cw text-cwRed text-11px20px">Listing city value cannot exceed 255 characters.</div>
+        </div>
+        <div *ngIf="submitted && f.listCity.errors">
+          <div *ngIf="f.listCity.errors.minlength" class="pl-3 font-cw text-cwRed text-11px20px">Listing city value must be atleast 3 characters.</div>
         </div>
     </div>
     <div class="relative z-0 pb-10">
@@ -128,12 +131,12 @@
         </div>
       </div>
 
-      <div *ngIf="isDeleteChecked" class="flex col-span-2">
+      <div *ngIf="isMembershipParkSelected" class="flex col-span-2">
         <div class="w-3/4 pb-11">
             <p class="font-cw">Overnighter must sit through sales presentation?</p>
         </div>
 
-        <div *ngIf="isDeleteChecked" class="flex items-center justify-end w-1/4 pr-2 mb-11">
+        <div class="flex items-center justify-end w-1/4 pr-2 mb-11">
             <p *ngIf="!isSalesPresentationChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
             <p *ngIf="isSalesPresentationChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
             <label for="salesPresentationRequired" class="flex items-center cursor-pointer">

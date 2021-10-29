@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IAdvertisingObjections, IAffiliations,IGoodSamRecordId, IAllRefs, IAmps, IB2BCommSources, IBaths, IByWeekMonths, ICountries, IDirectionalArrows, IDroppedAffiliations, IInteriorRoadConditions, IInteriorRoadTypes, IKitchens, IListingCounts, IListings, IListingTypes, IListStates, INonRatedCodes, IOnlineReservationSystems, IParkTypes, IRestroomsShowers, ISectionCodes, IShadedSites, ISidebySideHookups, ITerritories, IUniqueAccounts, IContactInfo, IRestrooms } from '../shared/listing-counts.model';
+import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms } from '../shared/listing-counts.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -10,132 +10,27 @@ export class ListingService {
     constructor(private http: HttpClient){
 
     }
+    // GET methods for home
     getListings(territoryCode:string):Observable<IListingCounts> {
       return this.http.get<IListingCounts>('/api/v1/listings/counts?territoryCode=' + territoryCode)
         .pipe(catchError(this.handleError<IListingCounts>('getListings', )))
     }
-
     getAllRefs():Observable<IAllRefs[]> {
       return this.http.get<IAllRefs[]>('/api/v1/refs/all')
         .pipe(catchError(this.handleError<IAllRefs[]>('getAllRefs', )))
     }
-
-    // used in multiple forms
     getTerritories():Observable<ITerritories[]> {
       return this.http.get<ITerritories[]>('/api/v1/refs/territories')
         .pipe(catchError(this.handleError<ITerritories[]>('getTerritories', )))
     } 
-    getSectionCodes():Observable<ISectionCodes[]> {
-      return this.http.get<ISectionCodes[]>('/api/v1/refs/section-codes')
-        .pipe(catchError(this.handleError<ISectionCodes[]>('getSectionCodes', )))
-    }
-    getParkTypes():Observable<IParkTypes[]> {
-      return this.http.get<IParkTypes[]>('/api/v1/refs/park-types')
-        .pipe(catchError(this.handleError<IParkTypes[]>('getParkTypes', )))
-    }
-    getListingTypes():Observable<IListingTypes[]> {
-      return this.http.get<IListingTypes[]>('/api/v1/refs/listing-types')
-        .pipe(catchError(this.handleError<IListingTypes[]>('getListingTypes', )))
-    }
-    getListStates():Observable<IListStates[]> {
-      return this.http.get<IListStates[]>('/api/v1/refs/list-states')
-        .pipe(catchError(this.handleError<IListStates[]>('getListStates', )))
-    }
-    getNonRatedCodes():Observable<INonRatedCodes[]> {
-      return this.http.get<INonRatedCodes[]>('/api/v1/refs/non-rated-codes')
-        .pipe(catchError(this.handleError<INonRatedCodes[]>('getNonRatedCodes', )))
-    }
-    getCountries():Observable<ICountries[]> {
-      return this.http.get<ICountries[]>('/api/v1/refs/countries')
-        .pipe(catchError(this.handleError<ICountries[]>('getCountries', )))
-    }
-
-    // Discounts and Affiliations Form
-    getAffiliations():Observable<IAffiliations[]> {
-      return this.http.get<IAffiliations[]>('/api/v1/refs/affiliations')
-        .pipe(catchError(this.handleError<IAffiliations[]>('getAffiliations', )))
-    }
-
-    // Directions Form
-    getDirectionalArrows():Observable<IDirectionalArrows[]> {
-      return this.http.get<IDirectionalArrows[]>('/api/v1/refs/directional-arrows')
-        .pipe(catchError(this.handleError<IDirectionalArrows[]>('getDirectionalArrows', )))
-    }
-
-    // Ownership & B2B Info Form
-    getUniqueAccounts():Observable<IUniqueAccounts[]> {
-      return this.http.get<IUniqueAccounts[]>('/api/v1/refs/unique-accounts')
-        .pipe(catchError(this.handleError<IUniqueAccounts[]>('getUniqueAccounts', )))
-    }
-    getDroppedAffiliations():Observable<IDroppedAffiliations[]> {
-      return this.http.get<IDroppedAffiliations[]>('/api/v1/refs/dropped-affiliations')
-        .pipe(catchError(this.handleError<IDroppedAffiliations[]>('getDroppedAffiliations', )))
-    }
-    getAdvertisingObjections():Observable<IAdvertisingObjections[]> {
-      return this.http.get<IAdvertisingObjections[]>('/api/v1/refs/advertising-objections')
-        .pipe(catchError(this.handleError<IAdvertisingObjections[]>('getAdvertisingObjections', )))
-    }
-    getB2BCommSources():Observable<IB2BCommSources[]> {
-      return this.http.get<IB2BCommSources[]>('/api/v1/refs/b2b-comm-sources')
-        .pipe(catchError(this.handleError<IB2BCommSources[]>('getB2BCommSources', )))
-    }
     
-    //Rates & Reservations Form
-    getByWeekMonth():Observable<IByWeekMonths[]> {
-      return this.http.get<IByWeekMonths[]>('/api/v1/refs/by-week-months')
-        .pipe(catchError(this.handleError<IByWeekMonths[]>('getByWeekMonth', )))
-    }
-    getOnlineReservationSystems():Observable<IOnlineReservationSystems[]> {
-      return this.http.get<IOnlineReservationSystems[]>('/api/v1/refs/online-reservation-systems')
-        .pipe(catchError(this.handleError<IOnlineReservationSystems[]>('getOnlineReservationSystems', )))
-    }
-
-    // Restrooms Form
-    getRestroomsShowers():Observable<IRestroomsShowers[]> {
-      return this.http.get<IRestroomsShowers[]>('/api/v1/refs/restroom-showers')
-        .pipe(catchError(this.handleError<IRestroomsShowers[]>('getRestroomsShowers', )))
-    }
-
-    // Tenting & Rentals
-    getBaths():Observable<IBaths[]> {
-      return this.http.get<IBaths[]>('/api/v1/refs/baths')
-        .pipe(catchError(this.handleError<IBaths[]>('getBaths', )))
-    }
-    getKitchens():Observable<IKitchens[]> {
-      return this.http.get<IKitchens[]>('/api/v1/refs/kitchens')
-        .pipe(catchError(this.handleError<IKitchens[]>('getKitchens', )))
-    }
-
-    // Interior Roads Form
-    getInteriorRoadsType():Observable<IInteriorRoadTypes[]> {
-      return this.http.get<IInteriorRoadTypes[]>('/api/v1/refs/interior-road-types')
-        .pipe(catchError(this.handleError<IInteriorRoadTypes[]>('getInteriorRoadsType', )))
-    }
-    getAmps():Observable<IAmps[]> {
-      return this.http.get<IAmps[]>('/api/v1/refs/amps')
-        .pipe(catchError(this.handleError<IAmps[]>('getAmps', )))
-    }
-    getInteriorRoadsConditions():Observable<IInteriorRoadConditions[]> {
-      return this.http.get<IInteriorRoadConditions[]>('/api/v1/refs/interior-road-conditions')
-        .pipe(catchError(this.handleError<IInteriorRoadConditions[]>('getInteriorRoadsConditions', )))
-    }
-    getSideBySideHookups():Observable<ISidebySideHookups[]> {
-      return this.http.get<ISidebySideHookups[]>('/api/v1/refs/side-by-side-hookups')
-        .pipe(catchError(this.handleError<ISidebySideHookups[]>('getSideBySideHookups', )))
-    }
-    getShadedSites():Observable<IShadedSites[]> {
-      return this.http.get<IShadedSites[]>('/api/v1/refs/shade-types')
-        .pipe(catchError(this.handleError<IShadedSites[]>('getShadedSites', )))
-    }
-
-
     // POST method for New Listing
     postNewListing(form:any):Observable<IListings[]> {
       return this.http.post<IListings[]>('/api/v1/listings/file-number', form)
       .pipe(catchError(this.handleError<IListings[]>('postNewListing', )))
     }
 
-    //Location Info - Good Sam Record ID Form
+    //Location Info Section - Good Sam Record ID Form
     postGoodSamRecordId(form:IGoodSamRecordId, fileNumber:string):Observable<IGoodSamRecordId>{
       return this.http.put<IGoodSamRecordId>(`/api/v1/listings/${fileNumber}/location-info/good-sam-record-id`, form)
       .pipe(catchError(this.handleError<IGoodSamRecordId>('postGoodSamRecordId', )))
@@ -146,7 +41,7 @@ export class ListingService {
     }
   
     
-    // Location Info - Contact Info Form
+    // Location Info Section - Contact Info Form
     postContactInfo(form:IContactInfo, fileNumber:string):Observable<IContactInfo>{
       return this.http.put<IContactInfo>(`/api/v1/listings/${fileNumber}/location-info/contact-info`, form)
       .pipe(catchError(this.handleError<IContactInfo>('postContactInfo', )))
@@ -156,7 +51,7 @@ export class ListingService {
       .pipe(catchError(this.handleError<IContactInfo>('getContactInfo', )))
     }
 
-    // Amenities - Restrooms Form
+    // Amenities Section - Restrooms Form
     postRestrooms(form:IRestrooms, fileNumber:string):Observable<IRestrooms>{
       return this.http.put<IRestrooms>(`/api/v1/listings/${fileNumber}/amenities/restrooms`, form)
       .pipe(catchError(this.handleError<IRestrooms>('postRestrooms', )))

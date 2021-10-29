@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators, FormControl, FormGroup } from "@angular/forms";
-import { IAllRefs, ICountries, IListStates, IContactInfo } from 'apps/campground-booking/src/app/shared/listing-counts.model';
+import { IAllRefs, IContactInfo } from 'apps/campground-booking/src/app/shared/listing-counts.model';
 import { ListingService } from 'apps/campground-booking/src/app/shared/listing.service';
 import { ListingNavService } from "../../../../shared/listing-nav.service";
 import { ActivatedRoute } from "@angular/router";

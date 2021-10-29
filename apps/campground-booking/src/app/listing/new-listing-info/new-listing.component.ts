@@ -2,10 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { IParkTypes, ISectionCodes } from "../../shared/listing-counts.model";
+import { IAllRefs } from "../../shared/listing-counts.model";
 import { ListingService } from "../../shared/listing.service";
 import { ListingActions } from "../state/actions";
-import { listingReducer } from "../state/listing.reducer";
 
 @Component({
     selector: 'new-listing',
@@ -14,27 +13,24 @@ import { listingReducer } from "../state/listing.reducer";
 })
 export class NewListingsComponent implements OnInit{
     submitted: boolean = false;
-    sectionCodesFromService!: ISectionCodes[];
-    parkTypesFromService!: IParkTypes[];
     repNameFromState:string = '';
     postResponse:any;
     fileNumber:any;
     newListingTmp:any;
     newListingObj: any = {};
 
+    allRefsTmp:any;
+    allRefsObj!: IAllRefs[];
+    sectionCodesFromService: any = {};
+    parkTypesFromService: any = {};
+
+
     constructor(private formBuilder: FormBuilder, private ls: ListingService, private router: Router, private store: Store<any>) {
         
     }
     ngOnInit() {
-      this.ls.getParkTypes().subscribe(response => {
-        this.parkTypesFromService = response;
-      });
-
-      this.ls.getSectionCodes().subscribe(response => {
-          this.sectionCodesFromService = response;
-      });
-
-      this.store.select('users').subscribe(
+     this.getFormDropDownData();
+     this.store.select('users').subscribe(
         users => {
           if (users) {
             this.repNameFromState = users.userReducer.currentUser.firstName + ' ' + users.userReducer.currentUser.lastName;
@@ -80,6 +76,19 @@ export class NewListingsComponent implements OnInit{
           this.router.navigateByUrl('/listing/good-sam-record/' + this.fileNumber)
         }
       })
+    }
+
+    getFormDropDownData() {
+      this.allRefsTmp = window.localStorage.getItem('all-refs');
+      this.allRefsObj = JSON.parse(this.allRefsTmp);
+      for(let [key, value] of Object.entries(this.allRefsObj)) {
+          if(key === 'sectionCodes') {
+              this.sectionCodesFromService = value;
+          }
+          if(key === 'parkTypes') {
+              this.parkTypesFromService = value;
+          }
+      }
     }
 
 }
