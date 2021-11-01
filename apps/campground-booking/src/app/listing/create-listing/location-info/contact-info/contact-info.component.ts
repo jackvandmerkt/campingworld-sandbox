@@ -205,7 +205,6 @@ sendFormStatus(value: any) {
     const mailingAddress = {
       city : this.contactInfoForm.value.mailingAddress.city,
       street1 : this.contactInfoForm.value.mailingAddress.address,
-      street2 : this.contactInfoForm.value.mailingAddress.address,
       listStateId : this.contactInfoForm.value.mailingAddress.listStateId,
       zip : this.contactInfoForm.value.mailingAddress.zip,
       countryId : this.contactInfoForm.value.mailingAddress.countryId,
@@ -213,7 +212,6 @@ sendFormStatus(value: any) {
     const physicalAddress = {
       city : this.contactInfoForm.value.physicalAddress.physicalCity,
       street1 : this.contactInfoForm.value.physicalAddress.physicalAddress,
-      street2 : this.contactInfoForm.value.physicalAddress.physicalAddress,
       listStateId : this.contactInfoForm.value.physicalAddress.physicalListStateId,
       zip : this.contactInfoForm.value.physicalAddress.physicalZip,
       countryId : this.contactInfoForm.value.physicalAddress.physicalCountryId,

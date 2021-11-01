@@ -251,7 +251,6 @@ export interface IContactInfo
  {
   mailingAddress:{
     street1:string,
-    street2:string,
     city:string,
     listStateId:number,
     countryId:number
@@ -260,7 +259,6 @@ export interface IContactInfo
   physicalAndMailingAddressSame:boolean,
   physicalAddress:{
     street1:string,
-    street2:string,
     city:string,
     listStateId:number,
     countryId:number
