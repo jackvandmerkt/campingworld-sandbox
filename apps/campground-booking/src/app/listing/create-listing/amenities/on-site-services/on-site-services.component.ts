@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
     selector: 'on-site-services',
@@ -16,7 +16,7 @@ export class OnSiteServicesComponent {
     // toggle button boolean variables
     centralInternet: boolean = false;
     centralInternetCharge: boolean = false;
-    wifiHotspots: boolean = false;
+    wifiHotspotBool: boolean = false;
     wifiHotspotsCharge: boolean = false;
     wifi: boolean = false;
     wifiCharge: boolean = false;
@@ -32,45 +32,22 @@ export class OnSiteServicesComponent {
 
     // form object
     onSiteServices = this.formBuilder.group({
-      basicOptions: this.formBuilder.group({
-        basicOption1: false, basicOption2: false, basicOption3: false, basicOption4: false
-      }),
-      securityOptions: this.formBuilder.group({
-        securityOption1: false, securityOption2: false
-      }),
-      toggleCentralInternet: false,
-      toggleCentralInternetCharge: false,
-      toggleWiFiHotspots: false,
-      toggleWiFiHotspotsCharge: false,
-      howManyHotspots: '',
-      toggleWiFi: false,
-      toggleWiFiCharge: false,
-      toggleMobileDevices: false,
-      toggleStreamingSupport: false,
-      toggleWiFiTechSupport: false,
-      toggleOvernightCentralInternet: false,
-      toggleOvernightCentralInternetCharge: false,
-      howManySitesHaveWiFi: '',
-      numDevicesSupported: '',
-      otherOptions: this.formBuilder.group({
-        otherOption1: false, otherOption2: false, otherOption3: false, otherOption4: false,
-        otherOption5: false, otherOption6: false, otherOption7: false, otherOption8: false,
-        otherOption9: false, otherOption10: false, otherOption11: false, otherOption12: false,
-        otherOption13: false, otherOption14: false, otherOption15: false, otherOption16: false,
-        otherOption17: false, otherOption18: false, otherOption19: false, otherOption20: false,
-        otherOption21: false, otherOption22: false, otherOption23: false, otherOption24: false,
-        otherOption25: false, otherOption26: false, otherOption27: false, otherOption28: false,
-        otherOption29: false, otherOption30: false, otherOption31: false, otherOption32: false,
-        otherOption33: false, otherOption34: false, otherOption35: false, otherOption36: false,
-        otherOption37: false, otherOption38: false, otherOption39: false, otherOption40: false,
-        otherOption41: false, otherOption42: false, otherOption43: false
-      }),
-      petOptions: this.formBuilder.group({
-        petOption1: false, petOption2: false, petOption3: false, petOption4: false,
-        petOption5: false, petOption6: false, petOption7: false, petOption8: false
-      }),
-      otherServicesMajor: '',
-      otherServicesMinor: ''
+      dumpingStationGs1: false, mobileSewerService: false, laundry: false, partialHandicapAccess: false,
+      controlAccessGate: false, emergencyPhone: false, centralInternetHU: false, centralInternetHUPaid: false,
+      wifiHotspot: false, wifiHotspotPaid: false, wifiHotspotCount: null, wifiWirelessInternet: false,
+      wifiWirelessPaid: false, wifiWirelessMobile: false, wifiWirelessStreaming: false, wifiWirelessSupport: false,
+      wifiOvernightSites: false, wifiOvernightSitesPaid: false, atmMachine: false, boatStorage: false,
+      bbqAtSite: false, cableMajor: false, cableMinor: false, offerCarRentals: false, churchServices: false,
+      cocktailLounge: false, complimentaryBreakfast: false, dvdRentals: false, evChargingStation: false,
+      evChargingStationPlanned: false, entertainment: false, faxCopyService: false, firewood: false, fireRings: false,
+      fishingGuides: false, fishingLicenses: false, fishingSupplies: false, golfCarts: false, groceries: false,
+      guestServices: false, horseCorral: false, ice: false, libraryBookExchange: false, lpBottlesOnly: false,
+      meteredLpGas: false, mailDelivery: false, newspaper: false, onsiteRvService: false, patiosYes: false,
+      personalEscortToSite: false, restaurant: false, rvSuppliesGs1: false, secureRvStorage: false,
+      selfServRvWash: false, staffedRvWash: false, shuttleService: false, snackBar: false, spaServices: false, tableAtSite: false,
+      tourShowTickets: false, trashPickupAtSite: false, dogPark: false, dogWalkingServices: false, dogWashingStation: false,
+      enclosedDogRun: false, petBoarding: false, petGrooming: false, petSitting: false, petSuppliesInStore: false,
+      otherServicesMinor: null, otherServicesMajor: null
     });
   
   onSubmit(): void {
@@ -81,7 +58,7 @@ export class OnSiteServicesComponent {
     //resetting toggle text to no
     this.centralInternet = false;
     this.centralInternetCharge = false;
-    this.wifiHotspots = false;
+    this.wifiHotspotBool = false;
     this.wifiHotspotsCharge = false;
     this.wifi = false;
     this.wifiCharge = false;
@@ -139,7 +116,7 @@ export class OnSiteServicesComponent {
     }
 
     checkBoxWiFiHotspotsChange(cb:any) {
-      this.wifiHotspots = !this.wifiHotspots;
+      this.wifiHotspotBool = !this.wifiHotspotBool;
     }
     checkBoxWiFiHotspotsChargeChange(cb:any) {
       this.wifiHotspotsCharge = !this.wifiHotspotsCharge;
