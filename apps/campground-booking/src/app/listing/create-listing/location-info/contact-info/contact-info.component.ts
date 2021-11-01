@@ -35,16 +35,20 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
   }
 
   contactInfoForm = this.formBuilder.group({
-    address: ['', [Validators.required]],
-    city: ['', [Validators.required]],
-    listStateId: ['', [Validators.required]],
-    zip: ['', [Validators.required]],
-    countryId: ['', [Validators.required]],
-    physicalAddress: ['', [Validators.required]],
-    physicalCity: ['', [Validators.required]],
-    physicalListStateId: ['', [Validators.required]],
-    physicalZip: ['', [Validators.required]],
-    physicalCountryId: ['', [Validators.required]],
+    mailingAddress:this.formBuilder.group({
+      address: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      listStateId: ['', [Validators.required]],
+      zip: ['', [Validators.required]],
+      countryId: ['', [Validators.required]],
+    }),
+    physicalAddress: this.formBuilder.group({
+      physicalAddress: ['', [Validators.required]],
+      physicalCity: ['', [Validators.required]],
+      physicalListStateId: ['', [Validators.required]],
+      physicalZip: ['', [Validators.required]],
+      physicalCountryId: ['', [Validators.required]],
+    }),
     latitude: ['', [Validators.required, Validators.pattern("^(\\+|-)?((\\d((\\.)|\\.\\d{1,6})?)|(0*?[0-8]\\d((\\.)|\\.\\d{1,6})?)|(0*?90((\\.)|\\.0{1,6})?))$")]],
     longitude: ['', [Validators.required, Validators.pattern("^(\\+|-)?((\\d((\\.)|\\.\\d{1,6})?)|(0*?\\d\\d((\\.)|\\.\\d{1,6})?)|(0*?1[0-7]\\d((\\.)|\\.\\d{1,6})?)|(0*?180((\\.)|\\.0{1,6})?))$")]],
     elevation: ['', Validators.pattern("(250[1-9]|25[1-9][0-9]|2[6-9][0-9]{2}|[3-9][0-9]{3}|1[0-9]{4}|2[0-8][0-9]{3}|290[0-2][0-9]|2903[0-3])")],
@@ -199,32 +203,21 @@ sendFormStatus(value: any) {
   }
   mapForm(){
     const mailingAddress = {
-      city : this.contactInfoForm.value.city,
-      street1 : this.contactInfoForm.value.address,
-      street2 : this.contactInfoForm.value.address,
-      listStateId : this.contactInfoForm.value.listStateId,
-      zip : this.contactInfoForm.value.zip,
-      countryId : this.contactInfoForm.value.countryId,
+      city : this.contactInfoForm.value.mailingAddress.city,
+      street1 : this.contactInfoForm.value.mailingAddress.address,
+      street2 : this.contactInfoForm.value.mailingAddress.address,
+      listStateId : this.contactInfoForm.value.mailingAddress.listStateId,
+      zip : this.contactInfoForm.value.mailingAddress.zip,
+      countryId : this.contactInfoForm.value.mailingAddress.countryId,
     }
     const physicalAddress = {
-      city : this.contactInfoForm.value.physicalCity,
-      street1 : this.contactInfoForm.value.physicalAddress,
-      street2 : this.contactInfoForm.value.physicalAddress,
-      listStateId : this.contactInfoForm.value.physicalListStateId,
-      zip : this.contactInfoForm.value.physicalZip,
-      countryId : this.contactInfoForm.value.physicalCountryId,
+      city : this.contactInfoForm.value.physicalAddress.physicalCity,
+      street1 : this.contactInfoForm.value.physicalAddress.physicalAddress,
+      street2 : this.contactInfoForm.value.physicalAddress.physicalAddress,
+      listStateId : this.contactInfoForm.value.physicalAddress.physicalListStateId,
+      zip : this.contactInfoForm.value.physicalAddress.physicalZip,
+      countryId : this.contactInfoForm.value.physicalAddress.physicalCountryId,
     }
-/*     this.postObject.mailingAddress.city = this.contactInfoForm.value.city;
-    this.postObject.mailingAddress.listStateId = this.contactInfoForm.value.listStateId;
-    this.postObject.mailingAddress.street1 = this.contactInfoForm.value.address,
-    this.postObject.mailingAddress.zip = this.contactInfoForm.value.zip;
-    this.postObject.mailingAddress.countryId = this.contactInfoForm.value.countryId;
-    this.postObject.physicalAndMailingAddressSame = this.contactInfoForm.value.physicalAndMailingAddressSame;
-    this.postObject.physicalAddress.street1 = this.contactInfoForm.value.physicalAddress;
-    this.postObject.physicalAddress.city = this.contactInfoForm.value.physicalCity;
-    this.postObject.physicalAddress.listStateId = this.contactInfoForm.value.physicalListStateId;
-    this.postObject.physicalAddress.zip = this.contactInfoForm.value.physicalZip;
-    this.postObject.physicalAddress.countryId = this.contactInfoForm.value.physicalCountryId; */
     this.postObject.physicalAddress = physicalAddress;
     this.postObject.physicalAndMailingAddressSame = this.contactInfoForm.value.physicalAndMailingAddressSame;
     this.postObject.mailingAddress = mailingAddress;
