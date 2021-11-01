@@ -242,9 +242,9 @@ export interface IGoodSamRecordId {
   listCity:string,
   listStateId:string,
   territoryId:string,
-  salesPresentationRequired:boolean,
-  noOvernightGuests:boolean,
-  deleteListing:boolean,
+  salesPresentationRequired:string,
+  noOvernightGuests:string,
+  deleteListing:string,
   reasonForDelete?:string
 }
 export interface IContactInfo
@@ -298,7 +298,7 @@ export interface IOnSiteServices {
   cocktailLounge: boolean, complimentaryBreakfast: boolean, dvdRentals: boolean, evChargingStation: boolean,
   evChargingStationPlanned: boolean, entertainment: boolean, faxCopyService: boolean, firewood: boolean, fireRings: boolean,
   fishingGuides: boolean, fishingLicenses: boolean, fishingSupplies: boolean, golfCarts: boolean, groceries: boolean,
-  guestServices: boolean,horseCorral: boolean, ice: boolean, libraryBookExchange: boolean, lpBottlesOnly: boolean,
+  guestServices: boolean, horseCorral: boolean, ice: boolean, libraryBookExchange: boolean, lpBottlesOnly: boolean,
   meteredLpGas: boolean, mailDelivery: boolean, newspaper: boolean, onsiteRvService: boolean, patiosYes: boolean,
   personalEscortToSite: boolean, outdoorGear: boolean, restaurant: boolean, rvSuppliesGs1: boolean, secureRvStorage: boolean,
   selfServRvWash: boolean, staffedRvWash: boolean, shuttleService: boolean, snackBar: boolean, spaServices: boolean, tableAtSite: boolean,

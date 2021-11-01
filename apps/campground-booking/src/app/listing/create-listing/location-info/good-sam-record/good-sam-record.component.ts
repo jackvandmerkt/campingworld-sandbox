@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { IAllRefs } from "../../../../shared/listing.model";
+import { IAllRefs, IGoodSamRecordId } from "../../../../shared/listing.model";
 import { ListingService } from "../../../../shared/listing.service";
 import { ListingNavService } from "../../../../shared/listing-nav.service";
 import { ActivatedRoute } from "@angular/router";
@@ -36,6 +36,8 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     parkName:any;
     postResponse:any;
     currentListing:any= {};
+    goodSamRecordGetObj:any = {};
+    goodSamRecordPostObj:any = {};
 
     @ViewChild('sectionCodeId') private sectionCodeCSS!: ElementRef;
     @ViewChild('parkTypeId') private parkTypeIdCSS!: ElementRef;
@@ -86,8 +88,17 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                 this.goodSamRecordForm.patchValue({repCode: this.repCode})
                 }
             });
-        this.currentListing = this.route.snapshot.data['data'];
-        if (this.currentListing != null) {
+        this.goodSamRecordGetObj = this.route.snapshot.data['data'];
+        if (this.goodSamRecordGetObj != null) {
+            this.currentListing = this.goodSamRecordGetObj;
+            for(let [key, value] of Object.entries(this.currentListing)) {
+                if(value == 'f') {
+                    this.currentListing[key] = false;
+                }
+                if(value == 't') {
+                    this.currentListing[key] = true;
+                }
+            }
             this.goodSamRecordForm.patchValue({
                 sectionCodeId: this.currentListing.sectionCodeId,
                 listingTypeId: this.currentListing.listingTypeId,
@@ -117,6 +128,7 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                 this.isDeleteChecked = true;
             }
         }
+        
     }
 
     ngAfterViewInit() {
@@ -139,7 +151,7 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     get f() { return this.goodSamRecordForm.controls; }
     clearChanges(){
         this.submitted = false;
-        if (this.currentListing != null) {
+        if (this.goodSamRecordGetObj != null) {
             this.goodSamRecordForm.patchValue({
                 sectionCodeId: this.currentListing.sectionCodeId,
                 listingTypeId: this.currentListing.listingTypeId,
@@ -172,8 +184,8 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
         } else {
             this.goodSamRecordForm.reset({
                 locationListingName: this.parkName, fileNumber: this.fileNum, repCode: this.repCode, sectionCodeId: null, 
-                listingTypeId: null, parkTypeId: null, listCity: null, listStateId: null, territoryId: null, noOvernightGuests: null, 
-                salesPresentationRequired: null, deleteListing: null, duplicateListingText: null, primaryFileNumber: null, reasonForDelete: null
+                listingTypeId: null, parkTypeId: null, listCity: null, listStateId: null, territoryId: null, noOvernightGuests: false, 
+                salesPresentationRequired: false, deleteListing: false, duplicateListingText: null, primaryFileNumber: null, reasonForDelete: null
             });
             this.isGuestsChecked = false;
             this.isSalesPresentationChecked = false;
@@ -235,10 +247,19 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
         this.listingNavService.updateFormStatus(value)
     }
     postForm() {
-        this.ls.postGoodSamRecordId(this.goodSamRecordForm.value, this.fileNum).subscribe(response => {
+        this.goodSamRecordPostObj = this.goodSamRecordForm.value;
+        for(let [key, value] of Object.entries(this.goodSamRecordPostObj)) {
+            if(value === false) {
+                this.goodSamRecordPostObj[key] = 'f';
+            }
+            if(value === true) {
+                this.goodSamRecordPostObj[key] = 't';
+            }
+        }
+        console.log(this.goodSamRecordPostObj)
+        this.ls.postGoodSamRecordId(this.goodSamRecordPostObj, this.fileNum).subscribe(response => {
           if(response){
             this.postResponse = response;
-            console.log(this.postResponse);
           }
         })
       }
