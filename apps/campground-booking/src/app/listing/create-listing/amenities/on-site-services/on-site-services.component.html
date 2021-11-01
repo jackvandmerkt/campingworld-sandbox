@@ -141,11 +141,18 @@
             </label>
         </div>
 
-        <div *ngIf="wifiHotspotBool" class="relative col-span-2 pb-11 f-outline">
-            <input type="text" formControlName="wifiHotspotCount" name="wifiHotspotCount" placeholder=" "
+        <div *ngIf="wifiHotspotBool" class="relative z-0 col-span-2 pb-11 f-outline">
+            <input type="text" formControlName="wifiHotspotCount" name="wifiHotspotCount" placeholder=" " [ngClass]="{'error-border': submitted && f.wifiHotspotCount.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="wifiHotspotCount"
-                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">How many Hotspots</label>
+                class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.wifiHotspotCount.errors }">How many Hotspots</label>
+        
+            <div *ngIf="submitted && f.wifiHotspotCount.errors">
+                <div *ngIf="f.wifiHotspotCount.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">How many hotspots is required.</div>
+            </div>
+            <div *ngIf="submitted && f.wifiHotspotCount.errors">
+                <div *ngIf="f.wifiHotspotCount.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">How many hotspots must be an integer</div>
+            </div>
         </div>
 
         <div class="pb-11">
@@ -288,17 +295,31 @@
             </label>
         </div>
 
-        <div *ngIf="overnightCentralInternet" class="relative pb-15 long-label">
-            <input type="text" formControlName="howManySitesHaveWiFi" name="howManySitesHaveWiFi" placeholder=" "
+        <div *ngIf="overnightCentralInternet" class="relative z-0 pb-15 f-outline">
+            <input type="text" formControlName="howManySitesHaveWiFi" name="howManySitesHaveWiFi" placeholder=" " [ngClass]="{'error-border': submitted && f.howManySitesHaveWiFi.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="howManySitesHaveWiFi"
-                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">How many sites have Wi-Fi?</label>
+                class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.howManySitesHaveWiFi.errors }">How many sites have Wi-Fi?</label>
+        
+            <div *ngIf="submitted && f.howManySitesHaveWiFi.errors">
+                <div *ngIf="f.howManySitesHaveWiFi.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">How many sites have wifi is required.</div>
+            </div>
+            <div *ngIf="submitted && f.howManySitesHaveWiFi.errors">
+                <div *ngIf="f.howManySitesHaveWiFi.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">How many sites have wifi must be an integer</div>
+            </div>
         </div>
-        <div *ngIf="overnightCentralInternet" class="relative pb-15 longer-label">
-            <input type="text" formControlName="numDevicesSupported" name="numDevicesSupported" placeholder=" "
+        <div *ngIf="overnightCentralInternet" class="relative z-0 pb-15 f-outline">
+            <input type="text" formControlName="numDevicesSupported" name="numDevicesSupported" placeholder=" " [ngClass]="{'error-border': submitted && f.numDevicesSupported.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
             <label for="numDevicesSupported"
-                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"># of devices supported per site?</label>
+                class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.numDevicesSupported.errors }"># of devices supported per site?</label>
+        
+            <div *ngIf="submitted && f.numDevicesSupported.errors">
+                <div *ngIf="f.numDevicesSupported.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Number of devices supported is required.</div>
+            </div>
+            <div *ngIf="submitted && f.numDevicesSupported.errors">
+                <div *ngIf="f.numDevicesSupported.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Number of devices supported must be an integer</div>
+            </div>
         </div>
 
         <div class="flex col-span-2 pb-7.5">
@@ -699,18 +720,18 @@
             </div>
         </div>
 
-        <div class="relative col-span-2 pb-10 f-outline">
+        <div class="relative z-0 col-span-2 pb-10">
             <textarea type="text" formControlName="otherServicesMajor" name="otherServicesMajor" placeholder=" "
-              class="block h-24 rounded appearance-none border-cwBadgeGray w-636 focus:outline-none"></textarea>
-            <label for="otherServicesMajor" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+                class="block h-24 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none"></textarea>
+            <label for="otherServicesMajor" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
                 Other services - major
             </label>
         </div>
 
-        <div class="relative col-span-2 pb-10 f-outline">
+        <div class="relative z-0 col-span-2 pb-10">
             <textarea type="text" formControlName="otherServicesMinor" name="otherServicesMinor" placeholder=" "
-              class="block h-24 rounded appearance-none border-cwBadgeGray w-636 focus:outline-none"></textarea>
-            <label for="otherServicesMinor" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+                class="block h-24 px-3 bg-transparent border rounded appearance-none w-636 border-cwBadgeGray focus:outline-none"></textarea>
+            <label for="otherServicesMinor" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
                 Other services - minor
             </label>
         </div>
