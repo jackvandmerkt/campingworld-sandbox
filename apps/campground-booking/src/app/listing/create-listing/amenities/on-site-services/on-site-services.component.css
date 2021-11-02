@@ -9,7 +9,7 @@ input:checked ~ .block {
 
 input:checked + label {
 	border-color: #C30B24;
-    border-width: 3px;
+    border-width: 4px;
     height: 152px;
     width: 147x;
 }
@@ -29,12 +29,12 @@ input:checked + label {
 transform-origin: 0%;
 }
 
-/* input:-webkit-autofill,
+input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000000s ease-in-out 0s;
-} */
+}
 
 .f-outline input:focus ~ label,
 .f-outline input:not(:placeholder-shown) ~ label,
