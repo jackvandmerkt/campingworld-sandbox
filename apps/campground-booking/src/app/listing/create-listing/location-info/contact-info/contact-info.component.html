@@ -2,14 +2,14 @@
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-14">Contact Info</h1>
 
   <!-- Mailing Address -->
-  <div formGroupName="mailingAddress">
     <h2 class="font-bold font-cw text-cwGray text-18px24px pb-7.5">Mailing Address</h2>
     <div class="grid grid-cols-2 gap-6 w-636">
       <div class="relative z-0 pb-4 ">
-        <input [ngClass]="{'error-border': submitted && f.address.errors }" type="text" formControlName="address"
+        <input  type="text" formControlName="address" [ngClass]="{'error-border': submitted && f.address.errors}"
           name="address" placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="address" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Address</label>
+        <label for="address" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+          [ngClass]="{'error-label': submitted && f.address.errors }">Address</label>
 
         <div *ngIf="submitted && f.address.errors" class="pl-3 font-cw text-cwRed text-11px20px">Address is
           required
@@ -20,23 +20,22 @@
         <input [ngClass]="{'error-border': submitted && f.city.errors }" type="text" formControlName="city" name="city"
           placeholder=" "
           class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none" />
-        <label for="city" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">City</label>
+        <label for="city" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.city.errors }">City</label>
         <div *ngIf="submitted && f.city.errors" class="pl-3 font-cw text-cwRed text-11px20px">City is
           required
         </div>
       </div>
       <div class="relative z-0 pb-4">
-        <select [ngClass]="{'error-border': submitted && f.listStateId.errors }" formControlName="listStateId"
-          name="listStateId" placeholder=" " #listStateId value="" onclick="this.setAttribute('value', this.value);"
+        <select #listStateId formControlName="listStateId"  [ngClass]="{'error-border': submitted && f.listStateId.errors }" formControlName="listStateId"
+          name="listStateId" value="null" onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
-          <option value=""></option>
+          <option value="null"></option>
           <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
         </select>
         <label for="listStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">State / Province</label>
         <div *ngIf="submitted && f.listStateId.errors" class="pl-3 font-cw text-cwRed text-11px20px">State is
           required
         </div>
-
       </div>
       <div class="relative z-0 pb-4">
         <input type="text" formControlName="zip" name="zip" placeholder=" "
@@ -51,10 +50,10 @@
 
       </div>
       <div class="relative z-0 pb-4">
-        <select [ngClass]="{'error-border': submitted && f.countryId.errors }" formControlName="countryId" #countryId value=""
+        <select [ngClass]="{'error-border': submitted && f.countryId.errors }" formControlName="countryId" #countryId value="null"
           onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
-          <option value=""></option>
+          <option value="null"></option>
           <option *ngFor="let c of countriesFromService" [ngValue]="c.id">{{c.value}}</option>
         </select>
         <label for="countryId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Country</label>
@@ -63,20 +62,18 @@
         </div>
       </div>
     </div>
-</div>
 
   <!-- Physical Address -->
   <h2 class="pb-5 font-bold font-cw text-cwGray text-18px24px mt-11">Physical Address</h2>
   <h3 class="pb-7">
     <p class='font-cw'>
-      <input (change)="changeIsSameAsMailingAddress()" type="checkbox" style="margin-top: -2px;"
+      <input (change)="changeIsSameAsMailingAddress()" formControlName="physicalAndMailingAddressSame" value="f" type="checkbox" style="margin-top: -2px;"
         class="mr-4 border-2 rounded-sm text-cwRed form-checkbox border-cwLightGray " />Same as
       Mailing
       Address
     </p>
   </h3>
-  <div *ngIf="!isSameAsMailingAddress">
-    <div formGroupName="physicalAddress">
+  <div *ngIf="!this.contactInfoForm.value.physicalAndMailingAddressSame">
     <div class="grid grid-cols-2 gap-6 mt-2 w-636">
       <div class="relative z-0 pb-4 ">
         <input [ngClass]="{'error-border': submitted && f.physicalAddress.errors }" type="text"
@@ -101,10 +98,10 @@
       </div>
       <div class="relative z-0 pb-4">
         <select [ngClass]="{'error-border': submitted && f.physicalListStateId.errors }"
-          formControlName="physicalListStateId" name="physicalListStateId" placeholder=" " #physicalListStateId value=""
+          formControlName="physicalListStateId" name="physicalListStateId" placeholder=" " #physicalListStateId value="null"
           onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
-          <option value=""></option>
+          <option value="null"></option>
           <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
         </select>
         <label for="physicalListStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">State / Province</label>
@@ -127,9 +124,9 @@
       </div>
       <div class="relative z-0 pb-4">
         <select [ngClass]="{'error-border': submitted && f.physicalCountryId.errors }"
-          formControlName="physicalCountryId" #physicalCountryId value="" onclick="this.setAttribute('value', this.value);"
+          formControlName="physicalCountryId" #physicalCountryId value="null" onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwBadgeGray focus:outline-none">
-          <option value=""></option>
+          <option value="null"></option>
           <option *ngFor="let c of countriesFromService" [ngValue]="c.id">{{c.value}}</option>
         </select>
         <label for="physicalCountryId"
@@ -139,7 +136,7 @@
         </div>
       </div>
     </div>
-  </div>
+
     <div class="grid grid-cols-3 gap-6 mt-6 w-636">
       <div class="relative z-0 pb-4 ">
         <input [ngClass]="{'error-border': submitted && f.latitude.errors }" type="number" formControlName="latitude"
@@ -222,9 +219,9 @@
         Phone Number
       </label>
       <span class="ml-3 text-sm text-gray-400">Private</span>
-      <div *ngIf="samePhone" class="pl-3 font-cw text-cwRed text-11px20px">Private number can't be the same as published
+   <div *ngIf="samePhone" class="pl-3 font-cw text-cwRed text-11px20px">Private number can't be the same as published
         number
-      </div>
+      </div> 
     </div>
   </div>
 

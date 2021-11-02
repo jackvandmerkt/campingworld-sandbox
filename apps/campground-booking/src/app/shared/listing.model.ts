@@ -256,7 +256,7 @@ export interface IContactInfo
     countryId:number
     zip:number
   },
-  physicalAndMailingAddressSame:boolean,
+  physicalAndMailingAddressSame:string,
   physicalAddress:{
     street1:string,
     city:string,
