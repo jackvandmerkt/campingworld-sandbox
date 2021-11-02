@@ -251,16 +251,14 @@ export interface IContactInfo
  {
   mailingAddress:{
     street1:string,
-    street2:string,
     city:string,
     listStateId:number,
     countryId:number
     zip:number
   },
-  physicalAndMailingAddressSame:boolean,
+  physicalAndMailingAddressSame:string,
   physicalAddress:{
     street1:string,
-    street2:string,
     city:string,
     listStateId:number,
     countryId:number
