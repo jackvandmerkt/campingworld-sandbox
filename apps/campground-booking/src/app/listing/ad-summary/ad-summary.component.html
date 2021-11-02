@@ -87,9 +87,30 @@
         </tr>
       </tbody>
     </table>
-    <div class="p-6 flex">
-      <embed src="/assets/images/alert.svg" class="logo mr-5" alt="alert">
-      <p class="font-bold text-14px24px font-cw text-cwRed">Forecast instructions & definitions</p>
+    <div class="px-6 pt-6 pb-6 flex">
+      <div class="flex cursor-pointer" (click)="forecastInstructions = !forecastInstructions">
+        <embed src="/assets/images/alert.svg" class="logo mr-5" alt="alert">
+        <p class="font-bold text-14px24px font-cw text-cwRed">
+          Forecast instructions & definitions
+        </p>
+      </div>
+    </div>
+    <div *ngIf="forecastInstructions" class="px-16 pb-6 font-cw text=14px24px">
+      Only one proposal can have a Forecast flag.
+      <br>
+      Forecast flag Definitions:
+      <div class="pl-10 mt-4 mb-4">
+        <p><span class="mr-3">•</span><span class="mr-5">LB90</span> Leave behind: 90% or more chance of conversion</p>
+        <p><span class="mr-3">•</span><span style="margin-right: 10px;">LB&lt;90</span> Leave Behind: less than 90%
+          chance of conversion
+        </p>
+        <p><span class="mr-3">•</span><span class="mr-7">Lost</span> Last Year Advertiser did not renew This Year
+        </p>
+      </div>
+      Leave Behinds Flagged as LB&lt;90 will not be counted in Forecasts. <br>
+      Proposals that convert to an Order and are less than last year's Net Sales require Reduction Reason. <br>
+      Orders that are Canceled require a Lost Reason. <br>
+      Proposals that are missing Forecast Flag or other information are highlighted in Pink.
     </div>
     <div class="px-6 pb-6 flex space-x-6">
       <select (change)="onChange()"

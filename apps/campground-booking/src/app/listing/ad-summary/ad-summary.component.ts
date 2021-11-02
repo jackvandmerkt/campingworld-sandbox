@@ -7,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AdSummaryComponent implements OnInit {
 
+  forecastInstructions = false
   orders: Array<any> = []
   proposals: Array<any> = []
 
