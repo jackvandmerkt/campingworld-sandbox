@@ -51,15 +51,15 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     goodSamRecordForm = this.formBuilder.group({
         locationListingName: [null, [Validators.required, Validators.maxLength(255)]],
         fileNumber: [{value: this.fileNum},  Validators.required],
-        sectionCodeId: [null, Validators.required],
+        sectionCodeId: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
         repCode: [{value: this.repCode}, Validators.required],
-        listingTypeId: [null, Validators.required],
-        parkTypeId: [null, Validators.required],
+        listingTypeId: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
+        parkTypeId: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
         duplicateListingText: null,
         primaryFileNumber: null,
         listCity: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-        listStateId: [null, Validators.required],
-        territoryId: [null, Validators.required],
+        listStateId: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
+        territoryId: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
         salesPresentationRequired: false,
         noOvernightGuests: false,
         deleteListing: false,
@@ -166,6 +166,7 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
                 primaryFileNumber: this.currentListing.primaryFileNumber,
                 reasonForDelete: null
             }); 
+            this.setAttributes();
             if(!this.currentListing.noOvernightGuests){
                 this.isGuestsChecked = false;
             } else{
@@ -284,7 +285,6 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
     //Jack todo - change if conditional
     onChangeListingType(event:any): void {
         const newVal = event.target.value;
-        console.log(newVal)
         if(newVal == '4: 4') {
             this.isDuplicateSelected = true;
             this.goodSamRecordForm.get('duplicateListingText')?.setValidators([Validators.required])
@@ -304,7 +304,6 @@ export class GoodSamRecordFormComponent implements OnInit, AfterViewInit{
 
     onChangeParkType(event:any): void {
         const newVal = event.target.value;
-        console.log(newVal)
         if(newVal == '6: 6') {
             this.isMembershipParkSelected = true;
         } else {

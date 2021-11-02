@@ -31,7 +31,7 @@
       </select>
       <label for="sectionCodeId" [ngClass]="{'error-label': submitted && f.sectionCodeId.errors }" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Section Code</label>
       <div *ngIf="submitted && f.sectionCodeId.errors">
-        <div *ngIf="f.sectionCodeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Section code is required.</div>
+        <div *ngIf="f.sectionCodeId.errors.required || f.sectionCodeId.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Section code is required.</div>
       </div>
     </div>
     <div class="relative z-0 pb-10">
@@ -49,7 +49,7 @@
       </select>
       <label for="listingTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listingTypeId.errors }">Listing Type</label>
       <div *ngIf="submitted && f.listingTypeId.errors">
-        <div *ngIf="f.listingTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Listing type is required.</div>
+        <div *ngIf="f.listingTypeId.errors.required || f.listingTypeId.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Listing type is required.</div>
       </div>
     </div>
     <div class="relative z-0 pb-10">
@@ -60,7 +60,7 @@
       </select>
       <label for="parkTypeId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.parkTypeId.errors }">Park Type</label>
       <div *ngIf="submitted && f.parkTypeId.errors">
-        <div *ngIf="f.parkTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Park type is required.</div>
+        <div *ngIf="f.parkTypeId.errors.required || f.parkTypeId.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Park type is required.</div>
       </div>
     </div>
     <div *ngIf="isDuplicateSelected" class="flex flex-row col-span-2 space-x-3">
@@ -115,7 +115,7 @@
         </select>
         <label for="listStateId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.listStateId.errors }">List State/Province</label>
         <div *ngIf="submitted && f.listStateId.errors">
-          <div *ngIf="f.listStateId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">List state/province is required.</div>
+          <div *ngIf="f.listStateId.errors.required || f.listStateId.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">List state/province is required.</div>
         </div>
       </div>
 
@@ -127,7 +127,7 @@
         </select>
         <label for="territoryId" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack" [ngClass]="{'error-label': submitted && f.territoryId.errors }">Territory</label>
         <div *ngIf="submitted && f.territoryId.errors">
-          <div *ngIf="f.territoryId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">territory is required.</div>
+          <div *ngIf="f.territoryId.errors.required || f.territoryId.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">territory is required.</div>
         </div>
       </div>
 
