@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators, FormControl, FormGroup } from "@angular/forms";
 import { IAllRefs, IContactInfo } from 'apps/campground-booking/src/app/shared/listing.model';
@@ -51,11 +52,11 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
     email: [null, [Validators.required, Validators.email]],
     telephone: null,
     repressedTelephone: null,
-    webAddress: [null, Validators.pattern("^[A-Za-z][A-Za-z0-9.]*$")],
-    onlineWeb: [null, Validators.pattern("^[A-Za-z][A-Za-z0-9.]*$")],
+    webAddress: [null, Validators.pattern("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")],
+    onlineWeb: [null, Validators.pattern("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")],
     skipUtm: false,
-    facebook: [null, Validators.pattern("^[A-Za-z][A-Za-z0-9.]*$")],
-    twitter: [null, Validators.pattern("^[A-Za-z][A-Za-z0-9.]*$")],
+    facebook:[null, Validators.pattern("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")],
+    twitter: [null, Validators.pattern("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")],
     pinterest: null,
     instagram: null,
     physicalAndMailingAddressSame:null
@@ -127,6 +128,24 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
       })
       }
     }
+    if(this.currentContactInfo.physicalAndMailingAddressSame){
+      this.isSameAsMailingAddress = true;
+      this.contactInfoForm.get('physicalAddress')?.clearValidators();
+      this.contactInfoForm.get('physicalAddress')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalAddress'].reset();
+      this.contactInfoForm.get('physicalCity')?.clearValidators();
+      this.contactInfoForm.get('physicalCity')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalCity'].reset();
+      this.contactInfoForm.get('physicalListStateId')?.clearValidators();
+      this.contactInfoForm.get('physicalListStateId')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalListStateId'].reset();
+      this.contactInfoForm.get('physicalZip')?.clearValidators();
+      this.contactInfoForm.get('physicalZip')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalZip'].reset();
+      this.contactInfoForm.get('physicalCountryId')?.clearValidators();
+      this.contactInfoForm.get('physicalCountryId')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalCountryId'].reset();
+    }
   }
   ngAfterViewInit() {
     this.setAttributes();
@@ -135,14 +154,11 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.contactInfoForm.valid) {
-      console.log('VALID')
       this.mapForm(); 
       this.sendFormStatus(['contactInfoFormStatus', 2]);
     } else if (this.samePhone) {
-      console.log('not valid: phones are the same')
       this.sendFormStatus(['contactInfoFormStatus', 1]);
     } else {
-      console.log('not valid');
       this.sendFormStatus(['contactInfoFormStatus', 1]);
       return;
     }
@@ -179,7 +195,7 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
       })
       this.setAttributes();
     }
-    else if(this.currentContactInfo != null && !this.currentContactInfo.physicalAddress){
+    else if(this.currentContactInfo != null && this.isSameAsMailingAddress === true){
       this.contactInfoForm.patchValue({
       address: this.currentContactInfo.mailingAddress.street1,
       city: this.currentContactInfo.mailingAddress.city,
@@ -208,7 +224,6 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
   getFormDropDownData() {
     this.allRefsTmp = window.localStorage.getItem('all-refs');
     this.allRefsObj = JSON.parse(this.allRefsTmp);
-    console.log(this.allRefsObj)
     for(let [key, value] of Object.entries(this.allRefsObj)) {
         if(key === 'listStates') {
             this.listStatesFromService = value;
@@ -219,6 +234,7 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
     }
   }
   setAttributes(){
+    // do this from the form
     if (this.currentContactInfo != null) {
         for(let [key, value] of Object.entries(this.currentContactInfo.mailingAddress)) {
             if(key === 'countryId') {
@@ -243,7 +259,7 @@ export class ContactInfoComponent implements OnInit, AfterViewInit {
       this.countryIdCSS.nativeElement.setAttribute('value', null)
       this.listStateIdCSS.nativeElement.setAttribute('value', null)
       this.physicalCountryIdCSS.nativeElement.setAttribute('value',null)
-      this.physicalListStateIdCSS.nativeElement.setAttribute('value', null) 
+      this.physicalListStateIdCSS.nativeElement.setAttribute('value', null)
   }  
     
 }
@@ -254,52 +270,41 @@ sendFormStatus(value: any) {
   checkBoxUTMChange(cb: any) {
     this.isUTMChecked = !this.isUTMChecked;
   }
-  changeIsSameAsMailingAddress(){
-    if(this.contactInfoForm.value.physicalAndMailingAddressSame == 'f'){
-      this.contactInfoForm.patchValue({
-        physicalAndMailingAddressSame:'t'
-      })
-      this.contactInfoForm.removeControl('physicalAddress')
-      this.contactInfoForm.removeControl('physicalCity')
-      this.contactInfoForm.removeControl('physicalListStateId')
-      this.contactInfoForm.removeControl('physicalZip')
-      this.contactInfoForm.removeControl('physicalCountryId')
-      this.contactInfoForm.removeControl('latitude')
-      this.contactInfoForm.removeControl('longitude')
-      this.contactInfoForm.removeControl('elevation')
-   }
+  changeIsSameAsMailingAddress() {
+    this.isSameAsMailingAddress = !this.isSameAsMailingAddress;
+    if(this.isSameAsMailingAddress === true){
+      this.contactInfoForm.get('physicalAddress')?.clearValidators();
+      this.contactInfoForm.get('physicalAddress')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalAddress'].reset();
+      this.contactInfoForm.get('physicalCity')?.clearValidators();
+      this.contactInfoForm.get('physicalCity')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalCity'].reset();
+      this.contactInfoForm.get('physicalListStateId')?.clearValidators();
+      this.contactInfoForm.get('physicalListStateId')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalListStateId'].reset();
+      this.contactInfoForm.get('physicalZip')?.clearValidators();
+      this.contactInfoForm.get('physicalZip')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalZip'].reset();
+      this.contactInfoForm.get('physicalCountryId')?.clearValidators();
+      this.contactInfoForm.get('physicalCountryId')?.updateValueAndValidity();
+      this.contactInfoForm.controls['physicalCountryId'].reset();
+    } else {
+      this.contactInfoForm.get('physicalAddress')?.setValidators([Validators.required]);
+      this.contactInfoForm.get('physicalAddress')?.updateValueAndValidity();
+      this.contactInfoForm.get('physicalCity')?.setValidators([Validators.required]);
+      this.contactInfoForm.get('physicalCity')?.updateValueAndValidity();
+      this.contactInfoForm.get('physicalListStateId')?.setValidators([Validators.required]);
+      this.contactInfoForm.get('physicalListStateId')?.updateValueAndValidity();
+      this.contactInfoForm.get('physicalZip')?.setValidators([Validators.required]);
+      this.contactInfoForm.get('physicalZip')?.updateValueAndValidity();
+      this.contactInfoForm.get('physicalCountryId')?.setValidators([Validators.required]);
+      this.contactInfoForm.get('physicalCountryId')?.updateValueAndValidity();
+      this.getFormDropDownData();
+    }
   }
-/*   changeIsSameAsMailingAddress() {
-    if(this.contactInfoForm.value.physicalAndMailingAddressSame == 'f'){
-      this.contactInfoForm.patchValue({
-        physicalAndMailingAddressSame:'t'
-      })
-      this.contactInfoForm.removeControl('physicalAddress')
-      this.contactInfoForm.removeControl('physicalCity')
-      this.contactInfoForm.removeControl('physicalListStateId')
-      this.contactInfoForm.removeControl('physicalZip')
-      this.contactInfoForm.removeControl('physicalCountryId')
-      this.contactInfoForm.removeControl('latitude')
-      this.contactInfoForm.removeControl('longitude')
-      this.contactInfoForm.removeControl('elevation')
-    }
-    else{
-      this.contactInfoForm.patchValue({
-        physicalAndMailingAddressSame:'f'
-      })
-      this.contactInfoForm.addControl('physicalAddress', new FormControl(null, Validators.required))
-      this.contactInfoForm.addControl('physicalCity', new FormControl(null, Validators.required))
-      this.contactInfoForm.addControl('physicalListStateId', new FormControl(null, Validators.required))
-      this.contactInfoForm.addControl('physicalZip', new FormControl(null, Validators.required))
-      this.contactInfoForm.addControl('physicalCountryId', new FormControl(null, Validators.required))
-      this.contactInfoForm.addControl('latitude', new FormControl(null, [Validators.pattern("^(\\+|-)?((\\d((\\.)|\\.\\d{1,6})?)|(0*?[0-8]\\d((\\.)|\\.\\d{1,6})?)|(0*?90((\\.)|\\.0{1,6})?))$")]))
-      this.contactInfoForm.addControl('longitude', new FormControl(null, [ Validators.pattern("^(\\+|-)?((\\d((\\.)|\\.\\d{1,6})?)|(0*?\\d\\d((\\.)|\\.\\d{1,6})?)|(0*?1[0-7]\\d((\\.)|\\.\\d{1,6})?)|(0*?180((\\.)|\\.0{1,6})?))$")]))
-      this.contactInfoForm.addControl('elevation', new FormControl(null, Validators.pattern("(250[1-9]|25[1-9][0-9]|2[6-9][0-9]{2}|[3-9][0-9]{3}|1[0-9]{4}|2[0-8][0-9]{3}|290[0-2][0-9]|2903[0-3])")))
-    }
-  } */
 
   get f() { return this.contactInfoForm.controls; }
-  get samePhone() { if (this.contactInfoForm.value.telephone != '') { return this.contactInfoForm.value.telephone == this.contactInfoForm.value.repressedTelephone } else return false }
+  get samePhone() { if (this.contactInfoForm.value.telephone != null) { return this.contactInfoForm.value.telephone == this.contactInfoForm.value.repressedTelephone } else return false }
 
   postForm() {
     this.ls.postContactInfo(this.postObject, this.fileNum).subscribe(response => {
@@ -347,7 +352,6 @@ sendFormStatus(value: any) {
     this.postObject.pinterest = this.contactInfoForm.value.pinterest;
     this.postObject.instagram = this.contactInfoForm.value.instagram;
     this.postObject.parkTypeId = this.contactInfoForm.value.parkTypeId;
-    console.log(this.postObject);
     this.postForm();
   }
 }
