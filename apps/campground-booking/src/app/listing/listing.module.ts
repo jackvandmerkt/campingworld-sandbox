@@ -40,6 +40,7 @@ import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-r
 import { ContactInfoResolver } from './create-listing/location-info/contact-info/contact-info.resolver.service';
 import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-services/on-site-services.resolver.service";
+import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
 
 @NgModule({
     declarations: [
@@ -88,7 +89,8 @@ import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-servi
       GoodSamRecordResolver,
       ContactInfoResolver,
       RestroomsResolver,
-      OnSiteServicesResolver
+      OnSiteServicesResolver,
+      RecreationResolver
     ]
   
   })
