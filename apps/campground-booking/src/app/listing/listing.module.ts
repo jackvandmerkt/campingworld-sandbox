@@ -2,12 +2,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
+import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { StoreModule } from "@ngrx/store";
-import {listingReducer} from './state/listing.reducer'
+import { listingReducer } from './state/listing.reducer'
 import { DatePickerModule, DateRangePickerModule } from "@syncfusion/ej2-angular-calendars";
 import { SharedModule } from "../shared/shared.module";
 import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
+import { CreateProposalComponent } from "./create-proposal/create-proposal.component";
 import { AllListingsComponent } from "./all-listing/all-listing.component";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/amenities/recreation/recreation.component";
@@ -43,7 +45,7 @@ import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-servi
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
 
 @NgModule({
-    declarations: [
+  declarations: [
     NewListingsComponent,
     CreateListingNavComponent,
     CreateListingComponent,
@@ -71,28 +73,29 @@ import { RecreationResolver } from "./create-listing/amenities/recreation/recrea
     ListingUpdateDetailsComponent,
     RatingsComponent,
     AllListingsComponent,
-    AdSummaryComponent
-    ],
-    imports: [
-      BrowserModule,
-      RouterModule.forChild(listingRoutes),
-      ReactiveFormsModule,
-      FormsModule,
-      HttpClientModule,
-      DateRangePickerModule,
-      DatePickerModule,
-      SharedModule,
-      StoreModule.forFeature('listing-info', {listingReducer})
-    ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [
-      GoodSamRecordResolver,
-      ContactInfoResolver,
-      RestroomsResolver,
-      OnSiteServicesResolver,
-      RecreationResolver
-    ]
-  
-  })
-  export class ListingModule { }
-  
+    AdSummaryComponent,
+    CreateProposalComponent
+  ],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    RouterModule.forChild(listingRoutes),
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    DateRangePickerModule,
+    DatePickerModule,
+    SharedModule,
+    StoreModule.forFeature('listing-info', { listingReducer })
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    GoodSamRecordResolver,
+    ContactInfoResolver,
+    RestroomsResolver,
+    OnSiteServicesResolver,
+    RecreationResolver
+  ]
+
+})
+export class ListingModule { }
