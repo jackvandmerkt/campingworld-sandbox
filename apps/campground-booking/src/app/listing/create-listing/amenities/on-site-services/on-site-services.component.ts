@@ -66,6 +66,7 @@ export class OnSiteServicesComponent implements OnInit{
 
   ngOnInit() {
     this.route.snapshot.paramMap.get('fileNumber');
+    this.fileNum = this.route.snapshot.paramMap.get('fileNumber');
     this.onSiteServicesGetObj = this.route.snapshot.data['data'];
     if (this.onSiteServicesGetObj != null) {
       this.currentListing = this.onSiteServicesGetObj;

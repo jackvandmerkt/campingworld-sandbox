@@ -29,6 +29,7 @@ import { TentingRentalsComponent } from "./create-listing/rent-buy/tenting-renta
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
 import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-services/on-site-services.resolver.service";
+import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
@@ -56,7 +57,8 @@ export const listingRoutes: Routes = [
         resolve: {data:RestroomsResolver} },
       { path: 'on-site-services/:fileNumber', component: OnSiteServicesComponent,
         resolve: {data:OnSiteServicesResolver} },
-      { path: 'recreation', component: RecreationComponent },
+      { path: 'recreation/:fileNumber', component: RecreationComponent,
+        resolve: {data:RecreationResolver} },
       { path: 'water-recreation', component: WaterRecreationComponent },
       { path: 'tenting-rentals', component: TentingRentalsComponent },
       { path: 'ratings', component: RatingsComponent },

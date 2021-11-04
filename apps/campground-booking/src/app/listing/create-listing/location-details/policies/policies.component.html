@@ -71,7 +71,7 @@
       <input (click)="limitedFacilitiesChecked('summer')" class="hidden" id="summer" type="radio"
         name="limitedFacilities">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="summer">
-        <img *ngIf="limitedOptions === 'summer'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <img *ngIf="limitedOptions === 'summer'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In summer</p>
       </label>
     </div>
@@ -79,7 +79,7 @@
       <input (click)="limitedFacilitiesChecked('winter')" class="hidden" id="winter" type="radio"
         name="limitedFacilities">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="winter">
-        <img *ngIf="limitedOptions === 'winter'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <img *ngIf="limitedOptions === 'winter'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In winter</p>
       </label>
     </div>
@@ -179,21 +179,21 @@
     <div class="relative">
       <input (click)="motorhomeClassChecked('A')" class="hidden" id="classA" type="radio" name="motorhomeClass">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classA">
-        <img *ngIf="motorhomeClass === 'A'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <img *ngIf="motorhomeClass === 'A'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class A motorhome</p>
       </label>
     </div>
     <div class="relative">
       <input (click)="motorhomeClassChecked('B')" class="hidden" id="classB" type="radio" name="motorhomeClass">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classB">
-        <img *ngIf="motorhomeClass === 'B'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <img *ngIf="motorhomeClass === 'B'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class B motorhome</p>
       </label>
     </div>
     <div class="relative">
       <input (click)="motorhomeClassChecked('C')" class="hidden" id="classC" type="radio" name="motorhomeClass">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classC">
-        <img *ngIf="motorhomeClass === 'C'" class="w-5 h-5 rounded" src="assets/images/active.png" alt="active">
+        <img *ngIf="motorhomeClass === 'C'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class C motorhome</p>
       </label>
     </div>
@@ -261,7 +261,7 @@
     <div class="relative">
       <input (click)="optionChecked('1')" class="hidden" id="size" type="checkbox" name="petRestriction">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="size">
-        <img *ngIf="petRestrictionsOpts.includes('1')" class="w-5 h-5 rounded" src="assets/images/active.png"
+        <img *ngIf="petRestrictionsOpts.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
           alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">Size</p>
       </label>
@@ -269,7 +269,7 @@
     <div class="relative">
       <input (click)="optionChecked('2')" class="hidden" id="quantity" type="checkbox" name="petRestriction">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="quantity">
-        <img *ngIf="petRestrictionsOpts.includes('2')" class="w-5 h-5 rounded" src="assets/images/active.png"
+        <img *ngIf="petRestrictionsOpts.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
           alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">Quantity</p>
       </label>
@@ -277,7 +277,7 @@
     <div class="relative">
       <input (click)="optionChecked('3')" class="hidden" id="breed" type="checkbox" name="petRestriction">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="breed">
-        <img *ngIf="petRestrictionsOpts.includes('3')" class="w-5 h-5 rounded" src="assets/images/active.png"
+        <img *ngIf="petRestrictionsOpts.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
           alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">Breed</p>
       </label>

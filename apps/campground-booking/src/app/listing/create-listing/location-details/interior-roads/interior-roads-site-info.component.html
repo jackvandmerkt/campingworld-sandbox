@@ -12,7 +12,7 @@
                 <div *ngFor="let c of conditionsFromService; let i = index" class="relative">
                     <input (click)="roadConditionRadioChecked(c.value)" formControlName="roadConditionRadio" [value]='c.value' class="hidden" id="roadCondition_{{c.id}}" type="radio" name="roadConditionRadio">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="roadCondition_{{c.id}}">
-                        <img *ngIf="roadConditionRadioValue === c.value" class="w-5 h-5 rounded-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="roadConditionRadioValue === c.value" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center place-self-center top-16 font-cw">{{c.value}}</p>
                     </label>
                 </div>
@@ -285,7 +285,7 @@
                 <div *ngFor="let h of hookupsFromService" class="relative">
                     <input (click)="sideHookupsRadioChecked(h.value)" formControlName="sideHookupsRadio" [value]='h.value' class="hidden" id="sideHookups_{{h.id}}" type="radio" name="sideHookupsRadio">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="sideHookups_{{h.id}}">
-                        <img *ngIf="sideHookupsRadioValue === h.value" class="w-5 h-5 rounded-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="sideHookupsRadioValue === h.value" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center place-self-center top-16 font-cw">{{h.value}}</p>
                     </label>
                 </div>
@@ -463,7 +463,7 @@
                 <div *ngFor="let s of shadedFromService" class="relative">
                     <input (click)="shadedSitesRadioChecked(s.value)" formControlName="shadedSitesRadio" [value]='s.value' class="hidden" id="shadedSites_{{s.id}}" type="radio" name="shadedSitesRadio">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shadedSites_{{s.id}}">
-                        <img *ngIf="shadedSitesRadioValue === s.value" class="w-5 h-5 rounded-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="shadedSitesRadioValue === s.value" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center place-self-center top-16 font-cw">{{s.value}}</p>
                     </label>
                 </div>
