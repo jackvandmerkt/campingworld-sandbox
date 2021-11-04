@@ -42,6 +42,7 @@ import {DiscountsAffiliationsResolver} from './create-listing/location-info/disc
 import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-services/on-site-services.resolver.service";
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
+import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
 
 @NgModule({
     declarations: [
@@ -91,6 +92,8 @@ import { RecreationResolver } from "./create-listing/amenities/recreation/recrea
       ContactInfoResolver,
       RestroomsResolver,
       OnSiteServicesResolver,
+      RecreationResolver,
+      WaterRecreationResolver,
       DiscountsAffiliationsResolver,
       RecreationResolver
     ]

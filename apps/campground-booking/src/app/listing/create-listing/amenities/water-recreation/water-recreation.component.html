@@ -1,280 +1,377 @@
 <form [formGroup]="waterRecreationForm" (ngSubmit)="onSubmit()">
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Water Recreation</h1>
-  <div class="grid grid-cols-4 w-636 gap-4 mt-3">
+  <div class="grid grid-cols-4 gap-4 mt-3 w-636">
     <div class="relative">
-      <input (click)="optionChecked('1')" class="hidden" id="option1" type="checkbox" name="option1">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option1">
-        <img *ngIf="option.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Swimming pool</p>
+      <input (click)="optionChecked('1')" class="hidden" formControlName="swimPool" id="swimPool" type="checkbox"
+        name="swimPool">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="swimPool">
+        <img *ngIf="waterRecreationForm.value.swimPool == true"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Swimming pool</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('2')" class="hidden" id="option2" type="checkbox" name="option2">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option2">
-        <img *ngIf="option.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Heated pool</p>
+      <input (click)="optionChecked('2')" class="hidden" formControlName="heatedPool" id="heatedPool" type="checkbox"
+        name="heatedPool">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="heatedPool">
+        <img *ngIf="waterRecreationForm.value.heatedPool"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Heated pool</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('3')" class="hidden" id="option3" type="checkbox" name="option3">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option3">
-        <img *ngIf="option.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Pool paid</p>
+      <input (click)="optionChecked('3')" class="hidden" formControlName="poolPaid" id="poolPaid" type="checkbox"
+        name="poolPaid">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="poolPaid">
+        <img *ngIf="waterRecreationForm.value.poolPaid"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pool paid</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('4')" class="hidden" id="option4" type="checkbox" name="option4">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option4">
-        <img *ngIf="option.includes('4')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Whirlpool</p>
+      <input (click)="optionChecked('4')" class="hidden" formControlName="whirlPool" id="whirlPool" type="checkbox"
+        name="whirlPool">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="whirlPool">
+        <img *ngIf="waterRecreationForm.value.whirlPool"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Whirlpool</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('5')" class="hidden" id="option5" type="checkbox" name="option5">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option5">
-        <img *ngIf="option.includes('5')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Wading pool</p>
+      <input (click)="optionChecked('5')" class="hidden" formControlName="wadingPool" id="wadingPool" type="checkbox"
+        name="wadingPool">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="wadingPool">
+        <img *ngIf="waterRecreationForm.value.wadingPool"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Wading pool</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('6')" class="hidden" id="option6" type="checkbox" name="option6">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option6">
-        <img *ngIf="option.includes('6')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Splash pad</p>
+      <input class="hidden" formControlName="splashPad" id="splashPad" type="checkbox"
+        name="splashPad">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="splashPad">
+        <img *ngIf="waterRecreationForm.value.splashPad"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Splash pad</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('7')" class="hidden" id="option7" type="checkbox" name="option7">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option7">
-        <img *ngIf="option.includes('7')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Water slide</p>
+      <input class="hidden" formControlName="waterSlide" id="waterSlide" type="checkbox"
+        name="waterSlide">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="waterSlide">
+        <img *ngIf="waterRecreationForm.value.waterSlide"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Water slide</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('8')" class="hidden" id="option8" type="checkbox" name="option8">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="option8">
-        <img *ngIf="option.includes('8')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Water umbrella</p>
+      <input class="hidden" formControlName="waterUmbrella" id="waterUmbrella"
+        type="checkbox" name="waterUmbrella">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="waterUmbrella">
+        <img *ngIf="waterRecreationForm.value.waterUmbrella"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Water umbrella</p>
       </label>
     </div>
   </div>
-  <div *ngIf="moreThanOnePool" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Choose only one pool option
+  <div *ngIf="moreThanOnePool" class="pl-3 mt-3 font-cw text-cwRed text-11px20px">* Choose only one pool option
   </div>
-  <div *ngIf="poolPaid" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Pool Paid is marked but Pool and Heated
+  <div *ngIf="poolPaid" class="pl-3 mt-3 font-cw text-cwRed text-11px20px">* Pool Paid is marked but Pool and Heated
     Pool are both blank
   </div>
-  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-3 mt-16">Body of water</h2>
-  <div class="grid grid-cols-1 w-636 mt-5 gap-6">
-    <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="bodyOfWaterName" name="bodyOfWaterName" placeholder=" "
+  <h2 class="pb-3 mt-16 font-bold font-cw text-cwGray text-18px24px">Body of water</h2>
+  <div class="grid grid-cols-1 gap-6 mt-5 w-636">
+    <div class="relative z-0 pb-4 f-outline">
+      <input type="text" formControlName="bodyOfWater" name="bodyOfWater" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
-      <label for="bodyOfWaterName" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="bodyOfWater"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Body of water name
       </label>
     </div>
   </div>
 
-  <div class="grid grid-cols-4 w-636 gap-4 mt-3">
+  <div class="grid grid-cols-4 gap-4 mt-3 w-636">
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('1')" class="hidden" id="bodyOfWater1" type="checkbox" name="bodyOfWater1">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater1">
-        <img *ngIf="bodyOfWater.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Ocean</p>
+      <input (click)="bodyOfWaterChecked('1')" class="hidden" formControlName="ocean" id="ocean" type="checkbox"
+        name="ocean">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="ocean">
+        <img *ngIf="waterRecreationForm.value.ocean"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Ocean</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('2')" class="hidden" id="bodyOfWater2" type="checkbox" name="bodyOfWater2">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater2">
-        <img *ngIf="bodyOfWater.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Gulf</p>
+      <input (click)="bodyOfWaterChecked('2')" class="hidden" formControlName="gulf" id="gulf" type="checkbox"
+        name="gulf">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="gulf">
+        <img *ngIf="waterRecreationForm.value.gulf"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Gulf</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('3')" class="hidden" id="bodyOfWater3" type="checkbox" name="bodyOfWater3">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater3">
-        <img *ngIf="bodyOfWater.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">River</p>
+      <input (click)="bodyOfWaterChecked('3')" class="hidden" formControlName="river" id="river" type="checkbox"
+        name="river">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="river">
+        <img *ngIf="waterRecreationForm.value.river"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">River</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('4')" class="hidden" id="bodyOfWater4" type="checkbox" name="bodyOfWater4">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater4">
-        <img *ngIf="bodyOfWater.includes('4')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Stream</p>
+      <input (click)="bodyOfWaterChecked('4')" class="hidden" formControlName="stream" id="stream" type="checkbox"
+        name="stream">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="stream">
+        <img *ngIf="waterRecreationForm.value.stream"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Stream</p>
       </label>
     </div>
 
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('5')" class="hidden" id="bodyOfWater5" type="checkbox" name="bodyOfWater5">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater5">
-        <img *ngIf="bodyOfWater.includes('5')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Lake</p>
+      <input (click)="bodyOfWaterChecked('5')" class="hidden" formControlName="lake" id="lake" type="checkbox"
+        name="lake">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="lake">
+        <img *ngIf="waterRecreationForm.value.lake"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Lake</p>
       </label>
     </div>
 
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('6')" class="hidden" id="bodyOfWater6" type="checkbox" name="bodyOfWater6">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater6">
-        <img *ngIf="bodyOfWater.includes('6')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Pond</p>
+      <input (click)="bodyOfWaterChecked('6')" class="hidden" formControlName="pond" id="pond" type="checkbox"
+        name="pond">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="pond">
+        <img *ngIf="waterRecreationForm.value.pond"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pond</p>
       </label>
     </div>
-    <div></div>
-    <div></div>
+    
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('7')" class="hidden" id="bodyOfWater7" type="checkbox" name="bodyOfWater7">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater7">
-        <img *ngIf="bodyOfWater.includes('7')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Fishing</p>
-      </label>
-    </div>
-    <div class="relative">
-      <input (click)="bodyOfWaterChecked('8')" class="hidden" id="bodyOfWater8" type="checkbox" name="bodyOfWater8">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater8">
-        <img *ngIf="bodyOfWater.includes('8')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Kayaking / canoeing</p>
-      </label>
-    </div>
-    <div class="relative">
-      <input (click)="bodyOfWaterChecked('9')" class="hidden" id="bodyOfWater9" type="checkbox" name="bodyOfWater9">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater9">
-        <img *ngIf="bodyOfWater.includes('9')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Swimming</p>
+      <input (click)="bodyOfWaterChecked('7')" class="hidden" formControlName="fishing" id="fishing" type="checkbox"
+        name="fishing">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishing">
+        <img *ngIf="waterRecreationForm.value.fishing"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="bodyOfWaterChecked('10')" class="hidden" id="bodyOfWater10" type="checkbox" name="bodyOfWater10">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bodyOfWater10">
-        <img *ngIf="bodyOfWater.includes('10')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Watersports</p>
+      <input class="hidden" formControlName="kayaking" id="kayaking" type="checkbox"
+        name="kayaking">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="kayaking">
+        <img *ngIf="waterRecreationForm.value.kayaking"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Kayaking / canoeing</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input class="hidden" formControlName="swimming" id="swimming" type="checkbox"
+        name="swimming">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="swimming">
+        <img *ngIf="waterRecreationForm.value.swimming"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Swimming</p>
+      </label>
+    </div>
+    <div class="relative">
+      <input class="hidden" formControlName="watersports" id="watersports"
+        type="checkbox" name="watersports">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="watersports">
+        <img *ngIf="waterRecreationForm.value.watersports"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Watersports</p>
       </label>
     </div>
   </div>
-  <div *ngIf="invalidBodyOfWater" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Choose only one of them
+  <div *ngIf="invalidBodyOfWater" class="pl-3 mt-3 font-cw text-cwRed text-11px20px">* Choose only one of them
     (ocean/gulf/river/stream/lake/pond)
   </div>
-  <div *ngIf="invalidFishing" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Fishing is marked but no body of
+  <div *ngIf="invalidFishing" class="pl-3 mt-3 font-cw text-cwRed text-11px20px">* Fishing is marked but no body of
     water
     was selected
   </div>
-  <div *ngIf="noBodyOfWater" class="pl-3 font-cw mt-3 text-cwRed text-11px20px">* Please specify a body of water
+  <div *ngIf="noBodyOfWater" class="pl-3 mt-3 font-cw text-cwRed text-11px20px">* Please specify a body of water
   </div>
 
-  <h2 class="font-bold font-cw text-cwGray text-18px24px pb-3 mt-16">Boating Details</h2>
-  <div class="grid grid-cols-4 w-636 gap-4 mt-3">
+  <h2 class="pb-3 mt-16 font-bold font-cw text-cwGray text-18px24px">Boating Details</h2>
+  <div class="grid grid-cols-4 gap-4 mt-3 w-636">
     <div class="relative">
-      <input (click)="boatDetailsChecked('1')" class="hidden" id="boatDetails1" type="checkbox" name="boatDetails1">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDetails1">
-        <img *ngIf="boatDetails.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Boat marina</p>
+      <input class="hidden" formControlName="boatMarina" id="boatMarina"
+        type="checkbox" name="boatMarina">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatMarina">
+        <img *ngIf="waterRecreationForm.value.boatMarina"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boat marina</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="boatDetailsChecked('2')" class="hidden" id="boatDetails2" type="checkbox" name="boatDetails2">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDetails2">
-        <img *ngIf="boatDetails.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Boat dock</p>
+      <input class="hidden" formControlName="boatDock" id="boatDock" type="checkbox"
+        name="boatDock">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDock">
+        <img *ngIf="waterRecreationForm.value.boatDock"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boat dock</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="boatDetailsChecked('3')" class="hidden" id="boatDetails3" type="checkbox" name="boatDetails3">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDetails3">
-        <img *ngIf="boatDetails.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Boat ramp</p>
+      <input class="hidden" formControlName="boatRamp" id="boatRamp" type="checkbox"
+        name="boatRamp">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatRamp">
+        <img *ngIf="waterRecreationForm.value.boatRamp"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boat ramp</p>
       </label>
     </div>
   </div>
-  <div class="grid grid-cols-1 w-636 mt-11 gap-6">
-    <div class="relative pb-4 f-outline">
+  <div class="grid grid-cols-1 gap-6 w-636 mt-11">
+    <div class="relative z-0 pb-4 f-outline">
       <input type="text" formControlName="hpLimit" name="hpLimit" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
-      <label for="hpLimit" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="hpLimit"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         HP Limit
       </label>
     </div>
   </div>
-  <div class="grid grid-cols-4 w-636 gap-4 mt-5">
+  <div class="grid grid-cols-4 gap-4 mt-5 w-636">
     <div class="relative">
-      <input (click)="boatDetailsChecked('4')" class="hidden" id="boatDetails4" type="checkbox" name="boatDetails4">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDetails4">
-        <img *ngIf="boatDetails.includes('4')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Electric only</p>
+      <input class="hidden" formControlName="electMotorsOnly" id="electMotorsOnly"
+        type="checkbox" name="electMotorsOnly">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="electMotorsOnly">
+        <img *ngIf="waterRecreationForm.value.electMotorsOnly"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Electric only</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="boatDetailsChecked('5')" class="hidden" id="boatDetails5" type="checkbox" name="boatDetails5">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDetails5">
-        <img *ngIf="boatDetails.includes('5')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">No motors</p>
+      <input class="hidden" formControlName="noMotors" id="noMotors" type="checkbox"
+        name="noMotors">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="noMotors">
+        <img *ngIf="waterRecreationForm.value.noMotors"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">No motors</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="boatDetailsChecked('6')" class="hidden" id="boatDetails6" type="checkbox" name="boatDetails6">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDetails6">
-        <img *ngIf="boatDetails.includes('6')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Boat rentals</p>
+      <input class="hidden" formControlName="boatRentals" id="boatRentals"
+        type="checkbox" name="boatRentals">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatRentals">
+        <img *ngIf="waterRecreationForm.value.boatRentals"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boat rentals</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="boatDetailsChecked('7')" class="hidden" id="boatDetails7" type="checkbox" name="boatDetails7">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatDetails7">
-        <img *ngIf="boatDetails.includes('7')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Paddle Boat</p>
+      <input class="hidden" formControlName="paddleBoats" id="paddleBoats"
+        type="checkbox" name="paddleBoats">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="paddleBoats">
+        <img *ngIf="waterRecreationForm.value.paddleBoats"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Paddle Boat</p>
       </label>
     </div>
   </div>
   <div class="flex flex-row mt-14">
-    <h2 class="font-bold font-cw text-cwGray text-18px24px pb-3">Nearby</h2>
+    <h2 class="pb-3 font-bold font-cw text-cwGray text-18px24px">Nearby</h2>
     <span class="ml-3 font-cw text-formBlack">within a 10 mile radius</span>
   </div>
-  <div class=" grid grid-cols-4 w-636 gap-4 mt-4">
+  <div class="grid grid-cols-4 gap-4 mt-4 w-636">
     <div class="relative">
-      <input (click)="nearbyChecked('1')" class="hidden" id="nearby1" type="checkbox" name="nearby1">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby1">
-        <img *ngIf="nearby.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Boating nearby</p>
+      <input class="hidden" formControlName="boatingNearby" id="boatingNearby"
+        type="checkbox" name="boatingNearby">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatingNearby">
+        <img *ngIf="waterRecreationForm.value.boatingNearby"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boating nearby</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="nearbyChecked('2')" class="hidden" id="nearby2" type="checkbox" name="nearby2">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby2">
-        <img *ngIf="nearby.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Fishing nearby</p>
+      <input class="hidden" formControlName="fishingNearby" id="fishingNearby"
+        type="checkbox" name="fishingNearby">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishingNearby">
+        <img *ngIf="waterRecreationForm.value.fishingNearby"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing nearby</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="nearbyChecked('3')" class="hidden" id="nearby3" type="checkbox" name="nearby3">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby3">
-        <img *ngIf="nearby.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Houseboating nearby</p>
+      <input class="hidden" formControlName="houseboatingNearby" id="houseboatingNearby"
+        type="checkbox" name="houseboatingNearby">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="houseboatingNearby">
+        <img *ngIf="waterRecreationForm.value.houseboatingNearby"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Houseboating nearby</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="nearbyChecked('4')" class="hidden" id="nearby4" type="checkbox" name="nearby4">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby4">
-        <img *ngIf="nearby.includes('4')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-8 p-3 font-cw">Kayaking / canoeing nearby</p>
+      <input class="hidden" formControlName="kayakingNearby" id="kayakingNearby"
+        type="checkbox" name="kayakingNearby">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="kayakingNearby">
+        <img *ngIf="waterRecreationForm.value.kayakingNearby"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-10 font-cw">Kayaking / canoeing nearby</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="nearbyChecked('5')" class="hidden" id="nearby5" type="checkbox" name="nearby5">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby5">
-        <img *ngIf="nearby.includes('5')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-16 font-cw">Marina nearby</p>
+      <input class="hidden" formControlName="marinaNearby" id="marinaNearby"
+        type="checkbox" name="marinaNearby">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="marinaNearby">
+        <img *ngIf="waterRecreationForm.value.marinaNearby"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Marina nearby</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="nearbyChecked('6')" class="hidden" id="nearby6" type="checkbox" name="nearby6">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby6">
-        <img *ngIf="nearby.includes('6')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Watersports rafting nearby</p>
+      <input class="hidden" formControlName="watersportsNearby" id="watersportsNearby"
+        type="checkbox" name="watersportsNearby">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="watersportsNearby">
+        <img *ngIf="waterRecreationForm.value.watersportsNearby"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Watersports nearby</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="nearbyChecked('7')" class="hidden" id="nearby7" type="checkbox" name="nearby7">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="nearby7">
-        <img *ngIf="nearby.includes('7')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-        <p class="absolute font-bold text-center place-self-center top-14 font-cw">Whitewater rafting nearby</p>
+      <input class="hidden" formControlName="raftingNearby" id="raftingNearby"
+        type="checkbox" name="raftingNearby">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="raftingNearby">
+        <img *ngIf="waterRecreationForm.value.raftingNearby"
+          class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+          src="assets/images/active.png" alt="active">
+        <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Whitewater rafting nearby</p>
       </label>
     </div>
   </div>
