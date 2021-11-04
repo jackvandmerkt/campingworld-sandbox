@@ -8,6 +8,7 @@ export class CreateProposalComponent implements OnInit {
   downPaymentRequired = false
   displayItemPrices = false
   displayMediaKit = false
+  addAProduct = false
 
   ngOnInit() {
     console.log('aa')
@@ -18,16 +19,14 @@ export class CreateProposalComponent implements OnInit {
   }
 
   downPaymentRequiredChange(value: any) {
-    this.downPaymentRequired = value
+    this.downPaymentRequired = !this.downPaymentRequired
   }
 
   displayItemPricesChange(value: any) {
-    this.displayItemPrices = value
+    this.displayItemPrices = !this.displayItemPrices
   }
 
   displayMediaKitChange(value: any) {
-    this.displayMediaKit = value
+    this.displayMediaKit = !this.displayMediaKit
   }
-
-
 }
