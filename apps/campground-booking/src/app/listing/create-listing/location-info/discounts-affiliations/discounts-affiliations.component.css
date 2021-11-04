@@ -14,27 +14,47 @@ input:checked ~ .block {
     color: #C30B24;
 }
 
-/*long Text Input Fields Floating Form Label*/
-.coast-coast input:focus-within ~ label,
-.coast-coast input:not(:placeholder-shown) ~ label {
-    transform: translateY(-1rem) translatex(-2.25rem) scaleX(0.75) scaleY(0.75);
+.-z-1 {
+    z-index: -1;
+}
+  
+.origin-0 {
+transform-origin: 0%;
 }
 
-.good-neighbor input:focus-within ~ label,
-.good-neighbor input:not(:placeholder-shown) ~ label {
-    transform: translateY(-1rem) translatex(-1.75rem) scaleX(0.75) scaleY(0.75);
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000000s ease-in-out 0s;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-/*Dropdown Select Fields Floating Form Label*/
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label,
+textarea:focus ~ label,
+textarea:not(:placeholder-shown) ~ label,
 select:focus ~ label,
-select:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-.4rem) scaleX(0.75) scaleY(0.75);
-} 
-
-/*State Province Field Floating Form Label*/
-.State-Prov:focus ~ label,
-.State-Prov:not([value='']):valid ~ label {
-    transform: translateY(-1rem) translatex(-1rem) scaleX(0.75) scaleY(0.75);
-} 
-
+select:not([value="null"]):valid ~ label {
+--tw-translate-x: .2rem;
+--tw-translate-y: 0;
+--tw-rotate: 0;
+--tw-skew-x: 0;
+--tw-skew-y: 0;
+transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+--tw-scale-x: 0.75;
+--tw-scale-y: 0.75;
+--tw-translate-y: -1rem;
+}
