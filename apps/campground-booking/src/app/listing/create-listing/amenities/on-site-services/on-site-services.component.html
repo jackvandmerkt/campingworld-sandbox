@@ -9,30 +9,30 @@
         </div>
         <div class="flex flex-row col-span-2 space-x-4 pb-15">
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('1')" formControlName="dumpingStationGs1" class="hidden" id="dumpingStationGs1" type="checkbox" name="dumpingStationGs1">
+                <input formControlName="dumpingStationGs1" class="hidden" id="dumpingStationGs1" type="checkbox" name="dumpingStationGs1">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dumpingStationGs1">
-                    <img *ngIf="basicFacilitiesOptions.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                    <img *ngIf="onSiteServices.value.dumpingStationGs1" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Dump station</p>
                 </label>
                 </div>
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('2')" formControlName="mobileSewerService" class="hidden" id="mobileSewerService" type="checkbox" name="mobileSewerService">
+                <input formControlName="mobileSewerService" class="hidden" id="mobileSewerService" type="checkbox" name="mobileSewerService">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="mobileSewerService">
-                    <img *ngIf="basicFacilitiesOptions.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                    <img *ngIf="onSiteServices.value.mobileSewerService" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Mobile sewer station</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('3')" formControlName="laundry" class="hidden" id="laundry" type="checkbox" name="laundry">
+                <input formControlName="laundry" class="hidden" id="laundry" type="checkbox" name="laundry">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="laundry">
-                    <img *ngIf="basicFacilitiesOptions.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                    <img *ngIf="onSiteServices.value.laundry" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Laundry</p>
                 </label>
             </div>
             <div class="relative">
-                <input (click)="basicFacilitiesChecked('4')" formControlName="partialHandicapAccess" class="hidden" id="partialHandicapAccess" type="checkbox" name="partialHandicapAccess">
+                <input formControlName="partialHandicapAccess" class="hidden" id="partialHandicapAccess" type="checkbox" name="partialHandicapAccess">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="partialHandicapAccess">
-                    <img *ngIf="basicFacilitiesOptions.includes('4')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                    <img *ngIf="onSiteServices.value.partialHandicapAccess" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Handicap access</p>
                 </label>
             </div>
@@ -43,16 +43,16 @@
         </div>
         <div class="flex flex-row col-span-2 space-x-4 pb-15">
             <div class="relative">
-                <input (click)="securityChecked('1')" formControlName="controlAccessGate" class="hidden" id="controlAccessGate" type="checkbox" name="controlAccessGate">
+                <input formControlName="controlAccessGate" class="hidden" id="controlAccessGate" type="checkbox" name="controlAccessGate">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="controlAccessGate">
-                    <img *ngIf="securityOptions.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                    <img *ngIf="onSiteServices.value.controlAccessGate" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                     <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Controlled access gate</p>
                 </label>
                 </div>
             <div class="relative">
-                <input (click)="securityChecked('2')" formControlName="emergencyPhone" class="hidden" id="emergencyPhone" type="checkbox" name="emergencyPhone">
+                <input formControlName="emergencyPhone" class="hidden" id="emergencyPhone" type="checkbox" name="emergencyPhone">
                 <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="emergencyPhone">
-                    <img *ngIf="securityOptions.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                    <img *ngIf="onSiteServices.value.emergencyPhone" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                     <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-14 font-cw">Emergency phone</p>
                 </label>
             </div>
@@ -329,323 +329,323 @@
         <div class="grid grid-cols-2">
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('1')" formControlName="atmMachine" class="hidden" id="atmMachine" type="checkbox" name="atmMachine">
+                    <input formControlName="atmMachine" class="hidden" id="atmMachine" type="checkbox" name="atmMachine">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="atmMachine">
-                        <img *ngIf="otherServicesOptions.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.atmMachine" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">ATM machine</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('2')" formControlName="boatStorage" class="hidden" id="boatStorage" type="checkbox" name="boatStorage">
+                    <input formControlName="boatStorage" class="hidden" id="boatStorage" type="checkbox" name="boatStorage">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="boatStorage">
-                        <img *ngIf="otherServicesOptions.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.boatStorage" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Boat storage</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('3')" formControlName="bbqAtSite" class="hidden" id="bbqAtSite" type="checkbox" name="bbqAtSite">
+                    <input formControlName="bbqAtSite" class="hidden" id="bbqAtSite" type="checkbox" name="bbqAtSite">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bbqAtSite">
-                        <img *ngIf="otherServicesOptions.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.bbqAtSite" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">BBQ at site</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('4')" formControlName="cableMajor" class="hidden" id="cableMajor" type="checkbox" name="cableMajor">
+                    <input formControlName="cableMajor" class="hidden" id="cableMajor" type="checkbox" name="cableMajor">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="cableMajor">
-                        <img *ngIf="otherServicesOptions.includes('4')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.cableMajor" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cable (major)</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('5')" formControlName="cableMinor" class="hidden" id="cableMinor" type="checkbox" name="cableMinor">
+                    <input formControlName="cableMinor" class="hidden" id="cableMinor" type="checkbox" name="cableMinor">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="cableMinor">
-                        <img *ngIf="otherServicesOptions.includes('5')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.cableMinor" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cable (minor)</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('6')" formControlName="offerCarRentals" class="hidden" id="offerCarRentals" type="checkbox" name="offerCarRentals">
+                    <input formControlName="offerCarRentals" class="hidden" id="offerCarRentals" type="checkbox" name="offerCarRentals">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="offerCarRentals">
-                        <img *ngIf="otherServicesOptions.includes('6')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.offerCarRentals" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Car rentals</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('7')" formControlName="churchServices" class="hidden" id="churchServices" type="checkbox" name="churchServices">
+                    <input formControlName="churchServices" class="hidden" id="churchServices" type="checkbox" name="churchServices">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="churchServices">
-                        <img *ngIf="otherServicesOptions.includes('7')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.churchServices" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Church services</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('8')" formControlName="cocktailLounge" class="hidden" id="cocktailLounge" type="checkbox" name="cocktailLounge">
+                    <input formControlName="cocktailLounge" class="hidden" id="cocktailLounge" type="checkbox" name="cocktailLounge">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="cocktailLounge">
-                        <img *ngIf="otherServicesOptions.includes('8')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.cocktailLounge" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Cocktail lounge</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('9')" formControlName="complimentaryBreakfast" class="hidden" id="complimentaryBreakfast" type="checkbox" name="complimentaryBreakfast">
+                    <input formControlName="complimentaryBreakfast" class="hidden" id="complimentaryBreakfast" type="checkbox" name="complimentaryBreakfast">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="complimentaryBreakfast">
-                        <img *ngIf="otherServicesOptions.includes('9')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.complimentaryBreakfast" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Comp breakfast (Daily)</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('10')" formControlName="dvdRentals" class="hidden" id="dvdRentals" type="checkbox" name="dvdRentals">
+                    <input formControlName="dvdRentals" class="hidden" id="dvdRentals" type="checkbox" name="dvdRentals">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dvdRentals">
-                        <img *ngIf="otherServicesOptions.includes('10')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.dvdRentals" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">DVD rentals</p>
                     </label>
                 </div>
-                <div class="relative">
-                    <input (click)="otherServicesChecked('11')" formControlName="evChargingStation" class="hidden" id="evChargingStation" type="checkbox" name="evChargingStation">
+                <div class="relative"> 
+                    <input formControlName="evChargingStation" class="hidden" id="evChargingStation" type="checkbox" name="evChargingStation">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="evChargingStation">
-                        <img *ngIf="otherServicesOptions.includes('11')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.evChargingStation" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Electric vehicle charging station</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('12')" formControlName="evChargingStationPlanned" class="hidden" id="evChargingStationPlanned" type="checkbox" name="evChargingStationPlanned">
+                    <input formControlName="evChargingStationPlanned" class="hidden" id="evChargingStationPlanned" type="checkbox" name="evChargingStationPlanned">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="evChargingStationPlanned">
-                        <img *ngIf="otherServicesOptions.includes('12')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.evChargingStationPlanned" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-11 font-cw">Electric vehicle charging station planned</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('13')" formControlName="entertainment" class="hidden" id="entertainment" type="checkbox" name="entertainment">
+                    <input formControlName="entertainment" class="hidden" id="entertainment" type="checkbox" name="entertainment">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="entertainment">
-                        <img *ngIf="otherServicesOptions.includes('13')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.entertainment" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Entertainment</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('14')" formControlName="faxCopyService" class="hidden" id="faxCopyService" type="checkbox" name="faxCopyService">
+                    <input formControlName="faxCopyService" class="hidden" id="faxCopyService" type="checkbox" name="faxCopyService">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="faxCopyService">
-                        <img *ngIf="otherServicesOptions.includes('14')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.faxCopyService" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Fax / copy service</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('15')" formControlName="firewood" class="hidden" id="firewood" type="checkbox" name="firewood">
+                    <input formControlName="firewood" class="hidden" id="firewood" type="checkbox" name="firewood">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="firewood">
-                        <img *ngIf="otherServicesOptions.includes('15')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.firewood" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Firewood</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('16')" formControlName="fireRings" class="hidden" id="fireRings" type="checkbox" name="fireRings">
+                    <input formControlName="fireRings" class="hidden" id="fireRings" type="checkbox" name="fireRings">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fireRings">
-                        <img *ngIf="otherServicesOptions.includes('16')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.fireRings" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fire rings</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('17')" formControlName="fishingGuides" class="hidden" id="fishingGuides" type="checkbox" name="fishingGuides">
+                    <input formControlName="fishingGuides" class="hidden" id="fishingGuides" type="checkbox" name="fishingGuides">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishingGuides">
-                        <img *ngIf="otherServicesOptions.includes('17')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.fishingGuides" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing guides</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('18')" formControlName="fishingLicenses" class="hidden" id="fishingLicenses" type="checkbox" name="fishingLicenses">
+                    <input formControlName="fishingLicenses" class="hidden" id="fishingLicenses" type="checkbox" name="fishingLicenses">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishingLicenses">
-                        <img *ngIf="otherServicesOptions.includes('18')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.fishingLicenses" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing licenses</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('19')" formControlName="fishingSupplies" class="hidden" id="fishingSupplies" type="checkbox" name="fishingSupplies">
+                    <input formControlName="fishingSupplies" class="hidden" id="fishingSupplies" type="checkbox" name="fishingSupplies">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="fishingSupplies">
-                        <img *ngIf="otherServicesOptions.includes('19')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.fishingSupplies" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fishing supplies</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('20')" formControlName="golfCarts" class="hidden" id="golfCarts" type="checkbox" name="golfCarts">
+                    <input formControlName="golfCarts" class="hidden" id="golfCarts" type="checkbox" name="golfCarts">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="golfCarts">
-                        <img *ngIf="otherServicesOptions.includes('20')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.golfCarts" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Golf carts</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('21')" formControlName="groceries" class="hidden" id="groceries" type="checkbox" name="groceries">
+                    <input formControlName="groceries" class="hidden" id="groceries" type="checkbox" name="groceries">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="groceries">
-                        <img *ngIf="otherServicesOptions.includes('21')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.groceries" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Groceries</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('22')" formControlName="guestServices" class="hidden" id="guestServices" type="checkbox" name="guestServices">
+                    <input formControlName="guestServices" class="hidden" id="guestServices" type="checkbox" name="guestServices">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="guestServices">
-                        <img *ngIf="otherServicesOptions.includes('22')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.guestServices" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Guest services</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('23')" formControlName="horseCorral" class="hidden" id="horseCorral" type="checkbox" name="horseCorral">
+                    <input formControlName="horseCorral" class="hidden" id="horseCorral" type="checkbox" name="horseCorral">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="horseCorral">
-                        <img *ngIf="otherServicesOptions.includes('23')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.horseCorral" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Horse corral</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('24')" formControlName="ice" class="hidden" id="ice" type="checkbox" name="ice">
+                    <input formControlName="ice" class="hidden" id="ice" type="checkbox" name="ice">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="ice">
-                        <img *ngIf="otherServicesOptions.includes('24')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.ice" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Ice</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('25')" formControlName="libraryBookExchange" class="hidden" id="libraryBookExchange" type="checkbox" name="libraryBookExchange">
+                    <input formControlName="libraryBookExchange" class="hidden" id="libraryBookExchange" type="checkbox" name="libraryBookExchange">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="libraryBookExchange">
-                        <img *ngIf="otherServicesOptions.includes('25')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.libraryBookExchange" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Library / book exchange</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('26')" formControlName="lpBottlesOnly" class="hidden" id="lpBottlesOnly" type="checkbox" name="lpBottlesOnly">
+                    <input formControlName="lpBottlesOnly" class="hidden" id="lpBottlesOnly" type="checkbox" name="lpBottlesOnly">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="lpBottlesOnly">
-                        <img *ngIf="otherServicesOptions.includes('26')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.lpBottlesOnly" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">LP gas - bottles only</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('27')" formControlName="meteredLpGas" class="hidden" id="meteredLpGas" type="checkbox" name="meteredLpGas">
+                    <input formControlName="meteredLpGas" class="hidden" id="meteredLpGas" type="checkbox" name="meteredLpGas">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="meteredLpGas">
-                        <img *ngIf="otherServicesOptions.includes('27')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.meteredLpGas" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">LP gas - metered</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('28')" formControlName="mailDelivery" class="hidden" id="mailDelivery" type="checkbox" name="mailDelivery">
+                    <input formControlName="mailDelivery" class="hidden" id="mailDelivery" type="checkbox" name="mailDelivery">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="mailDelivery">
-                        <img *ngIf="otherServicesOptions.includes('28')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.mailDelivery" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Mail delivery</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('29')" formControlName="newspaper" class="hidden" id="newspaper" type="checkbox" name="newspaper">
+                    <input formControlName="newspaper" class="hidden" id="newspaper" type="checkbox" name="newspaper">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="newspaper">
-                        <img *ngIf="otherServicesOptions.includes('29')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.newspaper" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Newspaper</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('30')" formControlName="onsiteRvService" class="hidden" id="onsiteRvService" type="checkbox" name="onsiteRvService">
+                    <input formControlName="onsiteRvService" class="hidden" id="onsiteRvService" type="checkbox" name="onsiteRvService">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="onsiteRvService">
-                        <img *ngIf="otherServicesOptions.includes('30')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.onsiteRvService" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Onsite RV service</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('31')" formControlName="patiosYes" class="hidden" id="patiosYes" type="checkbox" name="patiosYes">
+                    <input formControlName="patiosYes" class="hidden" id="patiosYes" type="checkbox" name="patiosYes">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="patiosYes">
-                        <img *ngIf="otherServicesOptions.includes('31')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.patiosYes" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Patios</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('32')" formControlName="personalEscortToSite" class="hidden" id="personalEscortToSite" type="checkbox" name="personalEscortToSite">
+                    <input formControlName="personalEscortToSite" class="hidden" id="personalEscortToSite" type="checkbox" name="personalEscortToSite">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="personalEscortToSite">
-                        <img *ngIf="otherServicesOptions.includes('32')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.personalEscortToSite" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Personal escort to site</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('33')" formControlName="restaurant" class="hidden" id="restaurant" type="checkbox" name="restaurant">
+                    <input formControlName="restaurant" class="hidden" id="restaurant" type="checkbox" name="restaurant">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="restaurant">
-                        <img *ngIf="otherServicesOptions.includes('33')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.restaurant" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Restaraunt</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('34')" formControlName="rvSuppliesGs1" class="hidden" id="rvSuppliesGs1" type="checkbox" name="rvSuppliesGs1">
+                    <input formControlName="rvSuppliesGs1" class="hidden" id="rvSuppliesGs1" type="checkbox" name="rvSuppliesGs1">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="rvSuppliesGs1">
-                        <img *ngIf="otherServicesOptions.includes('34')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.rvSuppliesGs1" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">RV supplies</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('35')" formControlName="secureRvStorage" class="hidden" id="secureRvStorage" type="checkbox" name="secureRvStorage">
+                    <input formControlName="secureRvStorage" class="hidden" id="secureRvStorage" type="checkbox" name="secureRvStorage">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="secureRvStorage">
-                        <img *ngIf="otherServicesOptions.includes('35')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.secureRvStorage" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">RV storage - secure</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('36')" formControlName="selfServRvWash" class="hidden" id="selfServRvWash" type="checkbox" name="selfServRvWash">
+                    <input formControlName="selfServRvWash" class="hidden" id="selfServRvWash" type="checkbox" name="selfServRvWash">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="selfServRvWash">
-                        <img *ngIf="otherServicesOptions.includes('36')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.selfServRvWash" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">RV wash - self service</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('37')" formControlName="staffedRvWash" class="hidden" id="staffedRvWash" type="checkbox" name="staffedRvWash">
+                    <input formControlName="staffedRvWash" class="hidden" id="staffedRvWash" type="checkbox" name="staffedRvWash">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="staffedRvWash">
-                        <img *ngIf="otherServicesOptions.includes('37')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.staffedRvWash" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">RV wash - staffed</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('38')" formControlName="shuttleService" class="hidden" id="shuttleService" type="checkbox" name="shuttleService">
+                    <input formControlName="shuttleService" class="hidden" id="shuttleService" type="checkbox" name="shuttleService">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shuttleService">
-                        <img *ngIf="otherServicesOptions.includes('38')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.shuttleService" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Shuttle service</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('39')" formControlName="snackBar" class="hidden" id="snackBar" type="checkbox" name="snackBar">
+                    <input formControlName="snackBar" class="hidden" id="snackBar" type="checkbox" name="snackBar">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="snackBar">
-                        <img *ngIf="otherServicesOptions.includes('39')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.snackBar" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Snack bar</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('40')" formControlName="spaServices" class="hidden" id="spaServices" type="checkbox" name="spaServices">
+                    <input formControlName="spaServices" class="hidden" id="spaServices" type="checkbox" name="spaServices">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="spaServices">
-                        <img *ngIf="otherServicesOptions.includes('40')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.spaServices" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Spa services</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 space-x-4 pb-15">
                 <div class="relative">
-                    <input (click)="otherServicesChecked('41')" formControlName="tableAtSite" class="hidden" id="tableAtSite" type="checkbox" name="tableAtSite">
+                    <input formControlName="tableAtSite" class="hidden" id="tableAtSite" type="checkbox" name="tableAtSite">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="tableAtSite">
-                        <img *ngIf="otherServicesOptions.includes('41')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.tableAtSite" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Table at site</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('42')" formControlName="tourShowTickets" class="hidden" id="tourShowTickets" type="checkbox" name="tourShowTickets">
+                    <input formControlName="tourShowTickets" class="hidden" id="tourShowTickets" type="checkbox" name="tourShowTickets">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="tourShowTickets">
-                        <img *ngIf="otherServicesOptions.includes('42')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.tourShowTickets" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Tour / show tickets</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="otherServicesChecked('43')" formControlName="trashPickupAtSite" class="hidden" id="trashPickupAtSite" type="checkbox" name="trashPickupAtSite">
+                    <input formControlName="trashPickupAtSite" class="hidden" id="trashPickupAtSite" type="checkbox" name="trashPickupAtSite">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="trashPickupAtSite">
-                        <img *ngIf="otherServicesOptions.includes('43')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.trashPickupAtSite" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Trash pickup at site</p>
                     </label>
                 </div>
@@ -660,60 +660,60 @@
         <div class="grid grid-cols-2">
             <div class="flex flex-row col-span-2 pb-4 space-x-4">
                 <div class="relative">
-                    <input (click)="petServicesChecked('1')" formControlName="dogPark" class="hidden" id="dogPark" type="checkbox" name="dogPark">
+                    <input formControlName="dogPark" class="hidden" id="dogPark" type="checkbox" name="dogPark">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dogPark">
-                        <img *ngIf="petServicesOptions.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.dogPark" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Dog park</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('2')" formControlName="dogWalkingServices" class="hidden" id="dogWalkingServices" type="checkbox" name="dogWalkingServices">
+                    <input formControlName="dogWalkingServices" class="hidden" id="dogWalkingServices" type="checkbox" name="dogWalkingServices">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dogWalkingServices">
-                        <img *ngIf="petServicesOptions.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.dogWalkingServices" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Dog walking services</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('3')" formControlName="dogWashingStation" class="hidden" id="dogWashingStation" type="checkbox" name="dogWashingStation">
+                    <input formControlName="dogWashingStation" class="hidden" id="dogWashingStation" type="checkbox" name="dogWashingStation">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="dogWashingStation">
-                        <img *ngIf="petServicesOptions.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.dogWashingStation" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Dog washing station</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('4')" formControlName="enclosedDogRun" class="hidden" id="enclosedDogRun" type="checkbox" name="enclosedDogRun">
+                    <input formControlName="enclosedDogRun" class="hidden" id="enclosedDogRun" type="checkbox" name="enclosedDogRun">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="enclosedDogRun">
-                        <img *ngIf="petServicesOptions.includes('4')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.enclosedDogRun" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Enclosed dog run</p>
                     </label>
                 </div>
             </div>
             <div class="flex flex-row col-span-2 pb-10 space-x-4">
                 <div class="relative">
-                    <input (click)="petServicesChecked('5')" formControlName="petBoarding" class="hidden" id="petBoarding" type="checkbox" name="petBoarding">
+                    <input formControlName="petBoarding" class="hidden" id="petBoarding" type="checkbox" name="petBoarding">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petBoarding">
-                        <img *ngIf="petServicesOptions.includes('5')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.petBoarding" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pet boarding</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('6')" formControlName="petGrooming" class="hidden" id="petGrooming" type="checkbox" name="petGrooming">
+                    <input formControlName="petGrooming" class="hidden" id="petGrooming" type="checkbox" name="petGrooming">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petGrooming">
-                        <img *ngIf="petServicesOptions.includes('6')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.petGrooming" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pet grooming</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('7')" formControlName="petSitting" class="hidden" id="petSitting" type="checkbox" name="petSitting">
+                    <input formControlName="petSitting" class="hidden" id="petSitting" type="checkbox" name="petSitting">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petSitting">
-                        <img *ngIf="petServicesOptions.includes('7')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.petSitting" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pet sitting</p>
                     </label>
                 </div>
                 <div class="relative">
-                    <input (click)="petServicesChecked('8')" formControlName="petSuppliesInStore" class="hidden" id="petSuppliesInStore" type="checkbox" name="petSuppliesInStore">
+                    <input formControlName="petSuppliesInStore" class="hidden" id="petSuppliesInStore" type="checkbox" name="petSuppliesInStore">
                     <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="petSuppliesInStore">
-                        <img *ngIf="petServicesOptions.includes('8')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+                        <img *ngIf="onSiteServices.value.petSuppliesInStore" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
                         <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Pet supplies in store</p>
                     </label>
                 </div>

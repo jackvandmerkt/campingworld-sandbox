@@ -17,6 +17,7 @@ import { ContactInfoComponent } from "./create-listing/location-info/contact-inf
 import {ContactInfoResolver} from "./create-listing/location-info/contact-info/contact-info.resolver.service"
 import { DirectionsComponent } from "./create-listing/location-info/directions/directions.component";
 import { DiscountsAffiliationsComponent } from "./create-listing/location-info/discounts-affiliations/discounts-affiliations.component";
+import {DiscountsAffiliationsResolver} from './create-listing/location-info/discounts-affiliations/discounts-affiliations.resolver.service'
 import { GoodSamParkComponent } from "./create-listing/location-info/good-sam-park/good-sam-park.component";
 import { GoodSamRecordFormComponent } from "./create-listing/location-info/good-sam-record/good-sam-record.component";
 import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-record/good-sam-record.resolver.service";
@@ -29,6 +30,7 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
 import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-services/on-site-services.resolver.service";
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
+import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
@@ -42,7 +44,8 @@ export const listingRoutes: Routes = [
         resolve: {data:GoodSamRecordResolver} },
       { path: 'contact-info/:fileNumber', component: ContactInfoComponent,
         resolve: {data:ContactInfoResolver} },
-      { path: 'discounts-affiliations', component: DiscountsAffiliationsComponent },
+      { path: 'discounts-affiliations/:fileNumber', component: DiscountsAffiliationsComponent,
+        resolve:{data:DiscountsAffiliationsResolver}},
       { path: 'owner-b2b-info', component: OwnerAndB2bInfoComponent },
       { path: 'directions', component: DirectionsComponent },
       { path: 'advertising-codes', component: AdvertisingCodesComponent },
@@ -57,7 +60,8 @@ export const listingRoutes: Routes = [
         resolve: {data:OnSiteServicesResolver} },
       { path: 'recreation/:fileNumber', component: RecreationComponent,
         resolve: {data:RecreationResolver} },
-      { path: 'water-recreation', component: WaterRecreationComponent },
+      { path: 'water-recreation/:fileNumber', component: WaterRecreationComponent,
+        resolve: {data:WaterRecreationResolver} },
       { path: 'tenting-rentals', component: TentingRentalsComponent },
       { path: 'ratings', component: RatingsComponent },
       { path: 'published-ratings', component: PublishedRatingsComponent },

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation } from './listing.model';
+import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation, IDiscountsAndAffiliations } from './listing.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -49,6 +49,16 @@ export class ListingService {
     getContactInfo(fileNumber:string):Observable<IContactInfo>{
       return this.http.get<IContactInfo>(`api/v1/listings/${fileNumber}/location-info/contact-info`)
       .pipe(catchError(this.handleError<IContactInfo>('getContactInfo', )))
+    }
+
+    //Location Info Section - Discounts and Affiliations
+    postDiscountsAndAffiliations(form:IDiscountsAndAffiliations, fileNumber:string):Observable<IDiscountsAndAffiliations>{
+      return this.http.put<IDiscountsAndAffiliations>(`/api/v1/listings/${fileNumber}/location-info/discounts-and-affiliations`, form)
+      .pipe(catchError(this.handleError<IDiscountsAndAffiliations>('postDiscountsAndAffiliationsInfo', )))
+    }
+    getDiscountsAndAffiliations(fileNumber:string):Observable<IDiscountsAndAffiliations>{
+      return this.http.get<IDiscountsAndAffiliations>(`api/v1/listings/${fileNumber}/location-info/discounts-and-affiliations`)
+      .pipe(catchError(this.handleError<IDiscountsAndAffiliations>('getDiscountsAndAffiliations', )))
     }
 
     // Amenities Section - Restrooms Form
