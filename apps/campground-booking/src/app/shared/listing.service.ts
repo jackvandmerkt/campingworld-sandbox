@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation, IDiscountsAndAffiliations } from './listing.model';
+import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation, IDiscountsAndAffiliations, IInteriorRoads } from './listing.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -60,6 +60,20 @@ export class ListingService {
       return this.http.get<IDiscountsAndAffiliations>(`api/v1/listings/${fileNumber}/location-info/discounts-and-affiliations`)
       .pipe(catchError(this.handleError<IDiscountsAndAffiliations>('getDiscountsAndAffiliations', )))
     }
+
+
+
+    //Location Details Section - Interior Roads and Site Info
+    postInteriorRoads(form:IInteriorRoads, fileNumber:string):Observable<IInteriorRoads>{
+      return this.http.put<IInteriorRoads>(`/api/v1/listings/${fileNumber}/location-details/interior-roads-and-site-info`, form)
+      .pipe(catchError(this.handleError<IInteriorRoads>('postInteriorRoads', )))
+    }
+    getInteriorRoads(fileNumber:string):Observable<IInteriorRoads>{
+      return this.http.get<IInteriorRoads>(`api/v1/listings/${fileNumber}/location-details/interior-roads-and-site-info`)
+      .pipe(catchError(this.handleError<IInteriorRoads>('getInteriorRoads', )))
+    }
+
+
 
     // Amenities Section - Restrooms Form
     postRestrooms(form:IRestrooms, fileNumber:string):Observable<IRestrooms>{

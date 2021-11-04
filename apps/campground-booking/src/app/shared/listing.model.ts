@@ -292,6 +292,43 @@ export interface IDiscountsAndAffiliations {
   coastToCoastMembershipNumber: string,
 }
 
+// Location Details Section
+export interface IInteriorRoads {
+  interiorRoads: {
+    interiorRoadConditionId: number,
+    interiorRoadTypeId: number
+  },
+  siteInfo: {
+    totalSpaces: number,
+    numberAvailable: number,
+    numberExtendedStaySites: number,
+    numberPermanentSites: number,
+    separateSeasonalSection: string,
+    numberPaved: number,
+    numberAllWeather: number,
+    numberGravel: number,
+    numberGrass: number,
+    numberDirt: number,
+    numberFullHookups: number,
+    numberWater: number,
+    numberSewer: number,
+    numberElectric: number,
+    noHookups: number,
+    ampId: number,
+    sideBySideHookupId: number,
+    bigRigSites: string,
+    acceptsFullHookupUnitsOnly: string,
+    acceptsSelfContainedUnitsOnly: string,
+    pullThruWidth: number,
+    pullThruLength: number,
+    numberOfPullThrus: number,
+    backInWidth: number,
+    backInLength: number,
+    slideOuts: string,
+    shadeTypeId: number
+  }
+}
+
 // Amenities Section Interfaces
 export interface IRestrooms {
   pitToilets: boolean, restroomShowerId: number, numberToiletsMen: number, 

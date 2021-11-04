@@ -1,6 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { IAllRefs } from "../../../../shared/listing.model";
+import { ActivatedRoute } from "@angular/router";
+import { ListingNavService } from "apps/campground-booking/src/app/shared/listing-nav.service";
+import { IAllRefs } from "../../../../shared/listing.model"; 
 import { ListingService } from "../../../../shared/listing.service";
 
 @Component({
@@ -8,7 +10,7 @@ import { ListingService } from "../../../../shared/listing.service";
     templateUrl: './interior-roads-site-info.component.html',
     styleUrls: ['./interior-roads-site-info.component.css']
 })
-export class InteriorRoadsSiteInformationComponent implements OnInit {
+export class InteriorRoadsSiteInformationComponent implements OnInit, AfterViewInit {
     submitted: boolean = false;
     allRefsTmp:any;
     allRefsObj!: IAllRefs[];
@@ -17,88 +19,198 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
     hookupsFromService: any = {};
     shadedFromService: any = {};
     ampsFromService: any = {};
-    // yes no toggle booleans
-    separateSeasonalSection: boolean = false;
-    selfContainedUnits: boolean = false;
-    fullHookupUnits: boolean = false;
-    bigRigSite: boolean = false;
-    slideOuts: boolean = false;
-    // variables used to switch checkmark image to toggled radio button
-    roadConditionRadioValue: string = '';
-    sideHookupsRadioValue: string = '';
-    shadedSitesRadioValue: string = '';
 
-    constructor(private formBuilder: FormBuilder, private ls: ListingService) {
+    fileNum:any = 0;
+    postResponse:any;
+    currentListing:any= {};
+    interiorRoadsGetObj:any = {};
+    interiorRoadsPostObj:any = {};
 
-    }
+    @ViewChild('interiorRoadType') private interiorRoadTypeCSS!: ElementRef;
+    @ViewChild('ampId') private ampCSS!: ElementRef;
 
-    ngOnInit() {
-        this.getFormDropDownData();
+    constructor(private formBuilder: FormBuilder, private ls: ListingService,
+        private listingNavService: ListingNavService, private route: ActivatedRoute) {
+
     }
 
     interiorRoadsSitesInfo = this.formBuilder.group({
-        roadConditionRadio: ['', Validators.required],
-        interiorRoadType: ['', Validators.required],
-        totalSpaces: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numAvailable: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numSeasonal: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numPermanent: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        toggleSeasonal: false,
-        numPaved: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numAllWeather: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numGravel: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numGrass: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numDirt: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numFullHookups: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numWater: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numSewer: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numElectric: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        numNoHookups: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-        amps: ['', Validators.required],
-        sideHookupsRadio: ['', Validators.required],
-        toggleBigRig: false,
-        toggleFullHookup: false,
-        toggleSelfContained: false,
-        pullThruW: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        pullThruL: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        numOfPullThrus: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        backInW: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        backInL: ['', [Validators.required, Validators.pattern("^[0-9]+\.?[0-9]*$")]],
-        toggleSlideOuts: false,
-        shadedSitesRadio: ['', Validators.required]
+        interiorRoadConditionId: [null, Validators.required],
+        interiorRoadTypeId: [null, Validators.required],
+        totalSpaces: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberExtendedStaySites: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberAvailable: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberPermanentSites: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        separateSeasonalSection: false,
+        numberPaved: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberAllWeather: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberGravel: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberGrass: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberDirt: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberFullHookups: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberWater: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberSewer: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        numberElectric: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        noHookups: [null, [Validators.min(1), Validators.pattern("^[0-9]*$")]],
+        ampId: [null],
+        sideBySideHookupId: [null, Validators.required],
+        bigRigSites: false,
+        acceptsFullHookupUnitsOnly: false,
+        acceptsSelfContainedUnitsOnly: false,
+        pullThruWidth: [null, [Validators.min(1), Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        pullThruLength: [null, [Validators.min(1), Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        numberOfPullThrus: [null, [Validators.min(1), Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        backInWidth: [null, [Validators.min(1), Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        backInLength: [null, [Validators.min(1), Validators.pattern("^[0-9]+\.?[0-9]*$")]],
+        slideOuts: false,
+        shadeTypeId: [null, Validators.required]
     });
 
+    ngOnInit() {
+        this.route.snapshot.paramMap.get('fileNumber');
+        this.fileNum = this.route.snapshot.paramMap.get('fileNumber');
+        this.getFormDropDownData();
+        this.interiorRoadsGetObj = this.route.snapshot.data['data'];
+        if (this.interiorRoadsGetObj != null) {
+            this.currentListing = this.interiorRoadsGetObj;
+            for(let [key, value] of Object.entries(this.currentListing.siteInfo)) {
+                if(value == 'f') {
+                    this.currentListing.siteInfo[key] = false;
+                }
+                if(value == 't') {
+                    this.currentListing.siteInfo[key] = true;
+                }
+            }
+            this.interiorRoadsSitesInfo.patchValue({
+                interiorRoadConditionId: this.currentListing.interiorRoads.interiorRoadConditionId,
+                interiorRoadTypeId: this.currentListing.interiorRoads.interiorRoadTypeId,
+                totalSpaces: this.currentListing.siteInfo.totalSpaces,
+                numberAvailable: this.currentListing.siteInfo.numberAvailable,
+                numberExtendedStaySites: this.currentListing.siteInfo.numberExtendedStaySites,
+                numberPermanentSites: this.currentListing.siteInfo.numberPermanentSites,
+                separateSeasonalSection: this.currentListing.siteInfo.separateSeasonalSection,
+                numberPaved: this.currentListing.siteInfo.numberPaved,
+                numberAllWeather: this.currentListing.siteInfo.numberAllWeather,
+                numberGravel: this.currentListing.siteInfo.numberGravel,
+                numberGrass: this.currentListing.siteInfo.numberGrass,
+                numberDirt: this.currentListing.siteInfo.numberDirt,
+                numberFullHookups: this.currentListing.siteInfo.numberFullHookups,
+                numberWater: this.currentListing.siteInfo.numberWater,
+                numberSewer: this.currentListing.siteInfo.numberSewer,
+                numberElectric: this.currentListing.siteInfo.numberElectric,
+                noHookups: this.currentListing.siteInfo.noHookups,
+                ampId: this.currentListing.siteInfo.ampId,
+                sideBySideHookupId: this.currentListing.siteInfo.sideBySideHookupId,
+                bigRigSites: this.currentListing.siteInfo.bigRigSites,
+                acceptsFullHookupUnitsOnly: this.currentListing.siteInfo.acceptsFullHookupUnitsOnly,
+                acceptsSelfContainedUnitsOnly: this.currentListing.siteInfo.acceptsSelfContainedUnitsOnly,
+                pullThruWidth: this.currentListing.siteInfo.pullThruWidth,
+                pullThruLength: this.currentListing.siteInfo.pullThruLength,
+                numberOfPullThrus: this.currentListing.siteInfo.numberOfPullThrus,
+                backInWidth: this.currentListing.siteInfo.backInWidth,
+                backInLength: this.currentListing.siteInfo.backInLength,
+                slideOuts: this.currentListing.siteInfo.slideOuts,
+                shadeTypeId: this.currentListing.siteInfo.shadeTypeId
+            });
+        } 
+    }
+
+    ngAfterViewInit() {
+        this.setAttributes();
+    }
     onSubmit(): void {
         this.submitted = true;
-        if(this.interiorRoadsSitesInfo.valid) {
-            console.log(this.interiorRoadsSitesInfo.value);
+        const formValidators = [
+            this.rvSpacesAvailInvalid,
+            this.totalSpacesInvalid
+        ]
+        let invalidValidators = 0
+        formValidators.forEach(invalid => { if (invalid == true) invalidValidators++ })
+        if (invalidValidators == 0 && this.interiorRoadsSitesInfo.valid) {
+            this.mapForm();
+            this.sendFormStatus(['interiorRoadsFormStatus', 2]);
         } else {
-            console.log('not valid');
+            this.sendFormStatus(['interiorRoadsFormStatus', 1]);
             return;
         }
-    }
+}
 
     get f() { return this.interiorRoadsSitesInfo.controls; }
 
     clearChanges() {
-        this.interiorRoadsSitesInfo.reset();
         this.submitted = false;
-        //resetting toggle text to no
-        this.separateSeasonalSection = false;
-        this.selfContainedUnits = false;
-        this.fullHookupUnits = false;
-        this.bigRigSite = false;
-        this.slideOuts = false;
-        // resetting radio cards
-        this.roadConditionRadioValue = '';
-        this.sideHookupsRadioValue = '';
-        this.shadedSitesRadioValue = ''; 
+        if (this.interiorRoadsGetObj != null) {
+          this.interiorRoadsSitesInfo.patchValue({
+            interiorRoadConditionId: this.currentListing.interiorRoads.interiorRoadConditionId,
+            interiorRoadTypeId: this.currentListing.interiorRoads.interiorRoadTypeId,
+            totalSpaces: this.currentListing.siteInfo.totalSpaces,
+            numberAvailable: this.currentListing.siteInfo.numberAvailable,
+            numberExtendedStaySites: this.currentListing.siteInfo.numberExtendedStaySites,
+            numberPermanentSites: this.currentListing.siteInfo.numberPermanentSites,
+            separateSeasonalSection: this.currentListing.siteInfo.separateSeasonalSection,
+            numberPaved: this.currentListing.siteInfo.numberPaved,
+            numberAllWeather: this.currentListing.siteInfo.numberAllWeather,
+            numberGravel: this.currentListing.siteInfo.numberGravel,
+            numberGrass: this.currentListing.siteInfo.numberGrass,
+            numberDirt: this.currentListing.siteInfo.numberDirt,
+            numberFullHookups: this.currentListing.siteInfo.numberFullHookups,
+            numberWater: this.currentListing.siteInfo.numberWater,
+            numberSewer: this.currentListing.siteInfo.numberSewer,
+            numberElectric: this.currentListing.siteInfo.numberElectric,
+            noHookups: this.currentListing.siteInfo.noHookups,
+            ampId: this.currentListing.siteInfo.ampId,
+            sideBySideHookupId: this.currentListing.siteInfo.sideBySideHookupId,
+            bigRigSites: this.currentListing.siteInfo.bigRigSites,
+            acceptsFullHookupUnitsOnly: this.currentListing.siteInfo.acceptsFullHookupUnitsOnly,
+            acceptsSelfContainedUnitsOnly: this.currentListing.siteInfo.acceptsSelfContainedUnitsOnly,
+            pullThruWidth: this.currentListing.siteInfo.pullThruWidth,
+            pullThruLength: this.currentListing.siteInfo.pullThruLength,
+            numberOfPullThrus: this.currentListing.siteInfo.numberOfPullThrus,
+            backInWidth: this.currentListing.siteInfo.backInWidth,
+            backInLength: this.currentListing.siteInfo.backInLength,
+            slideOuts: this.currentListing.siteInfo.slideOuts,
+            shadeTypeId: this.currentListing.siteInfo.shadeTypeId
+          }); 
+          this.setAttributes();
+        } else {
+            this.interiorRoadsSitesInfo.reset({
+                interiorRoadConditionId: null,
+                interiorRoadTypeId: null,
+                totalSpaces: null,
+                numberAvailable: null,
+                numberExtendedStaySites: null,
+                numberPermanentSites: null,
+                separateSeasonalSection: false,
+                numberPaved: null,
+                numberAllWeather: null,
+                numberGravel: null,
+                numberGrass: null,
+                numberDirt: null,
+                numberFullHookups: null,
+                numberWater: null,
+                numberSewer: null,
+                numberElectric: null,
+                noHookups: null,
+                ampId: null,
+                sideBySideHookupId: null,
+                bigRigSites: false,
+                acceptsFullHookupUnitsOnly: false,
+                acceptsSelfContainedUnitsOnly: false,
+                pullThruWidth: null,
+                pullThruLength: null,
+                numberOfPullThrus: null,
+                backInWidth: null,
+                backInLength: null,
+                slideOuts: null,
+                shadeTypeId: null,
+            });
+            this.setAttributes();
       }
+    }
 
     getFormDropDownData() {
         this.allRefsTmp = window.localStorage.getItem('all-refs');
         this.allRefsObj = JSON.parse(this.allRefsTmp);
-        console.log(this.allRefsObj)
         for(let [key, value] of Object.entries(this.allRefsObj)) {
             if(key === 'interiorRoadTypes') {
                 this.typesFromService = value;
@@ -118,60 +230,108 @@ export class InteriorRoadsSiteInformationComponent implements OnInit {
         }
     }
 
-    checkBoxSeasonalChange(cb:any) {
-        this.separateSeasonalSection = !this.separateSeasonalSection;
+    setAttributes(){
+        if (this.currentListing != null) {
+            for(let [key, value] of Object.entries(this.currentListing.interiorRoads)) {
+                if(key === 'interiorRoadTypeId') {
+                    this.interiorRoadTypeCSS.nativeElement.setAttribute('value', value) 
+                }
+            }
+            for(let [key, value] of Object.entries(this.currentListing.siteInfo)) {
+                if(key === 'ampId') {
+                    this.ampCSS.nativeElement.setAttribute('value', value) 
+                }
+            }
+        } else {
+            this.interiorRoadTypeCSS.nativeElement.setAttribute('value', null)
+            this.ampCSS.nativeElement.setAttribute('value', null)
+        }  
+    }
+    sendFormStatus(value: any) {
+        this.listingNavService.updateFormStatus(value)
+    }
+    postForm() {
+        this.ls.postInteriorRoads(this.interiorRoadsPostObj, this.fileNum).subscribe(response => {
+            if(response){
+            this.postResponse = response;
+            }
+        })
     }
 
-    checkBoxSelfContainedChange(cb:any) {
-        this.selfContainedUnits = !this.selfContainedUnits;
-    }
+    mapForm(){
+        const interiorRoads = {
+            interiorRoadConditionId : this.interiorRoadsSitesInfo.value.interiorRoadConditionId,
+            interiorRoadTypeId : this.interiorRoadsSitesInfo.value.interiorRoadTypeId,
+        }
+        this.interiorRoadsPostObj.interiorRoads = interiorRoads;
+        const siteInfo = {
+            totalSpaces: this.interiorRoadsSitesInfo.value.totalSpaces,
+            numberAvailable: this.interiorRoadsSitesInfo.value.numberAvailable,
+            numberExtendedStaySites: this.interiorRoadsSitesInfo.value.numberExtendedStaySites,
+            numberPermanentSites: this.interiorRoadsSitesInfo.value.numberPermanentSites,
+            separateSeasonalSection: this.interiorRoadsSitesInfo.value.separateSeasonalSection,
+            numberPaved: this.interiorRoadsSitesInfo.value.numberPaved,
+            numberAllWeather: this.interiorRoadsSitesInfo.value.numberAllWeather,
+            numberGravel: this.interiorRoadsSitesInfo.value.numberGravel,
+            numberGrass: this.interiorRoadsSitesInfo.value.numberGrass,
+            numberDirt: this.interiorRoadsSitesInfo.value.numberDirt,
+            numberFullHookups: this.interiorRoadsSitesInfo.value.numberFullHookups,
+            numberWater: this.interiorRoadsSitesInfo.value.numberWater,
+            numberSewer: this.interiorRoadsSitesInfo.value.numberSewer,
+            numberElectric: this.interiorRoadsSitesInfo.value.numberElectric,
+            noHookups: this.interiorRoadsSitesInfo.value.noHookups,
+            ampId: this.interiorRoadsSitesInfo.value.ampId,
+            sideBySideHookupId: this.interiorRoadsSitesInfo.value.sideBySideHookupId,
+            bigRigSites: this.interiorRoadsSitesInfo.value.bigRigSites,
+            acceptsFullHookupUnitsOnly: this.interiorRoadsSitesInfo.value.acceptsFullHookupUnitsOnly,
+            acceptsSelfContainedUnitsOnly: this.interiorRoadsSitesInfo.value.acceptsSelfContainedUnitsOnly,
+            pullThruWidth: this.interiorRoadsSitesInfo.value.pullThruWidth,
+            pullThruLength: this.interiorRoadsSitesInfo.value.pullThruLength,
+            numberOfPullThrus: this.interiorRoadsSitesInfo.value.numberOfPullThrus,
+            backInWidth: this.interiorRoadsSitesInfo.value.backInWidth,
+            backInLength: this.interiorRoadsSitesInfo.value.backInLength,
+            slideOuts: this.interiorRoadsSitesInfo.value.slideOuts,
+            shadeTypeId: this.interiorRoadsSitesInfo.value.shadeTypeId
+        }
+        this.interiorRoadsPostObj.siteInfo = siteInfo;
+        for(let [key, value] of Object.entries(this.interiorRoadsPostObj.siteInfo)) {
+            if(value === false) {
+                this.interiorRoadsPostObj.siteInfo[key] = 'f';
+            }
+            if(value === true) {
+                this.interiorRoadsPostObj.siteInfo[key] = 't';
 
-    checkBoxFullHookupChange(cb:any) {
-        this.fullHookupUnits = !this.fullHookupUnits;
-    }
+            }
+        }
+        this.postForm();
+      }
 
-    checkBoxBigRigChange(cb:any) {
-        this.bigRigSite = !this.bigRigSite;
-    }
+    // Start Custom Validatiors
+    get rvSpacesAvailInvalid() {
+        let sum = this.interiorRoadsSitesInfo.value.numberPaved + this.interiorRoadsSitesInfo.value.numberAllWeather + 
+                this.interiorRoadsSitesInfo.value.numberGrass + this.interiorRoadsSitesInfo.value.numberGravel + 
+                this.interiorRoadsSitesInfo.value.numberDirt;
+        if (this.interiorRoadsSitesInfo.value.numberAvailable !== sum) {
+          return true
+        } else { return false }
+      }
 
-    checkBoxSlideOutsChange(cb:any) {
-        this.slideOuts = !this.slideOuts;
-    }
+      get totalSpacesInvalid() {
+        let sum = this.interiorRoadsSitesInfo.value.numberAvailable + this.interiorRoadsSitesInfo.value.numberPermanentSites + 
+                this.interiorRoadsSitesInfo.value.numberExtendedStaySites;
+        if (this.interiorRoadsSitesInfo.value.totalSpaces !== sum) {
+          return true
+        } else { return false }
+      }
 
-    roadConditionRadioChecked(radio: any) {
-        if(radio === "Good") {
-            this.roadConditionRadioValue = "Good";
-        }
-        if(radio === "Fair") {
-            this.roadConditionRadioValue = "Fair";
-        }
-        if(radio === "Poor") {
-            this.roadConditionRadioValue = "Poor";
-        }
-    }
+      get numberOfPullThrusInvalid() {
+        let sum = this.interiorRoadsSitesInfo.value.numberAvailable + this.interiorRoadsSitesInfo.value.numberPermanentSites + 
+                this.interiorRoadsSitesInfo.value.numberExtendedStaySites;
+        if (this.interiorRoadsSitesInfo.value.totalSpaces !== sum) {
+          return true
+        } else { return false }
+      }
 
-    sideHookupsRadioChecked(radio: any) {
-        if(radio === "None") {
-            this.sideHookupsRadioValue = "None";
-        }
-        if(radio === "Some") {
-            this.sideHookupsRadioValue = "Some";
-        }
-        if(radio === "Most") {
-            this.sideHookupsRadioValue = "Most";
-        }
-    }
 
-    shadedSitesRadioChecked(radio: any) {
-        if(radio === "None") {
-            this.shadedSitesRadioValue = "None";
-        }
-        if(radio === "Some") {
-            this.shadedSitesRadioValue = "Some";
-        }
-        if(radio === "Most") {
-            this.shadedSitesRadioValue = "Most";
-        }
-    }
-
+    // End Custom Validators
 }

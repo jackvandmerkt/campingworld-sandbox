@@ -112,7 +112,6 @@ export class RecreationComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    // if (this.dualShuffleboard == 0) {
     if(this.recreationForm.valid && this.dualShuffleboard == false) {
         console.log('this.recreationForm.value inside onSubmit if valid');
         console.log(this.recreationForm.value);
@@ -232,7 +231,6 @@ export class RecreationComponent implements OnInit {
             this.recreationPostObj[key] = 't';
         }
     }
-    // console.log(this.recreationPostObj)
     this.ls.postRecreation(this.recreationPostObj, this.fileNum).subscribe(response => {
       if(response){
         this.postResponse = response;

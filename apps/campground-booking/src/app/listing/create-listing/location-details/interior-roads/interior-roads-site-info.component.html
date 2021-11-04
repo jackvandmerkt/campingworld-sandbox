@@ -10,28 +10,39 @@
         <div class="col-span-2 pb-10">
             <div class="flex flex-row space-x-4">
                 <div *ngFor="let c of conditionsFromService; let i = index" class="relative">
-                    <input (click)="roadConditionRadioChecked(c.value)" formControlName="roadConditionRadio" [value]='c.value' class="hidden" id="roadCondition_{{c.id}}" type="radio" name="roadConditionRadio">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="roadCondition_{{c.id}}">
-                        <img *ngIf="roadConditionRadioValue === c.value" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-                        <p class="absolute font-bold text-center place-self-center top-16 font-cw">{{c.value}}</p>
+                    <input formControlName="interiorRoadConditionId"
+                        [value]='c.id' class="hidden" id="roadCondition_{{c.id}}" type="radio"
+                        name="interiorRoadConditionId">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray"
+                        for="roadCondition_{{c.id}}">
+                        <img *ngIf="interiorRoadsSitesInfo.value.interiorRoadConditionId === c.id"
+                            class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+                            src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">{{c.value}}</p>
                     </label>
                 </div>
             </div>
-            <div *ngIf="submitted && f.roadConditionRadio.errors">
-                <div *ngIf="f.roadConditionRadio.errors.required" class="pt-2 font-cw text-cwRed text-14px24px">Please select a road condition.</div>
+            <div *ngIf="submitted && f.interiorRoadConditionId.errors">
+                <div *ngIf="f.interiorRoadConditionId.errors.required" class="pt-2 font-cw text-cwRed text-14px24px">Please
+                    select a road condition.</div>
             </div>
         </div>
-        
 
-        <div class="relative col-span-2 pb-15 f-outline">
-            <select name="interiorRoadType" formControlName="interiorRoadType" value="" [ngClass]="{'error-border': submitted && f.interiorRoadType.errors }"
-            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
-            <option value=""></option>
-            <option *ngFor="let t of typesFromService" [ngValue]="t.id">{{t.value}}</option>
+
+        <div class="relative z-0 col-span-2 pb-15 f-outline">
+            <select name="interiorRoadTypeId" formControlName="interiorRoadTypeId" value="null" #interiorRoadType
+                [ngClass]="{'error-border': submitted && f.interiorRoadTypeId.errors }"
+                onclick="this.setAttribute('value', this.value);"
+                class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+                <option value="null"></option>
+                <option *ngFor="let t of typesFromService" [ngValue]="t.id">{{t.value}}</option>
             </select>
-            <label for="interiorRoadType" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.interiorRoadType.errors }">Interior road type</label>
-            <div *ngIf="submitted && f.interiorRoadType.errors">
-                <div *ngIf="f.interiorRoadType.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select an interior road type.</div>
+            <label for="interiorRoadTypeId"
+                class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                [ngClass]="{'error-label': submitted && f.interiorRoadTypeId.errors }">Interior road type</label>
+            <div *ngIf="submitted && f.interiorRoadTypeId.errors">
+                <div *ngIf="f.interiorRoadTypeId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please
+                    select an interior road type.</div>
             </div>
         </div>
 
@@ -40,77 +51,98 @@
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-11 long-label">
-                <input type="text" formControlName="totalSpaces" name="totalSpaces" placeholder=" " [ngClass]="{'error-border': submitted && f.totalSpaces.errors }"
+            <div class="relative z-0 f-outline">
+                <input type="number" formControlName="totalSpaces" name="totalSpaces" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.totalSpaces.errors || totalSpacesInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-141 h-13 border-cwBadgeGray focus:outline-none" />
                 <label for="totalSpaces"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.totalSpaces.errors }">Total spaces</label>
-                
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.totalSpaces.errors || totalSpacesInvalid}">Total spaces</label>
+
                 <div *ngIf="submitted && f.totalSpaces.errors">
-                    <div *ngIf="f.totalSpaces.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                    <div *ngIf="f.totalSpaces.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
                 <div *ngIf="submitted && f.totalSpaces.errors">
-                    <div *ngIf="f.totalSpaces.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                    <div *ngIf="f.totalSpaces.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter
+                        a valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-11 site-counts">
-                <input type="text" formControlName="numAvailable" name="numAvailable" placeholder=" " [ngClass]="{'error-border': submitted && f.numAvailable.errors }"
+            <div class="relative z-0 f-outline">
+                <input type="number" formControlName="numberAvailable" name="numberAvailable" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberAvailable.errors || totalSpacesInvalid || rvSpacesAvailInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-141 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numAvailable"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numAvailable.errors }"># available</label>
-                
-                <div *ngIf="submitted && f.numAvailable.errors">
-                    <div *ngIf="f.numAvailable.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberAvailable"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberAvailable.errors || totalSpacesInvalid || rvSpacesAvailInvalid}"># available</label>
+
+                <div *ngIf="submitted && f.numberAvailable.errors">
+                    <div *ngIf="f.numberAvailable.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numAvailable.errors">
-                    <div *ngIf="f.numAvailable.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberAvailable.errors">
+                    <div *ngIf="f.numberAvailable.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please
+                        enter a valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-11 site-counts">
-                <input type="text" formControlName="numSeasonal" name="numSeasonal" placeholder=" " [ngClass]="{'error-border': submitted && f.numSeasonal.errors }"
+            <div class="relative z-0 f-outline">
+                <input type="number" formControlName="numberExtendedStaySites" name="numberExtendedStaySites" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberExtendedStaySites.errors || totalSpacesInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-141 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numSeasonal"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numSeasonal.errors }"># seasonal</label>
-            
-                <div *ngIf="submitted && f.numSeasonal.errors">
-                    <div *ngIf="f.numSeasonal.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberExtendedStaySites"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberExtendedStaySites.errors || totalSpacesInvalid}"># seasonal</label>
+
+                <div *ngIf="submitted && f.numberExtendedStaySites.errors">
+                    <div *ngIf="f.numberExtendedStaySites.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numSeasonal.errors">
-                    <div *ngIf="f.numSeasonal.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberExtendedStaySites.errors">
+                    <div *ngIf="f.numberExtendedStaySites.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter
+                        a valid number.</div>
                 </div>
             </div>
-    
-            <div class="relative pb-11 site-counts">
-                <input type="text" formControlName="numPermanent" name="numPermanent" placeholder=" " [ngClass]="{'error-border': submitted && f.numPermanent.errors }"
+
+            <div class="relative z-0 f-outline">
+                <input type="number" formControlName="numberPermanentSites" name="numberPermanentSites" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberPermanentSites.errors || totalSpacesInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-141 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numPermanent"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numPermanent.errors }"># permanent</label>
-                
-                <div *ngIf="submitted && f.numPermanent.errors">
-                    <div *ngIf="f.numPermanent.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberPermanentSites"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberPermanentSites.errors || totalSpacesInvalid}"># permanent</label>
+
+                <div *ngIf="submitted && f.numberPermanentSites.errors">
+                    <div *ngIf="f.numberPermanentSites.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numPermanent.errors">
-                    <div *ngIf="f.numPermanent.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberPermanentSites.errors">
+                    <div *ngIf="f.numberPermanentSites.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please
+                        enter a valid number.</div>
                 </div>
             </div>
         </div>
+        <div *ngIf="totalSpacesInvalid" class="col-span-2 pt-2 pl-3 font-cw text-cwRed text-11px20px">
+            Total Spaces must be equal to the sum of # available, # seasonal, # permanent
+        </div>
+        <div *ngIf="rvSpacesAvailInvalid" class="col-span-2 pt-2 pl-3 font-cw text-cwRed text-11px20px">
+            # available must be equal to the sum of # paved, # all weather, # gravel, # grass, # dirt
+        </div>
 
-        <div class="pb-16">
+        <div class="pb-16 pt-11">
             <p class="font-cw">Separate seasonal section?</p>
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-16">
-            <p *ngIf="!separateSeasonalSection" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-            <p *ngIf="separateSeasonalSection" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleSeasonal" class="flex items-center cursor-pointer">
+            <p *ngIf="interiorRoadsSitesInfo.value.separateSeasonalSection == false" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="interiorRoadsSitesInfo.value.separateSeasonalSection == true" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="separateSeasonalSection" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
-                <!-- input -->
-                <input  type="checkbox" formControlName="toggleSeasonal" (click)="checkBoxSeasonalChange(this);" id="toggleSeasonal" class="sr-only">
-                <!-- line -->
-                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-                <!-- dot -->
-                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    <!-- input -->
+                    <input type="checkbox" formControlName="separateSeasonalSection"
+                        id="separateSeasonalSection" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
                 </div>
             </label>
         </div>
@@ -120,159 +152,197 @@
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 f-outline">
-                <input type="text" formControlName="numPaved" name="numPaved" placeholder=" " [ngClass]="{'error-border': submitted && f.numPaved.errors }"
+            <div class="relative z-0 pb-10 f-outline">
+                <input type="number" formControlName="numberPaved" name="numberPaved" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberPaved.errors || rvSpacesAvailInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numPaved"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numPaved.errors }"># paved</label>
-           
-                <div *ngIf="submitted && f.numPaved.errors">
-                    <div *ngIf="f.numPaved.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberPaved"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberPaved.errors || rvSpacesAvailInvalid}"># paved</label>
+
+                <div *ngIf="submitted && f.numberPaved.errors">
+                    <div *ngIf="f.numberPaved.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numPaved.errors">
-                    <div *ngIf="f.numPaved.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberPaved.errors">
+                    <div *ngIf="f.numberPaved.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-10 long-label">
-                <input type="text" formControlName="numAllWeather" name="numAllWeather" placeholder=" " [ngClass]="{'error-border': submitted && f.numAllWeather.errors }"
+            <div class="relative z-0 pb-10 f-outline">
+                <input type="number" formControlName="numberAllWeather" name="numberAllWeather" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberAllWeather.errors || rvSpacesAvailInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numAllWeather"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numAllWeather.errors }"># all weather</label>
-            
-                <div *ngIf="submitted && f.numAllWeather.errors">
-                    <div *ngIf="f.numAllWeather.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberAllWeather"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberAllWeather.errors || rvSpacesAvailInvalid}"># all weather</label>
+
+                <div *ngIf="submitted && f.numberAllWeather.errors">
+                    <div *ngIf="f.numberAllWeather.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numAllWeather.errors">
-                    <div *ngIf="f.numAllWeather.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberAllWeather.errors">
+                    <div *ngIf="f.numberAllWeather.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please
+                        enter a valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-10 f-outline">
-                <input type="text" formControlName="numGravel" name="numGravel" placeholder=" " [ngClass]="{'error-border': submitted && f.numGravel.errors }"
+            <div class="relative z-0 pb-10 f-outline">
+                <input type="number" formControlName="numberGravel" name="numberGravel" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberGravel.errors || rvSpacesAvailInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numGravel"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numGravel.errors }"># gravel</label>
-            
-                <div *ngIf="submitted && f.numGravel.errors">
-                    <div *ngIf="f.numGravel.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberGravel"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberGravel.errors || rvSpacesAvailInvalid}"># gravel</label>
+
+                <div *ngIf="submitted && f.numberGravel.errors">
+                    <div *ngIf="f.numberGravel.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numGravel.errors">
-                    <div *ngIf="f.numGravel.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberGravel.errors">
+                    <div *ngIf="f.numberGravel.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-15 f-outline">
-                <input type="text" formControlName="numGrass" name="numGrass" placeholder=" " [ngClass]="{'error-border': submitted && f.numGrass.errors }"
+            <div class="relative z-0 f-outline">
+                <input type="number" formControlName="numberGrass" name="numberGrass" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberGrass.errors || rvSpacesAvailInvalid}"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numGrass"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numGrass.errors }"># grass</label>
-           
-                <div *ngIf="submitted && f.numGrass.errors">
-                    <div *ngIf="f.numGrass.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberGrass"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberGrass.errors || rvSpacesAvailInvalid}"># grass</label>
+
+                <div *ngIf="submitted && f.numberGrass.errors">
+                    <div *ngIf="f.numberGrass.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numGrass.errors">
-                    <div *ngIf="f.numGrass.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
-                </div>
-             </div>
-            <div class="relative pb-15 shorter-label">
-                <input type="text" formControlName="numDirt" name="numDirt" placeholder=" " [ngClass]="{'error-border': submitted && f.numDirt.errors }"
-                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numDirt"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numDirt.errors }"># dirt</label>
-            
-                <div *ngIf="submitted && f.numDirt.errors">
-                    <div *ngIf="f.numDirt.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
-                </div>
-                <div *ngIf="submitted && f.numDirt.errors">
-                    <div *ngIf="f.numDirt.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberGrass.errors">
+                    <div *ngIf="f.numberGrass.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
+            <div class="relative z-0 f-outline">
+                <input type="number" formControlName="numberDirt" name="numberDirt" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberDirt.errors || rvSpacesAvailInvalid}"
+                    class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
+                <label for="numberDirt"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberDirt.errors || rvSpacesAvailInvalid}"># dirt</label>
+
+                <div *ngIf="submitted && f.numberDirt.errors">
+                    <div *ngIf="f.numberDirt.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
+                </div>
+                <div *ngIf="submitted && f.numberDirt.errors">
+                    <div *ngIf="f.numberDirt.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="rvSpacesAvailInvalid" class="col-span-2 pt-2 pl-3 font-cw text-cwRed text-11px20px">
+            # available must be equal to the sum of # paved, # all weather, # gravel, # grass, # dirt
         </div>
 
         <div class="flex col-span-2">
-            <p class="font-bold font-cw text-cwGray text-18px24px pb-7.5">Site Hookups</p>
+            <p class="font-bold font-cw text-cwGray text-18px24px pt-15 pb-7.5">Site Hookups</p>
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-10 long-label">
-                <input type="text" formControlName="numFullHookups" name="numFullHookups" placeholder=" " [ngClass]="{'error-border': submitted && f.numFullHookups.errors }"
+            <div class="relative z-0 pb-10 f-outline">
+                <input type="number" formControlName="numberFullHookups" name="numberFullHookups" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberFullHookups.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numFullHookups"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numFullHookups.errors }"># full hookups</label>
-            
-                <div *ngIf="submitted && f.numFullHookups.errors">
-                    <div *ngIf="f.numFullHookups.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberFullHookups"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberFullHookups.errors }"># full hookups</label>
+
+                <div *ngIf="submitted && f.numberFullHookups.errors">
+                    <div *ngIf="f.numberFullHookups.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numFullHookups.errors">
-                    <div *ngIf="f.numFullHookups.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberFullHookups.errors">
+                    <div *ngIf="f.numberFullHookups.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please
+                        enter a valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-10 f-outline">
-                <input type="text" formControlName="numWater" name="numWater" placeholder=" " [ngClass]="{'error-border': submitted && f.numWater.errors }"
+            <div class="relative z-0 pb-10 f-outline">
+                <input type="number" formControlName="numberWater" name="numberWater" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberWater.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numWater"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numWater.errors }"># water</label>
-            
-                <div *ngIf="submitted && f.numWater.errors">
-                    <div *ngIf="f.numWater.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberWater"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberWater.errors }"># water</label>
+
+                <div *ngIf="submitted && f.numberWater.errors">
+                    <div *ngIf="f.numberWater.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numWater.errors">
-                    <div *ngIf="f.numWater.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberWater.errors">
+                    <div *ngIf="f.numberWater.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-10 f-outline">
-                <input type="text" formControlName="numSewer" name="numSewer" placeholder=" " [ngClass]="{'error-border': submitted && f.numSewer.errors }"
+            <div class="relative z-0 pb-10 f-outline">
+                <input type="number" formControlName="numberSewer" name="numberSewer" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberSewer.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numSewer"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numSewer.errors }"># sewer</label>
-            
-                <div *ngIf="submitted && f.numSewer.errors">
-                    <div *ngIf="f.numSewer.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberSewer"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberSewer.errors }"># sewer</label>
+
+                <div *ngIf="submitted && f.numberSewer.errors">
+                    <div *ngIf="f.numberSewer.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numSewer.errors">
-                    <div *ngIf="f.numSewer.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberSewer.errors">
+                    <div *ngIf="f.numberSewer.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-15 f-outline">
-                <input type="text" formControlName="numElectric" name="numElectric" placeholder=" " [ngClass]="{'error-border': submitted && f.numElectric.errors }"
+            <div class="relative z-0 pb-15 f-outline">
+                <input type="number" formControlName="numberElectric" name="numberElectric" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberElectric.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numElectric"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numElectric.errors }"># electric</label>
-            
-                <div *ngIf="submitted && f.numElectric.errors">
-                    <div *ngIf="f.numElectric.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberElectric"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberElectric.errors }"># electric</label>
+
+                <div *ngIf="submitted && f.numberElectric.errors">
+                    <div *ngIf="f.numberElectric.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numElectric.errors">
-                    <div *ngIf="f.numElectric.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberElectric.errors">
+                    <div *ngIf="f.numberElectric.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter
+                        a valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-15 long-label">
-                <input type="text" formControlName="numNoHookups" name="numNoHookups" placeholder=" " [ngClass]="{'error-border': submitted && f.numNoHookups.errors }"
+            <div class="relative z-0 pb-15 f-outline">
+                <input type="number" formControlName="noHookups" name="noHookups" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.noHookups.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numNoHookups"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numNoHookups.errors }"># no hookups</label>
-            
-                <div *ngIf="submitted && f.numNoHookups.errors">
-                    <div *ngIf="f.numNoHookups.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="noHookups"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.noHookups.errors }"># no hookups</label>
+
+                <div *ngIf="submitted && f.noHookups.errors">
+                    <div *ngIf="f.noHookups.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numNoHookups.errors">
-                    <div *ngIf="f.numNoHookups.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.noHookups.errors">
+                    <div *ngIf="f.noHookups.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please
+                        enter a valid number.</div>
                 </div>
             </div>
-            <div class="relative col-span-2 pb-10 ">
-                <select name="amps" formControlName="amps" value="" [ngClass]="{'error-border': submitted && f.amps.errors }"
-                onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none amps w-196 h-13 border-cwBadgeGray focus:outline-none">
-                <option value=""></option>
-                <option *ngFor="let a of ampsFromService" [ngValue]="a.id">{{a.value}}</option>
+            <div class="relative z-0 col-span-2 pb-10 f-outline">
+                <select name="ampId" formControlName="ampId" value="null" #ampId
+                    [ngClass]="{'error-border': submitted && f.ampId.errors }"
+                    onclick="this.setAttribute('value', this.value);"
+                    class="block bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none">
+                    <option value="null"></option>
+                    <option *ngFor="let a of ampsFromService" [ngValue]="a.id">{{a.value}}</option>
                 </select>
-                <label for="amps" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.amps.errors }">Amps</label>
-            
-                <div *ngIf="submitted && f.amps.errors">
-                    <div *ngIf="f.amps.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select a value.</div>
+                <label for="ampId"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.ampId.errors }">Amps</label>
+
+                <div *ngIf="submitted && f.ampId.errors">
+                    <div *ngIf="f.ampId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please select a
+                        value.</div>
                 </div>
             </div>
         </div>
@@ -283,35 +353,43 @@
         <div class="col-span-2 pb-11">
             <div class="flex flex-row space-x-4">
                 <div *ngFor="let h of hookupsFromService" class="relative">
-                    <input (click)="sideHookupsRadioChecked(h.value)" formControlName="sideHookupsRadio" [value]='h.value' class="hidden" id="sideHookups_{{h.id}}" type="radio" name="sideHookupsRadio">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="sideHookups_{{h.id}}">
-                        <img *ngIf="sideHookupsRadioValue === h.value" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-                        <p class="absolute font-bold text-center place-self-center top-16 font-cw">{{h.value}}</p>
+                    <input formControlName="sideBySideHookupId"
+                        [value]='h.id' class="hidden" id="sideHookups_{{h.id}}" type="radio" name="sideBySideHookupId">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray"
+                        for="sideHookups_{{h.id}}">
+                        <img *ngIf="interiorRoadsSitesInfo.value.sideBySideHookupId === h.id"
+                            class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+                            src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">{{h.value}}</p>
                     </label>
                 </div>
             </div>
-            <div *ngIf="submitted && f.sideHookupsRadio.errors">
-                <div *ngIf="f.sideHookupsRadio.errors.required" class="pt-2 font-cw text-cwRed text-14px24px">Please select a value for Side by Side Hookups.</div>
+            <div *ngIf="submitted && f.sideBySideHookupId.errors">
+                <div *ngIf="f.sideBySideHookupId.errors.required" class="pt-2 font-cw text-cwRed text-14px24px">Please
+                    select a value for Side by Side Hookups.</div>
             </div>
         </div>
-        
+
 
         <div class="pb-11">
             <p class="font-cw">Big rig sites?</p>
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-11">
-            <p *ngIf="!bigRigSite" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-            <p *ngIf="bigRigSite" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleBigRig" class="flex items-center cursor-pointer">
+            <p *ngIf="interiorRoadsSitesInfo.value.bigRigSites == false" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="interiorRoadsSitesInfo.value.bigRigSites == true" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="bigRigSites" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
-                <!-- input -->
-                <input  type="checkbox" formControlName="toggleBigRig" (click)="checkBoxBigRigChange(this);" id="toggleBigRig" class="sr-only">
-                <!-- line -->
-                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-                <!-- dot -->
-                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    <!-- input -->
+                    <input type="checkbox" formControlName="bigRigSites"
+                        id="bigRigSites" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
                 </div>
             </label>
         </div>
@@ -320,17 +398,20 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-11">
-            <p *ngIf="!fullHookupUnits" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-            <p *ngIf="fullHookupUnits" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleFullHookup" class="flex items-center cursor-pointer">
+            <p *ngIf="interiorRoadsSitesInfo.value.acceptsFullHookupUnitsOnly == false" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="interiorRoadsSitesInfo.value.acceptsFullHookupUnitsOnly == true" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="acceptsFullHookupUnitsOnly" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
-                <!-- input -->
-                <input  type="checkbox" formControlName="toggleFullHookup" (click)="checkBoxFullHookupChange(this);" id="toggleFullHookup" class="sr-only">
-                <!-- line -->
-                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-                <!-- dot -->
-                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    <!-- input -->
+                    <input type="checkbox" formControlName="acceptsFullHookupUnitsOnly"
+                        id="acceptsFullHookupUnitsOnly" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
                 </div>
             </label>
         </div>
@@ -339,17 +420,20 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-16">
-            <p *ngIf="!selfContainedUnits" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-            <p *ngIf="selfContainedUnits" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleSelfContained" class="flex items-center cursor-pointer">
+            <p *ngIf="interiorRoadsSitesInfo.value.acceptsSelfContainedUnitsOnly == false" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="interiorRoadsSitesInfo.value.acceptsSelfContainedUnitsOnly == true" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="acceptsSelfContainedUnitsOnly" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
-                <!-- input -->
-                <input  type="checkbox" formControlName="toggleSelfContained" (click)="checkBoxSelfContainedChange(this);" id="toggleSelfContained" class="sr-only">
-                <!-- line -->
-                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-                <!-- dot -->
-                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    <!-- input -->
+                    <input type="checkbox" formControlName="acceptsSelfContainedUnitsOnly"
+                         id="acceptsSelfContainedUnitsOnly" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
                 </div>
             </label>
         </div>
@@ -360,76 +444,91 @@
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-5 longer-label">
-                <input type="text" formControlName="pullThruW" name="pullThruW" placeholder=" " [ngClass]="{'error-border': submitted && f.pullThruW.errors }"
+            <div class="relative z-0 pb-5 f-outline">
+                <input type="number" formControlName="pullThruWidth" name="pullThruWidth" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.pullThruWidth.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="pullThruW"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.pullThruW.errors }">Pull-thru width</label>
+                <label for="pullThruWidth"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.pullThruWidth.errors }">Pull-thru width</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In feet</p>
-            
-                <div *ngIf="submitted && f.pullThruW.errors">
-                    <div *ngIf="f.pullThruW.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+
+                <div *ngIf="submitted && f.pullThruWidth.errors">
+                    <div *ngIf="f.pullThruWidth.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.pullThruW.errors">
-                    <div *ngIf="f.pullThruW.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.pullThruWidth.errors">
+                    <div *ngIf="f.pullThruWidth.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-5 longer-label">
-                <input type="text" formControlName="pullThruL" name="pullThruL" placeholder=" " [ngClass]="{'error-border': submitted && f.pullThruL.errors }"
+            <div class="relative z-0 pb-5 f-outline">
+                <input type="number" formControlName="pullThruLength" name="pullThruLength" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.pullThruLength.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="pullThruL"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.pullThruL.errors }">Pull-thru length</label>
+                <label for="pullThruLength"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.pullThruLength.errors }">Pull-thru length</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In feet</p>
-            
-                <div *ngIf="submitted && f.pullThruL.errors">
-                    <div *ngIf="f.pullThruL.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+
+                <div *ngIf="submitted && f.pullThruLength.errors">
+                    <div *ngIf="f.pullThruLength.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.pullThruL.errors">
-                    <div *ngIf="f.pullThruL.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.pullThruLength.errors">
+                    <div *ngIf="f.pullThruLength.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-10 longer-label">
-                <input type="text" formControlName="numOfPullThrus" name="numOfPullThrus" placeholder=" " [ngClass]="{'error-border': submitted && f.numOfPullThrus.errors }"
+            <div class="relative z-0 pb-10 f-outline">
+                <input type="number" formControlName="numberOfPullThrus" name="numberOfPullThrus" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.numberOfPullThrus.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="numOfPullThrus"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.numOfPullThrus.errors }"># of pull-thrus</label>
-            
-                <div *ngIf="submitted && f.numOfPullThrus.errors">
-                    <div *ngIf="f.numOfPullThrus.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+                <label for="numberOfPullThrus"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.numberOfPullThrus.errors }"># of pull-thrus</label>
+
+                <div *ngIf="submitted && f.numberOfPullThrus.errors">
+                    <div *ngIf="f.numberOfPullThrus.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.numOfPullThrus.errors">
-                    <div *ngIf="f.numOfPullThrus.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.numberOfPullThrus.errors">
+                    <div *ngIf="f.numberOfPullThrus.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please
+                        enter a valid number.</div>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-row col-span-2 space-x-6">
-            <div class="relative pb-6 longer-label">
-                <input type="text" formControlName="backInW" name="backInW" placeholder=" " [ngClass]="{'error-border': submitted && f.backInW.errors }"
+            <div class="relative z-0 pb-6 f-outline">
+                <input type="number" formControlName="backInWidth" name="backInWidth" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.backInWidth.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="backInW"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.backInW.errors }">Back-in width</label>
+                <label for="backInWidth"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.backInWidth.errors }">Back-in width</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In feet</p>
-            
-                <div *ngIf="submitted && f.backInW.errors">
-                    <div *ngIf="f.backInW.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+
+                <div *ngIf="submitted && f.backInWidth.errors">
+                    <div *ngIf="f.backInWidth.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.backInW.errors">
-                    <div *ngIf="f.backInW.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.backInWidth.errors">
+                    <div *ngIf="f.backInWidth.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
-            <div class="relative pb-6 longer-label">
-                <input type="text" formControlName="backInL" name="backInL" placeholder=" " [ngClass]="{'error-border': submitted && f.backInL.errors }"
+            <div class="relative z-0 pb-6 f-outline">
+                <input type="number" formControlName="backInLength" name="backInLength" placeholder=" "
+                    [ngClass]="{'error-border': submitted && f.backInLength.errors }"
                     class="block px-3 bg-transparent border rounded appearance-none w-196 h-13 border-cwBadgeGray focus:outline-none" />
-                <label for="backInL"
-                    class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.backInL.errors }">Back-in length</label>
+                <label for="backInLength"
+                    class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                    [ngClass]="{'error-label': submitted && f.backInLength.errors }">Back-in length</label>
                 <p class="pl-3 text-cwGray text-11px20px font-cw opacity-60">In feet</p>
-            
-                <div *ngIf="submitted && f.backInL.errors">
-                    <div *ngIf="f.backInL.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+
+                <div *ngIf="submitted && f.backInLength.errors">
+                    <div *ngIf="f.backInLength.errors.min" class="pl-3 font-cw text-cwRed text-11px20px">Please do not enter a 0, leave field empty instead.</div>
                 </div>
-                <div *ngIf="submitted && f.backInL.errors">
-                    <div *ngIf="f.backInL.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+                <div *ngIf="submitted && f.backInLength.errors">
+                    <div *ngIf="f.backInLength.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a
+                        valid number.</div>
                 </div>
             </div>
         </div>
@@ -439,17 +538,20 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-15">
-            <p *ngIf="!slideOuts" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-            <p *ngIf="slideOuts" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleSlideOuts" class="flex items-center cursor-pointer">
+            <p *ngIf="interiorRoadsSitesInfo.value.slideOuts == false" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="interiorRoadsSitesInfo.value.slideOuts == true" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="slideOuts" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
-                <!-- input -->
-                <input  type="checkbox" formControlName="toggleSlideOuts" (click)="checkBoxSlideOutsChange(this);" id="toggleSlideOuts" class="sr-only">
-                <!-- line -->
-                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-                <!-- dot -->
-                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    <!-- input -->
+                    <input type="checkbox" formControlName="slideOuts"
+                        id="slideOuts" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
                 </div>
             </label>
         </div>
@@ -461,26 +563,33 @@
         <div class="col-span-2 pb-10">
             <div class="flex flex-row space-x-4">
                 <div *ngFor="let s of shadedFromService" class="relative">
-                    <input (click)="shadedSitesRadioChecked(s.value)" formControlName="shadedSitesRadio" [value]='s.value' class="hidden" id="shadedSites_{{s.id}}" type="radio" name="shadedSitesRadio">
-                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shadedSites_{{s.id}}">
-                        <img *ngIf="shadedSitesRadioValue === s.value" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
-                        <p class="absolute font-bold text-center place-self-center top-16 font-cw">{{s.value}}</p>
+                    <input formControlName="shadeTypeId"
+                        [value]='s.id' class="hidden" id="shadedSites_{{s.id}}" type="radio" name="shadeTypeId">
+                    <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray"
+                        for="shadedSites_{{s.id}}">
+                        <img *ngIf="interiorRoadsSitesInfo.value.shadeTypeId === s.id"
+                            class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
+                            src="assets/images/active.png" alt="active">
+                        <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">{{s.value}}</p>
                     </label>
                 </div>
             </div>
-            <div *ngIf="submitted && f.shadedSitesRadio.errors">
-                <div *ngIf="f.shadedSitesRadio.errors.required" class="pt-2 font-cw text-cwRed text-14px24px">Please select a value for Shaded Sites.</div>
-            </div>
-        </div>
-        
-        <div class="flex flex-row col-span-2 pb-10">
-            <div class="">
-                <button type="button" data='Clear' (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
-            </div>
-            <div class="pl-6">
-                <button data='Submit' class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+            <div *ngIf="submitted && f.shadeTypeId.errors">
+                <div *ngIf="f.shadeTypeId.errors.required" class="pt-2 font-cw text-cwRed text-14px24px">Please
+                    select a value for Shaded Sites.</div>
             </div>
         </div>
 
+        <div class="flex flex-row col-span-2 pb-10">
+            <div class="">
+                <button type="button" data='Clear' (click)="clearChanges()"
+                    class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+                    Changes</button>
+            </div>
+            <div class="pl-6">
+                <button data='Submit' class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save &
+                    Continue</button>
+            </div>
+        </div>
     </div>
 </form>

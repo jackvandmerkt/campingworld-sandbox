@@ -48,7 +48,7 @@
         <input class="hidden" formControlName="archeryRange" id="archeryRange"
           type="checkbox" name="archeryRange">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-cw bg-navGray" for="archeryRange">
-          <img *ngIf="recreationForm.value.archeryRange || recreationForm.value.archeryRange == 't'"
+          <img *ngIf="recreationForm.value.archeryRange == true || recreationForm.value.archeryRange == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Archery
@@ -59,7 +59,7 @@
         <input class="hidden" formControlName="badminton" id="badminton" type="checkbox"
           name="badminton">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="badminton">
-          <img *ngIf="recreationForm.value.badminton"
+          <img *ngIf="recreationForm.value.badminton == true || recreationForm.value.badminton == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Badminton
@@ -70,7 +70,7 @@
         <input class="hidden" formControlName="basketball" id="basketball" type="checkbox"
           name="basketball">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="basketball">
-          <img *ngIf="recreationForm.value.basketball"
+          <img *ngIf="recreationForm.value.basketball == true || recreationForm.value.basketball == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">
@@ -82,7 +82,7 @@
         <input class="hidden" formControlName="bikeRentals" id="bikeRentals"
           type="checkbox" name="bikeRentals">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bikeRentals">
-          <img *ngIf="recreationForm.value.bikeRentals"
+          <img *ngIf="recreationForm.value.bikeRentals == true || recreationForm.value.bikeRentals == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Bike
@@ -93,7 +93,7 @@
         <input class="hidden" formControlName="billiardRoom" id="billiardRoom"
           type="checkbox" name="billiardRoom">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="billiardRoom">
-          <img *ngIf="recreationForm.value.billiardRoom"
+          <img *ngIf="recreationForm.value.billiardRoom == true || recreationForm.value.billiardRoom == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Billiard
@@ -104,7 +104,7 @@
         <input class="hidden" formControlName="poolRoom1Table" id="poolRoom1Table"
           type="checkbox" name="poolRoom1Table">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="poolRoom1Table">
-          <img *ngIf="recreationForm.value.poolRoom1Table"
+          <img *ngIf="recreationForm.value.poolRoom1Table == true || recreationForm.value.poolRoom1Table == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-6 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -116,7 +116,7 @@
         <input class="hidden" formControlName="bocceBall" id="bocceBall" type="checkbox"
           name="bocceBall">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bocceBall">
-          <img *ngIf="recreationForm.value.bocceBall"
+          <img *ngIf="recreationForm.value.bocceBall == true || recreationForm.value.bocceBall == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Bocce
@@ -127,7 +127,7 @@
         <input class="hidden" formControlName="bouncePillow" id="bouncePillow"
           type="checkbox" name="bouncePillow">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="bouncePillow">
-          <img *ngIf="recreationForm.value.bouncePillow"
+          <img *ngIf="recreationForm.value.bouncePillow == true || recreationForm.value.bouncePillow == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Bounce
@@ -138,7 +138,7 @@
         <input class="hidden" formControlName="childrensActivities"
           id="childrensActivities" type="checkbox" name="childrensActivities">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="childrensActivities">
-          <img *ngIf="recreationForm.value.childrensActivities"
+          <img *ngIf="recreationForm.value.childrensActivities == true || recreationForm.value.childrensActivities == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -149,7 +149,7 @@
         <input class="hidden" formControlName="drivingRange" id="drivingRange"
           type="checkbox" name="drivingRange">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="drivingRange">
-          <img *ngIf="recreationForm.value.drivingRange"
+          <img *ngIf="recreationForm.value.drivingRange == true || recreationForm.value.drivingRange == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Driving
@@ -160,7 +160,7 @@
         <input class="hidden" formControlName="enclosedGameRoom" id="enclosedGameRoom"
           type="checkbox" name="enclosedGameRoom">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="enclosedGameRoom">
-          <img *ngIf="recreationForm.value.enclosedGameRoom"
+          <img *ngIf="recreationForm.value.enclosedGameRoom == true || recreationForm.value.enclosedGameRoom == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -171,7 +171,7 @@
         <input class="hidden" formControlName="enclosedRecreationHall"
           id="enclosedRecreationHall" type="checkbox" name="enclosedRecreationHall">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="enclosedRecreationHall">
-          <img *ngIf="recreationForm.value.enclosedRecreationHall"
+          <img *ngIf="recreationForm.value.enclosedRecreationHall == true || recreationForm.value.enclosedRecreationHall == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -182,7 +182,7 @@
         <input class="hidden" formControlName="exerciseRoom" id="exerciseRoom"
           type="checkbox" name="exerciseRoom">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="exerciseRoom">
-          <img *ngIf="recreationForm.value.exerciseRoom"
+          <img *ngIf="recreationForm.value.exerciseRoom == true || recreationForm.value.exerciseRoom == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Exercise
@@ -193,7 +193,7 @@
         <input class="hidden" formControlName="frisbeeGolf" id="frisbeeGolf"
           type="checkbox" name="frisbeeGolf">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="frisbeeGolf">
-          <img *ngIf="recreationForm.value.frisbeeGolf"
+          <img *ngIf="recreationForm.value.frisbeeGolf == true || recreationForm.value.frisbeeGolf == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Frisbee
@@ -204,7 +204,7 @@
         <input class="hidden" formControlName="golf" id="golf" type="checkbox"
           name="golf">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="golf">
-          <img *ngIf="recreationForm.value.golf"
+          <img *ngIf="recreationForm.value.golf == true || recreationForm.value.golf == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Golf</p>
@@ -214,7 +214,7 @@
         <input class="hidden" formControlName="horsebackRiding" id="horsebackRiding"
           type="checkbox" name="horsebackRiding">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="horsebackRiding">
-          <img *ngIf="recreationForm.value.horsebackRiding"
+          <img *ngIf="recreationForm.value.horsebackRiding == true || recreationForm.value.horsebackRiding == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -225,7 +225,7 @@
         <input class="hidden" formControlName="horseshoes" id="horseshoes" type="checkbox"
           name="horseshoes">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="horseshoes">
-          <img *ngIf="recreationForm.value.horseshoes"
+          <img *ngIf="recreationForm.value.horseshoes == true || recreationForm.value.horseshoes == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">
@@ -236,7 +236,7 @@
         <input class="hidden" formControlName="ladderBall" id="ladderBall" type="checkbox"
           name="ladderBall">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="ladderBall">
-          <img *ngIf="recreationForm.value.ladderBall"
+          <img *ngIf="recreationForm.value.ladderBall == true || recreationForm.value.ladderBall == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Ladder
@@ -247,7 +247,7 @@
         <input class="hidden" formControlName="lawnBowling" id="lawnBowling"
           type="checkbox" name="lawnBowling">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="lawnBowling">
-          <img *ngIf="recreationForm.value.lawnBowling"
+          <img *ngIf="recreationForm.value.lawnBowling == true || recreationForm.value.lawnBowling == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Lawn
@@ -258,7 +258,7 @@
         <input class="hidden" formControlName="lawnChess" id="lawnChess" type="checkbox"
           name="lawnChess">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="lawnChess">
-          <img *ngIf="recreationForm.value.lawnChess"
+          <img *ngIf="recreationForm.value.lawnChess == true || recreationForm.value.lawnChess == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Lawn
@@ -269,7 +269,7 @@
         <input class="hidden" formControlName="miniGolfNonPro" id="miniGolfNonPro"
           type="checkbox" name="miniGolfNonPro">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="miniGolfNonPro">
-          <img *ngIf="recreationForm.value.miniGolfNonPro"
+          <img *ngIf="recreationForm.value.miniGolfNonPro == true || recreationForm.value.miniGolfNonPro == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-5 font-bold text-center text-14px24px text-cwGray place-self-center top-10 font-cw">Mini
@@ -281,7 +281,7 @@
         <input class="hidden" formControlName="miniGolfPro" id="miniGolfPro"
           type="checkbox" name="miniGolfPro">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="miniGolfPro">
-          <img *ngIf="recreationForm.value.miniGolfPro"
+          <img *ngIf="recreationForm.value.miniGolfPro == true || recreationForm.value.miniGolfPro == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Mini
@@ -292,7 +292,7 @@
         <input class="hidden" formControlName="natureTrails" id="natureTrails"
           type="checkbox" name="natureTrails">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="natureTrails">
-          <img *ngIf="recreationForm.value.natureTrails"
+          <img *ngIf="recreationForm.value.natureTrails == true || recreationForm.value.natureTrails == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Nature
@@ -303,7 +303,7 @@
         <input class="hidden" formControlName="outdoorGames" id="outdoorGames"
           type="checkbox" name="outdoorGames">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="outdoorGames">
-          <img *ngIf="recreationForm.value.outdoorGames"
+          <img *ngIf="recreationForm.value.outdoorGames == true || recreationForm.value.outdoorGames == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Outdoor
@@ -314,7 +314,7 @@
         <input class="hidden" formControlName="pavilion" id="pavilion" type="checkbox"
           name="pavilion">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="pavilion">
-          <img *ngIf="recreationForm.value.pavilion"
+          <img *ngIf="recreationForm.value.pavilion == true || recreationForm.value.pavilion == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pavilion
@@ -325,7 +325,7 @@
         <input class="hidden" formControlName="pedalCarts" id="pedalCarts" type="checkbox"
           name="pedalCarts">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="pedalCarts">
-          <img *ngIf="recreationForm.value.pedalCarts"
+          <img *ngIf="recreationForm.value.pedalCarts == true || recreationForm.value.pedalCarts == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pedal
@@ -336,7 +336,7 @@
         <input class="hidden" formControlName="pickleBall" id="pickleBall" type="checkbox"
           name="pickleBall">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="pickleBall">
-          <img *ngIf="recreationForm.value.pickleBall"
+          <img *ngIf="recreationForm.value.pickleBall == true || recreationForm.value.pickleBall == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Pickle
@@ -347,7 +347,7 @@
         <input class="hidden" formControlName="plannedActivities" id="plannedActivities"
           type="checkbox" name="plannedActivities">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="plannedActivities">
-          <img *ngIf="recreationForm.value.plannedActivities"
+          <img *ngIf="recreationForm.value.plannedActivities == true || recreationForm.value.plannedActivities == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Planned
@@ -358,7 +358,7 @@
         <input class="hidden" formControlName="playground" id="playground" type="checkbox"
           name="playground">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="playground">
-          <img *ngIf="recreationForm.value.playground"
+          <img *ngIf="recreationForm.value.playground == true || recreationForm.value.playground == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">
@@ -369,7 +369,7 @@
         <input class="hidden" formControlName="puttingGreen" id="puttingGreen"
           type="checkbox" name="puttingGreen">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="puttingGreen">
-          <img *ngIf="recreationForm.value.puttingGreen"
+          <img *ngIf="recreationForm.value.puttingGreen == true || recreationForm.value.puttingGreen == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Putting
@@ -380,7 +380,7 @@
         <input class="hidden" formControlName="sauna" id="sauna" type="checkbox"
           name="sauna">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="sauna">
-          <img *ngIf="recreationForm.value.sauna"
+          <img *ngIf="recreationForm.value.sauna == true || recreationForm.value.sauna == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Sauna</p>
@@ -390,7 +390,7 @@
         <input class="hidden" formControlName="shuffleboard" id="shuffleboard"
           type="checkbox" name="shuffleboard">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="shuffleboard">
-          <img *ngIf="recreationForm.value.shuffleboard"
+          <img *ngIf="recreationForm.value.shuffleboard == true || recreationForm.value.shuffleboard == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">
@@ -401,7 +401,7 @@
         <input class="hidden" formControlName="oneShuffleboard" id="oneShuffleboard"
           type="checkbox" name="oneShuffleboard">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="oneShuffleboard">
-          <img *ngIf="recreationForm.value.oneShuffleboard"
+          <img *ngIf="recreationForm.value.oneShuffleboard == true || recreationForm.value.oneShuffleboard == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">One
@@ -412,7 +412,7 @@
         <input class="hidden" formControlName="softball" id="softball" type="checkbox"
           name="softball">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="softball">
-          <img *ngIf="recreationForm.value.softball"
+          <img *ngIf="recreationForm.value.softball == true || recreationForm.value.softball == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Softball
@@ -423,7 +423,7 @@
         <input class="hidden" formControlName="tennis" id="tennis" type="checkbox"
           name="tennis">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="tennis">
-          <img *ngIf="recreationForm.value.tennis"
+          <img *ngIf="recreationForm.value.tennis == true || recreationForm.value.tennis == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Tennis
@@ -434,7 +434,7 @@
         <input class="hidden" formControlName="touristAttractions" id="touristAttractions"
           type="checkbox" name="touristAttractions">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="touristAttractions">
-          <img *ngIf="recreationForm.value.touristAttractions"
+          <img *ngIf="recreationForm.value.touristAttractions == true || recreationForm.value.touristAttractions == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -445,7 +445,7 @@
         <input class="hidden" formControlName="volleyball" id="volleyball" type="checkbox"
           name="volleyball">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="volleyball">
-          <img *ngIf="recreationForm.value.volleyball"
+          <img *ngIf="recreationForm.value.volleyball == true || recreationForm.value.volleyball == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">
@@ -462,8 +462,8 @@
         <p class="font-cw ">Casino on-site?</p>
       </div>
       <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p *ngIf="!recreationForm.value.casinoOnSite" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-        <p *ngIf="recreationForm.value.casinoOnSite" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+        <p *ngIf="recreationForm.value.casinoOnSite == false || recreationForm.value.casinoOnSite== 'f' || recreationForm.value.casinoOnSite == null" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="recreationForm.value.casinoOnSite == true || recreationForm.value.casinoOnSite == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
         <label for="casinoOnSite" class="flex items-center cursor-pointer">
           <!-- toggle -->
           <div class="relative">
@@ -504,7 +504,7 @@
         <input class="hidden" formControlName="archeryRangeNearby" id="archeryRangeNearby"
           type="checkbox" name="archeryRangeNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="archeryRangeNearby">
-          <img *ngIf="recreationForm.value.archeryRangeNearby"
+          <img *ngIf="recreationForm.value.archeryRangeNearby == true || recreationForm.value.archeryRangeNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Archery
@@ -515,7 +515,7 @@
         <input class="hidden" formControlName="atvRidingNearby" id="atvRidingNearby"
           type="checkbox" name="atvRidingNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="atvRidingNearby">
-          <img *ngIf="recreationForm.value.atvRidingNearby"
+          <img *ngIf="recreationForm.value.atvRidingNearby == true || recreationForm.value.atvRidingNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">ATV
@@ -526,7 +526,7 @@
         <input class="hidden" formControlName="casinoNearby" id="casinoNearby"
           type="checkbox" name="casinoNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="casinoNearby">
-          <img *ngIf="recreationForm.value.casinoNearby"
+          <img *ngIf="recreationForm.value.casinoNearby == true || recreationForm.value.casinoNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Casino
@@ -537,7 +537,7 @@
         <input class="hidden" formControlName="hikingNearby" id="hikingNearby"
           type="checkbox" name="hikingNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="hikingNearby">
-          <img *ngIf="recreationForm.value.hikingNearby"
+          <img *ngIf="recreationForm.value.hikingNearby == true || recreationForm.value.hikingNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Hiking
@@ -548,7 +548,7 @@
         <input class="hidden" formControlName="mountainBikingNearby"
           id="mountainBikingNearby" type="checkbox" name="mountainBikingNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="mountainBikingNearby">
-          <img *ngIf="recreationForm.value.mountainBikingNearby"
+          <img *ngIf="recreationForm.value.mountainBikingNearby == true || recreationForm.value.mountainBikingNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Mountain
@@ -559,7 +559,7 @@
         <input class="hidden" formControlName="roadBikingTrailsNearby"
           id="roadBikingTrailsNearby" type="checkbox" name="roadBikingTrailsNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="roadBikingTrailsNearby">
-          <img *ngIf="recreationForm.value.roadBikingTrailsNearby"
+          <img *ngIf="recreationForm.value.roadBikingTrailsNearby == true || recreationForm.value.roadBikingTrailsNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Road
@@ -570,7 +570,7 @@
         <input class="hidden" formControlName="rockClimbingNearby" id="rockClimbingNearby"
           type="checkbox" name="rockClimbingNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="rockClimbingNearby">
-          <img *ngIf="recreationForm.value.rockClimbingNearby"
+          <img *ngIf="recreationForm.value.rockClimbingNearby == true || recreationForm.value.rockClimbingNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">Rock
@@ -581,7 +581,7 @@
         <input class="hidden" formControlName="snowSportsNearby" id="snowSportsNearby"
           type="checkbox" name="snowSportsNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="snowSportsNearby">
-          <img *ngIf="recreationForm.value.snowSportsNearby"
+          <img *ngIf="recreationForm.value.snowSportsNearby == true || recreationForm.value.snowSportsNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Snow
@@ -592,7 +592,7 @@
         <input class="hidden" formControlName="things" id="things" type="checkbox"
           name="things">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="things">
-          <img *ngIf="recreationForm.value.things"
+          <img *ngIf="recreationForm.value.things == true || recreationForm.value.things == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-4 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -607,7 +607,7 @@
         <input class="hidden" formControlName="huntingNearby" id="huntingNearby"
           type="checkbox" name="huntingNearby">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="huntingNearby">
-          <img *ngIf="recreationForm.value.huntingNearby"
+          <img *ngIf="recreationForm.value.huntingNearby == true || recreationForm.value.huntingNearby == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-11 font-cw">Hunting
@@ -620,7 +620,7 @@
         <input class="hidden" formControlName="cleaningFacilities" id="cleaningFacilities"
           type="checkbox" name="cleaningFacilities">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="cleaningFacilities">
-          <img *ngIf="recreationForm.value.cleaningFacilities"
+          <img *ngIf="recreationForm.value.cleaningFacilities == true || recreationForm.value.cleaningFacilities == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -632,7 +632,7 @@
         <input class="hidden" formControlName="meatStorageFacilities"
           id="meatStorageFacilities" type="checkbox" name="meatStorageFacilities">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="meatStorageFacilities">
-          <img *ngIf="recreationForm.value.meatStorageFacilities"
+          <img *ngIf="recreationForm.value.meatStorageFacilities == true || recreationForm.value.meatStorageFacilities == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -644,7 +644,7 @@
         <input class="hidden" formControlName="huntingLicenses" id="huntingLicenses"
           type="checkbox" name="huntingLicenses">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="huntingLicenses">
-          <img *ngIf="recreationForm.value.huntingLicenses"
+          <img *ngIf="recreationForm.value.huntingLicenses == true || recreationForm.value.huntingLicenses == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -656,7 +656,7 @@
         <input class="hidden" formControlName="huntingGuideServices"
           id="huntingGuideServices" type="checkbox" name="huntingGuideServices">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="huntingGuideServices">
-          <img *ngIf="recreationForm.value.huntingGuideServices"
+          <img *ngIf="recreationForm.value.huntingGuideServices == true || recreationForm.value.huntingGuideServices == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute mx-2 font-bold text-center text-14px24px text-cwGray place-self-center top-13 font-cw">
@@ -670,7 +670,7 @@
         <p class="font-cw ">Hunting season year-round?</p>
       </div>
       <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p *ngIf="!recreationForm.value.huntingSeasonYearRound || recreationForm.value.huntingSeasonYearRound == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+        <p *ngIf="recreationForm.value.huntingSeasonYearRound == false || recreationForm.value.huntingSeasonYearRound == 'f' || recreationForm.value.huntingSeasonYearRound == null" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
         <p *ngIf="recreationForm.value.huntingSeasonYearRound == true || recreationForm.value.huntingSeasonYearRound == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
         <label for="huntingSeasonYearRound" class="flex items-center cursor-pointer">
           <!-- toggle -->
@@ -693,7 +693,7 @@
         <input class="hidden" formControlName="huntingWinter" id="huntingWinter"
           type="checkbox" name="huntingWinter">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="huntingWinter">
-          <img *ngIf="recreationForm.value.huntingWinter"
+          <img *ngIf="recreationForm.value.huntingWinter == true || recreationForm.value.huntingWinter == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Winter
@@ -704,7 +704,7 @@
         <input class="hidden" formControlName="huntingSpring" id="huntingSpring"
           type="checkbox" name="huntingSpring">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="huntingSpring">
-          <img *ngIf="recreationForm.value.huntingSpring"
+          <img *ngIf="recreationForm.value.huntingSpring == true || recreationForm.value.huntingSpring == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Spring
@@ -715,7 +715,7 @@
         <input class="hidden" formControlName="huntingSummer" id="huntingSummer"
           type="checkbox" name="huntingSummer">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="huntingSummer">
-          <img *ngIf="recreationForm.value.huntingSummer"
+          <img *ngIf="recreationForm.value.huntingSummer == true || recreationForm.value.huntingSummer == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Summer
@@ -726,7 +726,7 @@
         <input class="hidden" formControlName="huntingFall" id="huntingFall"
           type="checkbox" name="huntingFall">
         <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="huntingFall">
-          <img *ngIf="recreationForm.value.huntingFall"
+          <img *ngIf="recreationForm.value.huntingFall == true || recreationForm.value.huntingFall == 't'"
             class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm"
             src="assets/images/active.png" alt="active">
           <p class="absolute font-bold text-center text-14px24px text-cwGray place-self-center top-16 font-cw">Fall</p>
@@ -761,10 +761,10 @@
     </div>
     <div class="grid grid-cols-2 gap-6 mt-6 w-636">
       <div class="relative z-0 pb-10 f-outline">
-        <select formControlName="plannedFamilyActivitiesId" name="plannedFamilyActivitiesId" placeholder=" " value=""
+        <select formControlName="plannedFamilyActivitiesId" name="plannedFamilyActivitiesId" #plannedFamilyActivitiesId placeholder=" " value="null"
           onclick="this.setAttribute('value', this.value);"
           class="block bg-transparent border rounded appearance-none w-306 h-13 longer-label border-cwBadgeGray focus:outline-none">
-          <option value=""></option>
+          <option value="null"></option>
           <option *ngFor="let f of familyActivitiesFromService" [value]="f.id">{{f.value}}</option>
         </select>
         <label for="plannedFamilyActivitiesId"

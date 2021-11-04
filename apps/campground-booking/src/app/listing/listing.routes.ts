@@ -31,6 +31,7 @@ import { RestroomsResolver } from "./create-listing/amenities/restrooms/restroom
 import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-services/on-site-services.resolver.service";
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
 import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
+import { InteriorRoadsResolver } from "./create-listing/location-details/interior-roads/interior-roads.resolver.service";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
@@ -51,7 +52,8 @@ export const listingRoutes: Routes = [
       { path: 'advertising-codes', component: AdvertisingCodesComponent },
       { path: 'good-sam-park', component: GoodSamParkComponent },
       { path: 'policies', component: PoliciesComponent },
-      { path: 'interior-roads', component: InteriorRoadsSiteInformationComponent },
+      { path: 'interior-roads/:fileNumber', component: InteriorRoadsSiteInformationComponent,
+        resolve: {data:InteriorRoadsResolver} },
       { path: 'eco-friendly', component: EcoFriendlyComponent },
       { path: 'rates-reservations', component: RatesReservationsComponent },
       { path: 'restrooms/:fileNumber', component: RestroomsComponent,
