@@ -37,8 +37,10 @@
                   <a [routerLink]="['./contact-info',fileNumber]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Contact Info</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./discounts-affiliations" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p></a>
+                <img *ngIf='formSubmitStatus.discountsAffiliationFormStatus === 0' class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+                <img *ngIf='formSubmitStatus.discountsAffiliationFormStatus === 1' class="w-5 h-5" src="/assets/images/error.png" alt="error">
+                <img *ngIf='formSubmitStatus.discountsAffiliationFormStatus === 2' class="w-5 h-5" src="/assets/images/green-check.png" alt="green-check">
+                  <a [routerLink]="['./discounts-affiliations', fileNumber]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Discounts & Affiliation</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">

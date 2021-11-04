@@ -3,55 +3,68 @@
         <div class="grid col-span-2">
             <p class="font-bold font-cw text-cwGray text-28px34px pb-9">Discounts & Affiliations</p>
         </div>
-            <div class="">
-                <p class="font-cw">AAA discount?</p>
-            </div>
-            <div class="flex items-center justify-end w-full pr-2 mb-10">
-            <p *ngIf="!isAAAChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-            <p *ngIf="isAAAChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleAAA" class="flex items-center cursor-pointer">
+        <div class="">
+            <p class="font-cw">AAA discount?</p>
+        </div>
+        <div class="flex items-center justify-end w-full pr-2 mb-10">
+            <p *ngIf="!discountsAffiliations.value.aaaDiscount" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="discountsAffiliations.value.aaaDiscount" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="aaaDiscount" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
-                <!-- input -->
-                <input type="checkbox" formControlName="toggleAAA" (click)="checkBoxAAAChange(this);" id="toggleAAA" class="sr-only">
-                <!-- line -->
-                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-                <!-- dot -->
-                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    <!-- input -->
+                    <input type="checkbox" formControlName="aaaDiscount"
+                        id="aaaDiscount" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
                 </div>
             </label>
-            </div>
-    
+        </div>
+
 
         <div class="">
             <p class="font-cw">Military discount?</p>
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p *ngIf="!isMilitaryChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-        <p *ngIf="isMilitaryChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-        <label for="toggleMilitary" class="flex items-center cursor-pointer">
-            <!-- toggle -->
-            <div class="relative">
-            <!-- input -->
-            <input type="checkbox" formControlName="toggleMilitary" (click)="checkBoxMilitaryChange(this);" id="toggleMilitary" class="sr-only">
-            <!-- line -->
-            <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-            <!-- dot -->
-            <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-            </div>
-        </label>
+            <p *ngIf="!discountsAffiliations.value.militaryDiscount"
+                class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="discountsAffiliations.value.militaryDiscount" class="pr-6 font-cw text-cwGray text-16px26px">Yes
+            </p>
+            <label for="militaryDiscount" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                    <!-- input -->
+                    <input type="checkbox" formControlName="militaryDiscount"
+                        id="militaryDiscount" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
+                </div>
+            </label>
         </div>
 
-        <div class="relative col-span-2 pb-10 f-outline">
-            <select name="affiliation" formControlName="affiliation" value="" [ngClass]="{'error-border': submitted && f.affiliation.errors }"
-            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
-            <option value=""></option>
-            <option *ngFor="let a of affiliationsFromService">{{a.value}}</option>
+        <div class="relative z-0 col-span-2 pb-10 f-outline">
+            <select name="affiliationId" formControlName="affiliationId" value="null" #affiliationId
+                [ngClass]="{'error-border': submitted && f.affiliationId.errors }"
+                onclick="this.setAttribute('value', this.value);"
+                class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none">
+                <option value="null"></option>
+                <option *ngFor="let a of affiliationsFromService" [ngValue]="a.id">{{a.value}}</option>
             </select>
-            <label for="affiliation" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.affiliation.errors }">Affiliation</label>
-            <div *ngIf="submitted && f.affiliation.errors">
-                <div *ngIf="f.affiliation.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Affiliation is required.</div>
+            <label for="affiliationId"
+                 class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                [ngClass]="{'error-label': submitted && f.affiliationId.errors }">Affiliation</label>
+            <div *ngIf="submitted && f.affiliationId.errors">
+                <div *ngIf="f.affiliationId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Affiliation
+                    is required.</div>
             </div>
         </div>
 
@@ -60,30 +73,39 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p *ngIf="!isARVCChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-        <p *ngIf="isARVCChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-        <label for="toggleARVC" class="flex items-center cursor-pointer">
-            <!-- toggle -->
-            <div class="relative">
-            <!-- input -->
-            <input type="checkbox" formControlName="toggleARVC" (click)="checkBoxARVCChange(this);" id="toggleARVC" class="sr-only">
-            <!-- line -->
-            <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-            <!-- dot -->
-            <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-            </div>
-        </label>
+            <p *ngIf="!discountsAffiliations.value.membersOfArvc" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="discountsAffiliations.value.membersOfArvc" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="membersOfArvc" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                    <!-- input -->
+                    <input type="checkbox" formControlName="membersOfArvc"
+                        id="membersOfArvc" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
+                </div>
+            </label>
         </div>
 
-        <div class="relative col-span-2 pb-10 f-outline">
-            <select name="stateProvAffiliation" formControlName="stateProvAffiliation" value="" [ngClass]="{'error-border': submitted && f.stateProvAffiliation.errors }"
-            onclick="this.setAttribute('value', this.value);" class="block bg-transparent border rounded appearance-none State-Prov w-636 h-13 border-cwBadgeGray focus:outline-none">
-            <option value=""></option>
-            <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
+        <div class="relative z-0 col-span-2 pb-10 f-outline">
+            <select name="stateProvAssociationId" value="null" formControlName="stateProvAssociationId" #stateProvAssociationId
+                 [ngClass]="{'error-border': submitted && f.stateProvAssociationId.errors }"
+                onclick="this.setAttribute('value', this.value);"
+                class="block bg-transparent border rounded appearance-none State-Prov w-636 h-13 border-cwBadgeGray focus:outline-none">
+                <option value="null"></option>
+                <option *ngFor="let l of stateProvAssociationsFromService" value="null" [ngValue]="l.id">{{l.value}}</option>
             </select>
-            <label for="stateProvAffiliation" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-lato text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.stateProvAffiliation.errors }">State/Prov Affiliation</label>
-            <div *ngIf="submitted && f.stateProvAffiliation.errors">
-                <div *ngIf="f.stateProvAffiliation.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">State/Prov affiliation is required.</div>
+            <label for="stateProvAssociationId"
+                 class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack"
+                [ngClass]="{'error-label': submitted && f.stateProvAssociationId.errors }">State/Prov
+                Affiliation</label>
+            <div *ngIf="submitted && f.stateProvAssociationId.errors">
+                <div *ngIf="f.stateProvAssociationId.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">
+                    State/Prov affiliation is required.</div>
             </div>
         </div>
 
@@ -92,26 +114,30 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p *ngIf="!isNeighborChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-        <p *ngIf="isNeighborChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-        <label for="toggleGoodNeighbor" class="flex items-center cursor-pointer">
-            <!-- toggle -->
-            <div class="relative">
-            <!-- input -->
-            <input type="checkbox" formControlName="toggleGoodNeighbor" (click)="checkBoxNeighborChange(this);" id="toggleGoodNeighbor" class="sr-only">
-            <!-- line -->
-            <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-            <!-- dot -->
-            <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
-            </div>
-        </label>
+            <p *ngIf="!discountsAffiliations.value.goodNeighborPark" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="discountsAffiliations.value.goodNeighborPark" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="goodNeighborPark" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                    <!-- input -->
+                    <input type="checkbox" formControlName="goodNeighborPark"
+                        id="goodNeighborPark" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
+                </div>
+            </label>
         </div>
 
         <div class="relative col-span-2 pb-10 good-neighbor">
-            <input type="text" formControlName="goodNeighborParkNum" name="goodNeighborParkNum" placeholder=" "
+            <input type="text" formControlName="goodNeighborParkNumber" name="goodNeighborParkNumber" placeholder=" "
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-navGray bg-navGray focus:outline-none" />
-            <label for="goodNeighborParkNum"
-                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good Neighbor park number</label>
+            <label for="goodNeighborParkNumber"
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Good
+                Neighbor park number</label>
         </div>
 
         <div class="">
@@ -119,43 +145,51 @@
         </div>
 
         <div class="flex items-center justify-end w-full pr-2 mb-10">
-        <p *ngIf="!isCoastChecked" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-        <p *ngIf="isCoastChecked" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-            <label for="toggleCoast" class="flex items-center cursor-pointer">
+            <p *ngIf="!discountsAffiliations.value.coastToCoastPark" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+            <p *ngIf="discountsAffiliations.value.coastToCoastPark" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+            <label for="coastToCoastPark" class="flex items-center cursor-pointer">
                 <!-- toggle -->
                 <div class="relative">
-                <!-- input -->
-                <input  type="checkbox" formControlName="toggleCoast" (click)="checkBoxCoastChange(this);" id="toggleCoast" class="sr-only">
-                <!-- line -->
-                <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
-                <!-- dot -->
-                <div class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1"></div>
+                    <!-- input -->
+                    <input type="checkbox" formControlName="coastToCoastPark"
+                        id="coastToCoastPark" class="sr-only">
+                    <!-- line -->
+                    <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
+                    <!-- dot -->
+                    <div
+                        class="absolute w-6 h-6 transition bg-white border rounded-full border-cwBadgeGray dot left-1 top-1">
+                    </div>
                 </div>
             </label>
         </div>
 
         <div class="relative col-span-2 pb-10 coast-coast">
-            <input type="text" formControlName="coastToCoastMembershipNum" name="coastToCoastMembershipNum" placeholder=" " [ngClass]="{'error-border': submitted && f.coastToCoastMembershipNum.errors }"
+            <input type="text" formControlName="coastToCoastMembershipNumber" name="coastToCoastMembershipNumber"
+                placeholder=" " [ngClass]="{'error-border': submitted && f.coastToCoastMembershipNumber.errors }"
                 class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
-            <label for="coastToCoastMembershipNum"
-                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5" [ngClass]="{'error-label': submitted && f.coastToCoastMembershipNum.errors }">Coast To Coast membership number</label>
-        
-            <div *ngIf="submitted && f.coastToCoastMembershipNum.errors">
-                <div *ngIf="f.coastToCoastMembershipNum.errors.required" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
-            </div>
-            <div *ngIf="submitted && f.coastToCoastMembershipNum.errors">
-                <div *ngIf="f.coastToCoastMembershipNum.errors.pattern" class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
-            </div>  
-        </div>
-        
-        
+            <label for="coastToCoastMembershipNumber"
+                class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5"
+                [ngClass]="{'error-label': submitted && f.coastToCoastMembershipNumber.errors }">Coast To Coast
+                membership number</label>
 
+            <div *ngIf="submitted && f.coastToCoastMembershipNumber.errors">
+                <div *ngIf="f.coastToCoastMembershipNumber.errors.required"
+                    class="pl-3 font-cw text-cwRed text-11px20px">Please enter a value.</div>
+            </div>
+            <div *ngIf="submitted && f.coastToCoastMembershipNumber.errors">
+                <div *ngIf="f.coastToCoastMembershipNumber.errors.pattern"
+                    class="pl-3 font-cw text-cwRed text-11px20px">Please enter a valid number.</div>
+            </div>
+        </div>
         <div class="flex flex-row col-span-2 pb-10">
             <div class="">
-                <button type="button" data="Clear" (click)="clearChanges()" class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear Changes</button>
+                <button type="button" data="Clear" (click)="clearChanges()"
+                    class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
+                    Changes</button>
             </div>
             <div class="pl-6">
-                <button data="Submit" class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save & Continue</button>
+                <button data="Submit" class="text-white rounded hover:opacity-80 bg-cwRed font-cw h-13 w-44">Save &
+                    Continue</button>
             </div>
         </div>
     </div>
