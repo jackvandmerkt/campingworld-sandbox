@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
-import { CreateProposalComponent } from "./create-proposal/create-proposal.component";
+import { CreateProposalComponent } from "../proposal/create-proposal/create-proposal.component";
 import { AllListingsComponent } from "./all-listing/all-listing.component";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/amenities/recreation/recreation.component";

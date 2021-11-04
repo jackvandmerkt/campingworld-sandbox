@@ -9,7 +9,7 @@ import { listingReducer } from './state/listing.reducer'
 import { DatePickerModule, DateRangePickerModule } from "@syncfusion/ej2-angular-calendars";
 import { SharedModule } from "../shared/shared.module";
 import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
-import { CreateProposalComponent } from "./create-proposal/create-proposal.component";
+import { CreateProposalComponent } from "../proposal/create-proposal/create-proposal.component";
 import { AllListingsComponent } from "./all-listing/all-listing.component";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/amenities/recreation/recreation.component";
@@ -75,8 +75,7 @@ import { WaterRecreationResolver } from "./create-listing/amenities/water-recrea
     ListingUpdateDetailsComponent,
     RatingsComponent,
     AllListingsComponent,
-    AdSummaryComponent,
-    CreateProposalComponent
+    AdSummaryComponent
   ],
     imports: [
       BrowserModule,

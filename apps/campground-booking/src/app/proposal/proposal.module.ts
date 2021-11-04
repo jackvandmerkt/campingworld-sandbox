@@ -1,8 +1,10 @@
 import { NgModule } from "@angular/core";
 import { ListingModule } from "../listing/listing.module";
+import { CreateProposalComponent } from "./create-proposal/create-proposal.component";
 
 @NgModule({
-    declarations: [        
+    declarations: [  
+        CreateProposalComponent      
       ],
       imports: [
           ListingModule
