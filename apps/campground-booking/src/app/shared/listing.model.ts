@@ -229,6 +229,7 @@ export interface IAllRefs {
         }
       ]
 }
+//location info
 export interface IGoodSamRecordId {
   locationListingName:string,
   fileNumber:number,
@@ -279,6 +280,17 @@ export interface IContactInfo
   instagram:string,
   parkTypeId:number
 };
+export interface IDiscountsAndAffiliations {
+  aaaDiscount: string,
+  militaryDiscount: string,
+  affiliationId: number,
+  membersOfArvc: string,
+  stateProvAssociationId: number,
+  goodNeighborPark: string,
+  goodNeighborParkNumber: number,
+  coastToCoastPark: string,
+  coastToCoastMembershipNumber: string,
+}
 
 // Amenities Section Interfaces
 export interface IRestrooms {
