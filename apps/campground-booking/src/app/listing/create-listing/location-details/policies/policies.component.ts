@@ -40,8 +40,7 @@ export class PoliciesComponent implements OnInit {
     allowsTent: this.allowsTent,
     petsAllowed: this.petsAllowed,
     petsRestrictions: this.petsRestrictions,
-    start: '',
-    end: ''
+    season: null
   })
 
   ngOnInit(): void {

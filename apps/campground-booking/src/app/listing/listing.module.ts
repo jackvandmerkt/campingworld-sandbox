@@ -46,6 +46,7 @@ import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-servi
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
 import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
 import { InteriorRoadsResolver } from "./create-listing/location-details/interior-roads/interior-roads.resolver.service";
+import { EcoFriendlyResolver } from "./create-listing/location-details/eco-friendly/eco-friendly.resolver.service";
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { InteriorRoadsResolver } from "./create-listing/location-details/interio
       GoodSamRecordResolver,
       ContactInfoResolver,
       InteriorRoadsResolver,
+      EcoFriendlyResolver,
       RestroomsResolver,
       OnSiteServicesResolver,
       RecreationResolver,
