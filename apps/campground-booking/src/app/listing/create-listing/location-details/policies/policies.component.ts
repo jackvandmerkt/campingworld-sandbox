@@ -21,35 +21,52 @@ export class PoliciesComponent implements OnInit {
   petRestrictionsOpts: string[] = [];
   limitedOptions = ''
 
-  public start: Date = new Date("10/07/2017");
+  // public start: Date = new Date();
 
-  public end: Date = new Date("11/25/2017");
+  // public end: Date = new Date();
 
   constructor(private formBuilder: FormBuilder) {
 
   }
 
   policiesForm = this.formBuilder.group({
-    rvAgeRestrictions: '',
-    motorhomeClass: '',
-    isLessThan30Days: this.isLessThan30Days,
-    openAllYear: this.openAllYear,
-    limitedFacilities: this.limitedFacilities,
-    ageRestrictions: this.ageRestrictions,
-    familyCamping: this.familyCamping,
-    allowsTent: this.allowsTent,
-    petsAllowed: this.petsAllowed,
-    petsRestrictions: this.petsRestrictions,
-    season: null
+    maxStayLessThanThirty: false,
+    numberOfDaysMaxStay: null,
+    openAllYear: false,
+    areThereLimitedFacilities: false,
+    lfsLtdFacSummer: false,
+    lfwLtdFacWinter: false,
+    ageRestrictions: false,
+    familyCamping: false,
+    allowsTentCampers: false,
+    doesNotAllowClassAMotorhomes: false,
+    doesNotAllowClassBMotorhomes: false,
+    doesNotAllowClassCMotorhomes: false,
+    rvAgeRestrictions: null,
+    petsOk: false,
+    petRestrictions: false,
+    size: false,
+    quantity: false,
+    breed: false,
+    petPaid: false
   })
 
   ngOnInit(): void {
   }
 
-  get noPetsRestrictions() {
-    if (this.petsRestrictions && this.petRestrictionsOpts.length == 0) {
-      return true
-    } else { return false }
+  onSubmit(): void {
+    console.log(this.policiesForm.value);
+  }
+
+  clearChanges() {
+    this.policiesForm.reset()
+    this.motorhomeClass = ''
+    this.isLessThan30Days = false
+    this.openAllYear = false
+    this.ageRestrictions = false
+    this.familyCamping = false
+    this.allowsTent = false
+    this.petsAllowed = false
 
   }
 
@@ -58,7 +75,19 @@ export class PoliciesComponent implements OnInit {
   }
 
   limitedFacilitiesChecked(radio: string) {
-    this.limitedOptions = radio
+    console.log(radio)
+    if(radio == 'lfsLtdFacSummer') {
+      this.policiesForm.patchValue({
+        lfsLtdFacSummer: true,
+        lfwLtdFacWinter: false
+      })
+    } else if(radio == 'lfwLtdFacWinter') {
+      this.policiesForm.patchValue({
+        lfsLtdFacSummer: false,
+        lfwLtdFacWinter: true
+      })
+    }
+    console.log(this.policiesForm.value)
   }
 
   checkBoxIsLessThan30Days(cb: any) {
@@ -75,10 +104,6 @@ export class PoliciesComponent implements OnInit {
 
   checkBoxLimitedFacilities(cb: any) {
     this.limitedFacilities = !this.limitedFacilities;
-    if (!this.limitedFacilities) {
-      this.limitedOptions = ''
-    }
-
   }
 
 
@@ -122,19 +147,10 @@ export class PoliciesComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    console.log(this.policiesForm.value);
+  get noPetsRestrictions() {
+    if (this.petsRestrictions && this.petRestrictionsOpts.length == 0) {
+      return true
+    } else { return false }
   }
 
-  clearChanges() {
-    this.policiesForm.reset()
-    this.motorhomeClass = ''
-    this.isLessThan30Days = false
-    this.openAllYear = false
-    this.ageRestrictions = false
-    this.familyCamping = false
-    this.allowsTent = false
-    this.petsAllowed = false
-
-  }
 }
