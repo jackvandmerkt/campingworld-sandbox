@@ -48,6 +48,8 @@ import { WaterRecreationResolver } from "./create-listing/amenities/water-recrea
 import { InteriorRoadsResolver } from "./create-listing/location-details/interior-roads/interior-roads.resolver.service";
 import { EcoFriendlyResolver } from "./create-listing/location-details/eco-friendly/eco-friendly.resolver.service";
 import { OwnerAndB2BInfoResolver } from "./create-listing/location-info/owner-and-b2b-info/owner-and-b2b-info.resolver.service";
+import { PoliciesResolver } from "./create-listing/location-details/policies/policies.resolver.service";
+
 @NgModule({
   declarations: [
     NewListingsComponent,
@@ -104,6 +106,7 @@ import { OwnerAndB2BInfoResolver } from "./create-listing/location-info/owner-an
     DiscountsAffiliationsResolver,
     RecreationResolver,
     OwnerAndB2BInfoResolver
+
   ]
 })
 export class ListingModule { }

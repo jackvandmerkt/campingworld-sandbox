@@ -22,8 +22,7 @@ export class InteriorRoadsSiteInformationComponent implements OnInit, AfterViewI
 
     fileNum:any = 0;
     postResponse:any;
-    currentListing:any= {};
-    interiorRoadsGetObj:any = {};
+    interiorRoadsGetObj:any= {};
     interiorRoadsPostObj:any = {};
 
     @ViewChild('interiorRoadType') private interiorRoadTypeCSS!: ElementRef;
@@ -72,45 +71,44 @@ export class InteriorRoadsSiteInformationComponent implements OnInit, AfterViewI
         this.getFormDropDownData();
         this.interiorRoadsGetObj = this.route.snapshot.data['data'];
         if (this.interiorRoadsGetObj != null) {
-            this.currentListing = this.interiorRoadsGetObj;
-            for(let [key, value] of Object.entries(this.currentListing.siteInfo)) {
+            for(let [key, value] of Object.entries(this.interiorRoadsGetObj.siteInfo)) {
                 if(value == 'f') {
-                    this.currentListing.siteInfo[key] = false;
+                    this.interiorRoadsGetObj.siteInfo[key] = false;
                 }
                 if(value == 't') {
-                    this.currentListing.siteInfo[key] = true;
+                    this.interiorRoadsGetObj.siteInfo[key] = true;
                 }
             }
             this.interiorRoadsSitesInfo.patchValue({
-                interiorRoadConditionId: this.currentListing.interiorRoads.interiorRoadConditionId,
-                interiorRoadTypeId: this.currentListing.interiorRoads.interiorRoadTypeId,
-                totalSpaces: this.currentListing.siteInfo.totalSpaces,
-                numberAvailable: this.currentListing.siteInfo.numberAvailable,
-                numberExtendedStaySites: this.currentListing.siteInfo.numberExtendedStaySites,
-                numberPermanentSites: this.currentListing.siteInfo.numberPermanentSites,
-                separateSeasonalSection: this.currentListing.siteInfo.separateSeasonalSection,
-                numberPaved: this.currentListing.siteInfo.numberPaved,
-                numberAllWeather: this.currentListing.siteInfo.numberAllWeather,
-                numberGravel: this.currentListing.siteInfo.numberGravel,
-                numberGrass: this.currentListing.siteInfo.numberGrass,
-                numberDirt: this.currentListing.siteInfo.numberDirt,
-                numberFullHookups: this.currentListing.siteInfo.numberFullHookups,
-                numberWater: this.currentListing.siteInfo.numberWater,
-                numberSewer: this.currentListing.siteInfo.numberSewer,
-                numberElectric: this.currentListing.siteInfo.numberElectric,
-                noHookups: this.currentListing.siteInfo.noHookups,
-                ampId: this.currentListing.siteInfo.ampId,
-                sideBySideHookupId: this.currentListing.siteInfo.sideBySideHookupId,
-                bigRigSites: this.currentListing.siteInfo.bigRigSites,
-                acceptsFullHookupUnitsOnly: this.currentListing.siteInfo.acceptsFullHookupUnitsOnly,
-                acceptsSelfContainedUnitsOnly: this.currentListing.siteInfo.acceptsSelfContainedUnitsOnly,
-                pullThruWidth: this.currentListing.siteInfo.pullThruWidth,
-                pullThruLength: this.currentListing.siteInfo.pullThruLength,
-                numberOfPullThrus: this.currentListing.siteInfo.numberOfPullThrus,
-                backInWidth: this.currentListing.siteInfo.backInWidth,
-                backInLength: this.currentListing.siteInfo.backInLength,
-                slideOuts: this.currentListing.siteInfo.slideOuts,
-                shadeTypeId: this.currentListing.siteInfo.shadeTypeId
+                interiorRoadConditionId: this.interiorRoadsGetObj.interiorRoads.interiorRoadConditionId,
+                interiorRoadTypeId: this.interiorRoadsGetObj.interiorRoads.interiorRoadTypeId,
+                totalSpaces: this.interiorRoadsGetObj.siteInfo.totalSpaces,
+                numberAvailable: this.interiorRoadsGetObj.siteInfo.numberAvailable,
+                numberExtendedStaySites: this.interiorRoadsGetObj.siteInfo.numberExtendedStaySites,
+                numberPermanentSites: this.interiorRoadsGetObj.siteInfo.numberPermanentSites,
+                separateSeasonalSection: this.interiorRoadsGetObj.siteInfo.separateSeasonalSection,
+                numberPaved: this.interiorRoadsGetObj.siteInfo.numberPaved,
+                numberAllWeather: this.interiorRoadsGetObj.siteInfo.numberAllWeather,
+                numberGravel: this.interiorRoadsGetObj.siteInfo.numberGravel,
+                numberGrass: this.interiorRoadsGetObj.siteInfo.numberGrass,
+                numberDirt: this.interiorRoadsGetObj.siteInfo.numberDirt,
+                numberFullHookups: this.interiorRoadsGetObj.siteInfo.numberFullHookups,
+                numberWater: this.interiorRoadsGetObj.siteInfo.numberWater,
+                numberSewer: this.interiorRoadsGetObj.siteInfo.numberSewer,
+                numberElectric: this.interiorRoadsGetObj.siteInfo.numberElectric,
+                noHookups: this.interiorRoadsGetObj.siteInfo.noHookups,
+                ampId: this.interiorRoadsGetObj.siteInfo.ampId,
+                sideBySideHookupId: this.interiorRoadsGetObj.siteInfo.sideBySideHookupId,
+                bigRigSites: this.interiorRoadsGetObj.siteInfo.bigRigSites,
+                acceptsFullHookupUnitsOnly: this.interiorRoadsGetObj.siteInfo.acceptsFullHookupUnitsOnly,
+                acceptsSelfContainedUnitsOnly: this.interiorRoadsGetObj.siteInfo.acceptsSelfContainedUnitsOnly,
+                pullThruWidth: this.interiorRoadsGetObj.siteInfo.pullThruWidth,
+                pullThruLength: this.interiorRoadsGetObj.siteInfo.pullThruLength,
+                numberOfPullThrus: this.interiorRoadsGetObj.siteInfo.numberOfPullThrus,
+                backInWidth: this.interiorRoadsGetObj.siteInfo.backInWidth,
+                backInLength: this.interiorRoadsGetObj.siteInfo.backInLength,
+                slideOuts: this.interiorRoadsGetObj.siteInfo.slideOuts,
+                shadeTypeId: this.interiorRoadsGetObj.siteInfo.shadeTypeId
             });
         } 
     }
@@ -141,35 +139,35 @@ export class InteriorRoadsSiteInformationComponent implements OnInit, AfterViewI
         this.submitted = false;
         if (this.interiorRoadsGetObj != null) {
           this.interiorRoadsSitesInfo.patchValue({
-            interiorRoadConditionId: this.currentListing.interiorRoads.interiorRoadConditionId,
-            interiorRoadTypeId: this.currentListing.interiorRoads.interiorRoadTypeId,
-            totalSpaces: this.currentListing.siteInfo.totalSpaces,
-            numberAvailable: this.currentListing.siteInfo.numberAvailable,
-            numberExtendedStaySites: this.currentListing.siteInfo.numberExtendedStaySites,
-            numberPermanentSites: this.currentListing.siteInfo.numberPermanentSites,
-            separateSeasonalSection: this.currentListing.siteInfo.separateSeasonalSection,
-            numberPaved: this.currentListing.siteInfo.numberPaved,
-            numberAllWeather: this.currentListing.siteInfo.numberAllWeather,
-            numberGravel: this.currentListing.siteInfo.numberGravel,
-            numberGrass: this.currentListing.siteInfo.numberGrass,
-            numberDirt: this.currentListing.siteInfo.numberDirt,
-            numberFullHookups: this.currentListing.siteInfo.numberFullHookups,
-            numberWater: this.currentListing.siteInfo.numberWater,
-            numberSewer: this.currentListing.siteInfo.numberSewer,
-            numberElectric: this.currentListing.siteInfo.numberElectric,
-            noHookups: this.currentListing.siteInfo.noHookups,
-            ampId: this.currentListing.siteInfo.ampId,
-            sideBySideHookupId: this.currentListing.siteInfo.sideBySideHookupId,
-            bigRigSites: this.currentListing.siteInfo.bigRigSites,
-            acceptsFullHookupUnitsOnly: this.currentListing.siteInfo.acceptsFullHookupUnitsOnly,
-            acceptsSelfContainedUnitsOnly: this.currentListing.siteInfo.acceptsSelfContainedUnitsOnly,
-            pullThruWidth: this.currentListing.siteInfo.pullThruWidth,
-            pullThruLength: this.currentListing.siteInfo.pullThruLength,
-            numberOfPullThrus: this.currentListing.siteInfo.numberOfPullThrus,
-            backInWidth: this.currentListing.siteInfo.backInWidth,
-            backInLength: this.currentListing.siteInfo.backInLength,
-            slideOuts: this.currentListing.siteInfo.slideOuts,
-            shadeTypeId: this.currentListing.siteInfo.shadeTypeId
+            interiorRoadConditionId: this.interiorRoadsGetObj.interiorRoads.interiorRoadConditionId,
+            interiorRoadTypeId: this.interiorRoadsGetObj.interiorRoads.interiorRoadTypeId,
+            totalSpaces: this.interiorRoadsGetObj.siteInfo.totalSpaces,
+            numberAvailable: this.interiorRoadsGetObj.siteInfo.numberAvailable,
+            numberExtendedStaySites: this.interiorRoadsGetObj.siteInfo.numberExtendedStaySites,
+            numberPermanentSites: this.interiorRoadsGetObj.siteInfo.numberPermanentSites,
+            separateSeasonalSection: this.interiorRoadsGetObj.siteInfo.separateSeasonalSection,
+            numberPaved: this.interiorRoadsGetObj.siteInfo.numberPaved,
+            numberAllWeather: this.interiorRoadsGetObj.siteInfo.numberAllWeather,
+            numberGravel: this.interiorRoadsGetObj.siteInfo.numberGravel,
+            numberGrass: this.interiorRoadsGetObj.siteInfo.numberGrass,
+            numberDirt: this.interiorRoadsGetObj.siteInfo.numberDirt,
+            numberFullHookups: this.interiorRoadsGetObj.siteInfo.numberFullHookups,
+            numberWater: this.interiorRoadsGetObj.siteInfo.numberWater,
+            numberSewer: this.interiorRoadsGetObj.siteInfo.numberSewer,
+            numberElectric: this.interiorRoadsGetObj.siteInfo.numberElectric,
+            noHookups: this.interiorRoadsGetObj.siteInfo.noHookups,
+            ampId: this.interiorRoadsGetObj.siteInfo.ampId,
+            sideBySideHookupId: this.interiorRoadsGetObj.siteInfo.sideBySideHookupId,
+            bigRigSites: this.interiorRoadsGetObj.siteInfo.bigRigSites,
+            acceptsFullHookupUnitsOnly: this.interiorRoadsGetObj.siteInfo.acceptsFullHookupUnitsOnly,
+            acceptsSelfContainedUnitsOnly: this.interiorRoadsGetObj.siteInfo.acceptsSelfContainedUnitsOnly,
+            pullThruWidth: this.interiorRoadsGetObj.siteInfo.pullThruWidth,
+            pullThruLength: this.interiorRoadsGetObj.siteInfo.pullThruLength,
+            numberOfPullThrus: this.interiorRoadsGetObj.siteInfo.numberOfPullThrus,
+            backInWidth: this.interiorRoadsGetObj.siteInfo.backInWidth,
+            backInLength: this.interiorRoadsGetObj.siteInfo.backInLength,
+            slideOuts: this.interiorRoadsGetObj.siteInfo.slideOuts,
+            shadeTypeId: this.interiorRoadsGetObj.siteInfo.shadeTypeId
           }); 
           this.setAttributes();
         } else {
@@ -231,13 +229,13 @@ export class InteriorRoadsSiteInformationComponent implements OnInit, AfterViewI
     }
 
     setAttributes(){
-        if (this.currentListing != null) {
-            for(let [key, value] of Object.entries(this.currentListing.interiorRoads)) {
+        if (this.interiorRoadsGetObj != null) {
+            for(let [key, value] of Object.entries(this.interiorRoadsGetObj.interiorRoads)) {
                 if(key === 'interiorRoadTypeId') {
                     this.interiorRoadTypeCSS.nativeElement.setAttribute('value', value) 
                 }
             }
-            for(let [key, value] of Object.entries(this.currentListing.siteInfo)) {
+            for(let [key, value] of Object.entries(this.interiorRoadsGetObj.siteInfo)) {
                 if(key === 'ampId') {
                     this.ampCSS.nativeElement.setAttribute('value', value) 
                 }

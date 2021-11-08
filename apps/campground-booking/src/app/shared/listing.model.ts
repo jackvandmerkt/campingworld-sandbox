@@ -361,6 +361,7 @@ export interface IPolicies {
   maxStayLessThanThirty: string,
   numberOfDaysMaxStay: number,
   openAllYear: string,
+  season: string,
   areThereLimitedFacilities: string,
   lfsLtdFacSummer: string,
   lfwLtdFacWinter: string,
