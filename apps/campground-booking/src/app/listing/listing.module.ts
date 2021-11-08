@@ -40,7 +40,7 @@ import { listingRoutes } from "./listing.routes";
 import { NewListingsComponent } from "./new-listing-info/new-listing.component";
 import { GoodSamRecordResolver } from "./create-listing/location-info/good-sam-record/good-sam-record.resolver.service";
 import { ContactInfoResolver } from './create-listing/location-info/contact-info/contact-info.resolver.service';
-import {DiscountsAffiliationsResolver} from './create-listing/location-info/discounts-affiliations/discounts-affiliations.resolver.service'
+import { DiscountsAffiliationsResolver } from './create-listing/location-info/discounts-affiliations/discounts-affiliations.resolver.service'
 import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-services/on-site-services.resolver.service";
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
@@ -79,30 +79,30 @@ import { EcoFriendlyResolver } from "./create-listing/location-details/eco-frien
     AllListingsComponent,
     AdSummaryComponent
   ],
-    imports: [
-      BrowserModule,
-      RouterModule.forChild(listingRoutes),
-      ReactiveFormsModule,
-      FormsModule,
-      HttpClientModule,
-      DateRangePickerModule,
-      DatePickerModule,
-      SharedModule,
-      StoreModule.forFeature('listing-info', {listingReducer})
-    ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [
-      GoodSamRecordResolver,
-      ContactInfoResolver,
-      InteriorRoadsResolver,
-      EcoFriendlyResolver,
-      RestroomsResolver,
-      OnSiteServicesResolver,
-      RecreationResolver,
-      WaterRecreationResolver,
-      DiscountsAffiliationsResolver,
-      RecreationResolver
-    ]
-  })
-  export class ListingModule { }
-  
+  imports: [
+    BrowserModule,
+    CommonModule,
+    RouterModule.forChild(listingRoutes),
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    DateRangePickerModule,
+    DatePickerModule,
+    SharedModule,
+    StoreModule.forFeature('listing-info', { listingReducer })
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    GoodSamRecordResolver,
+    ContactInfoResolver,
+    InteriorRoadsResolver,
+    EcoFriendlyResolver,
+    RestroomsResolver,
+    OnSiteServicesResolver,
+    RecreationResolver,
+    WaterRecreationResolver,
+    DiscountsAffiliationsResolver,
+    RecreationResolver
+  ]
+})
+export class ListingModule { }
