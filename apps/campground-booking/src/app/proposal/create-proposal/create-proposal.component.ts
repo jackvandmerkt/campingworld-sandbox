@@ -18,15 +18,15 @@ export class CreateProposalComponent implements OnInit {
     console.log('aa')
   }
 
-  downPaymentRequiredChange(value: any) {
+  downPaymentRequiredChange() {
     this.downPaymentRequired = !this.downPaymentRequired
   }
 
-  displayItemPricesChange(value: any) {
+  displayItemPricesChange() {
     this.displayItemPrices = !this.displayItemPrices
   }
 
-  displayMediaKitChange(value: any) {
+  displayMediaKitChange() {
     this.displayMediaKit = !this.displayMediaKit
   }
 }
