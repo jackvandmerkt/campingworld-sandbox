@@ -2,14 +2,14 @@
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Owner & BSB Info</h1>
   <div class="grid grid-cols-2 gap-6 mt-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">New owner?</p>
+      <p class="font-cw">New owner?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!newOwner" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="newOwner" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="newOwner" class="flex items-center cursor-pointer">
         <!-- toggle -->
-        <div class="relative">
+        <div class="relative z-0 ">
           <!-- input -->
           <input type="checkbox" formControlName="newOwner" (click)="newOwnerChange(this);" id="newOwner"
             class="sr-only">
@@ -26,14 +26,14 @@
 
   <div class="grid grid-cols-2 gap-6 mt-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Park for sale?</p>
+      <p class="font-cw">Park for sale?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
       <p *ngIf="!parkForSale" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="parkForSale" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="parkForSale" class="flex items-center cursor-pointer">
         <!-- toggle -->
-        <div class="relative">
+        <div class="relative z-0 ">
           <!-- input -->
           <input type="checkbox" formControlName="parkForSale" (click)="parkForSaleChange(this);" id="parkForSale"
             class="sr-only">
@@ -47,111 +47,119 @@
     </div>
   </div>
   <div class="grid grid-cols-2 gap-6 w-636">
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0  z-0  pb-4 f-outline">
       <input formControlName="name" type="text" name="name" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="name" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="name" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Owner's name
       </label>
     </div>
 
-    <div class="relative pb-4 f-outline">
-      <select name="ownerGroup" value="" onclick="this.setAttribute('value', this.value);"
+    <div class="relative z-0 pb-4 f-outline">
+      <select disabled name="ownerGroup" #ownerGroup value="null" onclick="this.setAttribute('value', this.value);"
         class="block bg-gray-100 border-none rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let u of uniqueAccountsFromService" [value]="u.id">{{u.value}}</option>
+        <option value="null"></option>
+        <option *ngFor="let u of uniqueAccountsFromService" [ngValue]="u.id">{{u.value}}</option>
       </select>
-      <label for="ownerGroup" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Owner
+      <label for="ownerGroup"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Owner
         Group</label>
     </div>
   </div>
   <h2 class="mt-10 font-bold font-cw text-cwGray text-18px24px pb-7">Owner's Address</h2>
   <div formGroupName="mailingAddress" class="grid grid-cols-2 gap-6 w-636">
-    <div class="relative pb-4 f-outline ">
-      <input type="text" formControlName="address" name="address" placeholder=" "
+    <div class="relative z-0   pb-4 f-outline ">
+      <input type="text" formControlName="street1" name="street1" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="address" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
+      <label for="street1"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Address</label>
     </div>
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0 pb-4 f-outline">
       <input type="text" formControlName="city" name="city" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="city" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
+      <label for="city"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">City</label>
     </div>
-    <div class="relative pb-4 f-outline">
-      <select formControlName="listStateId" name="listStateId" value=""
+    <div class="relative z-0 pb-4 f-outline">
+      <select formControlName="listStateId" type="number" name="listStateId" #listStateId value="null"
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let l of listStatesFromService" [value]="l.id">{{l.name}}</option>
+        <option value="null"></option>
+        <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
       </select>
-      <label for="listStateId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
+      <label for="listStateId"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">State
         Province</label>
     </div>
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0 pb-4 f-outline">
       <input type="text" formControlName="zip" name="zip" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="zip" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="zip" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Zip / Postal Code
       </label>
     </div>
-    <div class="relative pb-4 f-outline">
-      <select formControlName="countryId" name="countryId" value="" onclick="this.setAttribute('value', this.value);"
+    <div class="relative z-0  pb-4 f-outline">
+      <select formControlName="countryId" type="number" name="countryId" value="null" #countryId onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let c of countriesFromService" [value]="c.id">{{c.value}}</option>
+        <option value="null"></option>
+        <option *ngFor="let c of countriesFromService" [ngValue]="c.id">{{c.value}}</option>
       </select>
-      <label for="countryId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
+      <label for="countryId"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Country</label>
     </div>
   </div>
   <h2 class="mt-10 font-bold font-cw text-cwGray text-18px24px pb-7">Owner's Contact Info</h2>
   <div class="grid grid-cols-1 gap-6 w-636">
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0  pb-4 f-outline">
       <input type="text" formControlName="email" name="email" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
-      <label for="email" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="email" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Owner's email
       </label>
     </div>
   </div>
 
   <div class="grid grid-cols-2 gap-6 mt-6 w-636">
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0  pb-4 f-outline">
       <input type="text" formControlName="phone" name="phone" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="phone" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="phone" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Owner's phone
       </label>
     </div>
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0  pb-4 f-outline">
       <input type="text" formControlName="adDecisionMaker" name="adDecisionMaker" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="adDecisionMaker" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="adDecisionMaker"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Ad decision maker
       </label>
     </div>
   </div>
 
   <div class="grid grid-cols-2 gap-6 mt-6 w-636">
-    <div class="relative pb-4 f-outline">
-      <select formControlName="b2BCommEmailSourceId" name="b2BCommEmailSourceId" value=""
+    <div class="relative z-0  pb-4 f-outline">
+      <select formControlName="b2BCommEmailSourceId" name="b2BCommEmailSourceId" value="null" #b2BCommEmailSourceId
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let b of b2bCommSourcesFromService" [value]="b.id">{{b.value}}</option>
+        <option value="null"></option>
+        <option *ngFor="let b of b2bCommSourcesFromService" [ngValue]="b.id">{{b.value}}</option>
       </select>
-      <label for="b2BCommEmailSourceId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">B2B
+      <label for="b2BCommEmailSourceId"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">B2B
         Comm
         Email
         Source</label>
     </div>
   </div>
 
-  <div *ngIf="ownerAndB2bInfo.value.b2BCommEmailSourceId === '1'" class="grid grid-cols-1 gap-6 mt-5 w-636">
-    <div class="relative pb-4 f-outline">
+  <div *ngIf="ownerAndB2bInfo.value.b2BCommEmailSourceId === 1" class="grid grid-cols-1 gap-6 mt-5 w-636">
+    <div class="relative z-0  pb-4 f-outline">
       <input [ngClass]="{'error-border': ownerEmailRequired || invalidEmail }" type="text"
         formControlName="b2BCommEmailIfOther" name="b2BCommEmailIfOther" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
-      <label for="b2BCommEmailIfOther" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="b2BCommEmailIfOther"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Owner's email
       </label>
       <div *ngIf="ownerEmailRequired" class="pl-3 font-cw text-cwRed text-11px20px">* B2B Comm Email is required if
@@ -163,88 +171,97 @@
   </div>
 
   <div class="grid grid-cols-1 gap-6 mt-6 w-636">
-    <div class="relative pb-4 f-outline">
-      <select formControlName="b2BCommMailSourceId" name="b2BCommMailSourceId" value=""
+    <div class="relative z-0  pb-4 f-outline">
+      <select formControlName="b2BCommMailSourceId" name="b2BCommMailSourceId" value="null" #b2BCommMailSourceId
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let b of b2bCommSourcesFromService" [value]="b.id">{{b.value}}</option>
+        <option value="null"></option>
+        <option *ngFor="let b of b2bCommSourcesFromService" [ngValue]="b.id">{{b.value}}</option>
       </select>
-      <label for="sectionCode" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">B2B Comm Mail
+      <label for="sectionCode"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">B2B Comm Mail
         Source</label>
     </div>
   </div>
 
-  <div *ngIf="ownerAndB2bInfo.value.b2BCommMailSourceId === '1'" formGroupName="otherMailingAddress"
+  <div *ngIf="ownerAndB2bInfo.value.b2BCommMailSourceId === 1" formGroupName="b2bCommAddressIfOther"
     class="grid grid-cols-2 gap-6 mt-5 w-636">
-    <div class="relative pb-4 f-outline ">
-      <input type="text" formControlName="address" name="address" placeholder=" "
+    <div class="relative z-0  pb-4 f-outline ">
+      <input type="text" formControlName="street1" name="street1" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="address" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Address</label>
+      <label for="street1"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Address</label>
     </div>
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0   pb-4 f-outline">
       <input type="text" formControlName="city" name="city" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="city" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">City</label>
+      <label for="city"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">City</label>
     </div>
-    <div class="relative pb-4 f-outline">
-      <select formControlName="listStateId" name="listStateId" value=""
+    <div class="relative z-0  pb-4 f-outline">
+      <select formControlName="listStateId" name="listStateId" value="null" 
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let l of listStatesFromService" [value]="l.id">{{l.name}}</option>
+        <option value="null"></option>
+        <option *ngFor="let l of listStatesFromService" [ngValue]="l.id">{{l.name}}</option>
       </select>
-      <label for="listStateId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">State
+      <label for="listStateId"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">State
         Province</label>
     </div>
-    <div class="relative pb-4 f-outline">
+    <div class="relative z-0  pb-4 f-outline">
       <input type="text" formControlName="zip" name="zip" placeholder=" "
         class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="zip" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+      <label for="zip" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         Zip / Postal Code
       </label>
     </div>
-    <div class="relative pb-4 f-outline">
-      <select formControlName="countryId" name="countryId" value="" onclick="this.setAttribute('value', this.value);"
+    <div class="relative z-0  pb-4 f-outline">
+      <select formControlName="countryId" name="countryId" value="null" onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let c of countriesFromService" [value]="c.id">{{c.value}}</option>
+        <option value="null"></option>
+        <option *ngFor="let c of countriesFromService" [ngValue]="c.id">{{c.value}}</option>
       </select>
-      <label for="countryId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Country</label>
+      <label for="countryId"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Country</label>
     </div>
   </div>
 
   <div class="grid grid-cols-1 gap-6 mt-6 w-636">
-    <div class="relative pb-4 f-outline">
-      <select formControlName="objectionReasonId" name="objectionReasonId" value=""
+    <div class="relative z-0  pb-4 f-outline">
+      <select formControlName="objectionReasonId" name="objectionReasonId" value="null" #objectionReasonId
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let a of advertisingObjectionsFromService" [value]="a.id">{{a.value}}</option>
+        <option value="null"></option>
+        <option *ngFor="let a of advertisingObjectionsFromService" [ngValue]="a.id">{{a.value}}</option>
       </select>
-      <label for="objectionReasonId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Objections
+      <label for="objectionReasonId"
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Objections
         to
         advertising</label>
     </div>
-    <div class="relative pb-4 f-outline">
-      <select formControlName="droppedAffiliationReasonId" name="droppedAffiliationReasonId" value=""
+    <div class="relative z-0  pb-4 f-outline">
+      <select formControlName="droppedAffiliationReasonId" name="droppedAffiliationReasonId" value="null" #droppedAffiliationReasonId
         onclick="this.setAttribute('value', this.value);"
         class="block bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let d of droppedAffiliationFromService" [value]="d.id">{{d.value}}</option>
+        <option value="null"></option>
+        <option *ngFor="let d of droppedAffiliationFromService" [ngValue]="d.id">{{d.value}}</option>
       </select>
       <label for="droppedAffiliationReasonId"
-        class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Reason for
+        class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">Reason for
         dropping Good Sam affiliation</label>
     </div>
-    <div class="relative pb-4 f-outline">
-      <select formControlName="uniqueAccountId" name="uniqueAccountId" value=""
+    <div class="relative z-0 pb-4 f-outline">
+      <select formControlName="uniqueAccountId" name="uniqueAccountId" value="null"  #uniqueAccountId
         onclick="this.setAttribute('value', this.value);"
-        class="block bg-gray-100 border-none rounded appearance-none w-636 h-13 border-cwGray focus:outline-none">
-        <option value=""></option>
-        <option *ngFor="let u of uniqueAccountsFromService" [value]="u.id">{{u.value}}</option>
+        class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-navGray bg-navGray focus:outline-none"
+        >
+        <option value="null"></option>
+        <option *ngFor="let u of uniqueAccountsFromService" [ngValue]="u.id">{{u.value}}</option>
       </select>
-      <label for="uniqueAccountId" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">Unique
+      <label for="uniqueAccountId"
+      class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 origin-0 font-cw text-16px26px text-formBlack"
+        >Unique
         Account</label>
     </div>
   </div>
