@@ -41,7 +41,7 @@ export class DiscountsAffiliationsComponent implements OnInit,AfterViewInit{
         goodNeighborPark: false,
         goodNeighborParkNumber: [{value: null, disabled: true}],
         coastToCoastPark: false,
-        coastToCoastMembershipNumber: [null, [Validators.required, Validators.pattern("^[0-9]*$")]]
+        coastToCoastMembershipNumber: [null, [Validators.pattern("^[0-9]*$")]]
       });
 
     ngOnInit() {
@@ -77,11 +77,9 @@ export class DiscountsAffiliationsComponent implements OnInit,AfterViewInit{
     onSubmit(): void {
         this.submitted = true;
         if(this.discountsAffiliations.valid) {
-            console.log(this.discountsAffiliations.value);
             this.postForm();
             this.sendFormStatus(['discountsAffiliationFormStatus', 2]);
         } else {
-            console.log('not valid');
             this.sendFormStatus(['discountsAffiliationFormStatus', 1]);
             return;
         }
@@ -104,7 +102,21 @@ export class DiscountsAffiliationsComponent implements OnInit,AfterViewInit{
         });
         this.setAttributes(); 
         }
+        else{
+            this.discountsAffiliations.reset({
+                aaaDiscount: false,
+                militaryDiscount: false,
+                affiliationId: '',
+                membersOfArvc: false,
+                stateProvAssociationId: null,
+                goodNeighborPark: false,
+                goodNeighborParkNumber: null,
+                coastToCoastPark: false,
+                coastToCoastMembershipNumber: null
 
+            });
+            this.setAttributes();
+        }
 
     }
 
