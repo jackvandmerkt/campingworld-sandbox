@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation, IDiscountsAndAffiliations, IInteriorRoads } from './listing.model';
+import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation, IDiscountsAndAffiliations, IInteriorRoads, IPolicies, IRatesReservations, IEcoFriendly } from './listing.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -73,6 +73,35 @@ export class ListingService {
       .pipe(catchError(this.handleError<IInteriorRoads>('getInteriorRoads', )))
     }
 
+    //Location Details Section - Policies
+    postPolicies(form:IPolicies, fileNumber:string):Observable<IPolicies>{
+      return this.http.put<IPolicies>(`/api/v1/listings/${fileNumber}/location-details/policies`, form)
+      .pipe(catchError(this.handleError<IPolicies>('postPolicies', )))
+    }
+    getPolicies(fileNumber:string):Observable<IPolicies>{
+      return this.http.get<IPolicies>(`api/v1/listings/${fileNumber}/location-details/policies`)
+      .pipe(catchError(this.handleError<IPolicies>('getPolicies', )))
+    }
+
+    //Location Details Section - Rates & Reservations
+    postRatesReservations(form:IRatesReservations, fileNumber:string):Observable<IRatesReservations>{
+      return this.http.put<IRatesReservations>(`/api/v1/listings/${fileNumber}/location-details/rates-and-reservations`, form)
+      .pipe(catchError(this.handleError<IRatesReservations>('postRatesReservations', )))
+    }
+    getRatesReservations(fileNumber:string):Observable<IRatesReservations>{
+      return this.http.get<IRatesReservations>(`api/v1/listings/${fileNumber}/location-details/rates-and-reservations`)
+      .pipe(catchError(this.handleError<IRatesReservations>('getRatesReservations', )))
+    }
+
+    //Location Details Section - Eco Friendly
+    postEcoFriendly(form:IEcoFriendly, fileNumber:string):Observable<IEcoFriendly>{
+      return this.http.put<IEcoFriendly>(`/api/v1/listings/${fileNumber}/location-details/eco-friendly`, form)
+      .pipe(catchError(this.handleError<IEcoFriendly>('postEcoFriendly', )))
+    }
+    getEcoFriendly(fileNumber:string):Observable<IEcoFriendly>{
+      return this.http.get<IEcoFriendly>(`api/v1/listings/${fileNumber}/location-details/eco-friendly`)
+      .pipe(catchError(this.handleError<IEcoFriendly>('getEcoFriendly', )))
+    }
 
 
     // Amenities Section - Restrooms Form

@@ -2,17 +2,17 @@
   <h1 class="font-bold font-cw text-cwGray text-28px34px pb-7">Policies</h1>
   <div class="grid grid-cols-2 gap-6 mt-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Is max stay less than 30 days?</p>
+      <p class="font-cw text-cwGray">Is max stay less than 30 days?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!isLessThan30Days" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="isLessThan30Days" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-      <label for="isLessThan30Days" class="flex items-center cursor-pointer">
+      <p *ngIf="policiesForm.value.maxStayLessThanThirty == false || policiesForm.value.maxStayLessThanThirty == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.maxStayLessThanThirty == true || policiesForm.value.maxStayLessThanThirty == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="maxStayLessThanThirty" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
           <!-- input -->
-          <input type="checkbox" formControlName="isLessThan30Days" (click)="checkBoxIsLessThan30Days(this)"
-            id="isLessThan30Days" class="sr-only">
+          <input type="checkbox" formControlName="maxStayLessThanThirty" (click)="checkBoxIsLessThan30Days(this)"
+            id="maxStayLessThanThirty" class="sr-only">
           <!-- line -->
           <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
           <!-- dot -->
@@ -22,13 +22,23 @@
       </label>
     </div>
   </div>
+  <div class="grid grid-cols-1 gap-6 mt-2 w-636">
+    <div class="relative pb-4 f-outline">
+      <input type="number" formControlName="numberOfDaysMaxStay" id="numberOfDaysMaxStay" name="numberOfDaysMaxStay"
+        placeholder=" "
+        class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
+      <label for="numberOfDaysMaxStay" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
+        # of days MAX stay
+      </label>
+    </div>
+  </div>
   <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Open all year?</p>
+      <p class="font-cw text-cwGray">Open all year?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!openAllYear" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="openAllYear" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <p *ngIf="policiesForm.value.openAllYear == false || policiesForm.value.openAllYear == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.openAllYear == true || policiesForm.value.openAllYear == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="openAllYear" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
@@ -44,18 +54,18 @@
       </label>
     </div>
   </div>
-  <div *ngIf="openAllYear" class="grid grid-cols-2 gap-6 w-636">
+  <div *ngIf="policiesForm.value.openAllYear == true || policiesForm.value.openAllYear == 't'" class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Are there limited facilities?</p>
+      <p class="font-cw text-cwGray">Are there limited facilities?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!limitedFacilities" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="limitedFacilities" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-      <label for="limitedFacilities" class="flex items-center cursor-pointer">
+      <p *ngIf="policiesForm.value.areThereLimitedFacilities == false || policiesForm.value.areThereLimitedFacilities == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.areThereLimitedFacilities == true || policiesForm.value.areThereLimitedFacilities == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="areThereLimitedFacilities" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
           <!-- input -->
-          <input type="checkbox" (click)="checkBoxLimitedFacilities(this)" id="limitedFacilities" class="sr-only">
+          <input type="checkbox" formControlName="areThereLimitedFacilities" (click)="checkBoxLimitedFacilities(this)" id="areThereLimitedFacilities" class="sr-only">
           <!-- line -->
           <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
           <!-- dot -->
@@ -66,20 +76,20 @@
     </div>
   </div>
 
-  <div *ngIf="limitedFacilities" class="flex flex-row col-span-2 pb-10 space-x-4">
+  <div *ngIf="policiesForm.value.areThereLimitedFacilities == true || policiesForm.value.areThereLimitedFacilities == 't'" class="flex flex-row col-span-2 pb-10 space-x-4">
     <div class="relative">
-      <input (click)="limitedFacilitiesChecked('summer')" class="hidden" id="summer" type="radio"
-        name="limitedFacilities">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="summer">
-        <img *ngIf="limitedOptions === 'summer'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+      <input (click)="limitedFacilitiesChecked('lfsLtdFacSummer')" class="hidden" id="lfsLtdFacSummer" type="radio"
+        name="lfwLtdFac">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="lfsLtdFacSummer">
+        <img *ngIf="policiesForm.value.lfsLtdFacSummer == true || policiesForm.value.lfsLtdFacSummer == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In summer</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="limitedFacilitiesChecked('winter')" class="hidden" id="winter" type="radio"
-        name="limitedFacilities">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="winter">
-        <img *ngIf="limitedOptions === 'winter'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+      <input (click)="limitedFacilitiesChecked('lfwLtdFacWinter')" class="hidden" id="lfwLtdFacWinter" type="radio"
+        name="lfwLtdFac">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="lfwLtdFacWinter">
+        <img *ngIf="policiesForm.value.lfwLtdFacWinter == true || policiesForm.value.lfwLtdFacWinter == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">In winter</p>
       </label>
     </div>
@@ -87,30 +97,16 @@
 
   <div class="grid grid-cols-1 gap-6 w-636">
     <h1 class="font-bold font-cw text-cwGray text-24px ">Season start date - Season end date</h1>
-    <ejs-daterangepicker id='daterangepicker' placeholder='Select a range' [startDate]='start' [endDate]='end'>
+    <ejs-daterangepicker id='daterangepicker' placeholder='Select a range' formControlName="season" >
     </ejs-daterangepicker>
-    <!-- <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="start" placeholder=" "
-        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="seasonStartDate" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
-        Season start date
-      </label>
-    </div>
-    <div class="relative pb-4 f-outline">
-      <input type="text" formControlName="end" placeholder=" "
-        class="block px-3 bg-transparent border rounded appearance-none w-306 h-13 border-cwGray focus:outline-none" />
-      <label for="seasonEndDate" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
-        Season end date
-      </label>
-    </div> -->
   </div>
   <div class="grid grid-cols-2 gap-6 w-636 mt-7">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Age restrictions apply?</p>
+      <p class="font-cw text-cwGray">Age restrictions apply?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!ageRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="ageRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <p *ngIf="policiesForm.value.ageRestrictions == false || policiesForm.value.ageRestrictions == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.ageRestrictions == true || policiesForm.value.ageRestrictions == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="ageRestrictions" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
@@ -128,11 +124,11 @@
   </div>
   <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Family camping?</p>
+      <p class="font-cw text-cwGray">Family camping?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!familyCamping" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="familyCamping" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <p *ngIf="policiesForm.value.familyCamping == false || policiesForm.value.familyCamping == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.familyCamping == true || policiesForm.value.familyCamping == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="familyCamping" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
@@ -150,16 +146,16 @@
   </div>
   <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Allows tent campers?</p>
+      <p class="font-cw text-cwGray">Allows tent campers?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!allowsTent" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="allowsTent" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-      <label for="allowsTent" class="flex items-center cursor-pointer">
+      <p *ngIf="policiesForm.value.allowsTentCampers == false || policiesForm.value.allowsTentCampers == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.allowsTentCampers == true || policiesForm.value.allowsTentCampers == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="allowsTentCampers" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
           <!-- input -->
-          <input type="checkbox" formControlName="allowsTent" (click)="checkBoxAllowsTent(this)" id="allowsTent"
+          <input type="checkbox" formControlName="allowsTentCampers" (click)="checkBoxAllowsTent(this)" id="allowsTentCampers"
             class="sr-only">
           <!-- line -->
           <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
@@ -171,29 +167,29 @@
     </div>
   </div>
   <div class="flex">
-    <h1 class="font-bold font-cw text-cwGray text-24px pb-11">Does NOT allow?</h1><span class="ml-4 text-gray-400"
+    <h1 class="font-bold font-cw text-cwGray text-24px pb-11">Does NOT allow?</h1><span class="ml-4 "
       style="margin-top: 0px;">Select all that apply</span>
   </div>
 
   <div class="flex flex-row col-span-2 pb-10 space-x-4">
     <div class="relative">
-      <input (click)="motorhomeClassChecked('A')" class="hidden" id="classA" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classA">
-        <img *ngIf="motorhomeClass === 'A'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+      <input class="hidden" formControlName="doesNotAllowClassAMotorhomes" id="doesNotAllowClassAMotorhomes" type="checkbox" name="doesNotAllowClassAMotorhomes">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="doesNotAllowClassAMotorhomes">
+        <img *ngIf="policiesForm.value.doesNotAllowClassAMotorhomes == true || policiesForm.value.doesNotAllowClassAMotorhomes == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class A motorhome</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="motorhomeClassChecked('B')" class="hidden" id="classB" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classB">
-        <img *ngIf="motorhomeClass === 'B'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+      <input class="hidden" formControlName="doesNotAllowClassBMotorhomes" id="doesNotAllowClassBMotorhomes" type="checkbox" name="doesNotAllowClassBMotorhomes">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="doesNotAllowClassBMotorhomes">
+        <img *ngIf="policiesForm.value.doesNotAllowClassBMotorhomes == true || policiesForm.value.doesNotAllowClassBMotorhomes == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class B motorhome</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="motorhomeClassChecked('C')" class="hidden" id="classC" type="radio" name="motorhomeClass">
-      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="classC">
-        <img *ngIf="motorhomeClass === 'C'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
+      <input class="hidden" formControlName="doesNotAllowClassCMotorhomes" id="doesNotAllowClassCMotorhomes" type="checkbox" name="doesNotAllowClassCMotorhomes">
+      <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="doesNotAllowClassCMotorhomes">
+        <img *ngIf="policiesForm.value.doesNotAllowClassCMotorhomes == true || policiesForm.value.doesNotAllowClassCMotorhomes == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png" alt="active">
         <p class="absolute font-bold text-center place-self-center top-13 font-cw">Class C motorhome</p>
       </label>
     </div>
@@ -203,8 +199,8 @@
     <div class="relative pb-4 f-outline">
       <input type="text" formControlName="rvAgeRestrictions" id="rvAgeRestrictions" name="rvAgeRestrictions"
         placeholder=" "
-        class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwGray focus:outline-none" />
-      <label for="rvAgeRestrictions" class="absolute pointer-events-none pt-2.5 pl-3 duration-300 font-cw text-formBlack top-1.5">
+        class="block px-3 bg-transparent border rounded appearance-none w-636 h-13 border-cwBadgeGray focus:outline-none" />
+      <label for="rvAgeRestrictions" class="absolute pl-3 pt-2.5 duration-300 pointer-events-none top-1.5 -z-1 origin-0 font-cw text-16px26px text-formBlack">
         RV age restrictions
       </label>
     </div>
@@ -214,16 +210,16 @@
   </div>
   <div class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Are pets allowed?</p>
+      <p class="font-cw text-cwGray">Are pets allowed?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!petsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="petsAllowed" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-      <label for="petsAllowed" class="flex items-center cursor-pointer">
+      <p *ngIf="policiesForm.value.petsOk == false || policiesForm.value.petsOk == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.petsOk == true || policiesForm.value.petsOk == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="petsOk" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
           <!-- input -->
-          <input type="checkbox" formControlName="petsAllowed" (click)="checkBoxPetsAllowed(this)" id="petsAllowed"
+          <input type="checkbox" formControlName="petsOk" (click)="checkBoxPetsAllowed(this)" id="petsOk"
             class="sr-only">
           <!-- line -->
           <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
@@ -235,18 +231,18 @@
     </div>
   </div>
 
-  <div *ngIf="petsAllowed" class="grid grid-cols-2 gap-6 w-636">
+  <div *ngIf="policiesForm.value.petsOk == true || policiesForm.value.petsOk == 't'" class="grid grid-cols-2 gap-6 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Are there pet restrictions?</p>
+      <p class="font-cw text-cwGray">Are there pet restrictions?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!petsRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="petsRestrictions" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-      <label for="petsRestrictions" class="flex items-center cursor-pointer">
+      <p *ngIf="policiesForm.value.petRestrictions == false || policiesForm.value.petRestrictions == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.petRestrictions == true || policiesForm.value.petRestrictions == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="petRestrictions" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
           <!-- input -->
-          <input type="checkbox" (click)="checkBoxPetsRestrictions(this)" id="petsRestrictions" class="sr-only">
+          <input type="checkbox" formControlName="petRestrictions" (click)="checkBoxPetsRestrictions(this)" id="petRestrictions" class="sr-only">
           <!-- line -->
           <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
           <!-- dot -->
@@ -257,27 +253,27 @@
     </div>
   </div>
 
-  <div *ngIf="petsRestrictions" class="flex flex-row col-span-2 pb-2 space-x-4">
+  <div *ngIf="policiesForm.value.petRestrictions == true || policiesForm.value.petRestrictions == 't'" class="flex flex-row col-span-2 pb-2 space-x-4">
     <div class="relative">
-      <input (click)="optionChecked('1')" class="hidden" id="size" type="checkbox" name="petRestriction">
+      <input (click)="optionChecked('1')" class="hidden" formControlName="size" id="size" type="checkbox" name="size">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="size">
-        <img *ngIf="petRestrictionsOpts.includes('1')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
+        <img *ngIf="policiesForm.value.size == true || policiesForm.value.size == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
           alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">Size</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('2')" class="hidden" id="quantity" type="checkbox" name="petRestriction">
+      <input (click)="optionChecked('2')" class="hidden" formControlName="quantity"  id="quantity" type="checkbox" name="quantity">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="quantity">
-        <img *ngIf="petRestrictionsOpts.includes('2')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
+        <img *ngIf="policiesForm.value.quantity == true || policiesForm.value.quantity == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
           alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">Quantity</p>
       </label>
     </div>
     <div class="relative">
-      <input (click)="optionChecked('3')" class="hidden" id="breed" type="checkbox" name="petRestriction">
+      <input (click)="optionChecked('3')" class="hidden" formControlName="breed"  id="breed" type="checkbox" name="breed">
       <label class="flex flex-col cursor-pointer w-147 h-152 rounded-xl bg-navGray" for="breed">
-        <img *ngIf="petRestrictionsOpts.includes('3')" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
+        <img *ngIf="policiesForm.value.breed == true || policiesForm.value.breed == 't'" class="absolute top-0.5 left-125 w-5 h-5 lg: rounded-tr-md xl:rounded-tr-cw rounded-br-sm" src="assets/images/active.png"
           alt="active">
         <p class="absolute font-bold text-center place-self-center top-16 font-cw">Breed</p>
       </label>
@@ -288,18 +284,18 @@
     restrictions are indicated
   </div>
 
-  <div *ngIf="petsAllowed" class="grid grid-cols-2 mt-10 gap-6 w-636">
+  <div *ngIf="policiesForm.value.petsOk == true || policiesForm.value.petsOk == 't'" class="grid grid-cols-2 gap-6 mt-10 w-636">
     <div class="pb-10">
-      <p class="text-gray-400 font-cw">Is there an additional charge for pets?</p>
+      <p class="font-cw text-cwGray">Is there an additional charge for pets?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="!additionalChargeForPets" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-      <p *ngIf="additionalChargeForPets" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
-      <label for="additionalChargeForPets" class="flex items-center cursor-pointer">
+      <p *ngIf="policiesForm.value.petPaid == false || policiesForm.value.petPaid == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.petPaid == true || policiesForm.value.petPaid == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+      <label for="petPaid" class="flex items-center cursor-pointer">
         <!-- toggle -->
         <div class="relative">
           <!-- input -->
-          <input type="checkbox" (click)="checkBoxAdditionalChargeForPets(this)" id="additionalChargeForPets"
+          <input type="checkbox" formControlName="petPaid" (click)="checkBoxAdditionalChargeForPets(this)" id="petPaid"
             class="sr-only">
           <!-- line -->
           <div class="block h-8 bg-white border rounded-full border-cwBadgeGray w-14"></div>
@@ -313,7 +309,7 @@
 
   <div class="flex flex-row col-span-2 pb-10">
     <div class="">
-      <button type="reset" (click)="clearChanges()"
+      <button type="button" (click)="clearChanges()"
         class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 w-44 border-cwGray">Clear
         Changes</button>
     </div>

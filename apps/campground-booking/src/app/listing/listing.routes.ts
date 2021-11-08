@@ -32,6 +32,7 @@ import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-servi
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
 import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
 import { InteriorRoadsResolver } from "./create-listing/location-details/interior-roads/interior-roads.resolver.service";
+import { EcoFriendlyResolver } from "./create-listing/location-details/eco-friendly/eco-friendly.resolver.service";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
@@ -54,7 +55,8 @@ export const listingRoutes: Routes = [
       { path: 'policies', component: PoliciesComponent },
       { path: 'interior-roads/:fileNumber', component: InteriorRoadsSiteInformationComponent,
         resolve: {data:InteriorRoadsResolver} },
-      { path: 'eco-friendly', component: EcoFriendlyComponent },
+      { path: 'eco-friendly/:fileNumber', component: EcoFriendlyComponent,
+        resolve:{data:EcoFriendlyResolver} },
       { path: 'rates-reservations', component: RatesReservationsComponent },
       { path: 'restrooms/:fileNumber', component: RestroomsComponent,
         resolve: {data:RestroomsResolver} },
