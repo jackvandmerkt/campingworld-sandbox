@@ -71,8 +71,10 @@
           </div>
           <div *ngIf="unHideLocationDetails" class="grid grid-cols-1 gap-4 pl-5 bg-navGray">
               <div class="flex flex-row items-center pt-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./interior-roads" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Interior Roads & Site Info</p></a>
+                <img *ngIf='formSubmitStatus.interiorRoadsFormStatus === 0' class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+                <img *ngIf='formSubmitStatus.interiorRoadsFormStatus === 1' class="w-5 h-5" src="/assets/images/error.png" alt="error">
+                <img *ngIf='formSubmitStatus.interiorRoadsFormStatus === 2' class="w-5 h-5" src="/assets/images/green-check.png" alt="green-check">
+                  <a [routerLink]="['./interior-roads', fileNumber]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Interior Roads & Site Info</p></a>
               </div>
               <div class="flex flex-row items-center space-x-4 ">
                   <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
@@ -83,8 +85,10 @@
                   <a routerLink="./rates-reservations" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Rates & Reservations</p></a>
               </div>
               <div class="flex flex-row items-center pb-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./eco-friendly" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Eco Friendly</p></a>
+                <img *ngIf='formSubmitStatus.ecoFriendlyFormStatus === 0' class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+                <img *ngIf='formSubmitStatus.ecoFriendlyFormStatus === 1' class="w-5 h-5" src="/assets/images/error.png" alt="error">
+                <img *ngIf='formSubmitStatus.ecoFriendlyFormStatus === 2' class="w-5 h-5" src="/assets/images/green-check.png" alt="green-check">
+                  <a [routerLink]="['./eco-friendly', fileNumber]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Eco Friendly</p></a>
               </div>
           </div> 
           <!-- Third dropdown section -->
@@ -118,8 +122,10 @@
                   <a [routerLink]="['./recreation', fileNumber ]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Recreation</p></a>
               </div>
               <div class="flex flex-row items-center pb-4 space-x-4 ">
-                  <img class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
-                  <a routerLink="./water-recreation" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Water Recreation</p></a>
+                <img *ngIf='formSubmitStatus.waterRecreationFormStatus === 0' class="w-5 h-5" src="/assets/images/gray-check.png" alt="gray-check">
+                <img *ngIf='formSubmitStatus.waterRecreationFormStatus === 1' class="w-5 h-5" src="/assets/images/error.png" alt="error">
+                <img *ngIf='formSubmitStatus.waterRecreationFormStatus === 2' class="w-5 h-5" src="/assets/images/green-check.png" alt="green-check">
+                  <a [routerLink]="['./water-recreation', fileNumber ]" routerLinkActive="router-link-active"><p class="font-cw text-cwGray text-14px24px">Water Recreation</p></a>
               </div>
           </div> 
           <!-- Fourth dropdown section -->

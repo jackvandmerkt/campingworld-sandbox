@@ -38,19 +38,19 @@ export class RecreationComponent implements OnInit {
   }
 
   recreationForm = this.formBuilder.group({
-    archeryRange: null, badminton: null, basketball: null, bikeRentals: null, billiardRoom: null,
-    poolRoom1Table: null, bocceBall: null, bouncePillow: null, childrensActivities: null, enclosedGameRoom: null,
-    enclosedRecreationHall: null, exerciseRoom: null, frisbeeGolf: null, golf: null, horsebackRiding: null,
-    horseshoes: null, ladderBall: null, lawnBowling: null,lawnChess: null, miniGolfNonPro: null, miniGolfPro: null,
-    natureTrails: null, outdoorGames: null, pavilion: null, pedalCarts: null, pickleBall: null, plannedActivities: null,
-    playground: null, puttingGreen: null, sauna: null, shuffleboard: null, oneShuffleboard: null, softball: null,
-    tennis: null, touristAttractions: null, volleyball: null, casinoOnSite: null, 
+    archeryRange: false, badminton: false, basketball: false, bikeRentals: false, billiardRoom: false,
+    poolRoom1Table: false, bocceBall: false, bouncePillow: false, childrensActivities: false, enclosedGameRoom: false,
+    enclosedRecreationHall: false, exerciseRoom: false, frisbeeGolf: false, golf: false, horsebackRiding: false,
+    horseshoes: false, ladderBall: false, lawnBowling: false,lawnChess: false, miniGolfNonPro: false, miniGolfPro: false,
+    natureTrails: false, outdoorGames: false, pavilion: false, pedalCarts: false, pickleBall: false, plannedActivities: false,
+    playground: false, puttingGreen: false, sauna: false, shuffleboard: false, oneShuffleboard: false, softball: false,
+    tennis: false, touristAttractions: false, volleyball: false, casinoOnSite: false, 
     fileNumber: [null], 
     displayName: [null],
-    archeryRangeNearby: null,atvRidingNearby: null, casinoNearby: null, hikingNearby: null, mountainBikingNearby: null, 
-    roadBikingTrailsNearby: null, rockClimbingNearby: null, snowSportsNearby: null, things: null, huntingNearby: null, 
-    cleaningFacilities: null, meatStorageFacilities: null, huntingLicenses: null, huntingGuideServices: null, 
-    huntingSeasonYearRound: null, huntingWinter: null, huntingSpring: null, huntingSummer: null, huntingFall: null, 
+    archeryRangeNearby: false,atvRidingNearby: false, casinoNearby: false, hikingNearby: false, mountainBikingNearby: false, 
+    roadBikingTrailsNearby: false, rockClimbingNearby: false, snowSportsNearby: false, things: false, huntingNearby: false, 
+    cleaningFacilities: false, meatStorageFacilities: false, huntingLicenses: false, huntingGuideServices: false, 
+    huntingSeasonYearRound: false, huntingWinter: false, huntingSpring: false, huntingSummer: false, huntingFall: false, 
     otherRecMajor: null,
     otherRecMinor: null, 
     eventsCalendarUrl: null, 
@@ -72,6 +72,8 @@ export class RecreationComponent implements OnInit {
               this.currentListing[key] = true;
           }
       }
+      console.log('this.currentListing before patchvalue inside if (this.recreationGetObj != null) in ngoninit')
+      console.log(this.currentListing)
       this.recreationForm.patchValue({
         archeryRange: this.currentListing.archeryRange, poolRoom1Table: this.currentListing.poolRoom1Table, enclosedRecreationHall: this.currentListing.enclosedRecreationHall,
         horseshoes: this.currentListing.horseshoes, natureTrails: this.currentListing.natureTrails, playground: this.currentListing.playground,
@@ -102,15 +104,6 @@ export class RecreationComponent implements OnInit {
       if(this.currentListing.huntingSeasonYearRound == true){
           this.isHuntingSeasonChecked = true;
       }
-
-      // todo - loop through object, find all radio card values that return true, 
-      // push them to their appropriate list to set their image checkmarks
-
-      // this.option
-      // this.nearby
-      // this.hunting
-      // this.huntingSeason
-
     } 
   }
   ngAfterViewInit() {
@@ -119,12 +112,15 @@ export class RecreationComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    if(this.recreationForm.valid) {
+    if(this.recreationForm.valid && this.dualShuffleboard == false) {
+        console.log('this.recreationForm.value inside onSubmit if valid');
         console.log(this.recreationForm.value);
         this.postForm();
         this.sendFormStatus(['recreationFormStatus', 2]);
     } else {
         console.log('not valid');
+        console.log('this.recreationForm.value inside onSubmit if invalid');
+        console.log(this.recreationForm.value);
         this.sendFormStatus(['recreationFormStatus', 1]);
         return;
     }
@@ -159,15 +155,6 @@ export class RecreationComponent implements OnInit {
         huntingNearby: this.currentListing.huntingNearby, huntingFall: this.currentListing.huntingFall
       }); 
       this.setAttributes();
-
-      // todo - loop through object, find all radio card values that return true, 
-      // push them to their appropriate list to set their image checkmarks
-
-      // this.option
-      // this.nearby
-      // this.hunting
-      // this.huntingSeason
-
       if(!this.currentListing.huntingSeasonYearRound){
           this.isHuntingSeasonChecked = false;
       } else{
@@ -180,18 +167,23 @@ export class RecreationComponent implements OnInit {
       }
     } else {
         this.recreationForm.reset({
-          archeryRange: null, badminton: null, basketball: null, bikeRentals: null, billiardRoom: null,
-          poolRoom1Table: null, bocceBall: null, bouncePillow: null, childrensActivities: null, enclosedGameRoom: null,
-          enclosedRecreationHall: null, exerciseRoom: null, frisbeeGolf: null, golf: null, horsebackRiding: null,
-          horseshoes: null, ladderBall: null, lawnBowling: null,lawnChess: null, miniGolfNonPro: null, miniGolfPro: null,
-          natureTrails: null, outdoorGames: null, pavilion: null, pedalCarts: null, pickleBall: null, plannedActivities: null,
-          playground: null, puttingGreen: null, sauna: null, shuffleboard: null, oneShuffleboard: null, softball: null,
-          tennis: null, touristAttractions: null, volleyball: null, casinoOnSite: null, fileNumber: null, displayName: null,
-          archeryRangeNearby: null,atvRidingNearby: null, casinoNearby: null, hikingNearby: null, mountainBikingNearby: null, 
-          roadBikingTrailsNearby: null, rockClimbingNearby: null, snowSportsNearby: null, things: null, huntingNearby: null, 
-          cleaningFacilities: null, meatStorageFacilities: null, huntingLicenses: null, huntingGuideServices: null, 
-          huntingSeasonYearRound: null, huntingWinter: null, huntingSpring: null, huntingSummer: null, huntingFall: null, 
-          otherRecMajor: null, otherRecMinor: null, eventsCalendarUrl: null,  plannedFamilyActivitiesId: null
+          archeryRange: false, badminton: false, basketball: false, bikeRentals: false, billiardRoom: false,
+          poolRoom1Table: false, bocceBall: false, bouncePillow: false, childrensActivities: false, enclosedGameRoom: false,
+          enclosedRecreationHall: false, exerciseRoom: false, frisbeeGolf: false, golf: false, horsebackRiding: false,
+          horseshoes: false, ladderBall: false, lawnBowling: false,lawnChess: false, miniGolfNonPro: false, miniGolfPro: false,
+          natureTrails: false, outdoorGames: false, pavilion: false, pedalCarts: false, pickleBall: false, plannedActivities: false,
+          playground: false, puttingGreen: false, sauna: false, shuffleboard: false, oneShuffleboard: false, softball: false,
+          tennis: false, touristAttractions: false, volleyball: false, casinoOnSite: false, 
+          fileNumber: [null],
+          displayName: [null],
+          archeryRangeNearby: false,atvRidingNearby: false, casinoNearby: false, hikingNearby: false, mountainBikingNearby: false, 
+          roadBikingTrailsNearby: false, rockClimbingNearby: false, snowSportsNearby: false, things: false, huntingNearby: false, 
+          cleaningFacilities: false, meatStorageFacilities: false, huntingLicenses: false, huntingGuideServices: false, 
+          huntingSeasonYearRound: false, huntingWinter: false, huntingSpring: false, huntingSummer: false, huntingFall: false, 
+          otherRecMajor: null,
+          otherRecMinor: null, 
+          eventsCalendarUrl: null, 
+          plannedFamilyActivitiesId: null
         });
         this.option = [];
         this.nearby = [];
@@ -208,7 +200,6 @@ export class RecreationComponent implements OnInit {
   getFormDropDownData() {
     this.allRefsTmp = window.localStorage.getItem('all-refs');
     this.allRefsObj = JSON.parse(this.allRefsTmp);
-    console.log(this.allRefsObj)
     for(let [key, value] of Object.entries(this.allRefsObj)) {
         if(key === 'plannedFamilyActivities') {
             this.familyActivitiesFromService = value;
@@ -240,44 +231,11 @@ export class RecreationComponent implements OnInit {
             this.recreationPostObj[key] = 't';
         }
     }
-    console.log(this.recreationPostObj)
     this.ls.postRecreation(this.recreationPostObj, this.fileNum).subscribe(response => {
       if(response){
         this.postResponse = response;
       }
     })
-  }
-
-  optionChecked(radio: string) {
-    if (!this.option.includes(radio)) {
-      this.option.push(radio)
-    } else {
-      this.option = this.option.filter(option => option !== radio)
-    }
-  }
-
-  nearbyChecked(radio: string) {
-    if (!this.nearby.includes(radio)) {
-      this.nearby.push(radio)
-    } else {
-      this.nearby = this.nearby.filter(nearby => nearby !== radio)
-    }
-  }
-
-  huntingChecked(radio: string) {
-    if (!this.hunting.includes(radio)) {
-      this.hunting.push(radio)
-    } else {
-      this.hunting = this.hunting.filter(hunting => hunting !== radio)
-    }
-  }
-
-  huntingSeasonChecked(radio: string) {
-    if (!this.huntingSeason.includes(radio)) {
-      this.huntingSeason.push(radio)
-    } else {
-      this.huntingSeason = this.huntingSeason.filter(huntingSeason => huntingSeason !== radio)
-    }
   }
 
   checkBoxRecreationChange(cb: any) {
@@ -293,14 +251,19 @@ export class RecreationComponent implements OnInit {
 
   checkBoxCasinoChange(cb: any) {
     this.isCasinoChecked = !this.isCasinoChecked;
+    // add validations for displayName and filenumber
   }
 
   checkBoxHuntingSeasonChange(cb: any) {
     this.isHuntingSeasonChecked = !this.isHuntingSeasonChecked;
+    if(this.isHuntingSeasonChecked == true) {
+      
+    }
   }
 
   get dualShuffleboard() { 
-    if (this.option.includes('31') && this.option.includes('32')) { 
+    if ((this.recreationForm.value.shuffleboard == true && this.recreationForm.value.oneShuffleboard == true) ||
+        (this.recreationForm.value.shuffleboard == 't' && this.recreationForm.value.oneShuffleboard == 't')) { 
       return true 
     } else 
     return false 

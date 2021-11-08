@@ -4,10 +4,10 @@ import { ListingService } from "apps/campground-booking/src/app/shared/listing.s
 import { map } from "rxjs/operators";
 
 @Injectable()
-export class RecreationResolver implements Resolve<any> {
+export class EcoFriendlyResolver implements Resolve<any> {
     constructor(private ls: ListingService, ) {}
 
     resolve(route: ActivatedRouteSnapshot) {
-        return this.ls.getRecreation(route.params['fileNumber']).pipe(map(data => data))
+        return this.ls.getEcoFriendly(route.params['fileNumber']).pipe(map(data => data))
     }
 }

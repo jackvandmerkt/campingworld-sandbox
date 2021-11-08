@@ -292,6 +292,102 @@ export interface IDiscountsAndAffiliations {
   coastToCoastMembershipNumber: string,
 }
 
+// Location Details Section
+export interface IInteriorRoads {
+  interiorRoads: {
+    interiorRoadConditionId: number,
+    interiorRoadTypeId: number
+  },
+  siteInfo: {
+    totalSpaces: number,
+    numberAvailable: number,
+    numberExtendedStaySites: number,
+    numberPermanentSites: number,
+    separateSeasonalSection: string,
+    numberPaved: number,
+    numberAllWeather: number,
+    numberGravel: number,
+    numberGrass: number,
+    numberDirt: number,
+    numberFullHookups: number,
+    numberWater: number,
+    numberSewer: number,
+    numberElectric: number,
+    noHookups: number,
+    ampId: number,
+    sideBySideHookupId: number,
+    bigRigSites: string,
+    acceptsFullHookupUnitsOnly: string,
+    acceptsSelfContainedUnitsOnly: string,
+    pullThruWidth: number,
+    pullThruLength: number,
+    numberOfPullThrus: number,
+    backInWidth: number,
+    backInLength: number,
+    slideOuts: string,
+    shadeTypeId: number
+  }
+}
+export interface IPolicies {
+  maxStayLessThanThirty: string,
+  numberOfDaysMaxStay: number,
+  openAllYear: string,
+  areThereLimitedFacilities: string,
+  lfsLtdFacSummer: string,
+  lfwLtdFacWinter: string,
+  ageRestrictions: string,
+  familyCamping: string,
+  allowsTentCampers: string,
+  doesNotAllowClassAMotorhomes: string,
+  doesNotAllowClassBMotorhomes: string,
+  doesNotAllowClassCMotorhomes: string,
+  rvAgeRestrictions: number,
+  petsOk: string,
+  petRestrictions: string,
+  size: string,
+  quantity: string,
+  breed: string,
+  petPaid: string
+}
+export interface IRatesReservations {
+  ratesFromCents: number,
+  ratesToCents: number,
+  tentRatesFromCents: number,
+  tentRatesToCents: number,
+  seasonalRatesFromCents: number,
+  seasonalRatesToCents: number,
+  byWeekMonthId: number,
+  monthFromId: number,
+  monthToId: number,
+  creditCardsAccepted: string,
+  debitCard: string,
+  discover: string,
+  visa: string,
+  mastercard: string,
+  americanExpress: string,
+  reservations: string,
+  usesOnlineReservationSystem: string,
+  onlineReservationSystemId: number,
+  otherOnlineReservationSystem: string
+}
+
+export interface IEcoFriendly {
+  green: string,
+  nonToxicCleaningProducts: string,
+  naturalPestControl: string,
+  minimizedStyrofoamAndPlastic: string,
+  droughtTolerantIndigenousPlants: string,
+  recyclingCansForRvers: string,
+  compactFlourescentLights: string,
+  insulatedWaterHeaters: string,
+  loweredPoolTemperatures: string,
+  installedPhotocells: string,
+  fuelEfficientVehicles: string,
+  encouragingUseOfBikesTrikes: string,
+  tanklessWaterHeaters: string,
+  composting: string
+}
+
 // Amenities Section Interfaces
 export interface IRestrooms {
   pitToilets: boolean, restroomShowerId: number, numberToiletsMen: number, 

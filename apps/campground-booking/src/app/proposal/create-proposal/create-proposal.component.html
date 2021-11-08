@@ -17,9 +17,32 @@
         <div><b>Rep Name</b></div>
       </div>
     </div>
-    <div class="p-10 bg-proposalsGray">
+    <div class="p-10 bg-navGray">
       <h1 class="text-28px34px font-cw text-cwGray font-bold">Products</h1>
+      <button *ngIf="!addAProduct" (click)="addAProduct = !addAProduct" type="button"
+        class="mt-10 px-6 py-4.5 w-30 h-13 text-16px16px text-white rounded-md bg-cwRed hover:opacity-80 font-cw">
+        Add a Product
+      </button>
+      <div *ngIf="addAProduct" class="mt-10">
+        <select (change)="onChange()"
+          class="pl-3 bg-white border rounded border-cwBadgeGray font-cw text-16px26px text-cwGray w-1/2 h-13">
+          <option>Select Publication</option>
+          <option>open</option>
+        </select>
+        <div class="flex mt-10">
+          <button (click)="addAProduct = !addAProduct" type="button"
+            class="font-medium border rounded hover:opacity-80 font-cw text-cwGray h-13 px-6 mr-5 border-cwGray">
+            Cancel
+          </button>
+          <button type="button"
+            class="px-6 py-4.5 w-30 h-13 text-16px16px text-white rounded-md bg-cwRed hover:opacity-80 font-cw">
+            Add Product
+          </button>
+        </div>
+      </div>
+      <!-- divider -->
       <div class="mt-10" style="background: #BFC5CE; height: 4px;"></div>
+      <!-- /divider -->
       <div class="mt-10 flex flex-row">
         <div class="flex">
           <h1 class="text-28px34px font-cw text-cwGray font-bold">Proposed Investment</h1>
@@ -41,7 +64,7 @@
         <div class="flex-grow"></div>
         <div class="flex" style="margin-right: -10px;">
           <div class="w-3/4 pb-11">
-            <p class="font-cw text-16px26px mr-3 mt-1">No</p>
+
           </div>
           <div class="flex items-center justify-end w-1/4 pr-2 mb-10 text-right">
             <p *ngIf="!downPaymentRequired" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
@@ -102,8 +125,8 @@
           <p class="font-cw text-16px26px">Display item prices</p>
         </div>
         <div class="flex items-center justify-end w-1/4 pr-2 mb-10">
-          <p *ngIf="!displayItemPrices" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-          <p *ngIf="displayItemPrices" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+          <p *ngIf="!displayItemPrices" class="pr-6 font-cw text-cwGray text-16px26px"></p>
+          <p *ngIf="displayItemPrices" class="pr-6 font-cw text-cwGray text-16px26px">Show</p>
           <label for="toggleDisplayItemPrices" class="flex items-center cursor-pointer">
             <!-- toggle -->
             <div class="relative">
@@ -124,8 +147,8 @@
           <p class="font-cw text-16px26px">Display media kit</p>
         </div>
         <div class="flex items-center justify-end w-1/4 pr-2 mb-10">
-          <p *ngIf="!displayMediaKit" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
-          <p *ngIf="displayMediaKit" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
+          <p *ngIf="!displayMediaKit" class="pr-6 font-cw text-cwGray text-16px26px"></p>
+          <p *ngIf="displayMediaKit" class="pr-6 font-cw text-cwGray text-16px26px">Show</p>
           <label for="toggleDisplayMediaKit" class="flex items-center cursor-pointer">
             <!-- toggle -->
             <div class="relative">

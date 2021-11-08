@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { AdSummaryComponent } from "./ad-summary/ad-summary.component";
-import { CreateProposalComponent } from "./create-proposal/create-proposal.component";
+import { CreateProposalComponent } from "../proposal/create-proposal/create-proposal.component";
 import { AllListingsComponent } from "./all-listing/all-listing.component";
 import { OnSiteServicesComponent } from "./create-listing/amenities/on-site-services/on-site-services.component";
 import { RecreationComponent } from "./create-listing/amenities/recreation/recreation.component";
@@ -30,6 +30,9 @@ import { NewListingsComponent } from "./new-listing-info/new-listing.component";
 import { RestroomsResolver } from "./create-listing/amenities/restrooms/restrooms.resolver.service";
 import { OnSiteServicesResolver } from "./create-listing/amenities/on-site-services/on-site-services.resolver.service";
 import { RecreationResolver } from "./create-listing/amenities/recreation/recreation.resolver.service";
+import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
+import { InteriorRoadsResolver } from "./create-listing/location-details/interior-roads/interior-roads.resolver.service";
+import { EcoFriendlyResolver } from "./create-listing/location-details/eco-friendly/eco-friendly.resolver.service";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
@@ -50,8 +53,10 @@ export const listingRoutes: Routes = [
       { path: 'advertising-codes', component: AdvertisingCodesComponent },
       { path: 'good-sam-park', component: GoodSamParkComponent },
       { path: 'policies', component: PoliciesComponent },
-      { path: 'interior-roads', component: InteriorRoadsSiteInformationComponent },
-      { path: 'eco-friendly', component: EcoFriendlyComponent },
+      { path: 'interior-roads/:fileNumber', component: InteriorRoadsSiteInformationComponent,
+        resolve: {data:InteriorRoadsResolver} },
+      { path: 'eco-friendly/:fileNumber', component: EcoFriendlyComponent,
+        resolve:{data:EcoFriendlyResolver} },
       { path: 'rates-reservations', component: RatesReservationsComponent },
       { path: 'restrooms/:fileNumber', component: RestroomsComponent,
         resolve: {data:RestroomsResolver} },
@@ -59,7 +64,8 @@ export const listingRoutes: Routes = [
         resolve: {data:OnSiteServicesResolver} },
       { path: 'recreation/:fileNumber', component: RecreationComponent,
         resolve: {data:RecreationResolver} },
-      { path: 'water-recreation', component: WaterRecreationComponent },
+      { path: 'water-recreation/:fileNumber', component: WaterRecreationComponent,
+        resolve: {data:WaterRecreationResolver} },
       { path: 'tenting-rentals', component: TentingRentalsComponent },
       { path: 'ratings', component: RatingsComponent },
       { path: 'published-ratings', component: PublishedRatingsComponent },
