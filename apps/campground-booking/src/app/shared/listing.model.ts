@@ -291,6 +291,35 @@ export interface IDiscountsAndAffiliations {
   coastToCoastPark: string,
   coastToCoastMembershipNumber: string,
 }
+export interface IOwnerAndB2BInfo {
+  newOwner: string,
+  parkForSale: string,
+  name: string,
+  mailingAddress:{
+    street1:string, 
+    city:string,
+    listStateId: number,
+    zip:string,
+    countryId: number
+
+  },
+  email: string,
+  phone: string,
+  adDecisionMaker: string,
+  b2BCommEmailSourceId: number,
+  b2BCommEmailIfOther: string,
+  b2BCommMailSourceId: number,
+  b2bCommAddressIfOther: {
+    street1:string,
+    city: string,
+    listStateId: number,
+    zip: string,
+    countryId: number
+  },
+  objectionReasonId: number,
+  droppedAffiliationReasonId: number,
+  uniqueAccountId: number,
+}
 
 // Location Details Section
 export interface IInteriorRoads {

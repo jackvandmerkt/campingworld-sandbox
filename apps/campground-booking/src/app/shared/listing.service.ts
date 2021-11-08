@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation, IDiscountsAndAffiliations, IInteriorRoads, IPolicies, IRatesReservations, IEcoFriendly } from './listing.model';
+import { IGoodSamRecordId, IAllRefs, IListingCounts, IListings, ITerritories, IContactInfo, IOwnerAndB2BInfo,IRestrooms, IOnSiteServices, IWaterRecreation, IRecreation, IDiscountsAndAffiliations, IInteriorRoads, IPolicies, IRatesReservations, IEcoFriendly } from './listing.model';
 import {HttpClient} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { I18nPluralPipe } from '@angular/common';
@@ -60,8 +60,16 @@ export class ListingService {
       return this.http.get<IDiscountsAndAffiliations>(`api/v1/listings/${fileNumber}/location-info/discounts-and-affiliations`)
       .pipe(catchError(this.handleError<IDiscountsAndAffiliations>('getDiscountsAndAffiliations', )))
     }
+    //Location Info Section - Owner and B2B
+    postOwnerAndB2BInfo(form:IOwnerAndB2BInfo, fileNumber:string):Observable<IOwnerAndB2BInfo>{
+      return this.http.put<IOwnerAndB2BInfo>(`/api/v1/listings/${fileNumber}/location-info/owner-and-b2b-info`, form)
+      .pipe(catchError(this.handleError<IOwnerAndB2BInfo>('postOwnerAndB2BInfo', )))
+    }
 
-
+    getOwnerAndB2BInfo(fileNumber:string):Observable<IOwnerAndB2BInfo>{
+      return this.http.get<IOwnerAndB2BInfo>(`api/v1/listings/${fileNumber}/location-info/owner-and-b2b-info`)
+      .pipe(catchError(this.handleError<IOwnerAndB2BInfo>('getOwnerAndB2BInfo', )))
+    }
 
     //Location Details Section - Interior Roads and Site Info
     postInteriorRoads(form:IInteriorRoads, fileNumber:string):Observable<IInteriorRoads>{
