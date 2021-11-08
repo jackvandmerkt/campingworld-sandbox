@@ -47,6 +47,7 @@ import { RecreationResolver } from "./create-listing/amenities/recreation/recrea
 import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
 import { InteriorRoadsResolver } from "./create-listing/location-details/interior-roads/interior-roads.resolver.service";
 import { EcoFriendlyResolver } from "./create-listing/location-details/eco-friendly/eco-friendly.resolver.service";
+import { PoliciesResolver } from "./create-listing/location-details/policies/policies.resolver.service";
 
 @NgModule({
   declarations: [
@@ -94,15 +95,16 @@ import { EcoFriendlyResolver } from "./create-listing/location-details/eco-frien
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     GoodSamRecordResolver,
-    ContactInfoResolver,
-    InteriorRoadsResolver,
-    EcoFriendlyResolver,
-    RestroomsResolver,
-    OnSiteServicesResolver,
-    RecreationResolver,
-    WaterRecreationResolver,
-    DiscountsAffiliationsResolver,
-    RecreationResolver
+      ContactInfoResolver,
+      InteriorRoadsResolver,
+      EcoFriendlyResolver,
+      PoliciesResolver,
+      RestroomsResolver,
+      OnSiteServicesResolver,
+      RecreationResolver,
+      WaterRecreationResolver,
+      DiscountsAffiliationsResolver,
+      RecreationResolver
   ]
 })
 export class ListingModule { }

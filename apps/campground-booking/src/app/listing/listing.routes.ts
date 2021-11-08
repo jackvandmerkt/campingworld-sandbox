@@ -33,6 +33,7 @@ import { RecreationResolver } from "./create-listing/amenities/recreation/recrea
 import { WaterRecreationResolver } from "./create-listing/amenities/water-recreation/water-recreation.resolver.service";
 import { InteriorRoadsResolver } from "./create-listing/location-details/interior-roads/interior-roads.resolver.service";
 import { EcoFriendlyResolver } from "./create-listing/location-details/eco-friendly/eco-friendly.resolver.service";
+import { PoliciesResolver } from "./create-listing/location-details/policies/policies.resolver.service";
 
 export const listingRoutes: Routes = [
   { path: 'new-listing', component: NewListingsComponent },
@@ -52,7 +53,8 @@ export const listingRoutes: Routes = [
       { path: 'directions', component: DirectionsComponent },
       { path: 'advertising-codes', component: AdvertisingCodesComponent },
       { path: 'good-sam-park', component: GoodSamParkComponent },
-      { path: 'policies', component: PoliciesComponent },
+      { path: 'policies/:fileNumber', component: PoliciesComponent,
+        resolve: {data:PoliciesResolver} },
       { path: 'interior-roads/:fileNumber', component: InteriorRoadsSiteInformationComponent,
         resolve: {data:InteriorRoadsResolver} },
       { path: 'eco-friendly/:fileNumber', component: EcoFriendlyComponent,
