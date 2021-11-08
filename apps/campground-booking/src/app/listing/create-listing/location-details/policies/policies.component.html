@@ -5,7 +5,7 @@
       <p class="font-cw text-cwGray">Is max stay less than 30 days?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.maxStayLessThanThirty == false || policiesForm.value.maxStayLessThanThirty == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.maxStayLessThanThirty == false || policiesForm.value.maxStayLessThanThirty == 'f' || policiesForm.value.maxStayLessThanThirty =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.maxStayLessThanThirty == true || policiesForm.value.maxStayLessThanThirty == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="maxStayLessThanThirty" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -37,7 +37,7 @@
       <p class="font-cw text-cwGray">Open all year?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.openAllYear == false || policiesForm.value.openAllYear == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.openAllYear == false || policiesForm.value.openAllYear == 'f' || policiesForm.value.openAllYear =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.openAllYear == true || policiesForm.value.openAllYear == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="openAllYear" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -59,7 +59,7 @@
       <p class="font-cw text-cwGray">Are there limited facilities?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.areThereLimitedFacilities == false || policiesForm.value.areThereLimitedFacilities == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.areThereLimitedFacilities == false || policiesForm.value.areThereLimitedFacilities == 'f' || policiesForm.value.areThereLimitedFacilities =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.areThereLimitedFacilities == true || policiesForm.value.areThereLimitedFacilities == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="areThereLimitedFacilities" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -95,7 +95,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 pb-10 w-636">
+  <div *ngIf="policiesForm.value.openAllYear == false || policiesForm.value.openAllYear == 'f'" class="grid grid-cols-1 pb-10 w-636">
     <h1 class="pb-4 font-bold font-cw text-cwGray text-24px">Season start date - Season end date</h1>
     <ejs-daterangepicker id='daterangepicker' placeholder='Select a range' formControlName="season" >
     </ejs-daterangepicker>
@@ -105,7 +105,7 @@
       <p class="font-cw text-cwGray">Age restrictions apply?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.ageRestrictions == false || policiesForm.value.ageRestrictions == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.ageRestrictions == false || policiesForm.value.ageRestrictions == 'f' || policiesForm.value.ageRestrictions =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.ageRestrictions == true || policiesForm.value.ageRestrictions == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="ageRestrictions" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -127,7 +127,7 @@
       <p class="font-cw text-cwGray">Family camping?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.familyCamping == false || policiesForm.value.familyCamping == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.familyCamping == false || policiesForm.value.familyCamping == 'f' || policiesForm.value.familyCamping =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.familyCamping == true || policiesForm.value.familyCamping == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="familyCamping" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -149,7 +149,7 @@
       <p class="font-cw text-cwGray">Allows tent campers?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.allowsTentCampers == false || policiesForm.value.allowsTentCampers == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.allowsTentCampers == false || policiesForm.value.allowsTentCampers == 'f' || policiesForm.value.allowsTentCampers =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.allowsTentCampers == true || policiesForm.value.allowsTentCampers == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="allowsTentCampers" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -213,7 +213,7 @@
       <p class="font-cw text-cwGray">Are pets allowed?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.petsOk == false || policiesForm.value.petsOk == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.petsOk == false || policiesForm.value.petsOk == 'f' || policiesForm.value.petsOk =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.petsOk == true || policiesForm.value.petsOk == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="petsOk" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -236,7 +236,7 @@
       <p class="font-cw text-cwGray">Are there pet restrictions?</p>
     </div>
     <div class="flex items-center justify-end pr-2">
-      <p *ngIf="policiesForm.value.petRestrictions == false || policiesForm.value.petRestrictions == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.petRestrictions == false || policiesForm.value.petRestrictions == 'f' || policiesForm.value.petRestrictions =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.petRestrictions == true || policiesForm.value.petRestrictions == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="petRestrictions" class="flex items-center cursor-pointer">
         <!-- toggle -->
@@ -289,7 +289,7 @@
       <p class="font-cw text-cwGray">Is there an additional charge for pets?</p>
     </div>
     <div class="flex items-center justify-end w-full pr-2 mb-10">
-      <p *ngIf="policiesForm.value.petPaid == false || policiesForm.value.petPaid == 'f'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
+      <p *ngIf="policiesForm.value.petPaid == false || policiesForm.value.petPaid == 'f' || policiesForm.value.petPaid =='null'" class="pr-6 font-cw text-cwGray text-16px26px">No</p>
       <p *ngIf="policiesForm.value.petPaid == true || policiesForm.value.petPaid == 't'" class="pr-6 font-cw text-cwGray text-16px26px">Yes</p>
       <label for="petPaid" class="flex items-center cursor-pointer">
         <!-- toggle -->

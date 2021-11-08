@@ -97,7 +97,7 @@ export class PoliciesComponent implements OnInit {
         maxStayLessThanThirty: this.policiesGetObj.maxStayLessThanThirty,
         numberOfDaysMaxStay: this.policiesGetObj.numberOfDaysMaxStay,
         openAllYear: this.policiesGetObj.openAllYear,
-        season: this.policiesGetObj.season,
+        season: JSON.parse(this.policiesGetObj.season),
         areThereLimitedFacilities: this.policiesGetObj.areThereLimitedFacilities,
         lfsLtdFacSummer: this.policiesGetObj.lfsLtdFacSummer,
         lfwLtdFacWinter: this.policiesGetObj.lfwLtdFacWinter,
@@ -215,8 +215,7 @@ export class PoliciesComponent implements OnInit {
   postForm() {
     this.policiesPostObj = this.policiesForm.value;
     if(this.policiesForm.value.season != null) {
-      this.seasonToString = this.policiesForm.value.season[0] + ',' + this.policiesForm.value.season[1];
-      console.log(this.seasonToString)
+      this.seasonToString = JSON.stringify(this.policiesForm.value.season)
     }
     for(let [key, value] of Object.entries(this.policiesPostObj)) {
       if(value === false) {
@@ -269,6 +268,11 @@ export class PoliciesComponent implements OnInit {
         areThereLimitedFacilities: false,
         lfsLtdFacSummer: false,
         lfwLtdFacWinter: false
+      })
+    }
+    if (this.openAllYear == true) {
+      this.policiesForm.patchValue({
+        season: null
       })
     }
   }
